@@ -1,0 +1,37 @@
+//
+//  washcar-Prefix.pch
+//  washcar
+//
+//  Created by CSB on 15/9/25.
+//  Copyright © 2015年 CSB. All rights reserved.
+//
+
+#ifndef washcar_Prefix_pch
+#define washcar_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "WDSystemUtils.h"
+#import "Constant.h"
+#import "GlobalVar.h"
+#import "Toast+UIView.h"
+
+#endif
+
+
+#define RgbHex2UIColor(r, g, b)                 [UIColor colorWithRed:((r) / 256.0) green:((g) / 256.0) blue:((b) / 256.0) alpha:1.0]
+#define RgbHex2UIColorWithAlpha(r, g, b, a)     [UIColor colorWithRed:((r) / 256.0) green:((g) / 256.0) blue:((b) / 256.0) alpha:(a)]
+
+#define GeneralBackgroundColor [UIColor colorWithRed:0.94 green:0.95 blue:0.96 alpha:1]
+#define GeneralBorderColor [UIColor colorWithRed:0.94 green:0.95 blue:0.96 alpha:1].CGColor
+
+#define GeneralLineColor [UIColor colorWithRed:0.83 green:0.83 blue:0.83 alpha:1]
+#define GeneralLineCGColor [UIColor colorWithRed:0.83 green:0.83 blue:0.83 alpha:1].CGColor
+
+#define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#endif /* washcar_Prefix_pch */

@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2a40ccc0-807e-40dc-aa9b-4d66ddb32a8f",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "2a40ccc0-807e-40dc-aa9b-4d66ddb32a8f" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "2a40ccc0-807e-40dc-aa9b-4d66ddb32a8f" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2BA4CAEA-7B24-4F7F-AC06-B91734ECFED5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "2a40ccc0-807e-40dc-aa9b-4d66ddb32a8f" : "wa\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "washcar",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "washcar\/washcar.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/www.svn999.com\/xiejingya.washcar1.0",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2a40ccc0-807e-40dc-aa9b-4d66ddb32a8f"
+    }
+  ]
+}

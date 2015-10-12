@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChePaiPickView">
+            <connections>
+                <outlet property="innerView" destination="J2z-7P-lbN" id="6Sx-kv-J3K"/>
+                <outlet property="ok" destination="gA3-IH-bjh" id="23Q-fr-uMa"/>
+                <outlet property="provinceShort" destination="JjT-bE-Erz" id="4FP-ae-OHc"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="J2z-7P-lbN">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="240"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Wbz-mu-Nmi">
+                    <rect key="frame" x="0.0" y="0.0" width="360" height="240"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <animations/>
+                </button>
+                <pickerView contentMode="left" id="JjT-bE-Erz">
+                    <rect key="frame" x="0.0" y="28" width="360" height="212"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                    <animations/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </pickerView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gA3-IH-bjh">
+                    <rect key="frame" x="322" y="0.0" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <animations/>
+                    <state key="normal" title="确定"/>
+                    <connections>
+                        <action selector="commit:" destination="-1" eventType="touchUpInside" id="YN1-hi-1Wz"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="WG5-32-qNc">
+                    <rect key="frame" x="8" y="0.0" width="30" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <animations/>
+                    <state key="normal" title="取消"/>
+                    <connections>
+                        <action selector="cancel:" destination="-1" eventType="touchUpInside" id="cgs-OG-cc2"/>
+                        <action selector="commit:" destination="-1" eventType="touchUpInside" id="hMp-Tu-eS1"/>
+                    </connections>
+                </button>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="318" y="20"/>
+        </view>
+    </objects>
+</document>

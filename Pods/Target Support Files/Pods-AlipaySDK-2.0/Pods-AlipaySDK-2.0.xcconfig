@@ -1,0 +1,2 @@
+PODS_ALIPAYSDK_____FRAMEWORK_SEARCH_PATHS = "$(PODS_ROOT)/AlipaySDK-2.0"
+PODS_ALIPAYSDK_____OTHER_LDFLAGS = -framework "AlipaySDK" -framework "CoreTelephony" -framework "SystemConfiguration"
