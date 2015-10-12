@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Zk9-BV-BKD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Zk9-BV-BKD">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -21,7 +21,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tD8-1P-dys" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-360.5333333333333" y="201.63999999999999"/>
+            <point key="canvasLocation" x="-474" y="221"/>
         </scene>
         <!--Sign View Controller-->
         <scene sceneID="vCv-3m-Rfk">
@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cBg-Kg-mQG">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBg-Kg-mQG">
                                 <rect key="frame" x="10" y="10" width="300" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="手机号码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3w-Be-rL0">
@@ -55,13 +55,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlI-oQ-TBP">
-                                        <rect key="frame" x="222" y="10" width="78" height="25"/>
+                                        <rect key="frame" x="222" y="10" width="78" height="30"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.0" green="0.62745098040000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="120" id="hot-D2-uzi"/>
+                                            <constraint firstAttribute="width" constant="100" id="hot-D2-uzi"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <state key="normal" title="获取验证码">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         </state>
@@ -80,6 +80,7 @@
                                     <constraint firstAttribute="trailing" secondItem="mlI-oQ-TBP" secondAttribute="trailing" constant="5" id="H4O-Tl-Mg2"/>
                                     <constraint firstItem="Sng-Rj-DND" firstAttribute="leading" secondItem="cBg-Kg-mQG" secondAttribute="leading" constant="80" id="PE1-Sw-fqX"/>
                                     <constraint firstItem="Sng-Rj-DND" firstAttribute="top" secondItem="k3w-Be-rL0" secondAttribute="top" id="UaL-fN-xKk"/>
+                                    <constraint firstAttribute="height" constant="45" id="a4Z-sW-hAe"/>
                                     <constraint firstItem="k3w-Be-rL0" firstAttribute="top" secondItem="cBg-Kg-mQG" secondAttribute="top" constant="7" id="pmW-Jh-KKn"/>
                                     <constraint firstItem="k3w-Be-rL0" firstAttribute="bottom" secondItem="Sng-Rj-DND" secondAttribute="bottom" id="tLc-Mv-gO8"/>
                                     <constraint firstItem="mlI-oQ-TBP" firstAttribute="top" secondItem="cBg-Kg-mQG" secondAttribute="top" constant="10" id="xN9-AU-Hq4"/>
@@ -113,6 +114,7 @@
                                 <constraints>
                                     <constraint firstItem="sJM-Uz-Ivx" firstAttribute="leading" secondItem="lsV-Ox-B6t" secondAttribute="leading" constant="5" id="GGw-yb-VVM"/>
                                     <constraint firstItem="6Zg-YJ-KkA" firstAttribute="top" secondItem="lsV-Ox-B6t" secondAttribute="top" constant="12" id="cAY-aP-HtF"/>
+                                    <constraint firstAttribute="height" constant="45" id="eMe-NF-SBb"/>
                                     <constraint firstItem="6Zg-YJ-KkA" firstAttribute="leading" secondItem="lsV-Ox-B6t" secondAttribute="leading" constant="80" id="h0y-cl-rVb"/>
                                     <constraint firstItem="6Zg-YJ-KkA" firstAttribute="centerY" secondItem="sJM-Uz-Ivx" secondAttribute="centerY" id="pRF-sZ-Frc"/>
                                     <constraint firstItem="sJM-Uz-Ivx" firstAttribute="centerY" secondItem="lsV-Ox-B6t" secondAttribute="centerY" id="vur-fF-11H"/>
@@ -214,12 +216,6 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="后5位数字" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9zu-1a-YLx">
-                                                    <rect key="frame" x="195" y="12" width="105" height="21"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
-                                                </textField>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -236,6 +232,12 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <state key="normal" title="省简称" backgroundImage="chepaibg.png"/>
                                         </button>
+                                        <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="后5位数字或字母" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9zu-1a-YLx">
+                                            <rect key="frame" x="205" y="17" width="105" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                        </textField>
                                     </subviews>
                                     <animations/>
                                     <constraints>

@@ -133,6 +133,7 @@
 }
 
 -(void)showContentText:(BOOL)isShow{
+    [_text resignFirstResponder];
     [UIView animateWithDuration:1.0 animations:^
      {
          if (isShow) {

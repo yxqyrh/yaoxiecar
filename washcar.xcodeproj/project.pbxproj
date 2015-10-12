@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F7831D01BCC106C0021E7F4 /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7831CF1BCC106C0021E7F4 /* Sign.storyboard */; settings = {ASSET_TAGS = (); }; };
 		446EDCE91BBB11EC000A8D94 /* MYIntroductionPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 446EDCE61BBB11EC000A8D94 /* MYIntroductionPanel.m */; settings = {ASSET_TAGS = (); }; };
 		446EDCEA1BBB11EC000A8D94 /* MYIntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 446EDCE81BBB11EC000A8D94 /* MYIntroductionView.m */; settings = {ASSET_TAGS = (); }; };
 		446EDCEC1BBB7B19000A8D94 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 446EDCEB1BBB7B19000A8D94 /* Icon@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -84,7 +85,6 @@
 		44B7A31B1BC53EC3006FEAA0 /* img_guide_03@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B7A3171BC53EC3006FEAA0 /* img_guide_03@3x.png */; settings = {ASSET_TAGS = (); }; };
 		44C13BBC1BC3664400597D7D /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C13BBB1BC3664400597D7D /* CommonUtil.m */; settings = {ASSET_TAGS = (); }; };
 		44C13BC41BC366FE00597D7D /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C13BC01BC366FD00597D7D /* readme.txt */; settings = {ASSET_TAGS = (); }; };
-		44E471811BB5921A00A15AA4 /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44E471801BB5921A00A15AA4 /* Sign.storyboard */; };
 		44F9429D1BB58B02000CAF90 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F9429C1BB58B02000CAF90 /* BaseViewController.m */; };
 		44F942A01BB58F64000CAF90 /* WDTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F9429F1BB58F64000CAF90 /* WDTabBar.m */; };
 		44F942A31BB5935B000CAF90 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F942A21BB5935B000CAF90 /* HomeViewController.m */; };
@@ -192,6 +192,7 @@
 
 /* Begin PBXFileReference section */
 		1D7C764897EF8778C98C82CC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		3F7831CF1BCC106C0021E7F4 /* Sign.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
 		446EDCE51BBB11EC000A8D94 /* MYIntroductionPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYIntroductionPanel.h; sourceTree = "<group>"; };
 		446EDCE61BBB11EC000A8D94 /* MYIntroductionPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MYIntroductionPanel.m; sourceTree = "<group>"; };
 		446EDCE71BBB11EC000A8D94 /* MYIntroductionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MYIntroductionView.h; sourceTree = "<group>"; };
@@ -412,7 +413,6 @@
 		44C13BC21BC366FD00597D7D /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		44C13BC51BC3672900597D7D /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 		44D80A791BC378B4005091F5 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = "../../../tempfiles/1005/支付宝钱包支付接口开发包2.0标准版(iOS 3.0.1)/AlipaySDK.framework"; sourceTree = "<group>"; };
-		44E471801BB5921A00A15AA4 /* Sign.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
 		44F9429B1BB58B02000CAF90 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		44F9429C1BB58B02000CAF90 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		44F9429E1BB58F64000CAF90 /* WDTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDTabBar.h; sourceTree = "<group>"; };
@@ -996,10 +996,10 @@
 		44F942951BB58A72000CAF90 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				3F7831CF1BCC106C0021E7F4 /* Sign.storyboard */,
 				59111DFF1BC667F900C2CCA9 /* UserCenter.storyboard */,
 				44928FE21BB7D67D00F699E7 /* LocationChoose.storyboard */,
 				44736C521BB57D27004D665D /* Main.storyboard */,
-				44E471801BB5921A00A15AA4 /* Sign.storyboard */,
 				44F942AA1BB59496000CAF90 /* Order.storyboard */,
 				44F942AC1BB594A6000CAF90 /* Guide.storyboard */,
 				596860C01BC0EC8600C73AD0 /* home.storyboard */,
@@ -1316,6 +1316,7 @@
 				44F943631BB78E97000CAF90 /* img_zhifubao.png in Resources */,
 				44736C541BB57D27004D665D /* Main.storyboard in Resources */,
 				44F943641BB78E97000CAF90 /* navigation_bar_back_button@2x.png in Resources */,
+				3F7831D01BCC106C0021E7F4 /* Sign.storyboard in Resources */,
 				44F943591BB78E97000CAF90 /* img_01_location@3x.png in Resources */,
 				5925A1081BB8437000635EDB /* Images.xcassets in Resources */,
 				44928FE31BB7D67D00F699E7 /* LocationChoose.storyboard in Resources */,
@@ -1355,7 +1356,6 @@
 				44F942AB1BB59496000CAF90 /* Order.storyboard in Resources */,
 				44F9435F1BB78E97000CAF90 /* img_checked.png in Resources */,
 				44B7A31B1BC53EC3006FEAA0 /* img_guide_03@3x.png in Resources */,
-				44E471811BB5921A00A15AA4 /* Sign.storyboard in Resources */,
 				44F943671BB791A0000CAF90 /* img_01_wash@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
