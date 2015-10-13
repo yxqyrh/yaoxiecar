@@ -1139,6 +1139,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="JLe-lz-9Ns">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CardNumberCell" rowHeight="55" id="nzc-my-M2x">
@@ -1153,6 +1154,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="卡号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoV-jF-JcD">
                                                     <rect key="frame" x="5" y="14" width="68" height="17"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="68" id="gLJ-YA-lgj"/>
                                                     </constraints>
@@ -1162,6 +1164,7 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入刮刮卡卡号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OQx-GA-KIb">
                                                     <rect key="frame" x="81" y="12" width="217" height="21"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="lpU-UW-dUc"/>
                                                     </constraints>
@@ -1169,6 +1172,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="OQx-GA-KIb" firstAttribute="top" secondItem="XJB-gM-bwd" secondAttribute="top" constant="12" id="4Bi-Io-LOy"/>
@@ -1180,12 +1184,14 @@
                                             </constraints>
                                         </view>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="XJB-gM-bwd" firstAttribute="centerX" secondItem="mPb-Ht-xLq" secondAttribute="centerX" id="1cC-Ad-Qfs"/>
                                         <constraint firstItem="XJB-gM-bwd" firstAttribute="leading" secondItem="mPb-Ht-xLq" secondAttribute="leading" constant="10" id="CNh-M6-Q00"/>
                                         <constraint firstItem="XJB-gM-bwd" firstAttribute="centerY" secondItem="mPb-Ht-xLq" secondAttribute="centerY" id="Vvo-wi-TKL"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CardCodeCell" rowHeight="55" id="2Cr-dZ-rI7">
                                 <rect key="frame" x="0.0" y="83" width="320" height="55"/>
@@ -1199,6 +1205,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2E-95-sTE">
                                                     <rect key="frame" x="5" y="14" width="68" height="17"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="68" id="Emf-et-1GO"/>
                                                     </constraints>
@@ -1208,6 +1215,7 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入刮刮卡密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aiy-ZW-qRs">
                                                     <rect key="frame" x="81" y="14" width="217" height="21"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="0Aw-6l-ken"/>
                                                     </constraints>
@@ -1215,6 +1223,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="H2E-95-sTE" firstAttribute="centerY" secondItem="j9W-gv-ZoA" secondAttribute="centerY" id="6Ah-aK-W2w"/>
@@ -1226,12 +1235,14 @@
                                             </constraints>
                                         </view>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="j9W-gv-ZoA" firstAttribute="leading" secondItem="fIr-Ws-1Qo" secondAttribute="leading" constant="10" id="EXI-tt-WSa"/>
                                         <constraint firstItem="j9W-gv-ZoA" firstAttribute="centerX" secondItem="fIr-Ws-1Qo" secondAttribute="centerX" id="GEy-JJ-JSL"/>
                                         <constraint firstItem="j9W-gv-ZoA" firstAttribute="centerY" secondItem="fIr-Ws-1Qo" secondAttribute="centerY" id="ugB-eD-LGk"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommitCell" rowHeight="40" id="7xz-sf-GDD">
                                 <rect key="frame" x="0.0" y="138" width="320" height="40"/>
@@ -1242,12 +1253,14 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确认充值" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7JZ-Ug-26N">
                                             <rect key="frame" x="10" y="5" width="300" height="35"/>
+                                            <animations/>
                                             <color key="backgroundColor" red="0.0" green="0.62745098040000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstItem="7JZ-Ug-26N" firstAttribute="top" secondItem="iOb-0I-o7w" secondAttribute="topMargin" constant="-3" id="PRI-Vl-yge"/>
                                         <constraint firstItem="7JZ-Ug-26N" firstAttribute="leading" secondItem="iOb-0I-o7w" secondAttribute="leadingMargin" constant="2" id="W0N-qi-oUF"/>
@@ -1255,6 +1268,7 @@
                                         <constraint firstAttribute="bottom" secondItem="7JZ-Ug-26N" secondAttribute="bottom" id="by7-rn-1ae"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
