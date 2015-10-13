@@ -22,6 +22,13 @@
 		448361951BCAA767005396D5 /* ScratchcardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 448361941BCAA767005396D5 /* ScratchcardViewController.m */; settings = {ASSET_TAGS = (); }; };
 		448361971BCAAAB3005396D5 /* img_guagua.png in Resources */ = {isa = PBXBuildFile; fileRef = 448361961BCAAAB3005396D5 /* img_guagua.png */; settings = {ASSET_TAGS = (); }; };
 		4483619B1BCB8305005396D5 /* img_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4483619A1BCB8305005396D5 /* img_arrow@3x.png */; settings = {ASSET_TAGS = (); }; };
+		4483619E1BCCADB1005396D5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4483619C1BCCADB1005396D5 /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
+		4483619F1BCCADB1005396D5 /* Default@.png in Resources */ = {isa = PBXBuildFile; fileRef = 4483619D1BCCADB1005396D5 /* Default@.png */; settings = {ASSET_TAGS = (); }; };
+		448361A11BCCADC5005396D5 /* Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 448361A01BCCADC5005396D5 /* Default@3x.png */; settings = {ASSET_TAGS = (); }; };
+		448361BE1BCD39A0005396D5 /* libGeTuiSdk-1.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 448361BD1BCD39A0005396D5 /* libGeTuiSdk-1.2.1.a */; };
+		448361C01BCD3BF7005396D5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 448361BF1BCD3BF7005396D5 /* libz.tbd */; };
+		448361C21BCD3C28005396D5 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 448361C11BCD3C28005396D5 /* libsqlite3.0.tbd */; };
+		448361C41BCD3C5C005396D5 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 448361C31BCD3C5C005396D5 /* AVFoundation.framework */; };
 		448686551BC66CF300CA68B5 /* Icon_120.png in Resources */ = {isa = PBXBuildFile; fileRef = 448686541BC66CF300CA68B5 /* Icon_120.png */; settings = {ASSET_TAGS = (); }; };
 		448C44E31BB9371300652607 /* MayiHttpRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 448C44E21BB9371300652607 /* MayiHttpRequestManager.m */; settings = {ASSET_TAGS = (); }; };
 		448C44E51BB97E9B00652607 /* VoucherChoosePop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 448C44E41BB97E9B00652607 /* VoucherChoosePop.xib */; settings = {ASSET_TAGS = (); }; };
@@ -78,7 +85,6 @@
 		44B7A30F1BC38AB7006FEAA0 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44B7A30D1BC38AB7006FEAA0 /* libcrypto.a */; };
 		44B7A3101BC38AB7006FEAA0 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 44B7A30E1BC38AB7006FEAA0 /* libssl.a */; };
 		44B7A3131BC39FB6006FEAA0 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B7A3121BC39FB6006FEAA0 /* Order.m */; settings = {ASSET_TAGS = (); }; };
-		44B7A3181BC53EC3006FEAA0 /* Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B7A3141BC53EC3006FEAA0 /* Default@3x.png */; settings = {ASSET_TAGS = (); }; };
 		44B7A3191BC53EC3006FEAA0 /* img_guide_01@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B7A3151BC53EC3006FEAA0 /* img_guide_01@3x.png */; settings = {ASSET_TAGS = (); }; };
 		44B7A31A1BC53EC3006FEAA0 /* img_guide_02@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B7A3161BC53EC3006FEAA0 /* img_guide_02@3x.png */; settings = {ASSET_TAGS = (); }; };
 		44B7A31B1BC53EC3006FEAA0 /* img_guide_03@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B7A3171BC53EC3006FEAA0 /* img_guide_03@3x.png */; settings = {ASSET_TAGS = (); }; };
@@ -218,6 +224,15 @@
 		448361941BCAA767005396D5 /* ScratchcardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScratchcardViewController.m; sourceTree = "<group>"; };
 		448361961BCAAAB3005396D5 /* img_guagua.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_guagua.png; sourceTree = "<group>"; };
 		4483619A1BCB8305005396D5 /* img_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_arrow@3x.png"; sourceTree = "<group>"; };
+		4483619C1BCCADB1005396D5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4483619D1BCCADB1005396D5 /* Default@.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@.png"; sourceTree = "<group>"; };
+		448361A01BCCADC5005396D5 /* Default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@3x.png"; sourceTree = "<group>"; };
+		448361B31BCD32B8005396D5 /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
+		448361B41BCD32B8005396D5 /* GeTuiSdkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdkError.h; sourceTree = "<group>"; };
+		448361BD1BCD39A0005396D5 /* libGeTuiSdk-1.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libGeTuiSdk-1.2.1.a"; path = "washcar/alipay/libGeTuiSdk-1.2.1.a"; sourceTree = "<group>"; };
+		448361BF1BCD3BF7005396D5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		448361C11BCD3C28005396D5 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		448361C31BCD3C5C005396D5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		448686541BC66CF300CA68B5 /* Icon_120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_120.png; sourceTree = "<group>"; };
 		448C44E11BB9371300652607 /* MayiHttpRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MayiHttpRequestManager.h; sourceTree = "<group>"; };
 		448C44E21BB9371300652607 /* MayiHttpRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MayiHttpRequestManager.m; sourceTree = "<group>"; };
@@ -399,7 +414,6 @@
 		44B7A30E1BC38AB7006FEAA0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = washcar/alipay/libssl.a; sourceTree = "<group>"; };
 		44B7A3111BC39FB6006FEAA0 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
 		44B7A3121BC39FB6006FEAA0 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
-		44B7A3141BC53EC3006FEAA0 /* Default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@3x.png"; sourceTree = "<group>"; };
 		44B7A3151BC53EC3006FEAA0 /* img_guide_01@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_guide_01@3x.png"; sourceTree = "<group>"; };
 		44B7A3161BC53EC3006FEAA0 /* img_guide_02@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_guide_02@3x.png"; sourceTree = "<group>"; };
 		44B7A3171BC53EC3006FEAA0 /* img_guide_03@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_guide_03@3x.png"; sourceTree = "<group>"; };
@@ -558,6 +572,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				448361C41BCD3C5C005396D5 /* AVFoundation.framework in Frameworks */,
+				448361C21BCD3C28005396D5 /* libsqlite3.0.tbd in Frameworks */,
+				448361C01BCD3BF7005396D5 /* libz.tbd in Frameworks */,
+				448361BE1BCD39A0005396D5 /* libGeTuiSdk-1.2.1.a in Frameworks */,
 				44B7A30F1BC38AB7006FEAA0 /* libcrypto.a in Frameworks */,
 				44B7A3101BC38AB7006FEAA0 /* libssl.a in Frameworks */,
 				5F8EFDAE142B7455EAB412DE /* libPods.a in Frameworks */,
@@ -584,6 +602,10 @@
 		12DEF3C5B4393D0D25F10FC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				448361C31BCD3C5C005396D5 /* AVFoundation.framework */,
+				448361C11BCD3C28005396D5 /* libsqlite3.0.tbd */,
+				448361BF1BCD3BF7005396D5 /* libz.tbd */,
+				448361BD1BCD39A0005396D5 /* libGeTuiSdk-1.2.1.a */,
 				44B7A30D1BC38AB7006FEAA0 /* libcrypto.a */,
 				44B7A30E1BC38AB7006FEAA0 /* libssl.a */,
 				44B7A2231BC38274006FEAA0 /* SystemConfiguration.framework */,
@@ -635,6 +657,7 @@
 		44736C481BB57D27004D665D /* washcar */ = {
 			isa = PBXGroup;
 			children = (
+				448361B11BCD32A3005396D5 /* Third */,
 				44F942971BB58A8C000CAF90 /* Models */,
 				44F942961BB58A7B000CAF90 /* SystemUtils */,
 				44F942951BB58A72000CAF90 /* Storyboards */,
@@ -680,6 +703,23 @@
 				44736C701BB57D28004D665D /* Info.plist */,
 			);
 			path = washcarUITests;
+			sourceTree = "<group>";
+		};
+		448361B11BCD32A3005396D5 /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				448361B21BCD32B8005396D5 /* include */,
+			);
+			name = Third;
+			sourceTree = "<group>";
+		};
+		448361B21BCD32B8005396D5 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				448361B31BCD32B8005396D5 /* GeTuiSdk.h */,
+				448361B41BCD32B8005396D5 /* GeTuiSdkError.h */,
+			);
+			path = include;
 			sourceTree = "<group>";
 		};
 		44928FE41BB7D6A100F699E7 /* UserCenter */ = {
@@ -1073,10 +1113,12 @@
 			isa = PBXGroup;
 			children = (
 				448361911BCA0904005396D5 /* img_call_phone@2x.png */,
+				4483619C1BCCADB1005396D5 /* Default-568h@2x.png */,
+				4483619D1BCCADB1005396D5 /* Default@.png */,
+				448361A01BCCADC5005396D5 /* Default@3x.png */,
 				59C360131BCA5D9C007890BE /* chepaibg.png */,
 				448361961BCAAAB3005396D5 /* img_guagua.png */,
 				448686541BC66CF300CA68B5 /* Icon_120.png */,
-				44B7A3141BC53EC3006FEAA0 /* Default@3x.png */,
 				44B7A3151BC53EC3006FEAA0 /* img_guide_01@3x.png */,
 				44B7A3161BC53EC3006FEAA0 /* img_guide_02@3x.png */,
 				44B7A3171BC53EC3006FEAA0 /* img_guide_03@3x.png */,
@@ -1301,6 +1343,7 @@
 				44F9433A1BB6FE73000CAF90 /* QCSlideViewController.xib in Resources */,
 				59BA970D1BC7B8BF007C386E /* img_01_car_pre@3x.png in Resources */,
 				446EDCEC1BBB7B19000A8D94 /* Icon@2x.png in Resources */,
+				4483619F1BCCADB1005396D5 /* Default@.png in Resources */,
 				44B7A2261BC38400006FEAA0 /* AlipaySDK.bundle in Resources */,
 				5952A11E1BC512F20023FEF5 /* voucher_reciver.png in Resources */,
 				5952A1201BC512F20023FEF5 /* voucher_used.png in Resources */,
@@ -1308,7 +1351,6 @@
 				4492902E1BB7D72F00F699E7 /* RechargeAmountPop.xib in Resources */,
 				5925A11F1BB8A9D300635EDB /* ProgressHUD.bundle in Resources */,
 				448C44F21BBA0E5200652607 /* img_03_me_pre@3x.png in Resources */,
-				44B7A3181BC53EC3006FEAA0 /* Default@3x.png in Resources */,
 				44736C561BB57D27004D665D /* Assets.xcassets in Resources */,
 				5952A11D1BC512F20023FEF5 /* voucher_nouse.png in Resources */,
 				5968612D1BC4121A00C73AD0 /* check_2.png in Resources */,
@@ -1341,12 +1383,14 @@
 				44F943531BB78E97000CAF90 /* av1.jpg in Resources */,
 				59BA97051BC75B10007C386E /* home_bottom_tab.storyboard in Resources */,
 				44B7A31A1BC53EC3006FEAA0 /* img_guide_02@3x.png in Resources */,
+				4483619E1BCCADB1005396D5 /* Default-568h@2x.png in Resources */,
 				44AEA2E21BC7D6A0007BBB89 /* navigation_bar_color@3x.png in Resources */,
 				448C44FB1BBA519600652607 /* LocationChoosePop.xib in Resources */,
 				44F943571BB78E97000CAF90 /* img_01_guide@3x.png in Resources */,
 				596860C11BC0EC8600C73AD0 /* home.storyboard in Resources */,
 				44F943541BB78E97000CAF90 /* img_01_car_color@3x.png in Resources */,
 				4483619B1BCB8305005396D5 /* img_arrow@3x.png in Resources */,
+				448361A11BCCADC5005396D5 /* Default@3x.png in Resources */,
 				448686551BC66CF300CA68B5 /* Icon_120.png in Resources */,
 				44F9435C1BB78E97000CAF90 /* img_01_weather@3x.png in Resources */,
 				59111E001BC667F900C2CCA9 /* UserCenter.storyboard in Resources */,
@@ -1676,6 +1720,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/washcar/alipay",
 					"$(PROJECT_DIR)/washcar/WeChatSDK_1.4.1",
+					"$(PROJECT_DIR)/washcar",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahxdnet.mayicar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1714,6 +1759,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/washcar/alipay",
 					"$(PROJECT_DIR)/washcar/WeChatSDK_1.4.1",
+					"$(PROJECT_DIR)/washcar",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahxdnet.mayicar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
