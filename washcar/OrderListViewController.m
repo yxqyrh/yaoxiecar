@@ -290,12 +290,13 @@
         [priceLabel setTextColor:menoyTextColor range:range];
         
         UILabel *washTypeLabel = (UILabel *)[cell viewWithTag:4];
-        if ([@"1" isEqualToString:order.methods]) {
-            washTypeLabel.text = @"车身清洗";
-        }
-        else if ([@"2" isEqualToString:order.methods]){
-            washTypeLabel.text = @"内外全洗";
-        }
+        washTypeLabel.text = order.methods;
+//        if ([@"1" isEqualToString:order.methods]) {
+//            washTypeLabel.text = @"车身清洗";
+//        }
+//        else if ([@"2" isEqualToString:order.methods]){
+//            washTypeLabel.text = @"内外全洗";
+//        }
         
         UILabel *addressLabel = (UILabel *)[cell viewWithTag:5];
         addressLabel.text = order.szdqstr;

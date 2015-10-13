@@ -131,7 +131,7 @@ if (indexPath.row == 8) {
     [parameters setValue:_userInfo.city forKey:@"city"];
     [parameters setValue:_userInfo.area forKey:@"area"];
     [parameters setValue:_userInfo.plot forKey:@"plot"];
-    [parameters setValue:_selectWashType.id forKey:@"methods"];
+    [parameters setValue:_selectWashType.fs forKey:@"methods"];
     [parameters setValue:_cheWeiNumLabel.text forKey:@"cwh"];
     
     
