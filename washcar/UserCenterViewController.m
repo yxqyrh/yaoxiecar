@@ -63,7 +63,7 @@
     _userIcon.layer.masksToBounds = YES; //没这句话它圆不起来
     _userIcon.layer.cornerRadius = _userIcon.frame.size.width/2; //设置图片圆角的尺度
     _surplusMoney.layer.borderWidth = 0.5;
-    _surplusMoney.layer.borderColor = [[UIColor grayColor] CGColor];
+    _surplusMoney.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor colorWithRed:204/255.0 green:204/255.0  blue:255/255.0  alpha:1.0]);
     _surplusMoney.attributedText = [StringUtil getMenoyText:@"余额" :@"0.00" :@"元"];
     [self loadData:YES];
     
