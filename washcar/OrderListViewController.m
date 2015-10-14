@@ -183,7 +183,7 @@
 {
     if (indexPath.row == _selectIndex) {
         if (_pageType == 1) {
-            return 320;
+            return 330;
         }
         else if (_pageType == 3) {
             return 320;
@@ -324,7 +324,7 @@
             cancelButton.layer.cornerRadius = 3;
             if ([@"0" isEqualToString:order.judge_zt]) {
                 [cancelButton setTitle:@"取消订单" forState:UIControlStateNormal];
-                cancelButton.backgroundColor = [UIColor blueColor];
+                cancelButton.backgroundColor = RGBCOLOR(73, 180, 252);
                 cancelButton.userInteractionEnabled = YES;
             }
             else if ([@"1" isEqualToString:order.judge_zt]) {
@@ -428,7 +428,6 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    _imageViews = [NSMutableArray array];
     return _selectOrderPictures.count;
 }
 
@@ -439,7 +438,6 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCollectionCell" forIndexPath:indexPath];
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:2];
     [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, imagePath]]];
-    [_imageViews addObject:imageView];
     return cell;
 }
 
