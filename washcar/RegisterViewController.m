@@ -11,7 +11,7 @@
 #import "UserInfo.h"
 #import "StoryboadUtil.h"
 #import "WebViewController.h"
-
+#import "StringUtil.h"
 @interface RegisterViewController () {
     NSString *_carNumber;
     NSString *_carColor;
@@ -197,7 +197,10 @@
         [SVProgressHUD showErrorWithStatus:@"请输入手机号"];
         return;
     }
-    
+    if (![StringUtil checkPhoneNumInput:_telephoneTextField.text]) {
+         [SVProgressHUD showErrorWithStatus:@"手机号不合法，请重新输入"];
+        return;
+    }
     if ([WDSystemUtils isEmptyOrNullString:_verifyCodeTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"请输入验证码"];
         return;
@@ -212,7 +215,7 @@
         [SVProgressHUD showErrorWithStatus:@"请阅读并同意《蚂蚁洗车协议》"];
         return;
     }
-    
+  
     
     
     NSString *chePaiStr = [provinceStr.titleLabel.text stringByAppendingFormat:@"%@%@",_A_Z.titleLabel.text,_carNumberTextField.text];
@@ -459,7 +462,10 @@
         [self.view makeToast:@"手机号不能为空"];
         return;
     }
-    
+    if (![StringUtil checkPhoneNumInput:textFiled.text]) {
+        [self.view makeToast:@"手机号不合法，请重新输入"];
+        return;
+    }
     
     _telephoneNumber = textFiled.text;
     NSDictionary *dic1 = @{@"mobile":textFiled.text};

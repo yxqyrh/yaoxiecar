@@ -10,7 +10,7 @@
 #import "WDHttpRequestManager.h"
 #import "MayiHttpRequestManager.h"
 #import "StoryboadUtil.h"
-
+#import "StringUtil.h"
 @interface SignViewController () {
     long _verifyCodeId;
     
@@ -59,12 +59,15 @@
 */
 - (IBAction)signButtonClick:(id)sender {
     if ([WDSystemUtils isEmptyOrNullString:_phoneTextField.text]) {
-        [self.view makeToast:@"手机号不能为空"];
+        [SVProgressHUD showErrorWithStatus:@"手机号不能为空"];
         return;
     }
-    
+    if (![StringUtil checkPhoneNumInput:_phoneTextField.text]) {
+        [SVProgressHUD showErrorWithStatus:@"手机号不合法，请重新输入"];
+        return;
+    }
     if ([WDSystemUtils isEmptyOrNullString:_codeTextField.text]) {
-        [self.view makeToast:@"验证码不能为空"];
+        [SVProgressHUD showErrorWithStatus:@"验证码不能为空"];
         return;
     }
     
@@ -155,16 +158,19 @@
 - (IBAction)codeButtonClicked:(id)sender {
     
     if ([WDSystemUtils isEmptyOrNullString:_phoneTextField.text]) {
-        [self.view makeToast:@"手机号不能为空"];
+        [SVProgressHUD showErrorWithStatus:@"手机号不能为空"];
         return;
     }
-    
+    if (![StringUtil checkPhoneNumInput:_phoneTextField.text]) {
+        [SVProgressHUD showErrorWithStatus:@"手机号不合法，请重新输入"];
+        return;
+    }
     NSDictionary *dic1 = @{@"mobile":_phoneTextField.text};
     
     [[MayiHttpRequestManager sharedInstance] POST:MayiSendMsg parameters:dic1 showLoadingView:self.view success:^(id responseObject) {
         if ([@"success" isEqualToString:[responseObject objectForKey:@"res"]]) {
             _verifyCodeId = [[responseObject objectForKey:@"yzmid"] longValue];
-            [self.view makeToast:@"短信发送成功，请注意查收！"];
+            [SVProgressHUD showSuccessWithStatus:@"短信发送成功，请注意查收！"];
             [self startTime];
         }
         
