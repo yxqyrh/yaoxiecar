@@ -49,6 +49,7 @@ install_resource()
 }
           install_resource "AlipaySDK-2.0/AlipaySDK.bundle"
                     install_resource "MJRefresh/MJRefreshExample/MJRefreshExample/MJRefresh/MJRefresh.bundle"
+                    install_resource "MWPhotoBrowser/MWPhotoBrowser/MWPhotoBrowser.bundle"
                     install_resource "Nimbus/src/overview/resources/NimbusOverviewer.bundle"
                     install_resource "Nimbus/src/photos/resources/NimbusPhotos.bundle"
                     install_resource "Nimbus/src/webcontroller/resources/NimbusWebController.bundle"

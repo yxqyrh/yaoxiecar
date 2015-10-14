@@ -91,6 +91,8 @@
 		44B7A31B1BC53EC3006FEAA0 /* img_guide_03@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B7A3171BC53EC3006FEAA0 /* img_guide_03@3x.png */; settings = {ASSET_TAGS = (); }; };
 		44C13BBC1BC3664400597D7D /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C13BBB1BC3664400597D7D /* CommonUtil.m */; settings = {ASSET_TAGS = (); }; };
 		44C13BC41BC366FE00597D7D /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C13BC01BC366FD00597D7D /* readme.txt */; settings = {ASSET_TAGS = (); }; };
+		44D649DA1BCE1C580009C8BF /* MDPhotoAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D649D71BCE1C580009C8BF /* MDPhotoAlbumViewController.m */; settings = {ASSET_TAGS = (); }; };
+		44D649DB1BCE1C580009C8BF /* NetworkPhotoAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D649D91BCE1C580009C8BF /* NetworkPhotoAlbumViewController.m */; settings = {ASSET_TAGS = (); }; };
 		44F9429D1BB58B02000CAF90 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F9429C1BB58B02000CAF90 /* BaseViewController.m */; };
 		44F942A01BB58F64000CAF90 /* WDTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F9429F1BB58F64000CAF90 /* WDTabBar.m */; };
 		44F942A31BB5935B000CAF90 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F942A21BB5935B000CAF90 /* HomeViewController.m */; };
@@ -426,6 +428,10 @@
 		44C13BC11BC366FD00597D7D /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		44C13BC21BC366FD00597D7D /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		44C13BC51BC3672900597D7D /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
+		44D649D61BCE1C580009C8BF /* MDPhotoAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDPhotoAlbumViewController.h; sourceTree = "<group>"; };
+		44D649D71BCE1C580009C8BF /* MDPhotoAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDPhotoAlbumViewController.m; sourceTree = "<group>"; };
+		44D649D81BCE1C580009C8BF /* NetworkPhotoAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkPhotoAlbumViewController.h; sourceTree = "<group>"; };
+		44D649D91BCE1C580009C8BF /* NetworkPhotoAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkPhotoAlbumViewController.m; sourceTree = "<group>"; };
 		44D80A791BC378B4005091F5 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = "../../../tempfiles/1005/支付宝钱包支付接口开发包2.0标准版(iOS 3.0.1)/AlipaySDK.framework"; sourceTree = "<group>"; };
 		44F9429B1BB58B02000CAF90 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		44F9429C1BB58B02000CAF90 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
@@ -944,6 +950,10 @@
 		44E4716F1BB58CC400A15AA4 /* swipe */ = {
 			isa = PBXGroup;
 			children = (
+				44D649D61BCE1C580009C8BF /* MDPhotoAlbumViewController.h */,
+				44D649D71BCE1C580009C8BF /* MDPhotoAlbumViewController.m */,
+				44D649D81BCE1C580009C8BF /* NetworkPhotoAlbumViewController.h */,
+				44D649D91BCE1C580009C8BF /* NetworkPhotoAlbumViewController.m */,
 				44F9432E1BB6FE73000CAF90 /* QCListViewController.h */,
 				44F9432F1BB6FE73000CAF90 /* QCListViewController.m */,
 				44F943311BB6FE73000CAF90 /* QCSlideSwitchView.h */,
@@ -1460,6 +1470,7 @@
 			files = (
 				4483618E1BC8FB63005396D5 /* RootViewController1.m in Sources */,
 				59C3600A1BC9FF2F007890BE /* ChePaiPickView.m in Sources */,
+				44D649DA1BCE1C580009C8BF /* MDPhotoAlbumViewController.m in Sources */,
 				596861221BC3B21300C73AD0 /* VoucherInfo.m in Sources */,
 				449290531BB8FB6D00F699E7 /* WDHttpRequestManager.m in Sources */,
 				5968611A1BC2E5D900C73AD0 /* DateTool.m in Sources */,
@@ -1490,6 +1501,7 @@
 				59E16EFC1BB80F03009E4385 /* CollapseClickArrow.m in Sources */,
 				44F9429D1BB58B02000CAF90 /* BaseViewController.m in Sources */,
 				44928FFD1BB7D6D700F699E7 /* UserCenterViewController.m in Sources */,
+				44D649DB1BCE1C580009C8BF /* NetworkPhotoAlbumViewController.m in Sources */,
 				448C44E31BB9371300652607 /* MayiHttpRequestManager.m in Sources */,
 				596861061BC0F6C100C73AD0 /* HomeViewController2.m in Sources */,
 				44F942A31BB5935B000CAF90 /* HomeViewController.m in Sources */,

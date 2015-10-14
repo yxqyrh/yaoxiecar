@@ -13,6 +13,7 @@
 #import "StringUtil.h"
 #import "NIAttributedLabel.h"
  #import <UIImageView+WebCache.h>
+#import "MDPhotoAlbumViewController.h"
 
 @interface OrderListViewController () {
     int _selectIndex;
@@ -25,6 +26,7 @@
     NSString *_startIndex;
     
     NSArray *_selectOrderPictures;
+    NSMutableArray *_imageViews;
 }
 
 @end
@@ -156,7 +158,7 @@
          [self.tableView.footer endRefreshing];
         
     } failture:^(NSError *error) {
-        [self.view makeToast:@"注册失败"];
+        [self.view makeToast:@"获取失败"];
     }];
 }
 
@@ -181,10 +183,10 @@
 {
     if (indexPath.row == _selectIndex) {
         if (_pageType == 1) {
-            return 300;
+            return 330;
         }
         else if (_pageType == 3) {
-            return 270;
+            return 320;
         }
         else if (_pageType == 2) {
             OrderInfo *order = [_orders objectAtIndex:indexPath.row];
@@ -193,10 +195,10 @@
                 return 265;
             }
             else if (array.count <= 3){
-                return 350;
+                return 410;
             }
             else {
-                return 450;
+                return 480;
             }
         }
     }
@@ -301,22 +303,28 @@
         UILabel *addressLabel = (UILabel *)[cell viewWithTag:5];
         addressLabel.text = order.szdqstr;
         
+        UILabel *cwhLabel = (UILabel *)[cell viewWithTag:51];
+        cwhLabel.text = order.cwh;
+        
         UILabel *workerNumberLabel = (UILabel *)[cell viewWithTag:6];
         workerNumberLabel.text = order.guser;
         
         UILabel *timeLabel = (UILabel *)[cell viewWithTag:7];
         timeLabel.text = [WDSystemUtils getDateString:order.numtime];
         
+        UILabel *descLabel = (UILabel *)[cell viewWithTag:9];
+        descLabel.text = order.remark;
         
         if (_pageType == 1) {
-            UILabel *descLabel = (UILabel *)[cell viewWithTag:8];
-            descLabel.text = order.remark;
+          
             
-            UIButton *cancelButton = (UIButton *)[cell viewWithTag:9];
+            
+            UIButton *cancelButton = (UIButton *)[cell viewWithTag:21];
             cancelButton.hidden = NO;
             cancelButton.layer.cornerRadius = 3;
             if ([@"0" isEqualToString:order.judge_zt]) {
                 [cancelButton setTitle:@"取消订单" forState:UIControlStateNormal];
+                cancelButton.backgroundColor = RGBCOLOR(73, 180, 252);
                 cancelButton.userInteractionEnabled = YES;
             }
             else if ([@"1" isEqualToString:order.judge_zt]) {
@@ -325,6 +333,7 @@
             else if ([@"2" isEqualToString:order.judge_zt]) {
                 [cancelButton setTitle:@"正在洗车中..." forState:UIControlStateNormal];
                 cancelButton.userInteractionEnabled = NO;
+                cancelButton.backgroundColor = [UIColor lightGrayColor];
             }
             
             [cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -341,6 +350,9 @@
                 collectionView.dataSource = self;
                 [collectionView reloadData];
             }
+            
+            UILabel *xctimeLabel = (UILabel *)[cell viewWithTag:8];
+            xctimeLabel.text = [WDSystemUtils getDateString:order.xctime];
             
             
         }
@@ -430,5 +442,15 @@
 }
 
 #pragma mark UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    MDPhotoAlbumViewController *vc = [[MDPhotoAlbumViewController alloc] initWith:nil andImages:_selectOrderPictures];
+    
+    vc.initialIndex = indexPath.row;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 @end

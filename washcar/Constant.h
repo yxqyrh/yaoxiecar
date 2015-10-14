@@ -53,6 +53,9 @@ FOUNDATION_EXPORT NSString * const MayiUserLogin;
 //注册
 FOUNDATION_EXPORT NSString * const MayiUserRegister;
 
+//推送注册唯一码
+FOUNDATION_EXPORT NSString * const MayiBDWYM;
+
 //首页图片
 FOUNDATION_EXPORT NSString * const MayiSYTP;
 

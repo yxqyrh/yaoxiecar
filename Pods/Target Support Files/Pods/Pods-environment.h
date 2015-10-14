@@ -54,6 +54,18 @@
 #define COCOAPODS_VERSION_MINOR_AlipaySDK_2_0 0
 #define COCOAPODS_VERSION_PATCH_AlipaySDK_2_0 3
 
+// DACircularProgress
+#define COCOAPODS_POD_AVAILABLE_DACircularProgress
+#define COCOAPODS_VERSION_MAJOR_DACircularProgress 2
+#define COCOAPODS_VERSION_MINOR_DACircularProgress 2
+#define COCOAPODS_VERSION_PATCH_DACircularProgress 0
+
+// MBProgressHUD
+#define COCOAPODS_POD_AVAILABLE_MBProgressHUD
+#define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0
+#define COCOAPODS_VERSION_MINOR_MBProgressHUD 9
+#define COCOAPODS_VERSION_PATCH_MBProgressHUD 1
+
 // MJExtension
 #define COCOAPODS_POD_AVAILABLE_MJExtension
 #define COCOAPODS_VERSION_MAJOR_MJExtension 0
@@ -71,6 +83,12 @@
 #define COCOAPODS_VERSION_MAJOR_MKNetworkKit 0
 #define COCOAPODS_VERSION_MINOR_MKNetworkKit 87
 #define COCOAPODS_VERSION_PATCH_MKNetworkKit 0
+
+// MWPhotoBrowser
+#define COCOAPODS_POD_AVAILABLE_MWPhotoBrowser
+#define COCOAPODS_VERSION_MAJOR_MWPhotoBrowser 1
+#define COCOAPODS_VERSION_MINOR_MWPhotoBrowser 4
+#define COCOAPODS_VERSION_PATCH_MWPhotoBrowser 1
 
 // Masonry
 #define COCOAPODS_POD_AVAILABLE_Masonry
@@ -173,6 +191,12 @@
 #define COCOAPODS_VERSION_MAJOR_Nimbus_WebController 1
 #define COCOAPODS_VERSION_MINOR_Nimbus_WebController 2
 #define COCOAPODS_VERSION_PATCH_Nimbus_WebController 0
+
+// PSTCollectionView
+#define COCOAPODS_POD_AVAILABLE_PSTCollectionView
+#define COCOAPODS_VERSION_MAJOR_PSTCollectionView 1
+#define COCOAPODS_VERSION_MINOR_PSTCollectionView 2
+#define COCOAPODS_VERSION_PATCH_PSTCollectionView 3
 
 // Reachability
 #define COCOAPODS_POD_AVAILABLE_Reachability

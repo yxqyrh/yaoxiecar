@@ -35,8 +35,19 @@
         return nil;
     }
     
+    NSMutableArray *mArray = nil;
     NSArray *array = [_xc_picture componentsSeparatedByString:@"|"];
-    return array;
+    if (array != nil) {
+        mArray = [array mutableCopy];
+    }
+    
+    for (NSString *str in mArray) {
+        if ([@"" isEqualToString:str]) {
+            [mArray removeObject:str];
+            break;
+        }
+    }
+    return mArray;
 }
 
 @end
