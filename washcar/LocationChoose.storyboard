@@ -55,7 +55,6 @@
         <!--View Controller-->
         <scene sceneID="a9K-aE-PrO">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1YU-lQ-vqX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="ySf-xi-ApL" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eOA-2J-Wvy"/>
@@ -68,6 +67,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1YU-lQ-vqX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
