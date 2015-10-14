@@ -257,6 +257,8 @@
             [self removeFromParentViewController];
             UIViewController *viewController1 = [nav.viewControllers objectAtIndex:0];
             [viewController1 removeFromParentViewController];
+            
+            [self registerRemoteNotification];
 //            [self initHomeScreen];
         }
         else if ([WDSystemUtils isEqualsInt:4 andJsonData:[responseObject objectForKey:@"res"]]) {
@@ -604,6 +606,35 @@
     [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
         
     }];
+}
+
+- (void)registerRemoteNotification {
+    
+#ifdef __IPHONE_8_0
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        //IOS8 新的通知机制category注册
+        UIUserNotificationType types = (UIUserNotificationTypeAlert|
+                                        UIUserNotificationTypeSound|
+                                        UIUserNotificationTypeBadge);
+        
+        UIUserNotificationSettings *settings;
+        settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        
+    } else {
+        UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert|
+                                                                       UIRemoteNotificationTypeSound|
+                                                                       UIRemoteNotificationTypeBadge);
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
+    }
+#else
+    UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert|
+                                                                   UIRemoteNotificationTypeSound|
+                                                                   UIRemoteNotificationTypeBadge);
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
+#endif
+    
 }
 
 @end

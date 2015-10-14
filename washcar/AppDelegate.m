@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <AlipaySDK/AlipaySDK.h>
 #import "StoryboadUtil.h"
+#import "MayiHttpRequestManager.h"
 
 #define NotifyActionKey "NotifyAction"
 NSString* const NotificationCategoryIdent  = @"ACTIONABLE";
@@ -56,7 +57,7 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
                                         UIUserNotificationTypeBadge);
         
         UIUserNotificationSettings *settings;
-        settings = [UIUserNotificationSettings settingsForTypes:types categories:categories];
+        settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         
@@ -79,13 +80,18 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    if (launchOptions != nil) {
+        NSDictionary *userInfo = [launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"];
+        [GlobalVar sharedSingleton].launchOptions = userInfo;
+        application.applicationIconBadgeNumber = 0;
+    }
+    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:MayiUserIsNotFirstEnter]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Guide" bundle:nil];
         UIViewController *viewController = [storyboard instantiateInitialViewController];
         self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         self.window.rootViewController = viewController;
         [self.window makeKeyAndVisible];
-        [self dealPush:launchOptions];
         return YES;
     }
     else {
@@ -100,6 +106,7 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
             self.window.rootViewController = viewController;
             
             [self.window makeKeyAndVisible];
+            [self registerRemoteNotification];
         }
         else {
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sign" bundle:nil];
@@ -111,7 +118,7 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
             [self.window makeKeyAndVisible];
             
         }
-        [self dealPush:launchOptions];
+//        [self dealPush:launchOptions];
         return YES;
     }
 }
@@ -125,13 +132,13 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
     [self registerRemoteNotification];
     
     // [2-EXT]: 获取启动时收到的APN数据
-    NSDictionary* message = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    if (message) {
-        DLog(@"message:%@",message);
-//        NSString *payloadMsg = [message objectForKey:@"payload"];
-//        NSString *record = [NSString stringWithFormat:@"[APN]%@, %@", [NSDate date], payloadMsg];
-//        [_viewController logMsg:record];
-    }
+//    NSDictionary* message = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+//    if (message) {
+//        DLog(@"message:%@",message);
+////        NSString *payloadMsg = [message objectForKey:@"payload"];
+////        NSString *record = [NSString stringWithFormat:@"[APN]%@, %@", [NSDate date], payloadMsg];
+////        [_viewController logMsg:record];
+//    }
     
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
 }
@@ -227,6 +234,23 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
     
     // [3]:向个推服务器注册deviceToken
     [GeTuiSdk registerDeviceToken:_deviceToken];
+    
+    [self registDeviceToServer:_deviceToken];
+    
+}
+
+-(void)registDeviceToServer:(NSString *)deviceToken
+{
+    NSDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:deviceToken forKey:@"wym"];
+    
+    [[MayiHttpRequestManager sharedInstance] POST:MayiBDWYM parameters:parameters showLoadingView:nil success:^(id responseObject) {
+        DLog(@"suucess");
+
+    
+    } failture:^(NSError *error) {
+  
+    }];
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error

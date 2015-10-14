@@ -105,6 +105,8 @@
             UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
             [self.navigationController pushViewController:viewController animated:YES];
             [self removeFromParentViewController];
+            
+            [self registerRemoteNotification];
         }
         
     } failture:^(NSError *error) {
@@ -193,8 +195,34 @@
 //    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:rootViewController1];
     [self presentViewController:nav animated:YES completion:nil];
     [self removeFromParentViewController];
+}
+
+- (void)registerRemoteNotification {
     
-    
+#ifdef __IPHONE_8_0
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        //IOS8 新的通知机制category注册
+        UIUserNotificationType types = (UIUserNotificationTypeAlert|
+                                        UIUserNotificationTypeSound|
+                                        UIUserNotificationTypeBadge);
+        
+        UIUserNotificationSettings *settings;
+        settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        
+    } else {
+        UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert|
+                                                                       UIRemoteNotificationTypeSound|
+                                                                       UIRemoteNotificationTypeBadge);
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
+    }
+#else
+    UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert|
+                                                                   UIRemoteNotificationTypeSound|
+                                                                   UIRemoteNotificationTypeBadge);
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
+#endif
     
 }
 @end

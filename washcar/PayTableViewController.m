@@ -27,6 +27,7 @@
     // Do any additional setup after loading the view.
     _payType = 2;
     self.title = @"选择支付方式";
+    [self.tableView setTableFooterView:[[UIView alloc] init]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paySuccess) name:MayiPaySuccess object:nil];
 }
 

@@ -21,11 +21,18 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - AlipaySDK-2.0 (2.0.3)
+  - DACircularProgress (2.2.0)
   - Masonry (0.6.1)
+  - MBProgressHUD (0.9.1)
   - MJExtension (0.2.0)
   - MJRefresh (1.3.8)
   - MKNetworkKit (0.87):
     - Reachability (~> 3.1.0)
+  - MWPhotoBrowser (1.4.1):
+    - DACircularProgress
+    - MBProgressHUD (~> 0.8)
+    - PSTCollectionView (~> 1.2)
+    - SDWebImage (~> 3.7)
   - Nimbus (1.2.0):
     - Nimbus/AttributedLabel (= 1.2.0)
     - Nimbus/Badge (= 1.2.0)
@@ -78,6 +85,7 @@ PODS:
     - Nimbus/Core
   - Nimbus/WebController (1.2.0):
     - Nimbus/Core
+  - PSTCollectionView (1.2.3)
   - Reachability (3.1.1)
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
@@ -91,6 +99,7 @@ DEPENDENCIES:
   - MJExtension (~> 0.2.0)
   - MJRefresh
   - MKNetworkKit
+  - MWPhotoBrowser
   - Nimbus
   - SDWebImage (~> 3.7.1)
   - SVProgressHUD (~> 1.0)
@@ -98,11 +107,15 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
   AlipaySDK-2.0: 9bc50cc0e7d3d83b2336c66c92a2acbcf7978bac
+  DACircularProgress: 3b41941891a56dc6aa17971f5322a9a38a6f446e
   Masonry: 2cb49fd14d203d2db5ca6bb017135b235dde9980
+  MBProgressHUD: f3747dcbd45a9e855a6b0674550651e0b7ed250c
   MJExtension: 4d179914dbec2b6ca826f8296181fc1d4013781e
   MJRefresh: 1331c095479ceae5b8ae32daa8855c93be0138e4
   MKNetworkKit: 83e6296a8d42e98a71880424a889773654846d74
+  MWPhotoBrowser: be05b3b7521e961382a4ba5579685bf5a00b93d8
   Nimbus: 14fd6f034c5f53d3dccef6cfd5763959497289a9
+  PSTCollectionView: d9f466e4554cc83260ca9bde7beb27f308e8fd76
   Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438

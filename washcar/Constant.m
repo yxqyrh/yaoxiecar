@@ -48,6 +48,9 @@ NSString * const MayiUserLogin = @"userlogin";
 //注册
 NSString * const MayiUserRegister = @"reging";
 
+//推送注册唯一码
+NSString * const MayiBDWYM = @"bdwym";
+
 //首页图片
 NSString * const MayiSYTP = @"sytp";
 

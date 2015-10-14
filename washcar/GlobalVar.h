@@ -25,6 +25,8 @@
 
 @property (nonatomic)UserInfo *userInfo;
 
+@property (nonatomic)NSDictionary *launchOptions;
+
 // uid=18550031362  Isloginid=14435112502766
 
 

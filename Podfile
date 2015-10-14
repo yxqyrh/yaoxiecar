@@ -8,4 +8,5 @@ pod 'MJRefresh'
 pod 'Masonry'
 pod 'AlipaySDK-2.0', '~> 2.0.3'
 pod 'Nimbus'
+pod 'MWPhotoBrowser'
 
