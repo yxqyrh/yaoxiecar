@@ -774,6 +774,7 @@
                                         </view>
                                     </subviews>
                                     <animations/>
+                                    <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="IS0-54-MON" firstAttribute="top" secondItem="yOW-17-Lvi" secondAttribute="top" id="Car-1N-Z3T"/>
                                         <constraint firstItem="yOW-17-Lvi" firstAttribute="leading" secondItem="s1a-2m-Hxj" secondAttribute="trailing" constant="8" id="GVp-fb-dZy"/>

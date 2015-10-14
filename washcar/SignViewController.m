@@ -58,6 +58,8 @@
 }
 */
 - (IBAction)signButtonClick:(id)sender {
+    [_phoneTextField resignFirstResponder];
+    [_codeTextField resignFirstResponder];
     if ([WDSystemUtils isEmptyOrNullString:_phoneTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"手机号不能为空"];
         return;
@@ -158,7 +160,8 @@
 
 
 - (IBAction)codeButtonClicked:(id)sender {
-    
+    [_phoneTextField resignFirstResponder];
+    [_codeTextField resignFirstResponder];
     if ([WDSystemUtils isEmptyOrNullString:_phoneTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"手机号不能为空"];
         return;

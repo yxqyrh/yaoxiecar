@@ -81,6 +81,8 @@
     UILabel *time = (UILabel*)[cell viewWithTag:2];
     UILabel *detail = (UILabel*)[cell viewWithTag:4];
     UIView *isRead = (UIView*)[cell viewWithTag:5];
+    isRead.layer.masksToBounds = YES; //没这句话它圆不起来
+    isRead.layer.cornerRadius = isRead.frame.size.width/2; //设置图片圆角的尺度
     UIButton *more = (UIButton*)[cell viewWithTag:6];
     NSDictionary *_dic = _arry[indexPath.row];
     title.text = [_dic objectForKey:@"title"];
@@ -106,7 +108,10 @@
         detail.hidden = NO;
         isRead.hidden = YES;
         more.hidden = YES;
+       
     }
+    
+    
     return cell;
     
 }
