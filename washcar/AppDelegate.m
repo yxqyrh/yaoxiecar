@@ -248,7 +248,7 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
     
     [[MayiHttpRequestManager sharedInstance] POST:MayiBDWYM parameters:parameters showLoadingView:nil success:^(id responseObject) {
         DLog(@"suucess");
-
+        [SVProgressHUD showSuccessWithStatus:@"绑定唯一码成功"];
     
     } failture:^(NSError *error) {
   
@@ -301,6 +301,7 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
     
     if (err) {
 //        [_viewController logMsg:[NSString stringWithFormat:@"%@", [err localizedDescription]]];
+        [SVProgressHUD showErrorWithStatus:@"注册个推失败"];
     }
 }
 
