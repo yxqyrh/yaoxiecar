@@ -129,7 +129,7 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
     [self startSdkWith:kAppId appKey:kAppKey appSecret:kAppSecret];
     
     // [2]:注册APNS
-    [self registerRemoteNotification];
+//    [self registerRemoteNotification];
     
     // [2-EXT]: 获取启动时收到的APN数据
 //    NSDictionary* message = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -232,10 +232,12 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
     _deviceToken = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"deviceToken:%@", _deviceToken);
     
+    
+    
     // [3]:向个推服务器注册deviceToken
     [GeTuiSdk registerDeviceToken:_deviceToken];
     
-    [self registDeviceToServer:_deviceToken];
+   [self startSdkWith:kAppId appKey:kAppKey appSecret:kAppSecret];
     
 }
 
@@ -350,6 +352,8 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
     
     if (_deviceToken) {
         [GeTuiSdk registerDeviceToken:_deviceToken];
+        
+         [self registDeviceToServer:clientId];
     }
 }
 

@@ -142,10 +142,10 @@
 //    }
     
     int index = 0;
-    if ([item.title isEqualToString:@"首页"]) {
+    if ([item.title isEqualToString:@"蚂蚁洗车"]) {
         index = 0;
     }
-    else if ([item.title isEqualToString:@"订单"]) {
+    else if ([item.title isEqualToString:@"我的订单"]) {
         index = 1;
     }
     else {
@@ -197,7 +197,7 @@
     
     switch (index) {
         case 0: {
-            self.titleLabel.text = @"首页";
+            self.titleLabel.text = @"蚂蚁洗车";
             //            _navigationTitleLabel.hidden = NO;
             //            _navigationTitleLabel.text = @"动态";
             //            _navigationBarRightButton.hidden = NO;

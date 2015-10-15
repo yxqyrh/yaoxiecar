@@ -47,7 +47,7 @@
     NSString *method = nil;
     if (_pageType == 1) {
         method = MayiRunningOrder;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(headerRereshing) name:MayiOrderNotifiction object:nil];
+        
     }
     else if (_pageType == 2) {
         method = MayiFinishedOrder;
@@ -55,8 +55,11 @@
     else if (_pageType == 3) {
         method = MayiCanceledOrder;
         
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(headerRereshing) name:MayiOrderCanceledNotifiction object:nil];
+        
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshData:) name:MayiOrderNotifiction object:nil];
+    
     [self loadOrderList:method andPageIndex:_pageIndex];
     
     self.tableView.backgroundColor = GeneralBackgroundColor;
@@ -69,11 +72,19 @@
     
 }
 
+-(void)refreshData:(NSNotification *)notification
+{
+    NSDictionary *dic = notification.userInfo;
+    if ([[dic objectForKey:MayiOrderNotifictionPageType] intValue] == _pageType) {
+        [self headerRereshing];
+    }
+}
+
 
 -(void)viewWillAppear:(BOOL)animated{
 
     
-    self.parentViewController.title = @"个人中心";
+//    self.parentViewController.title = @"个人中心";
 }
 
 #pragma mark 开始进入刷新状态
@@ -354,6 +365,8 @@
             UILabel *xctimeLabel = (UILabel *)[cell viewWithTag:8];
             xctimeLabel.text = [WDSystemUtils getDateString:order.xctime];
             
+            UILabel *descLabel = (UILabel *)[cell viewWithTag:9];
+            descLabel.text = order.bz;
             
         }
         else if (_pageType == 3) {            

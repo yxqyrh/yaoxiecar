@@ -26,7 +26,7 @@ NSString * const MayiIsLoginId = @"isloginid";
 NSString * const MayiPaySuccess = @"MayiPaySuccess";
 
 
-
+NSString * const MayiOrderNotifictionPageType = @"PageType";
 NSString * const MayiOrderNotifiction = @"OrderNofitiction";
 
 NSString * const MayiOrderCanceledNotifiction = @"OrderCancelNofitiction";
