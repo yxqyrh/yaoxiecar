@@ -439,7 +439,8 @@
 -(void)setWashStyle:(NSInteger *)value{
     _selectWashType = [washTypeArray objectAtIndex:value];
     _washTypeLabel.text = _selectWashType.fs;
-     _priceLabel.text = _selectWashType.value;
+//     _priceLabel.text = _selectWashType.value;
+    [self.tableView reloadData];
 }
 //地址选择详情界面回调
 -(void)showLocationChoose{
