@@ -170,16 +170,18 @@
 {
     
     if ([WDSystemUtils isEmptyOrNullString:provinceStr.titleLabel.text]||[@"省简称" isEqualToString:provinceStr.titleLabel.text]) {
-        [self.view makeToast:@"车牌号的省份简称不能为空"];
+//        [self.view makeToast:@"车牌号的省份简称不能为空"];
+        [SVProgressHUD showErrorWithStatus:@"车牌号的省份简称不能为空"];
         return;
     }
     
     if ([WDSystemUtils isEmptyOrNullString:_A_Z.titleLabel.text]||[@"级别" isEqualToString:_A_Z.titleLabel.text]) {
-        [self.view makeToast:@"车牌号的省份字母级别不能为空"];
+        [SVProgressHUD showErrorWithStatus:@"车牌号的省份字母级别不能为空"];
         return;
     }
     if ([WDSystemUtils isEmptyOrNullString:_carNumberTextField.text]||_carNumberTextField.text.length!=5) {
-        [self.view makeToast:@"车牌后5位数不合法"];
+//        [self.view makeToast:@"车牌后5位数不合法"];
+        [SVProgressHUD showErrorWithStatus:@"车牌后5位数不合法"];
         return;
     }
     

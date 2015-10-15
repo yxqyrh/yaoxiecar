@@ -183,7 +183,7 @@
     [SVProgressHUD showSuccessWithStatus:@"支付成功"];
     [self.navigationController popToRootViewControllerAnimated:NO];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderNotifiction object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderNotifiction object:nil userInfo:[NSDictionary dictionaryWithObject:@1 forKey:MayiOrderNotifictionPageType]];
     
 }
 

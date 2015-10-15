@@ -30,6 +30,9 @@
 @property (nonatomic)NSDate *time;
 
 @property (nonatomic)NSString *remark;
+
+@property (nonatomic)NSString *bz;//洗车工备注
+
 @property (nonatomic)NSString *judge_zt;
 @property (nonatomic)NSString *judge_zf;
 

@@ -1775,7 +1775,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahxdnet.mayicar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "dd1d5ac3-2040-465e-84fb-7d1049f561a4";
+				PROVISIONING_PROFILE = "c891bddd-a0e9-46a6-a133-55011eaa2802";
 			};
 			name = Release;
 		};

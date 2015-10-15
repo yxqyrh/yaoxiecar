@@ -17,10 +17,10 @@
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"main_tab_bar_background"]];
         
         
-        UITabBarItem *tabbarItem1 = [[UITabBarItem alloc] initWithTitle:@"首页" image:[UIImage imageNamed:@"img_01_car_pre"] tag:1];
+        UITabBarItem *tabbarItem1 = [[UITabBarItem alloc] initWithTitle:@"蚂蚁洗车" image:[UIImage imageNamed:@"img_01_car_pre"] tag:1];
         
         
-        UITabBarItem *tabbarItem2 = [[UITabBarItem alloc] initWithTitle:@"订单" image:[UIImage imageNamed:@"img_02_order_pre"] tag:2];
+        UITabBarItem *tabbarItem2 = [[UITabBarItem alloc] initWithTitle:@"我的订单" image:[UIImage imageNamed:@"img_02_order_pre"] tag:2];
         
         UITabBarItem *tabbarItem3 = [[UITabBarItem alloc] initWithTitle:@"个人中心" image:[UIImage imageNamed:@"img_03_me_pre"] tag:3];
         
