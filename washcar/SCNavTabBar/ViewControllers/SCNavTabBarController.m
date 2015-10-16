@@ -159,6 +159,13 @@
     [viewController.view addSubview:self.view];
 }
 
+-(void)setCurrentIndex:(int)index
+{
+    _currentIndex = index;
+    _navTabBar.currentItemIndex = _currentIndex;
+    [self itemDidSelectedWithIndex:index];
+}
+
 #pragma mark - Scroll View Delegate Methods
 #pragma mark -
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -173,7 +180,7 @@
 {
     [_mainView setContentOffset:CGPointMake(index * SCREEN_WIDTH, DOT_COORDINATE) animated:_scrollAnimation];
     
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderNotifiction object:nil userInfo:[NSDictionary dictionaryWithObject:@(index + 1) forKey:MayiOrderNotifictionPageType]];
 }
 
 - (void)shouldPopNavgationItemMenu:(BOOL)pop height:(CGFloat)height

@@ -26,9 +26,10 @@ NSString * const MayiIsLoginId = @"isloginid";
 NSString * const MayiPaySuccess = @"MayiPaySuccess";
 
 
-
+NSString * const MayiOrderNotifictionPageType = @"PageType";
 NSString * const MayiOrderNotifiction = @"OrderNofitiction";
-
+NSString * const MayiOrderRunningNotifiction = @"OrderRunningNotifiction";
+NSString * const MayiOrderFinishedNotifiction = @"OrderFinishedNotifiction";
 NSString * const MayiOrderCanceledNotifiction = @"OrderCancelNofitiction";
 
 
@@ -47,6 +48,9 @@ NSString * const MayiUserLogin = @"userlogin";
 
 //注册
 NSString * const MayiUserRegister = @"reging";
+
+//推送注册唯一码
+NSString * const MayiBDWYM = @"bdwym";
 
 //首页图片
 NSString * const MayiSYTP = @"sytp";

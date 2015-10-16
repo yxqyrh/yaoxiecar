@@ -17,7 +17,7 @@
     UILabel *_carNumberLabel;
     UILabel *_carColorLabel;
     UILabel *_addressLabel;
-     UILabel *_cheWeiNumLabel;
+    UITextField *_cheWeiNumTextField;
     UILabel *_washTypeLabel;
     UILabel *_voucherLabel;
     NIAttributedLabel *_priceLabel;
@@ -117,7 +117,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-if (indexPath.row == 8) {
+    [_descTextView resignFirstResponder];
+    [_cheWeiNumTextField resignFirstResponder];
+    if (indexPath.row == 8) {
         [self washCommit];
     }
 }
@@ -131,8 +133,8 @@ if (indexPath.row == 8) {
     [parameters setValue:_userInfo.city forKey:@"city"];
     [parameters setValue:_userInfo.area forKey:@"area"];
     [parameters setValue:_userInfo.plot forKey:@"plot"];
-    [parameters setValue:_selectWashType.id forKey:@"methods"];
-    [parameters setValue:_cheWeiNumLabel.text forKey:@"cwh"];
+    [parameters setValue:_selectWashType.fs forKey:@"methods"];
+    [parameters setValue:_cheWeiNumTextField.text forKey:@"cwh"];
     
     
     
@@ -312,9 +314,9 @@ if (indexPath.row == 8) {
     }
     
     if (indexPath.row == 3) {
-        _cheWeiNumLabel = (UILabel *)[cell viewWithTag:2];
+        _cheWeiNumTextField = (UITextField *)[cell viewWithTag:2];
         if (_userInfo != nil) {
-            _cheWeiNumLabel.text = _userInfo.cwh;
+            _cheWeiNumTextField.text = _userInfo.cwh;
         }
     }
     
@@ -357,6 +359,7 @@ if (indexPath.row == 8) {
         _descTextView.layer.borderWidth = 0.5;
         _descTextView.layer.borderColor = GeneralLineCGColor;
         _descTextView.delegate = self;
+        _descTextView.returnKeyType = UIReturnKeyDefault;
     }
     return cell;
 }
@@ -383,6 +386,8 @@ if (indexPath.row == 8) {
 //           }
 //           );
 - (IBAction)voucherChoose:(id)sender {
+    [_descTextView resignFirstResponder];
+    [_cheWeiNumTextField resignFirstResponder];
     if (_voucherInfo==nil) {
         [self.view makeToast:@"暂无代金券"];
     }else{
@@ -398,6 +403,8 @@ if (indexPath.row == 8) {
     }
 }
 - (IBAction)washStyle:(id)sender {
+    [_descTextView resignFirstResponder];
+    [_cheWeiNumTextField resignFirstResponder];
     WashStyleChoose *view = [WashStyleChoose defaultPopupView];
     view.parentVC = self;
     view.delegate = self;
@@ -416,6 +423,8 @@ if (indexPath.row == 8) {
     }];
 }
 - (IBAction)colorChoose:(id)sender {
+    [_descTextView resignFirstResponder];
+    [_cheWeiNumTextField resignFirstResponder];
     ColorChoosePop *view = [ColorChoosePop defaultPopupView];
     view.parentVC = self;
     view.delegate = self;
@@ -430,7 +439,8 @@ if (indexPath.row == 8) {
 -(void)setWashStyle:(NSInteger *)value{
     _selectWashType = [washTypeArray objectAtIndex:value];
     _washTypeLabel.text = _selectWashType.fs;
-     _priceLabel.text = _selectWashType.value;
+//     _priceLabel.text = _selectWashType.value;
+    [self.tableView reloadData];
 }
 //地址选择详情界面回调
 -(void)showLocationChoose{

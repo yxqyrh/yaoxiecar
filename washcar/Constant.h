@@ -33,7 +33,10 @@ FOUNDATION_EXPORT NSString * const MayiIsLoginId;
  ************************/
 FOUNDATION_EXPORT NSString * const MayiPaySuccess;
 
+FOUNDATION_EXPORT NSString * const MayiOrderNotifictionPageType;
 FOUNDATION_EXPORT NSString * const MayiOrderNotifiction;
+FOUNDATION_EXPORT NSString * const MayiOrderRunningNotifiction;
+FOUNDATION_EXPORT NSString * const MayiOrderFinishedNotifiction;
 
 FOUNDATION_EXPORT NSString * const MayiOrderCanceledNotifiction;
 
@@ -52,6 +55,9 @@ FOUNDATION_EXPORT NSString * const MayiSendMsg;
 FOUNDATION_EXPORT NSString * const MayiUserLogin;
 //注册
 FOUNDATION_EXPORT NSString * const MayiUserRegister;
+
+//推送注册唯一码
+FOUNDATION_EXPORT NSString * const MayiBDWYM;
 
 //首页图片
 FOUNDATION_EXPORT NSString * const MayiSYTP;

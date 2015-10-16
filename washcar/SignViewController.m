@@ -10,7 +10,7 @@
 #import "WDHttpRequestManager.h"
 #import "MayiHttpRequestManager.h"
 #import "StoryboadUtil.h"
-
+#import "StringUtil.h"
 @interface SignViewController () {
     long _verifyCodeId;
     
@@ -58,13 +58,18 @@
 }
 */
 - (IBAction)signButtonClick:(id)sender {
+    [_phoneTextField resignFirstResponder];
+    [_codeTextField resignFirstResponder];
     if ([WDSystemUtils isEmptyOrNullString:_phoneTextField.text]) {
-        [self.view makeToast:@"手机号不能为空"];
+        [SVProgressHUD showErrorWithStatus:@"手机号不能为空"];
         return;
     }
-    
+    if (![StringUtil checkPhoneNumInput:_phoneTextField.text]) {
+        [SVProgressHUD showErrorWithStatus:@"手机号不合法，请重新输入"];
+        return;
+    }
     if ([WDSystemUtils isEmptyOrNullString:_codeTextField.text]) {
-        [self.view makeToast:@"验证码不能为空"];
+        [SVProgressHUD showErrorWithStatus:@"验证码不能为空"];
         return;
     }
     
@@ -105,6 +110,8 @@
             UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
             [self.navigationController pushViewController:viewController animated:YES];
             [self removeFromParentViewController];
+            
+            [self registerRemoteNotification];
         }
         
     } failture:^(NSError *error) {
@@ -153,18 +160,22 @@
 
 
 - (IBAction)codeButtonClicked:(id)sender {
-    
+    [_phoneTextField resignFirstResponder];
+    [_codeTextField resignFirstResponder];
     if ([WDSystemUtils isEmptyOrNullString:_phoneTextField.text]) {
-        [self.view makeToast:@"手机号不能为空"];
+        [SVProgressHUD showErrorWithStatus:@"手机号不能为空"];
         return;
     }
-    
+    if (![StringUtil checkPhoneNumInput:_phoneTextField.text]) {
+        [SVProgressHUD showErrorWithStatus:@"手机号不合法，请重新输入"];
+        return;
+    }
     NSDictionary *dic1 = @{@"mobile":_phoneTextField.text};
     
     [[MayiHttpRequestManager sharedInstance] POST:MayiSendMsg parameters:dic1 showLoadingView:self.view success:^(id responseObject) {
         if ([@"success" isEqualToString:[responseObject objectForKey:@"res"]]) {
             _verifyCodeId = [[responseObject objectForKey:@"yzmid"] longValue];
-            [self.view makeToast:@"短信发送成功，请注意查收！"];
+            [SVProgressHUD showSuccessWithStatus:@"短信发送成功，请注意查收！"];
             [self startTime];
         }
         
@@ -193,8 +204,34 @@
 //    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:rootViewController1];
     [self presentViewController:nav animated:YES completion:nil];
     [self removeFromParentViewController];
+}
+
+- (void)registerRemoteNotification {
     
-    
+#ifdef __IPHONE_8_0
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        //IOS8 新的通知机制category注册
+        UIUserNotificationType types = (UIUserNotificationTypeAlert|
+                                        UIUserNotificationTypeSound|
+                                        UIUserNotificationTypeBadge);
+        
+        UIUserNotificationSettings *settings;
+        settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        
+    } else {
+        UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert|
+                                                                       UIRemoteNotificationTypeSound|
+                                                                       UIRemoteNotificationTypeBadge);
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
+    }
+#else
+    UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert|
+                                                                   UIRemoteNotificationTypeSound|
+                                                                   UIRemoteNotificationTypeBadge);
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
+#endif
     
 }
 @end

@@ -13,6 +13,7 @@
 @property (nonatomic)NSString *id;
 @property (nonatomic)NSString *num;
 @property (nonatomic)NSString *numtime;
+@property (nonatomic)NSString *xctime;
 @property (nonatomic)NSString *uid;//发布人的账号
 
 @property (nonatomic)NSString *province;
@@ -20,12 +21,18 @@
 @property (nonatomic)NSString *area;
 @property (nonatomic)NSString *plot;
 
+@property (nonatomic)NSString *cwh;
+
 @property (nonatomic)NSString *methods;
 @property (nonatomic)NSString *methodsval;
 
 
 @property (nonatomic)NSDate *time;
+
 @property (nonatomic)NSString *remark;
+
+@property (nonatomic)NSString *bz;//洗车工备注
+
 @property (nonatomic)NSString *judge_zt;
 @property (nonatomic)NSString *judge_zf;
 

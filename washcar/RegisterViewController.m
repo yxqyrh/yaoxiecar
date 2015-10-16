@@ -11,7 +11,7 @@
 #import "UserInfo.h"
 #import "StoryboadUtil.h"
 #import "WebViewController.h"
-
+#import "StringUtil.h"
 @interface RegisterViewController () {
     NSString *_carNumber;
     NSString *_carColor;
@@ -170,16 +170,18 @@
 {
     
     if ([WDSystemUtils isEmptyOrNullString:provinceStr.titleLabel.text]||[@"省简称" isEqualToString:provinceStr.titleLabel.text]) {
-        [self.view makeToast:@"车牌号的省份简称不能为空"];
+//        [self.view makeToast:@"车牌号的省份简称不能为空"];
+        [SVProgressHUD showErrorWithStatus:@"车牌号的省份简称不能为空"];
         return;
     }
     
     if ([WDSystemUtils isEmptyOrNullString:_A_Z.titleLabel.text]||[@"级别" isEqualToString:_A_Z.titleLabel.text]) {
-        [self.view makeToast:@"车牌号的省份字母级别不能为空"];
+        [SVProgressHUD showErrorWithStatus:@"车牌号的省份字母级别不能为空"];
         return;
     }
     if ([WDSystemUtils isEmptyOrNullString:_carNumberTextField.text]||_carNumberTextField.text.length!=5) {
-        [self.view makeToast:@"车牌后5位数不合法"];
+//        [self.view makeToast:@"车牌后5位数不合法"];
+        [SVProgressHUD showErrorWithStatus:@"车牌后5位数不合法"];
         return;
     }
     
@@ -197,7 +199,10 @@
         [SVProgressHUD showErrorWithStatus:@"请输入手机号"];
         return;
     }
-    
+    if (![StringUtil checkPhoneNumInput:_telephoneTextField.text]) {
+         [SVProgressHUD showErrorWithStatus:@"手机号不合法，请重新输入"];
+        return;
+    }
     if ([WDSystemUtils isEmptyOrNullString:_verifyCodeTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"请输入验证码"];
         return;
@@ -212,7 +217,7 @@
         [SVProgressHUD showErrorWithStatus:@"请阅读并同意《蚂蚁洗车协议》"];
         return;
     }
-    
+  
     
     
     NSString *chePaiStr = [provinceStr.titleLabel.text stringByAppendingFormat:@"%@%@",_A_Z.titleLabel.text,_carNumberTextField.text];
@@ -257,6 +262,8 @@
             [self removeFromParentViewController];
             UIViewController *viewController1 = [nav.viewControllers objectAtIndex:0];
             [viewController1 removeFromParentViewController];
+            
+            [self registerRemoteNotification];
 //            [self initHomeScreen];
         }
         else if ([WDSystemUtils isEqualsInt:4 andJsonData:[responseObject objectForKey:@"res"]]) {
@@ -426,7 +433,7 @@
     NSString *url = result.URL.absoluteString;
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"违章查询" andUrl:url];
+    [webController setTitle:@"注册协议" andUrl:url];
     [self.navigationController pushViewController:webController animated:YES];
 }
 
@@ -459,7 +466,10 @@
         [self.view makeToast:@"手机号不能为空"];
         return;
     }
-    
+    if (![StringUtil checkPhoneNumInput:textFiled.text]) {
+        [self.view makeToast:@"手机号不合法，请重新输入"];
+        return;
+    }
     
     _telephoneNumber = textFiled.text;
     NSDictionary *dic1 = @{@"mobile":textFiled.text};
@@ -604,6 +614,35 @@
     [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
         
     }];
+}
+
+- (void)registerRemoteNotification {
+    
+#ifdef __IPHONE_8_0
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+        //IOS8 新的通知机制category注册
+        UIUserNotificationType types = (UIUserNotificationTypeAlert|
+                                        UIUserNotificationTypeSound|
+                                        UIUserNotificationTypeBadge);
+        
+        UIUserNotificationSettings *settings;
+        settings = [UIUserNotificationSettings settingsForTypes:types categories:nil];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        
+    } else {
+        UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert|
+                                                                       UIRemoteNotificationTypeSound|
+                                                                       UIRemoteNotificationTypeBadge);
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
+    }
+#else
+    UIRemoteNotificationType apn_type = (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert|
+                                                                   UIRemoteNotificationTypeSound|
+                                                                   UIRemoteNotificationTypeBadge);
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:apn_type];
+#endif
+    
 }
 
 @end

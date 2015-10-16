@@ -216,7 +216,7 @@
             _userPhone.text = uname;
             [self setMoney:money];
             icon_url =[IMGURL stringByAppendingString:upicture];
-            [self performSelectorInBackground:@selector(download) withObject:nil];
+//            [self performSelectorInBackground:@selector(download) withObject:nil];
         }
     } failture:^(NSError *error) {
 //        [SVProgressHUD showErrorWithStatus:@"获取用户信息失败"];
