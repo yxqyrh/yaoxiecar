@@ -163,7 +163,6 @@
 //        descLabel.text = [NSString stringWithFormat:@"当前余额 %@元", _accountBalance];
         descLabel.attributedText = [StringUtil getMenoyText:@"当前余额  ":_accountBalance :@"元"];
         UIImageView *imageViewCheck = [(UIImageView *)cell viewWithTag:4];
-        
         if (_payType == 2) {
             imageViewCheck.image = [UIImage imageNamed:@"img_checked"];
         }
@@ -199,19 +198,16 @@
 //[responseObject objectForKey:@"zfje"]
             if (_payType == 1) {
                 [self runAliPayWithTitle:[responseObject objectForKey:@"name"] andDesc:[responseObject objectForKey:@"description"] andOrderNumber:[responseObject objectForKey:@"num"] andPrice:@0.01 andNotifyURL:[responseObject objectForKey:@"notifyURL"] completionBlock:^(NSDictionary *resultDic) {
-                    
                 }];
             }
             else if (_payType == 2) {
                 [self payWithBalance:[responseObject objectForKey:@"num"] andValue:[responseObject objectForKey:@"zfje"]];
             }
-            
-            
-        
             return ;
         }
-        else if ([WDSystemUtils isEqualsInt:3 andJsonData:[responseObject objectForKey:@"res"]]) {
-            
+        else if ([WDSystemUtils isEqualsInt:4 andJsonData:[responseObject objectForKey:@"res"]]) {
+            [self.view makeToast:[responseObject objectForKey:@"ts"]];
+            return ;
         }
         
     } failture:^(NSError *error) {
@@ -230,9 +226,12 @@
     
     [parameters setValue:orderNumber forKey:@"id"];
     [parameters setValue:money forKey:@"money"];
-    
+//json:{
+//    res = 4;
+//    ts = "\U54ce\U5466\Uff01\U5c0f\U8682\U8681\U56de\U7a9d\U5566\Uff0c\U660e\U59299\Uff1a00-18\Uff1a00\U4e0d\U89c1\U4e0d\U6563\U54df\Uff01";
+//}
     [[MayiHttpRequestManager sharedInstance] POST:MayiYEZF parameters:parameters showLoadingView:self.view success:^(id responseObject) {
-        
+        DLog(@"ts=%@res=%@",[responseObject objectForKey:@"ts"],[responseObject objectForKey:@"res"]);
         
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
             [SVProgressHUD showErrorWithStatus:@"余额不足"];
@@ -242,11 +241,14 @@
             [SVProgressHUD showErrorWithStatus:@"支付失败"];
             return ;
         }
+   
         else if ([WDSystemUtils isEqualsInt:3 andJsonData:[responseObject objectForKey:@"res"]]) {
             [self paySuccess];
             return ;
             
         }
+     
+        
         
     } failture:^(NSError *error) {
         [self.view makeToast:@"支付失败"];
