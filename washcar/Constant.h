@@ -35,6 +35,8 @@ FOUNDATION_EXPORT NSString * const MayiPaySuccess;
 
 FOUNDATION_EXPORT NSString * const MayiOrderNotifictionPageType;
 FOUNDATION_EXPORT NSString * const MayiOrderNotifiction;
+FOUNDATION_EXPORT NSString * const MayiOrderRunningNotifiction;
+FOUNDATION_EXPORT NSString * const MayiOrderFinishedNotifiction;
 
 FOUNDATION_EXPORT NSString * const MayiOrderCanceledNotifiction;
 

@@ -68,6 +68,7 @@
 - (void)addParentController:(UIViewController *)viewController;
 
 
+-(void)setCurrentIndex:(int)index;
 
 @end
 

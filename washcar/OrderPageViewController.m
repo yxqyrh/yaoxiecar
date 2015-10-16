@@ -10,7 +10,9 @@
 #import "SCNavTabBarController.h"
 #import "OrderListViewController.h"
 
-@interface OrderPageViewController ()
+@interface OrderPageViewController () {
+    SCNavTabBarController *_navTabBarController;
+}
 
 @end
 
@@ -37,11 +39,15 @@
     viewController.title = @"已退订单";
     [vcs addObject:viewController];
     
-    SCNavTabBarController *navTabBarController = [[SCNavTabBarController alloc] init];
-    navTabBarController.subViewControllers = vcs;
-    navTabBarController.showArrowButton = FALSE;
-    [navTabBarController addParentController:self];
+    _navTabBarController = [[SCNavTabBarController alloc] init];
+    _navTabBarController.subViewControllers = vcs;
+    _navTabBarController.showArrowButton = FALSE;
+    [_navTabBarController addParentController:self];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectRunningOrder) name:MayiOrderRunningNotifiction object:nil];
+    
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectFinishedOrder) name:MayiOrderFinishedNotifiction object:nil];
+        
 //    QCSlideViewController *slideSwitchVC = [[QCSlideViewController alloc] init];
 //    QCViewController * drawerController = [[QCViewController alloc]
 //                                           initWithCenterViewController:slideSwitchVC
@@ -58,6 +64,16 @@
 //    [self addChildViewController:drawerController];
 //    
 //    [drawerController didMoveToParentViewController:self];
+}
+
+-(void)selectRunningOrder
+{
+    [_navTabBarController setCurrentIndex:0];
+}
+
+-(void)selectFinishedOrder
+{
+    [_navTabBarController setCurrentIndex:1];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -28,7 +28,8 @@ NSString * const MayiPaySuccess = @"MayiPaySuccess";
 
 NSString * const MayiOrderNotifictionPageType = @"PageType";
 NSString * const MayiOrderNotifiction = @"OrderNofitiction";
-
+NSString * const MayiOrderRunningNotifiction = @"OrderRunningNotifiction";
+NSString * const MayiOrderFinishedNotifiction = @"OrderFinishedNotifiction";
 NSString * const MayiOrderCanceledNotifiction = @"OrderCancelNofitiction";
 
 

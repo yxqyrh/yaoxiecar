@@ -80,10 +80,51 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    if (launchOptions != nil) {
-        NSDictionary *userInfo = [launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"];
+//    if (launchOptions == nil) {
+//        launchOptions = [NSMutableDictionary dictionary];
+//    }
+    
+    if (launchOptions == nil) {
+//        NSDictionary *userInfo = [launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"];
+        
+        
+//        NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+//        
+//        
+//        NSDictionary *dic = [NSDictionary dictionaryWithObject:@"{res=2;}" forKey:@"content-available"];
+//        [userInfo setObject:dic forKey:@"aps"];
+//        [GlobalVar sharedSingleton].launchOptions = userInfo;
+//        application.applicationIconBadgeNumber = 0;
+//
+//        
+//        
+//        NSString *userInfoStr = [NSString stringWithFormat:@"userInfoStr:%@。",userInfo];
+//        
+//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//        NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
+//        
+//        
+//        
+//        NSString *filePath = [documentsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"push_%@.txt",[NSDate date]]];
+//        
+////         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+//        
+//        [[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
+//        
+//        NSMutableData *writer = [[NSMutableData alloc] init];
+//
+//        
+//        [writer appendData:[userInfoStr dataUsingEncoding:NSUTF8StringEncoding]];
+// 
+//        
+//        [writer writeToFile:filePath atomically:YES];
+    
+    }
+    else {
+         NSDictionary *userInfo = [launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"];
         [GlobalVar sharedSingleton].launchOptions = userInfo;
         application.applicationIconBadgeNumber = 0;
+
     }
     
     if (![[NSUserDefaults standardUserDefaults] boolForKey:MayiUserIsNotFirstEnter]) {
@@ -248,7 +289,7 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
     
     [[MayiHttpRequestManager sharedInstance] POST:MayiBDWYM parameters:parameters showLoadingView:nil success:^(id responseObject) {
         DLog(@"suucess");
-        [SVProgressHUD showSuccessWithStatus:@"绑定唯一码成功"];
+//        [SVProgressHUD showSuccessWithStatus:@"绑定唯一码成功"];
     
     } failture:^(NSError *error) {
   
@@ -363,7 +404,7 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
     // [4]: 收到个推消息
 //    [_payloadId release];
 //    _payloadId = [payloadId retain];
-//    
+////    
 //    NSData* payload = [GeTuiSdk retrivePayloadById:payloadId];
 //    
 //    NSString *payloadMsg = nil;
@@ -373,11 +414,11 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
 //                                            encoding:NSUTF8StringEncoding];
 //    }
 //    
-//    NSString *record = [NSString stringWithFormat:@"%d, %@, %@", ++_lastPaylodIndex, [self formateTime:[NSDate date]], payloadMsg];
-//    [_viewController logMsg:record];
-//    [_viewController updateMsgCount:_lastPaylodIndex];
-    
-    DLog(@"task id : %@, messageId:%@", taskId, aMsgId);
+////    NSString *record = [NSString stringWithFormat:@"%d, %@, %@", ++_lastPaylodIndex, [self formateTime:[NSDate date]], payloadMsg];
+////    [_viewController logMsg:record];
+////    [_viewController updateMsgCount:_lastPaylodIndex];
+//    
+//    DLog(@"task id : %@, messageId:%@,payloadMsg:%@", taskId, aMsgId,payloadMsg);
     
 //    [payloadMsg release];
     

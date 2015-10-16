@@ -12,7 +12,7 @@
 #import "MMDrawerVisualState.h"
 #import "QCSlideViewController.h"
 #import "StoryboadUtil.h"
-
+#import <SVProgressHUD.h>
 #import "WDTabBar.h"
 
 
@@ -66,35 +66,7 @@
     [self addChildViewController:controller0];
     [controller0 didMoveToParentViewController:self];
     
-    UIViewController *controller1 = [StoryboadUtil getViewController:@"Order" :@"OrderPageViewController"];
-    
-    
-    [self addChildViewController:controller1];
-    
-    [controller1 didMoveToParentViewController:self];
-    
-    
-//    SCNavTabBarController *navTabBarController = [[SCNavTabBarController alloc] init];
-//    navTabBarController.subViewControllers = vcs;
-//    navTabBarController.showArrowButton = FALSE;
-//    [navTabBarController addParentController:self];
-//    
-//    QCSlideViewController *slideSwitchVC = [[QCSlideViewController alloc] init];
-//    QCViewController * drawerController = [[QCViewController alloc]
-//                                           initWithCenterViewController:slideSwitchVC
-//                                           leftDrawerViewController:nil
-//                                           rightDrawerViewController:nil];
-//    [drawerController setMaximumLeftDrawerWidth:120];
-//    [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-//    [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-//    [drawerController setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
-//        MMDrawerControllerDrawerVisualStateBlock block;
-//        block = [MMDrawerVisualState parallaxVisualStateBlockWithParallaxFactor:2.0];
-//        block(drawerController, drawerSide, percentVisible);
-//    }];
-//    [self addChildViewController:drawerController];
-//    
-//    [drawerController didMoveToParentViewController:self];
+
     
     
     
@@ -104,10 +76,7 @@
     [self addChildViewController:orderPage];
     [orderPage didMoveToParentViewController:self];
     
-    
-    
-    //    UIViewController *controller2 = [[UIViewController alloc] init];
-    //    controller2.view.backgroundColor = [UIColor orangeColor];
+
     UIViewController *controller2 = [StoryboadUtil getViewController:@"UserCenter" :@"UserCenterViewController"];
     
     
@@ -121,13 +90,56 @@
     [self.view addSubview:_transparentView];
     [self.navigationController.view addSubview:_titleTransparentView];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showOrder) name:MayiOrderNotifiction object:nil];
+//    UIActionSheet *sheet1 = [[UIActionSheet alloc] initWithTitle:@"没报错1" delegate:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
+//    [sheet1 showInView:_contentView];
+//    return;
+    
+ 
     
     _selectedIndex = -1;
-     [self selectItem:0 completion:nil];
     
-    //    [NSNotificationCenter defaultCenter] addObserverForName:@"OrderNotifiction" object:nil queue:mo; usingBlock:<#^(NSNotification * _Nonnull note)block#>
-    _tabBar.selectedItem = [_tabBar.items objectAtIndex:0];
+    if ([GlobalVar sharedSingleton].launchOptions) {
+        [self dealNotifiction:[GlobalVar sharedSingleton].launchOptions];
+    }
+    else {
+        [self selectItem:0 completion:nil];
+        _tabBar.selectedItem = [_tabBar.items objectAtIndex:0];
+
+    }
+    
+}
+
+-(void)dealNotifiction:(NSDictionary *)userInfo
+{
+
+    
+    
+    NSDictionary *aps = [userInfo objectForKey:@"aps"];
+    NSString *contentAvailable = [NSString stringWithFormat:@"%@",[aps objectForKey:@"content-available"]];
+    
+    
+
+    if ([contentAvailable rangeOfString:@"1"].length > 0) {
+
+        
+        [self selectItem:1 completion:^(BOOL finished) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderRunningNotifiction object:nil];
+        }];
+        _tabBar.selectedItem = [_tabBar.items objectAtIndex:1];
+    }
+//    else {
+    else if ([contentAvailable rangeOfString:@"2"].length > 0) {
+//        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"contentAvailable:%@,2", contentAvailable] delegate:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
+//            [sheet showInView:_contentView];
+        
+        [self selectItem:1 completion:^(BOOL finished) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderFinishedNotifiction object:nil];
+        }];
+        _tabBar.selectedItem = [_tabBar.items objectAtIndex:1];
+    }
+    
+    [GlobalVar sharedSingleton].userInfo = nil;
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 //- (void)tabBarItemBeSelected:(int)index

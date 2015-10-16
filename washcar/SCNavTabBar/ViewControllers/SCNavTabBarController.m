@@ -159,6 +159,13 @@
     [viewController.view addSubview:self.view];
 }
 
+-(void)setCurrentIndex:(int)index
+{
+    _currentIndex = index;
+    _navTabBar.currentItemIndex = _currentIndex;
+    [self itemDidSelectedWithIndex:index];
+}
+
 #pragma mark - Scroll View Delegate Methods
 #pragma mark -
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
