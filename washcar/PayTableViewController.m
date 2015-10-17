@@ -16,6 +16,7 @@
 
 @interface PayTableViewController () {
     int _payType;
+    bool _isPaying;
 }
 
 @end
@@ -27,6 +28,7 @@
     // Do any additional setup after loading the view.
     _payType = 2;
     self.title = @"选择支付方式";
+    _isPaying = false;
     [self.tableView setTableFooterView:[[UIView alloc] init]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paySuccess) name:MayiPaySuccess object:nil];
 }
@@ -184,21 +186,27 @@
     [self.navigationController popToRootViewControllerAnimated:NO];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderNotifiction object:nil userInfo:[NSDictionary dictionaryWithObject:@1 forKey:MayiOrderNotifictionPageType]];
-    
+    _isPaying = false;
 }
 
 -(void)payOrder
 {
+    if (_isPaying == true) {
+        return;
+    }
+    _isPaying = true;
     [_washParameters setObject:@(_payType) forKey:@"type"];
     [[MayiHttpRequestManager sharedInstance] POST:MayiWYXCing parameters:_washParameters showLoadingView:self.view success:^(id responseObject) {
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
             [SVProgressHUD showErrorWithStatus:@"获取失败"];
+            _isPaying = false;
             return ;
         }
         else if ([WDSystemUtils isEqualsInt:2 andJsonData:[responseObject objectForKey:@"res"]]) {
 //[responseObject objectForKey:@"zfje"]
             if (_payType == 1) {
-                [self runAliPayWithTitle:[responseObject objectForKey:@"name"] andDesc:[responseObject objectForKey:@"description"] andOrderNumber:[responseObject objectForKey:@"num"] andPrice:@0.01 andNotifyURL:[responseObject objectForKey:@"notifyURL"] completionBlock:^(NSDictionary *resultDic) {
+                _isPaying = false;
+                [self runAliPayWithTitle:[responseObject objectForKey:@"name"] andDesc:[responseObject objectForKey:@"description"] andOrderNumber:[responseObject objectForKey:@"num"] andPrice:[responseObject objectForKey:@"zfje"] andNotifyURL:[responseObject objectForKey:@"notifyURL"] completionBlock:^(NSDictionary *resultDic) {
                     
                 }];
             }
@@ -207,7 +215,7 @@
             }
             
             
-        
+            
             return ;
         }
         else if ([WDSystemUtils isEqualsInt:3 andJsonData:[responseObject objectForKey:@"res"]]) {
@@ -215,7 +223,8 @@
         }
         
     } failture:^(NSError *error) {
-        [self.view makeToast:@"注册失败"];
+        _isPaying = false;
+        [self.view makeToast:@"操作失败"];
     }];
     
 
@@ -236,10 +245,12 @@
         
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
             [SVProgressHUD showErrorWithStatus:@"余额不足"];
+            _isPaying = false;
             return ;
         }
         else if ([WDSystemUtils isEqualsInt:2 andJsonData:[responseObject objectForKey:@"res"]]) {
             [SVProgressHUD showErrorWithStatus:@"支付失败"];
+            _isPaying = false;
             return ;
         }
         else if ([WDSystemUtils isEqualsInt:3 andJsonData:[responseObject objectForKey:@"res"]]) {
@@ -249,6 +260,7 @@
         }
         
     } failture:^(NSError *error) {
+        _isPaying = false;
         [self.view makeToast:@"支付失败"];
     }];
 }
