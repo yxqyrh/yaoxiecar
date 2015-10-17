@@ -211,7 +211,7 @@
             return ;
         }
         else if ([WDSystemUtils isEqualsInt:3 andJsonData:[responseObject objectForKey:@"res"]]) {
-            
+             [self.view makeToast:[responseObject objectForKey:@"res"]];
         }
         
     } failture:^(NSError *error) {
