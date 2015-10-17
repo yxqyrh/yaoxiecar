@@ -255,7 +255,7 @@
 - (IBAction)trafficControlClick:(id)sender {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"交通查询" andUrl:@"http://m.ctrip.com/html5/mkt/sitemap/index.html"];
+    [webController setTitle:@"交通查询" andUrl:@"http://m.ctrip.com/html5"];
     [self.navigationController pushViewController:webController animated:YES];
 }
 

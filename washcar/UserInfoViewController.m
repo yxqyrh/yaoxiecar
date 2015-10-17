@@ -295,6 +295,10 @@
         if ([@"1" isEqualToString:res]) {
             [SVProgressHUD showSuccessWithStatus:@"退出成功！"];
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:MayiUserIsSignIn];
+          
+                [GlobalVar sharedSingleton].uid = nil;
+                
+                [GlobalVar sharedSingleton].isloginid = nil;
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sign" bundle:nil];
             UIViewController *loginViewController = [storyboard instantiateInitialViewController];
             loginViewController.modalTransitionStyle = UIModalPresentationFormSheet;//跳转效果
