@@ -94,7 +94,7 @@
 //    [sheet1 showInView:_contentView];
 //    return;
     
- 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showOrder) name:MayiOrderNotifiction object:nil];
     
     _selectedIndex = -1;
     
@@ -107,30 +107,55 @@
 
     }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealBackgroudNotifiction:) name:MayiBackgroundNotifiction object:nil];
+    
+}
+
+-(void)dealBackgroudNotifiction:(NSNotification *)notificition
+{
+    NSDictionary *userInfo = notificition.userInfo;
+    
+    NSString *contentAvailable = [NSString stringWithFormat:@"%@",[userInfo objectForKey:@"content-available"]];
+//    UINavigationController *nav = self.navigationController;
+//    if (self.navigationController.viewControllers.count > 1) {
+//        UIViewController *vc = [self.navigationController.topViewController];
+//        
+////        for (int i = self.navigationController.viewControllers.count - 1; i > 0; i--) {
+////            UIViewController *vc = [self.navigationController.viewControllers objectAtIndex:i];
+////            [vc removeFromParentViewController];
+////        }
+//        
+//    }
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    
+     [self jumpController:contentAvailable];
 }
 
 -(void)dealNotifiction:(NSDictionary *)userInfo
 {
-
-    
-    
     NSDictionary *aps = [userInfo objectForKey:@"aps"];
     NSString *contentAvailable = [NSString stringWithFormat:@"%@",[aps objectForKey:@"content-available"]];
     
     
+    
+    [self jumpController:contentAvailable];
 
+    
+}
+
+-(void)jumpController:(NSString *)contentAvailable
+{
     if ([contentAvailable rangeOfString:@"1"].length > 0) {
-
+        
         
         [self selectItem:1 completion:^(BOOL finished) {
             [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderRunningNotifiction object:nil];
         }];
         _tabBar.selectedItem = [_tabBar.items objectAtIndex:1];
     }
-//    else {
+    //    else {
     else if ([contentAvailable rangeOfString:@"2"].length > 0) {
-//        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"contentAvailable:%@,2", contentAvailable] delegate:nil cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:nil];
-//            [sheet showInView:_contentView];
+        
         
         [self selectItem:1 completion:^(BOOL finished) {
             [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderFinishedNotifiction object:nil];
