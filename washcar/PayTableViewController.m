@@ -219,7 +219,12 @@
             return ;
         }
         else if ([WDSystemUtils isEqualsInt:3 andJsonData:[responseObject objectForKey:@"res"]]) {
-             [self.view makeToast:[responseObject objectForKey:@"res"]];
+//             [self.view makeToast:[responseObject objectForKey:@"res"]];
+            [self paySuccess];
+        }
+        else if ([WDSystemUtils isEqualsInt:4 andJsonData:[responseObject objectForKey:@"res"]]) {
+            [self.view makeToast:[responseObject objectForKey:@"ts"]];
+            return ;
         }
         
     } failture:^(NSError *error) {

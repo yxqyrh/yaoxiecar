@@ -17,6 +17,6 @@
 // 1是现在的订单，2是已结束的订单，3是已取消的订单
 @property (nonatomic, assign)int pageType;
 
-
+@property (retain) NSMutableDictionary *offScreenCells;
 
 @end

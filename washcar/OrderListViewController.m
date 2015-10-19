@@ -14,6 +14,8 @@
 #import "NIAttributedLabel.h"
  #import <UIImageView+WebCache.h>
 #import "MDPhotoAlbumViewController.h"
+#import <Masonry.h>
+#import <RZCellSizeManager.h>
 
 @interface OrderListViewController () {
     int _selectIndex;
@@ -28,6 +30,8 @@
     NSArray *_selectOrderPictures;
     NSMutableArray *_imageViews;
 }
+
+@property (strong, nonatomic) RZCellSizeManager* sizeManager;
 
 @end
 
@@ -66,6 +70,22 @@
     
     [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
     //    [self.tableView headerBeginRefreshing];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+
+    
+    self.sizeManager = [[RZCellSizeManager alloc] init];
+    [self.sizeManager registerCellClassName:@"UITableViewCell"
+                               withNibNamed:nil
+                             forObjectClass:nil
+                     withConfigurationBlock:^(UITableViewCell* cell, id object) {
+                         OrderInfo *order = (OrderInfo *)object;
+                         
+                         UILabel *descLabel = (UILabel *)[cell viewWithTag:9];
+                         descLabel.text = order.remark;
+ 
+                         
+
+                     }];
     
     // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
 //    [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
@@ -135,7 +155,7 @@
     
     [[MayiHttpRequestManager sharedInstance] POST:method parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         
-//        DLog(@"responseObject:%@",responseObject);
+        DLog(@"responseObject:%@",responseObject);
         
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
             if ([[responseObject objectForKey:@"list"] isKindOfClass:[NSArray class]]) {
@@ -148,6 +168,7 @@
                 }
                 
                 for (OrderInfo *order in array) {
+                    order.bz = @"as撒打算打算的我去恶趣味全文王企鹅啊实打实大师撒旦撒大声地撒旦其味无穷全文啊实打实大师大师大神去问去问去问全文";
                     if (![_orders containsObject:order]) {
                         [_orders addObject:order];
                     }
@@ -190,32 +211,130 @@
 
 #pragma mark - UITableViewDelegate
 
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (indexPath.row == _selectIndex) {
+//        if (_pageType == 1) {
+//            return 330;
+//        }
+//        else if (_pageType == 3) {
+//            return 320;
+//        }
+//        else if (_pageType == 2) {
+//            OrderInfo *order = [_orders objectAtIndex:indexPath.row];
+//            NSArray *array = order.xc_pictures;
+//            if (array == nil || array.count == 0 ) {
+//                return 265;
+//            }
+//            else if (array.count <= 3){
+//                return 410;
+//            }
+//            else {
+//                return 480;
+//            }
+//        }
+//    }
+//    
+//    return 54;
+//    
+//}
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    // Retrieve our object to give to our size manager.
+//    id object = [self.dataArray objectAtIndex:indexPath.row];
+//    
+//    // Since we are using a tableView we are using the cellHeightForObject:indexPath: method.
+//    //  It uses the indexPath as the key for cacheing so it is important to pass in the correct one.
+//    return [self.sizeManager cellHeightForObject:object indexPath:indexPath];
+//}
+
+// If you have very complex cells or a large number implementing this method speeds up initial load time.
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 300.f;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == _selectIndex) {
+        NSString *cellResueIdentifies = nil;
         if (_pageType == 1) {
-            return 330;
+            cellResueIdentifies = @"OrderDetailCell";
+        }
+        else if (_pageType == 2) {
+            cellResueIdentifies = @"OrderFinishedCell";
         }
         else if (_pageType == 3) {
-            return 320;
+            cellResueIdentifies = @"OrderCancelCell";
+        }
+        UITableViewCell *cell = [self.offScreenCells objectForKey:cellResueIdentifies];
+        if (cell == nil) {
+            cell = [tableView dequeueReusableCellWithIdentifier:cellResueIdentifies];
+            [self.offScreenCells setObject:cell forKey:cellResueIdentifies];
+        }
+        
+        OrderInfo *order = [_orders objectAtIndex:indexPath.row];
+        UILabel *descLabel = (UILabel *)[cell viewWithTag:9];
+        descLabel.text = order.remark;
+        [descLabel sizeToFit];
+        
+         CGSize descLabelSize = [descLabel sizeThatFits:CGSizeMake(descLabel.frame.size.width, MAXFLOAT)];
+        
+        //    cell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(tableView.bounds), CGRectGetHeight(cell.bounds));
+        //
+        //    [cell setNeedsLayout];
+        //    [cell layoutIfNeeded];
+        CGSize cancelReasonLabelSize = CGSizeZero;
+        CGFloat imageCollectionViewHeight = 0.f;
+        if (_pageType == 3) {
+            NIAttributedLabel *cancelReasonLabel = (NIAttributedLabel *)[cell viewWithTag:10];
+            cancelReasonLabel.text = order.unsubscribe;
+            cancelReasonLabel.textAlignment = NSTextAlignmentLeft;
+            cancelReasonLabel.lineHeight = 15;
+            [cancelReasonLabel sizeToFit];
+            cancelReasonLabelSize = [cancelReasonLabel sizeThatFits:CGSizeMake(cancelReasonLabel.frame.size.width, MAXFLOAT)];
         }
         else if (_pageType == 2) {
             OrderInfo *order = [_orders objectAtIndex:indexPath.row];
-            NSArray *array = order.xc_pictures;
-            if (array == nil || array.count == 0 ) {
-                return 265;
-            }
-            else if (array.count <= 3){
-                return 410;
-            }
-            else {
-                return 480;
-            }
+                        NSArray *array = order.xc_pictures;
+                        if (array == nil || array.count == 0 ) {
+            
+                        }
+                        else if (array.count <= 3){
+                            imageCollectionViewHeight = 90;
+                        }
+                        else {
+                            imageCollectionViewHeight = 190;
+                        }
         }
+        
+        
+       
+        
+       
+        
+        UIView *bgView = [cell viewWithTag:1];
+        
+        [bgView setNeedsUpdateConstraints];
+        [bgView updateConstraintsIfNeeded];
+        
+        CGSize size =  [bgView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+       
+        
+        CGFloat height = size.height + 1 + descLabelSize.height;
+        if (_pageType == 3) {
+            height += cancelReasonLabelSize.height < 20 ? 25 : cancelReasonLabelSize.height;
+        }
+        else if (_pageType == 2) {
+            height += imageCollectionViewHeight;
+        }
+         DLog(@"height:%f", height);
+        return height;
     }
-    
-    return 54;
-    
+    else {
+        return 54;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -273,13 +392,14 @@
         reuseIdentifier = @"OrderInfoCell";
     }
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+    
     cell.backgroundColor = GeneralBackgroundColor;
     
-    UIView *view = [cell viewWithTag:1];
-    view.layer.borderColor = GeneralLineCGColor;
-    view.layer.cornerRadius = 5;
-    view.layer.borderWidth = 0.5;
+    UIView *bgView = [cell viewWithTag:1];
+    bgView.layer.borderColor = GeneralLineCGColor;
+    bgView.layer.cornerRadius = 5;
+    bgView.layer.borderWidth = 0.5;
     
     UIView *line = [cell  viewWithTag:12];
     CGRect frame = line.frame;
@@ -325,11 +445,8 @@
         
         UILabel *descLabel = (UILabel *)[cell viewWithTag:9];
         descLabel.text = order.remark;
-        
+        [descLabel sizeToFit];
         if (_pageType == 1) {
-          
-            
-            
             UIButton *cancelButton = (UIButton *)[cell viewWithTag:21];
             cancelButton.hidden = NO;
             cancelButton.layer.cornerRadius = 3;
@@ -367,16 +484,68 @@
             
             UILabel *descLabel = (UILabel *)[cell viewWithTag:9];
             descLabel.text = order.bz;
+            [descLabel sizeToFit];
             
         }
         else if (_pageType == 3) {            
-            UILabel *cancelReasonLabel = (UILabel *)[cell viewWithTag:10];
-            cancelReasonLabel.hidden = NO;
-            cancelReasonLabel.text = order.unsubscribe;
+            if (![WDSystemUtils isEmptyOrNullString:order.unsubscribe]) {
+                NIAttributedLabel *cancelReasonLabel = (NIAttributedLabel *)[cell viewWithTag:10];
+                cancelReasonLabel.lineHeight = 15;
+                cancelReasonLabel.textAlignment = NSTextAlignmentLeft;
+                cancelReasonLabel.text = order.unsubscribe;
+                [cancelReasonLabel sizeToFit];
+            }
+            
+            if ([WDSystemUtils isEmptyOrNullString:order.remark]) {
+                
+                UILabel *remarkTitleLabel = (UILabel *)[cell viewWithTag:31];
+                UILabel *cancelReasonTitleLabel = (UILabel *)[cell viewWithTag:32];
+                
+  
+                if ([WDSystemUtils isEmptyOrNullString:order.unsubscribe]) {
+                    [cancelReasonTitleLabel mas_remakeConstraints:^(MASConstraintMaker *make){
+                        make.leading.equalTo(bgView.mas_leading).with.offset(10);
+                        make.width.equalTo(@80);
+                        make.top.equalTo(remarkTitleLabel.mas_bottom).with.offset(9);
+                        make.bottom.equalTo(bgView.mas_bottom).with.offset(-10);
+                    }];
+                }
+                else {
+                    [cancelReasonTitleLabel mas_remakeConstraints:^(MASConstraintMaker *make){
+                        make.leading.equalTo(bgView.mas_leading).with.offset(10);
+                        make.width.equalTo(@80);
+                        make.top.equalTo(remarkTitleLabel.mas_bottom).with.offset(9);
+                    }];
+                }
+                
+            }
+            else {
+                UILabel *remarkTitleLabel = (UILabel *)[cell viewWithTag:31];
+                UILabel *cancelReasonTitleLabel = (UILabel *)[cell viewWithTag:32];
+                
+                if ([WDSystemUtils isEmptyOrNullString:order.unsubscribe]) {
+                    [cancelReasonTitleLabel mas_remakeConstraints:^(MASConstraintMaker *make){
+                        make.leading.equalTo(bgView.mas_leading).with.offset(10);
+                        make.width.equalTo(@80);
+                        make.top.equalTo(descLabel.mas_bottom).with.offset(9);
+                        make.bottom.equalTo(bgView.mas_bottom).with.offset(-10);
+                    }];
+                }
+                else {
+                    [cancelReasonTitleLabel mas_remakeConstraints:^(MASConstraintMaker *make){
+                        make.leading.equalTo(bgView.mas_leading).with.offset(10);
+                        make.width.equalTo(@80);
+                        make.top.equalTo(descLabel.mas_bottom).with.offset(9);
+                    }];
+                }
+            }
+            
+            
         }
     }
     
-    
+    [bgView setNeedsUpdateConstraints];
+    [bgView updateConstraintsIfNeeded];
     return cell;
 
 }
