@@ -123,10 +123,10 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
     else {
          NSDictionary *userInfo = [launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"];
         [GlobalVar sharedSingleton].launchOptions = userInfo;
-        application.applicationIconBadgeNumber = 0;
+        
 
     }
-    
+    application.applicationIconBadgeNumber = 0;
     if (![[NSUserDefaults standardUserDefaults] boolForKey:MayiUserIsNotFirstEnter]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Guide" bundle:nil];
         UIViewController *viewController = [storyboard instantiateInitialViewController];
@@ -216,6 +216,7 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [GeTuiSdk enterBackground];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -223,6 +224,7 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+//    [self startSdkWith:_appID appKey:_appKey appSecret:_appSecret];
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
@@ -304,12 +306,14 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userinfo {
+    
     // [4-EXT]:处理APN
     NSString *payloadMsg = [userinfo objectForKey:@"payload"];
     if (payloadMsg) {
         NSString *record = [NSString stringWithFormat:@"[APN]%@, %@", [NSDate date], payloadMsg];
 //        [_viewController logMsg:record];
     }
+    DLog(@"这里调用了payloadMsg:%@",payloadMsg);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
@@ -322,8 +326,13 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
     if (payloadMsg && contentAvailable) {
         NSString *record = [NSString stringWithFormat:@"[APN]%@, %@, [content-available: %@]", [NSDate date], payloadMsg, contentAvailable];
 //        [_viewController logMsg:record];
+        DLog(@"applicationState:%ld",(long)[UIApplication sharedApplication].applicationState);
+        if ([UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
+            NSNotification *notifiction = [NSNotification notificationWithName:MayiBackgroundNotifiction object:nil userInfo:[NSDictionary dictionaryWithObject:contentAvailable forKey:@"content-available"]];
+            [[NSNotificationCenter defaultCenter] postNotification:notifiction];
+        }
     }
-    
+//    DLog(@"payloadMsg:%@，aps:%@,contentAvailable:%@",payloadMsg,aps,contentAvailable);
     completionHandler(UIBackgroundFetchResultNewData);
 }
 
@@ -405,22 +414,23 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
 //    [_payloadId release];
 //    _payloadId = [payloadId retain];
 ////    
-//    NSData* payload = [GeTuiSdk retrivePayloadById:payloadId];
-//    
-//    NSString *payloadMsg = nil;
-//    if (payload) {
-//        payloadMsg = [[NSString alloc] initWithBytes:payload.bytes
-//                                              length:payload.length
-//                                            encoding:NSUTF8StringEncoding];
-//    }
-//    
-////    NSString *record = [NSString stringWithFormat:@"%d, %@, %@", ++_lastPaylodIndex, [self formateTime:[NSDate date]], payloadMsg];
-////    [_viewController logMsg:record];
-////    [_viewController updateMsgCount:_lastPaylodIndex];
-//    
-//    DLog(@"task id : %@, messageId:%@,payloadMsg:%@", taskId, aMsgId,payloadMsg);
+    NSData* payload = [GeTuiSdk retrivePayloadById:payloadId];
     
-//    [payloadMsg release];
+    NSString *payloadMsg = nil;
+    if (payload) {
+        payloadMsg = [[NSString alloc] initWithBytes:payload.bytes
+                                              length:payload.length
+                                            encoding:NSUTF8StringEncoding];
+    }
+    
+
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateBackground) {
+        NSNotification *notifiction = [NSNotification notificationWithName:MayiBackgroundNotifiction object:nil userInfo:[NSDictionary dictionaryWithObject:payloadMsg forKey:@"content-available"]];
+        [[NSNotificationCenter defaultCenter] postNotification:notifiction];
+        DLog(@"UIApplicationStateBackground payloadMsg:%@",payloadMsg);
+    }
+    DLog(@"payloadMsg:%@",payloadMsg);
+//    [SVProgressHUD showSuccessWithStatus:[NSString stringWithFormat:@"payloadMsg:%@",payloadMsg]];
     
 }
 

@@ -32,6 +32,7 @@ NSString * const MayiOrderRunningNotifiction = @"OrderRunningNotifiction";
 NSString * const MayiOrderFinishedNotifiction = @"OrderFinishedNotifiction";
 NSString * const MayiOrderCanceledNotifiction = @"OrderCancelNofitiction";
 
+NSString * const MayiBackgroundNotifiction = @"MayiBackgroundNotifiction";
 
 /************************
  *接口定义

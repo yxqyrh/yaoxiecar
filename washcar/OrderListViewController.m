@@ -135,7 +135,7 @@
     
     [[MayiHttpRequestManager sharedInstance] POST:method parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         
-        DLog(@"responseObject:%@",responseObject);
+//        DLog(@"responseObject:%@",responseObject);
         
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
             if ([[responseObject objectForKey:@"list"] isKindOfClass:[NSArray class]]) {

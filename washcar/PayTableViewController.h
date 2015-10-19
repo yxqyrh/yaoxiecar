@@ -26,4 +26,6 @@
 
 @property (nonatomic)NSMutableDictionary *washParameters;
 
+
+
 @end
