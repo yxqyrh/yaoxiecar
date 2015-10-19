@@ -96,7 +96,6 @@
 		44F942A31BB5935B000CAF90 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F942A21BB5935B000CAF90 /* HomeViewController.m */; };
 		44F942A61BB59397000CAF90 /* OrderPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F942A51BB59397000CAF90 /* OrderPageViewController.m */; };
 		44F942A91BB593A8000CAF90 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F942A81BB593A8000CAF90 /* ProfileViewController.m */; };
-		44F942AB1BB59496000CAF90 /* Order.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44F942AA1BB59496000CAF90 /* Order.storyboard */; };
 		44F942AD1BB594A6000CAF90 /* Guide.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44F942AC1BB594A6000CAF90 /* Guide.storyboard */; };
 		44F942B31BB59BF8000CAF90 /* WDTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F942B21BB59BF8000CAF90 /* WDTabBarItem.m */; };
 		44F942D31BB61F1C000CAF90 /* SGFocusImageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F942D01BB61F1C000CAF90 /* SGFocusImageFrame.m */; };
@@ -441,7 +440,6 @@
 		44F942A51BB59397000CAF90 /* OrderPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderPageViewController.m; sourceTree = "<group>"; };
 		44F942A71BB593A8000CAF90 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		44F942A81BB593A8000CAF90 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		44F942AA1BB59496000CAF90 /* Order.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Order.storyboard; sourceTree = "<group>"; };
 		44F942AC1BB594A6000CAF90 /* Guide.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Guide.storyboard; sourceTree = "<group>"; };
 		44F942AE1BB59626000CAF90 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		44F942B11BB59BF8000CAF90 /* WDTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDTabBarItem.h; sourceTree = "<group>"; };
@@ -1050,7 +1048,6 @@
 				59111DFF1BC667F900C2CCA9 /* UserCenter.storyboard */,
 				44928FE21BB7D67D00F699E7 /* LocationChoose.storyboard */,
 				44736C521BB57D27004D665D /* Main.storyboard */,
-				44F942AA1BB59496000CAF90 /* Order.storyboard */,
 				44F942AC1BB594A6000CAF90 /* Guide.storyboard */,
 				596860C01BC0EC8600C73AD0 /* home.storyboard */,
 				596861071BC1593A00C73AD0 /* test.storyboard */,
@@ -1409,7 +1406,6 @@
 				59111E001BC667F900C2CCA9 /* UserCenter.storyboard in Resources */,
 				59C3600E1BCA0031007890BE /* ChePaiPickView.xib in Resources */,
 				448C44E51BB97E9B00652607 /* VoucherChoosePop.xib in Resources */,
-				44F942AB1BB59496000CAF90 /* Order.storyboard in Resources */,
 				44F9435F1BB78E97000CAF90 /* img_checked.png in Resources */,
 				44B7A31B1BC53EC3006FEAA0 /* img_guide_03@3x.png in Resources */,
 				44F943671BB791A0000CAF90 /* img_01_wash@3x.png in Resources */,
