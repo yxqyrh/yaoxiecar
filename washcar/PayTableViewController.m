@@ -181,6 +181,7 @@
 
 -(void)paySuccess
 {
+    
     [SVProgressHUD showSuccessWithStatus:@"支付成功"];
     [self.navigationController popToRootViewControllerAnimated:NO];
     
@@ -204,7 +205,7 @@
         else if ([WDSystemUtils isEqualsInt:2 andJsonData:[responseObject objectForKey:@"res"]]) {
 //[responseObject objectForKey:@"zfje"]
             if (_payType == 1) {
-                [self runAliPayWithTitle:[responseObject objectForKey:@"name"] andDesc:[responseObject objectForKey:@"description"] andOrderNumber:[responseObject objectForKey:@"num"] andPrice:@0.01 andNotifyURL:[responseObject objectForKey:@"notifyURL"] completionBlock:^(NSDictionary *resultDic) {
+                [self runAliPayWithTitle:[responseObject objectForKey:@"name"] andDesc:[responseObject objectForKey:@"description"] andOrderNumber:[responseObject objectForKey:@"num"] andPrice:[responseObject objectForKey:@"zfje"] andNotifyURL:[responseObject objectForKey:@"notifyURL"] completionBlock:^(NSDictionary *resultDic) {
                 }];
             }
             else if (_payType == 2) {
@@ -214,7 +215,12 @@
         }
         else if ([WDSystemUtils isEqualsInt:3 andJsonData:[responseObject objectForKey:@"res"]]) {
 //             [self.view makeToast:[responseObject objectForKey:@"res"]];
-            [self paySuccess];
+            [SVProgressHUD showSuccessWithStatus:@"首单免支付，下单成功"];
+            [self.navigationController popToRootViewControllerAnimated:NO];
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderNotifiction object:nil userInfo:[NSDictionary dictionaryWithObject:@1 forKey:MayiOrderNotifictionPageType]];
+            _isPaying = false;
+            return;
         }
         else if ([WDSystemUtils isEqualsInt:4 andJsonData:[responseObject objectForKey:@"res"]]) {
             [self.view makeToast:[responseObject objectForKey:@"ts"]];
