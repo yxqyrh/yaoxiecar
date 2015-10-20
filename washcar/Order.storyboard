@@ -260,6 +260,8 @@
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="9Mb-Tz-U71"/>
+                                                        <constraint firstAttribute="width" constant="76" id="UDt-Rc-8fq"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="w0t-H5-eep"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -276,7 +278,9 @@
                                                     <rect key="frame" x="6" y="258" width="74" height="21"/>
                                                     <animations/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="dYw-2T-zCK"/>
                                                         <constraint firstAttribute="width" constant="71" id="tUf-ar-o0B"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="74" id="xwW-E6-Q9z"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -533,6 +537,8 @@
                                                     <rect key="frame" x="6" y="258" width="76" height="21"/>
                                                     <animations/>
                                                     <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="6fP-un-MwK"/>
+                                                        <constraint firstAttribute="width" constant="76" id="kKx-Qa-6os"/>
                                                         <constraint firstAttribute="height" constant="21" id="ned-2r-Nix"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -644,7 +650,7 @@
                                                 <constraint firstItem="TLn-SM-AAx" firstAttribute="top" secondItem="YDJ-cE-Wtq" secondAttribute="bottom" constant="8" symbolic="YES" id="BRX-9U-5Kk"/>
                                                 <constraint firstItem="thW-IW-VP6" firstAttribute="leading" secondItem="rzc-Zy-vs2" secondAttribute="leading" id="Bj2-8z-WVD"/>
                                                 <constraint firstItem="uA0-1q-bcT" firstAttribute="baseline" secondItem="cU8-2t-EhP" secondAttribute="baseline" id="ENv-Ih-ssj"/>
-                                                <constraint firstItem="BNB-3X-K6i" firstAttribute="top" secondItem="ggl-UU-zYl" secondAttribute="bottom" constant="19" id="ESZ-EZ-3ED"/>
+                                                <constraint firstItem="BNB-3X-K6i" firstAttribute="top" secondItem="ggl-UU-zYl" secondAttribute="bottom" constant="10" id="ESZ-EZ-3ED"/>
                                                 <constraint firstItem="emH-Pn-iNO" firstAttribute="trailing" secondItem="ds9-ge-vPQ" secondAttribute="trailing" id="ET9-lO-raS"/>
                                                 <constraint firstItem="thW-IW-VP6" firstAttribute="trailing" secondItem="uA0-1q-bcT" secondAttribute="trailing" id="EnC-69-Qak"/>
                                                 <constraint firstItem="TLn-SM-AAx" firstAttribute="leading" secondItem="ds9-ge-vPQ" secondAttribute="trailing" constant="1" id="FwA-8d-PWY"/>

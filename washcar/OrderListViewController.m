@@ -29,6 +29,8 @@
     
     NSArray *_selectOrderPictures;
     NSMutableArray *_imageViews;
+    
+    bool _testFlag;
 }
 
 @property (strong, nonatomic) RZCellSizeManager* sizeManager;
@@ -40,7 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    _testFlag = false;
     _selectIndex = -1;
     _pageIndex = 1;
     self.view.backgroundColor = GeneralBackgroundColor;
@@ -92,6 +94,24 @@
     
 }
 
+-(void)initTestData
+{
+    _orders = [NSMutableArray array];
+    for (int i = 0; i < 5; i++) {
+        OrderInfo *order = [[OrderInfo alloc] init];
+        order.num = @"msad123321321312";
+//        order.remark = @"remarkasdsadwqewqewqewqewqewqeqwewqeqwewqewqewqewqewqasdasdasdasdasdasdasdasdasdsadasd";
+        order.bz = @"备注bsadddwqewqeqweqweqweqweqweqweqweqweqweqwewqewqeqwe";
+        order.unsubscribe = @"取消原因阿斯顿全文我去恶趣味全文了气温可领取为了钱为了钱为了；情未了；情未了；蔷薇科录取为了去问了sadwqewqewqewqewq";
+        order.methods = @"车内清洗";
+        order.xc_picture = @"1|2|3|4";
+        order.methodsval = @"18.90";
+        [_orders addObject:order];
+    }
+    [self.tableView reloadData];
+    
+}
+
 -(void)refreshData:(NSNotification *)notification
 {
     NSDictionary *dic = notification.userInfo;
@@ -122,6 +142,7 @@
     _pageIndex = 1;
 
     [self loadOrderList:method andPageIndex:_pageIndex];
+//    [self initTestData];
 }
 
 - (void)footerRereshing {
@@ -168,7 +189,6 @@
                 }
                 
                 for (OrderInfo *order in array) {
-                    order.bz = @"as撒打算打算的我去恶趣味全文王企鹅啊实打实大师撒旦撒大声地撒旦其味无穷全文啊实打实大师大师大神去问去问去问全文";
                     if (![_orders containsObject:order]) {
                         [_orders addObject:order];
                     }
@@ -302,10 +322,10 @@
             
                         }
                         else if (array.count <= 3){
-                            imageCollectionViewHeight = 90;
+                            imageCollectionViewHeight = 90 + 10;
                         }
                         else {
-                            imageCollectionViewHeight = 190;
+                            imageCollectionViewHeight = 190 + 10;
                         }
         }
         
@@ -322,7 +342,7 @@
         CGSize size =  [bgView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
        
         
-        CGFloat height = size.height + 1 + descLabelSize.height;
+        CGFloat height = size.height + 1 + (descLabelSize.height < 20 ? 35 : descLabelSize.height);
         if (_pageType == 3) {
             height += cancelReasonLabelSize.height < 20 ? 25 : cancelReasonLabelSize.height;
         }
@@ -330,6 +350,7 @@
             height += imageCollectionViewHeight;
         }
          DLog(@"height:%f", height);
+        height += 10;
         return height;
     }
     else {
@@ -486,6 +507,12 @@
             descLabel.text = order.bz;
             [descLabel sizeToFit];
             
+            if (_testFlag) {
+                collectionView.delegate = self;
+                collectionView.dataSource = self;
+                [collectionView reloadData];
+            }
+            
         }
         else if (_pageType == 3) {            
             if (![WDSystemUtils isEmptyOrNullString:order.unsubscribe]) {
@@ -620,6 +647,9 @@
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageCollectionCell" forIndexPath:indexPath];
     UIImageView *imageView = (UIImageView *)[cell viewWithTag:2];
     [imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, imagePath]]];
+    if (_testFlag) {
+        [imageView setImage:[UIImage imageNamed:@"img_guide_01.png"]];
+    }
     return cell;
 }
 
