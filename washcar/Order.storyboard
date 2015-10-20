@@ -982,6 +982,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="img_01_guide" width="114" height="114"/>
+        <image name="img_01_guide" width="48" height="36"/>
     </resources>
 </document>
