@@ -205,6 +205,7 @@
         else if ([WDSystemUtils isEqualsInt:2 andJsonData:[responseObject objectForKey:@"res"]]) {
 //[responseObject objectForKey:@"zfje"]
             if (_payType == 1) {
+                _isPaying = false;
                 [self runAliPayWithTitle:[responseObject objectForKey:@"name"] andDesc:[responseObject objectForKey:@"description"] andOrderNumber:[responseObject objectForKey:@"num"] andPrice:[responseObject objectForKey:@"zfje"] andNotifyURL:[responseObject objectForKey:@"notifyURL"] completionBlock:^(NSDictionary *resultDic) {
                 }];
             }

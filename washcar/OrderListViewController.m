@@ -477,7 +477,9 @@
                 cancelButton.userInteractionEnabled = YES;
             }
             else if ([@"1" isEqualToString:order.judge_zt]) {
-                
+                [cancelButton setTitle:@"取消订单" forState:UIControlStateNormal];
+                cancelButton.backgroundColor = RGBCOLOR(73, 180, 252);
+                cancelButton.userInteractionEnabled = YES;
             }
             else if ([@"2" isEqualToString:order.judge_zt]) {
                 [cancelButton setTitle:@"正在洗车中..." forState:UIControlStateNormal];
