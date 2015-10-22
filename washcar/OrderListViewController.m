@@ -15,7 +15,6 @@
  #import <UIImageView+WebCache.h>
 #import "MDPhotoAlbumViewController.h"
 #import <Masonry.h>
-#import <RZCellSizeManager.h>
 
 @interface OrderListViewController () {
     int _selectIndex;
@@ -33,7 +32,6 @@
     bool _testFlag;
 }
 
-@property (strong, nonatomic) RZCellSizeManager* sizeManager;
 
 @end
 
@@ -75,19 +73,6 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 
     
-    self.sizeManager = [[RZCellSizeManager alloc] init];
-    [self.sizeManager registerCellClassName:@"UITableViewCell"
-                               withNibNamed:nil
-                             forObjectClass:nil
-                     withConfigurationBlock:^(UITableViewCell* cell, id object) {
-                         OrderInfo *order = (OrderInfo *)object;
-                         
-                         UILabel *descLabel = (UILabel *)[cell viewWithTag:9];
-                         descLabel.text = order.remark;
- 
-                         
-
-                     }];
     
     // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
 //    [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];

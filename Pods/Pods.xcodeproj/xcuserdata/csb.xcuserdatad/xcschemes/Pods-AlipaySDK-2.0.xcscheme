@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "938A2FA89C48BE237493CE76"
+               BlueprintIdentifier = "FFA7AB1942B179A5236063CB"
                BuildableName = "libPods-AlipaySDK-2.0.a"
                BlueprintName = "Pods-AlipaySDK-2.0"
                ReferencedContainer = "container:Pods.xcodeproj">
