@@ -11,6 +11,8 @@
 #import "SGFocusImageFrame.h"
 #import "SGFocusImageItem.h"
 
+typedef void(^signCompleteBlock)();
+
 @interface HomeViewController2: BaseViewController<UIScrollViewDelegate>
 
 @end

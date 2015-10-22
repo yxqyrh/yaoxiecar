@@ -96,6 +96,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showOrder) name:MayiOrderNotifiction object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showIndexPage) name:MayiIndexPageNotifiction object:nil];
+    
     _selectedIndex = -1;
     
     if ([GlobalVar sharedSingleton].launchOptions) {
@@ -108,6 +110,46 @@
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dealBackgroudNotifiction:) name:MayiBackgroundNotifiction object:nil];
+    
+}
+
+-(void)jumpPageWithJudge:(bool)isJudgeSignState andSignedBlock:(CompleteBlock)signedBlock andUnSignedBlock:(CompleteBlock)unSignedBlock
+{
+    if (signedBlock == nil) {
+        DLog(@"completeBlock is nil");
+        return;
+    }
+    
+    if (!isJudgeSignState) {
+        if ([GlobalVar sharedSingleton].signState == MayiSignStateSigned) {
+            signedBlock();
+        }
+        else if ([GlobalVar sharedSingleton].signState == MayiSignStateUnSigned) {
+            unSignedBlock();
+        }
+    }
+    else {
+        if ([GlobalVar sharedSingleton].signState == MayiSignStateSigned) {
+            signedBlock();
+        }
+        else if ([GlobalVar sharedSingleton].signState == MayiSignStateUnSigned) {
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Sign" bundle:nil];
+            UIViewController *viewController = [storyBoard instantiateInitialViewController];
+            [self presentViewController:viewController animated:YES completion:nil];
+            [GlobalVar sharedSingleton].signState = MayiSignStateSigning;
+            
+            while ([GlobalVar sharedSingleton].signState == MayiSignStateSigning) {
+                [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+            }
+            
+            if ([GlobalVar sharedSingleton].signState == MayiSignStateSigned) {
+                signedBlock();
+            }
+            else if ([GlobalVar sharedSingleton].signState == MayiSignStateUnSigned) {
+                unSignedBlock();
+            }
+        }
+    }
     
 }
 
@@ -167,6 +209,8 @@
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
+
+
 //- (void)tabBarItemBeSelected:(int)index
 //{
 //     [self selectItem:index completion:nil];
@@ -177,7 +221,6 @@
 //    if ([item isEqual:_tabBar.selectedItem]) {
 //        return;
 //    }
-    
     int index = 0;
     if ([item.title isEqualToString:@"蚂蚁洗车"]) {
         index = 0;
@@ -188,7 +231,27 @@
     else {
         index = 2;
     }
-    [self selectItem:index completion:nil];
+    
+    bool isJudge = YES;
+    if (index == 0) {
+        isJudge = NO;//当前处于第一个tabitem时点第一个不跳转
+    }
+
+    [self jumpPageWithJudge:isJudge andSignedBlock:^{
+        DLog(@"signed");
+        [self selectItem:index completion:nil];
+    } andUnSignedBlock:^{
+        DLog(@"unSigned");
+        if (index != 0) {
+            _selectedIndex = 0;
+            _tabBar.selectedItem = [_tabBar.items objectAtIndex:0];
+        }
+        else {
+            [self selectItem:index completion:nil];
+        }
+    }];
+    
+//    [self selectItem:index completion:nil];
 }
 
 -(void)showOrder
@@ -196,6 +259,12 @@
     _tabBar.selectedItem = [_tabBar.items objectAtIndex:1];
     
     [self tabBar:_tabBar didSelectItem:[_tabBar.items objectAtIndex:1]];
+}
+
+-(void)showIndexPage
+{
+    _tabBar.selectedItem = [_tabBar.items objectAtIndex:0];
+    [self tabBar:_tabBar didSelectItem:[_tabBar.items objectAtIndex:0]];
 }
 
 - (void)didReceiveMemoryWarning {

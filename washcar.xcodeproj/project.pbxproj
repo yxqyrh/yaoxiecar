@@ -107,6 +107,7 @@
 		44EE77861BD61FFE00932221 /* img_03_me@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EE77781BD61FFE00932221 /* img_03_me@2x.png */; settings = {ASSET_TAGS = (); }; };
 		44EE77881BD6226000932221 /* navigation_bar_color@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EE77871BD6226000932221 /* navigation_bar_color@2x.png */; settings = {ASSET_TAGS = (); }; };
 		44EE778C1BD6260000932221 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EE778B1BD6260000932221 /* Default@2x.png */; settings = {ASSET_TAGS = (); }; };
+		44EE77901BD778A400932221 /* PSTAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EE778F1BD778A400932221 /* PSTAlertController.m */; settings = {ASSET_TAGS = (); }; };
 		44F9429D1BB58B02000CAF90 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F9429C1BB58B02000CAF90 /* BaseViewController.m */; };
 		44F942A01BB58F64000CAF90 /* WDTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F9429F1BB58F64000CAF90 /* WDTabBar.m */; };
 		44F942A31BB5935B000CAF90 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F942A21BB5935B000CAF90 /* HomeViewController.m */; };
@@ -451,6 +452,8 @@
 		44EE77781BD61FFE00932221 /* img_03_me@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_03_me@2x.png"; sourceTree = "<group>"; };
 		44EE77871BD6226000932221 /* navigation_bar_color@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_bar_color@2x.png"; sourceTree = "<group>"; };
 		44EE778B1BD6260000932221 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		44EE778E1BD778A400932221 /* PSTAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTAlertController.h; sourceTree = "<group>"; };
+		44EE778F1BD778A400932221 /* PSTAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTAlertController.m; sourceTree = "<group>"; };
 		44F9429B1BB58B02000CAF90 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		44F9429C1BB58B02000CAF90 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		44F9429E1BB58F64000CAF90 /* WDTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDTabBar.h; sourceTree = "<group>"; };
@@ -722,6 +725,7 @@
 		448361B11BCD32A3005396D5 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				44EE778D1BD778A400932221 /* PSTAlertController */,
 				448361B21BCD32B8005396D5 /* include */,
 			);
 			name = Third;
@@ -986,6 +990,15 @@
 				596BBD631BBBC62B006DE98F /* HomeViewController2ViewController.m */,
 			);
 			name = swipe;
+			sourceTree = "<group>";
+		};
+		44EE778D1BD778A400932221 /* PSTAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				44EE778E1BD778A400932221 /* PSTAlertController.h */,
+				44EE778F1BD778A400932221 /* PSTAlertController.m */,
+			);
+			path = PSTAlertController;
 			sourceTree = "<group>";
 		};
 		44F942931BB58A4A000CAF90 /* Controllers */ = {
@@ -1514,6 +1527,7 @@
 				5925A1201BB8A9D300635EDB /* ProgressHUD.m in Sources */,
 				44F943291BB6FE1D000CAF90 /* MMDrawerController.m in Sources */,
 				5925A1151BB8494C00635EDB /* SCNavTabBarController.m in Sources */,
+				44EE77901BD778A400932221 /* PSTAlertController.m in Sources */,
 				44928FF81BB7D6D700F699E7 /* ComplaintViewController.m in Sources */,
 				44F943191BB6E915000CAF90 /* Constant.m in Sources */,
 				59E16EFC1BB80F03009E4385 /* CollapseClickArrow.m in Sources */,

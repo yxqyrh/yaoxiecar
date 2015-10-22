@@ -299,13 +299,21 @@
                 [GlobalVar sharedSingleton].uid = nil;
                 
                 [GlobalVar sharedSingleton].isloginid = nil;
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sign" bundle:nil];
-            UIViewController *loginViewController = [storyboard instantiateInitialViewController];
-            loginViewController.modalTransitionStyle = UIModalPresentationFormSheet;//跳转效果
-            [self presentModalViewController:loginViewController animated:YES];//在这里一跳就行了。
+            [GlobalVar sharedSingleton].signState = MayiSignStateUnSigned;
             
-            //[self dismissModalViewControllerAnimated:YES];
-            [self removeFromParentViewController];
+            [[NSNotificationCenter defaultCenter] postNotificationName:MayiIndexPageNotifiction object:nil];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            
+            
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sign" bundle:nil];
+//            UIViewController *loginViewController = [storyboard instantiateInitialViewController];
+//            loginViewController.modalTransitionStyle = UIModalPresentationFormSheet;//跳转效果
+//            [self presentModalViewController:loginViewController animated:YES];//在这里一跳就行了。
+//            
+//            //[self dismissModalViewControllerAnimated:YES];
+//            [self removeFromParentViewController];
         }else{
             [SVProgressHUD showErrorWithStatus:@"退出失败！"];
         }

@@ -9,6 +9,8 @@
 #import "BaseViewController.h"
 #import "SCNavTabBarController.h"
 
+typedef void(^CompleteBlock)();
+
 @interface RootViewController : BaseViewController
 
 

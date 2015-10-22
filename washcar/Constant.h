@@ -42,6 +42,8 @@ FOUNDATION_EXPORT NSString * const MayiOrderCanceledNotifiction;
 
 FOUNDATION_EXPORT NSString * const MayiBackgroundNotifiction;
 
+FOUNDATION_EXPORT NSString * const MayiIndexPageNotifiction;
+
 /************************
  *接口定义
  *

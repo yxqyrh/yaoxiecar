@@ -85,47 +85,15 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
 //    }
     
     if (launchOptions == nil) {
-//        NSDictionary *userInfo = [launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"];
-        
-        
-//        NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-//        
-//        
-//        NSDictionary *dic = [NSDictionary dictionaryWithObject:@"{res=2;}" forKey:@"content-available"];
-//        [userInfo setObject:dic forKey:@"aps"];
-//        [GlobalVar sharedSingleton].launchOptions = userInfo;
-//        application.applicationIconBadgeNumber = 0;
-//
-//        
-//        
-//        NSString *userInfoStr = [NSString stringWithFormat:@"userInfoStr:%@。",userInfo];
-//        
-//        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//        NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
-//        
-//        
-//        
-//        NSString *filePath = [documentsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"push_%@.txt",[NSDate date]]];
-//        
-////         [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
-//        
-//        [[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil];
-//        
-//        NSMutableData *writer = [[NSMutableData alloc] init];
-//
-//        
-//        [writer appendData:[userInfoStr dataUsingEncoding:NSUTF8StringEncoding]];
-// 
-//        
-//        [writer writeToFile:filePath atomically:YES];
+
     
     }
     else {
          NSDictionary *userInfo = [launchOptions objectForKey:@"UIApplicationLaunchOptionsRemoteNotificationKey"];
         [GlobalVar sharedSingleton].launchOptions = userInfo;
         
-
     }
+    
     application.applicationIconBadgeNumber = 0;
     if (![[NSUserDefaults standardUserDefaults] boolForKey:MayiUserIsNotFirstEnter]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Guide" bundle:nil];
@@ -137,8 +105,10 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
     }
     else {
         if ([[NSUserDefaults standardUserDefaults] boolForKey:MayiUserIsSignIn]) {
+            [GlobalVar sharedSingleton].signState = MayiSignStateSigned;
             [GlobalVar sharedSingleton].uid = [[NSUserDefaults standardUserDefaults] stringForKey:MayiUidKey];
             [GlobalVar sharedSingleton].isloginid = [[NSUserDefaults standardUserDefaults] stringForKey:MayiIsLoginId];
+            
 //            [self initHomeScreen];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             UIViewController *viewController = [storyboard instantiateInitialViewController];
@@ -150,7 +120,10 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
             [self registerRemoteNotification];
         }
         else {
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sign" bundle:nil];
+            [GlobalVar sharedSingleton].signState = MayiSignStateUnSigned;
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sign" bundle:nil];
+//            UIViewController *viewController = [storyboard instantiateInitialViewController];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             UIViewController *viewController = [storyboard instantiateInitialViewController];
             
             self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
