@@ -10,6 +10,7 @@
 #import "WashEditViewController.h"
 #import "ReChargeViewController.h"
 #import "MayiHttpRequestManager.h"
+#import "PSTAlertController.h"
 #import <Masonry.h>
 
 
@@ -122,15 +123,22 @@
     //这个sender其实就是UIButton，因此通过sender.tag就可以拿到刚才的参数
     int tag = [sender tag];
     if (tag == 0) {
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        WashEditViewController *washController = [storyBoard instantiateViewControllerWithIdentifier:@"WashEditViewController"];
-        [self.navigationController pushViewController:washController animated:YES];
+        [self jumpPageWithJudge:YES andSignedBlock:^{
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            WashEditViewController *washController = [storyBoard instantiateViewControllerWithIdentifier:@"WashEditViewController"];
+            [self.navigationController pushViewController:washController animated:YES];
+        }];
+        
+        
     }
     else if (tag == 1) {
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ReChargeViewController *rechargeViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ReChargeViewController"];
-        rechargeViewController.checkInMoney = 50;
-        [self.navigationController pushViewController:rechargeViewController animated:YES];
+        [self jumpPageWithJudge:YES andSignedBlock:^{
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            ReChargeViewController *rechargeViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ReChargeViewController"];
+            rechargeViewController.checkInMoney = 50;
+            [self.navigationController pushViewController:rechargeViewController animated:YES];
+        }];
+        
     }
 }
 
@@ -201,17 +209,25 @@
 #pragma mark -
 - (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame didSelectItem:(SGFocusImageItem *)item
 {
-    NSLog(@"%@ tapped", item.title);
-    if (item.tag == 0) {
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        WashEditViewController *washController = [storyBoard instantiateViewControllerWithIdentifier:@"WashEditViewController"];
-        [self.navigationController pushViewController:washController animated:YES];
-    }
-    else if (item.tag == 1) {
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ReChargeViewController *rechargeViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ReChargeViewController"];
-        [self.navigationController pushViewController:rechargeViewController animated:YES];
-    }
+//    NSLog(@"%@ tapped", item.title);
+//    if (item.tag == 0) {
+//        
+//        [self jumpPageWithJudge:YES andSignedBlock:^{
+//            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            WashEditViewController *washController = [storyBoard instantiateViewControllerWithIdentifier:@"WashEditViewController"];
+//            [self.navigationController pushViewController:washController animated:YES];
+//        }];
+//        
+//    }
+//    else if (item.tag == 1) {
+//        [self jumpPageWithJudge:YES andSignedBlock:^{
+//            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            ReChargeViewController *rechargeViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ReChargeViewController"];
+//            [self.navigationController pushViewController:rechargeViewController animated:YES];
+//        }];
+//        
+//        
+//    }
 }
 
 /*
@@ -224,6 +240,39 @@
  }
  */
 
+-(void)jumpPageWithJudge:(bool)isJudgeSignState andSignedBlock:(signCompleteBlock)completeBlock
+{
+    if (completeBlock == nil) {
+        DLog(@"completeBlock is nil");
+        return;
+    }
+    
+    if (!isJudgeSignState) {
+        completeBlock();
+    }
+    else {
+        if ([GlobalVar sharedSingleton].signState == MayiSignStateSigned) {
+             completeBlock();
+        }
+        else if ([GlobalVar sharedSingleton].signState == MayiSignStateUnSigned) {
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Sign" bundle:nil];
+            UIViewController *viewController = [storyBoard instantiateInitialViewController];
+            [self presentViewController:viewController animated:YES completion:nil];
+            [GlobalVar sharedSingleton].signState = MayiSignStateSigning;
+            
+            while ([GlobalVar sharedSingleton].signState == MayiSignStateSigning) {
+                [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+            }
+            
+            if ([GlobalVar sharedSingleton].signState == MayiSignStateSigned) {
+                completeBlock();
+
+            }
+        }
+    }
+        
+}
+
 #pragma mark - 点击事件
 - (IBAction)searchControlClick:(id)sender {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -232,10 +281,27 @@
     [self.navigationController pushViewController:webController animated:YES];
 }
 
+
+
 - (IBAction)washControlClick:(id)sender {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    WashEditViewController *washController = [storyBoard instantiateViewControllerWithIdentifier:@"WashEditViewController"];
-    [self.navigationController pushViewController:washController animated:YES];
+//    PSTAlertController *alertController = [PSTAlertController alertControllerWithTitle:@"下单洗车需要您登录小蚂蚁" message:nil preferredStyle:PSTAlertControllerStyleActionSheet];
+//    
+//    [alertController addAction:[PSTAlertAction actionWithTitle:@"立即登录" handler:^(PSTAlertAction *action) {
+//        
+//    }]];
+//    [alertController addAction:[PSTAlertAction actionWithTitle:@"马上注册" handler:^(PSTAlertAction *action) {
+//        
+//    }]];
+//    [alertController addAction:[PSTAlertAction actionWithTitle:@"取消" style:PSTAlertActionStyleCancel handler:nil]];
+//    [alertController showWithSender:self.view controller:self animated:YES completion:nil];
+//    return;
+    
+    [self jumpPageWithJudge:YES andSignedBlock:^{
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        WashEditViewController *washController = [storyBoard instantiateViewControllerWithIdentifier:@"WashEditViewController"];
+        [self.navigationController pushViewController:washController animated:YES];
+    }];
+    
 }
 
 - (IBAction)weatherControlClick:(id)sender {

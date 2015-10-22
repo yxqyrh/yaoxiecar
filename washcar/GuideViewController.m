@@ -203,9 +203,24 @@
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:MayiUserIsNotFirstEnter];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sign" bundle:nil];
-    UIViewController *viewController = [storyboard instantiateInitialViewController];
+    [GlobalVar sharedSingleton].signState = MayiSignStateUnSigned;
+    [GlobalVar sharedSingleton].uid = [[NSUserDefaults standardUserDefaults] stringForKey:MayiUidKey];
+    [GlobalVar sharedSingleton].isloginid = [[NSUserDefaults standardUserDefaults] stringForKey:MayiIsLoginId];
     
+    //            [self initHomeScreen];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sign" bundle:nil];
+//    UIViewController *viewController = [storyboard instantiateInitialViewController];
+    
+//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+//    self.window.rootViewController = viewController;
+//    
+//    [self.window makeKeyAndVisible];
+//    [self registerRemoteNotification];
+//    
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sign" bundle:nil];
+//    UIViewController *viewController = [storyboard instantiateInitialViewController];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *viewController = [storyboard instantiateInitialViewController];
     [self presentViewController:viewController animated:YES completion:nil];
 }
 

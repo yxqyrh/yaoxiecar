@@ -34,6 +34,8 @@ NSString * const MayiOrderCanceledNotifiction = @"OrderCancelNofitiction";
 
 NSString * const MayiBackgroundNotifiction = @"MayiBackgroundNotifiction";
 
+NSString * const MayiIndexPageNotifiction = @"MayiIndexPageNotifiction";
+
 /************************
  *接口定义
  *

@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "UserInfo.h"
 
+typedef NS_ENUM (NSInteger, MayiSignState) {
+    MayiSignStateUnSigned = 0,
+    MayiSignStateSigned = 1,
+    MayiSignStateSigning = 2
+};
 
 @interface GlobalVar : NSObject
 
@@ -26,6 +31,8 @@
 @property (nonatomic)UserInfo *userInfo;
 
 @property (nonatomic)NSDictionary *launchOptions;
+
+@property (nonatomic)MayiSignState signState;
 
 // uid=18550031362  Isloginid=14435112502766
 

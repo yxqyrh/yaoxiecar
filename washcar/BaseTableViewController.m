@@ -26,15 +26,33 @@
     self.view.backgroundColor = [UIColor colorWithRed:0.969 green:0.969 blue:0.969 alpha:1];
     
     // hide back button on navigation bar
+//    self.navigationItem.hidesBackButton = YES;
+//    if (!_leftButton) {
+//        UIButton *navigationBarLeftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        navigationBarLeftButton.frame = CGRectMake(0, 0, 48, 33);
+//        [navigationBarLeftButton setBackgroundImage:[UIImage imageNamed:@"navigation_bar_back_button.png"]
+//                               forState:UIControlStateNormal];
+//        [navigationBarLeftButton addTarget:self
+//                        action:@selector(backButtonTouchUpInside:)
+//              forControlEvents:UIControlEventTouchUpInside];
+//        UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:navigationBarLeftButton];
+//        self.navigationItem.leftBarButtonItem = leftItem;
+//    }
+    
+    UIColor * color = [UIColor whiteColor];
+    NSDictionary * dict=[NSDictionary dictionaryWithObject:color forKey:UITextAttributeTextColor];
+    self.navigationController.navigationBar.titleTextAttributes = dict;
+    
+    // hide back button on navigation bar
     self.navigationItem.hidesBackButton = YES;
-    if (!_leftButton) {
+    if (!_NoBackButton) {
         UIButton *navigationBarLeftButton = [UIButton buttonWithType:UIButtonTypeCustom];
         navigationBarLeftButton.frame = CGRectMake(0, 0, 48, 33);
         [navigationBarLeftButton setBackgroundImage:[UIImage imageNamed:@"navigation_bar_back_button.png"]
-                               forState:UIControlStateNormal];
+                                           forState:UIControlStateNormal];
         [navigationBarLeftButton addTarget:self
-                        action:@selector(backButtonTouchUpInside:)
-              forControlEvents:UIControlEventTouchUpInside];
+                                    action:@selector(backButtonTouchUpInside:)
+                          forControlEvents:UIControlEventTouchUpInside];
         UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:navigationBarLeftButton];
         self.navigationItem.leftBarButtonItem = leftItem;
     }

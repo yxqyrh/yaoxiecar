@@ -46,7 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.title = @"注册";
     _carColor = @"红色";
     _userInfo = [[UserInfo alloc ]init];
     _isAgree = YES;
@@ -91,6 +91,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (IBAction)cancelButtonClicked:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 #pragma mark - UITableViewDelegate
 
@@ -168,7 +174,7 @@
 
 -(void)registerSubmit
 {
-    
+
     if ([WDSystemUtils isEmptyOrNullString:provinceStr.titleLabel.text]||[@"省简称" isEqualToString:provinceStr.titleLabel.text]) {
 //        [self.view makeToast:@"车牌号的省份简称不能为空"];
         [SVProgressHUD showErrorWithStatus:@"车牌号的省份简称不能为空"];
@@ -254,14 +260,18 @@
 
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:MayiUserIsSignIn];
             
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
+//            
+//            [self.navigationController pushViewController:viewController animated:YES];
+//            UINavigationController *nav = self.navigationController;
+//            [self removeFromParentViewController];
+//            UIViewController *viewController1 = [nav.viewControllers objectAtIndex:0];
+           
+//            [viewController1 removeFromParentViewController];
             
-            [self.navigationController pushViewController:viewController animated:YES];
-            UINavigationController *nav = self.navigationController;
-            [self removeFromParentViewController];
-            UIViewController *viewController1 = [nav.viewControllers objectAtIndex:0];
-            [viewController1 removeFromParentViewController];
+             [GlobalVar sharedSingleton].signState = MayiSignStateSigned;
+            [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
             
             [self registerRemoteNotification];
 //            [self initHomeScreen];

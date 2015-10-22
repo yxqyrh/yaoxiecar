@@ -11,4 +11,6 @@
 
 @interface BaseTableViewController : UITableViewController
 
+@property (assign)Boolean NoBackButton;
+
 @end

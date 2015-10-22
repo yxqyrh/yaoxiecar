@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.navigationItem.title = @"登陆";
+     self.navigationItem.title = @"登录";
     // Do any additional setup after loading the view.
     _verifyCodeId = 0;
     _phoneView.layer.borderWidth = 0.5;
@@ -99,17 +99,20 @@
             [GlobalVar sharedSingleton].isloginid = [responseObject objectForKey:@"isloginid"];
             [[NSUserDefaults standardUserDefaults] setValue:[GlobalVar sharedSingleton].isloginid forKey:MayiIsLoginId];
             [[NSUserDefaults standardUserDefaults] setValue:[GlobalVar sharedSingleton].uid forKey:MayiUidKey];
+            
 
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:MayiUserIsSignIn];
+            [GlobalVar sharedSingleton].signState = MayiSignStateSigned;
 
             [SVProgressHUD showSuccessWithStatus:@"登录成功"];
             
 //            [self initHomeScreen];
             
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
-            [self.navigationController pushViewController:viewController animated:YES];
-            [self removeFromParentViewController];
+//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"RootViewController"];
+//            [self.navigationController pushViewController:viewController animated:YES];
+//            [self removeFromParentViewController];
+            [self dismissViewControllerAnimated:YES completion:nil];
             
             [self registerRemoteNotification];
         }
@@ -234,4 +237,16 @@
 #endif
     
 }
+- (IBAction)registerClick:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sign" bundle:nil];
+    UINavigationController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"RegisterNavViewController"];
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
+- (IBAction)cancelButtonClick:(id)sender {
+    [GlobalVar sharedSingleton].signState = MayiSignStateUnSigned;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 @end
