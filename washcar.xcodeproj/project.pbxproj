@@ -85,6 +85,8 @@
 		44C13BC41BC366FE00597D7D /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C13BC01BC366FD00597D7D /* readme.txt */; settings = {ASSET_TAGS = (); }; };
 		44D649DA1BCE1C580009C8BF /* MDPhotoAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D649D71BCE1C580009C8BF /* MDPhotoAlbumViewController.m */; settings = {ASSET_TAGS = (); }; };
 		44D649DB1BCE1C580009C8BF /* NetworkPhotoAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44D649D91BCE1C580009C8BF /* NetworkPhotoAlbumViewController.m */; settings = {ASSET_TAGS = (); }; };
+		44DCED661BD8FE8F0079C15D /* img_02_order_pre@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44DCED651BD8FE8F0079C15D /* img_02_order_pre@2x.png */; settings = {ASSET_TAGS = (); }; };
+		44DCED681BD8FEA80079C15D /* img_03_me_pre@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44DCED671BD8FEA80079C15D /* img_03_me_pre@2x.png */; settings = {ASSET_TAGS = (); }; };
 		44EE77601BD61E4800932221 /* img_guide_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EE775D1BD61E4800932221 /* img_guide_01@2x.png */; settings = {ASSET_TAGS = (); }; };
 		44EE77621BD61E4800932221 /* img_guide_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EE775F1BD61E4800932221 /* img_guide_03@2x.png */; settings = {ASSET_TAGS = (); }; };
 		44EE77641BD61E6300932221 /* img_guide_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EE77631BD61E6300932221 /* img_guide_02@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -92,7 +94,6 @@
 		44EE77681BD61F4200932221 /* img_01_wash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EE77671BD61F4200932221 /* img_01_wash@2x.png */; settings = {ASSET_TAGS = (); }; };
 		44EE776A1BD61F8900932221 /* img_02_order@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EE77691BD61F8900932221 /* img_02_order@2x.png */; settings = {ASSET_TAGS = (); }; };
 		44EE77791BD61FFE00932221 /* img_01_car_pre@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EE776B1BD61FFE00932221 /* img_01_car_pre@2x.png */; settings = {ASSET_TAGS = (); }; };
-		44EE777A1BD61FFE00932221 /* img_02_order_pre@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EE776C1BD61FFE00932221 /* img_02_order_pre@2x.png */; settings = {ASSET_TAGS = (); }; };
 		44EE777D1BD61FFE00932221 /* img_01_car_number@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EE776F1BD61FFE00932221 /* img_01_car_number@2x.png */; settings = {ASSET_TAGS = (); }; };
 		44EE777E1BD61FFE00932221 /* img_01_guide@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EE77701BD61FFE00932221 /* img_01_guide@2x.png */; settings = {ASSET_TAGS = (); }; };
 		44EE777F1BD61FFE00932221 /* img_01_insurance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EE77711BD61FFE00932221 /* img_01_insurance@2x.png */; settings = {ASSET_TAGS = (); }; };
@@ -427,6 +428,8 @@
 		44D649D81BCE1C580009C8BF /* NetworkPhotoAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkPhotoAlbumViewController.h; sourceTree = "<group>"; };
 		44D649D91BCE1C580009C8BF /* NetworkPhotoAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkPhotoAlbumViewController.m; sourceTree = "<group>"; };
 		44D80A791BC378B4005091F5 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = "../../../tempfiles/1005/支付宝钱包支付接口开发包2.0标准版(iOS 3.0.1)/AlipaySDK.framework"; sourceTree = "<group>"; };
+		44DCED651BD8FE8F0079C15D /* img_02_order_pre@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_02_order_pre@2x.png"; sourceTree = "<group>"; };
+		44DCED671BD8FEA80079C15D /* img_03_me_pre@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_03_me_pre@2x.png"; sourceTree = "<group>"; };
 		44EE775D1BD61E4800932221 /* img_guide_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_guide_01@2x.png"; sourceTree = "<group>"; };
 		44EE775F1BD61E4800932221 /* img_guide_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_guide_03@2x.png"; sourceTree = "<group>"; };
 		44EE77631BD61E6300932221 /* img_guide_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_guide_02@2x.png"; sourceTree = "<group>"; };
@@ -434,8 +437,6 @@
 		44EE77671BD61F4200932221 /* img_01_wash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_01_wash@2x.png"; sourceTree = "<group>"; };
 		44EE77691BD61F8900932221 /* img_02_order@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_02_order@2x.png"; sourceTree = "<group>"; };
 		44EE776B1BD61FFE00932221 /* img_01_car_pre@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_01_car_pre@2x.png"; sourceTree = "<group>"; };
-		44EE776C1BD61FFE00932221 /* img_02_order_pre@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_02_order_pre@2x.png"; sourceTree = "<group>"; };
-		44EE776D1BD61FFE00932221 /* img_03_me_pre@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_03_me_pre@2x.png"; sourceTree = "<group>"; };
 		44EE776E1BD61FFE00932221 /* img_01_car_color@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_01_car_color@2x.png"; sourceTree = "<group>"; };
 		44EE776F1BD61FFE00932221 /* img_01_car_number@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_01_car_number@2x.png"; sourceTree = "<group>"; };
 		44EE77701BD61FFE00932221 /* img_01_guide@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_01_guide@2x.png"; sourceTree = "<group>"; };
@@ -1162,9 +1163,9 @@
 				44EE77651BD61F0400932221 /* img_arrow@2x.png */,
 				44F943401BB78E97000CAF90 /* av1.jpg */,
 				44EE77691BD61F8900932221 /* img_02_order@2x.png */,
+				44DCED651BD8FE8F0079C15D /* img_02_order_pre@2x.png */,
+				44DCED671BD8FEA80079C15D /* img_03_me_pre@2x.png */,
 				44EE776B1BD61FFE00932221 /* img_01_car_pre@2x.png */,
-				44EE776C1BD61FFE00932221 /* img_02_order_pre@2x.png */,
-				44EE776D1BD61FFE00932221 /* img_03_me_pre@2x.png */,
 				44EE776E1BD61FFE00932221 /* img_01_car_color@2x.png */,
 				44EE776F1BD61FFE00932221 /* img_01_car_number@2x.png */,
 				44EE77701BD61FFE00932221 /* img_01_guide@2x.png */,
@@ -1404,13 +1405,13 @@
 				44EE77601BD61E4800932221 /* img_guide_01@2x.png in Resources */,
 				44EE77831BD61FFE00932221 /* img_01_wash@2x.png in Resources */,
 				44EE777E1BD61FFE00932221 /* img_01_guide@2x.png in Resources */,
+				44DCED681BD8FEA80079C15D /* img_03_me_pre@2x.png in Resources */,
 				59C360141BCA5D9C007890BE /* chepaibg.png in Resources */,
 				598AFC6D1BBA520C00787310 /* ColorChoosePop.xib in Resources */,
 				449290321BB7D72F00F699E7 /* WashStyleChoose.xib in Resources */,
 				596861081BC1593A00C73AD0 /* test.storyboard in Resources */,
 				59111E021BC66A1300C2CCA9 /* UserInfo.storyboard in Resources */,
 				5952A11F1BC512F20023FEF5 /* voucher_timeover.png in Resources */,
-				44EE777A1BD61FFE00932221 /* img_02_order_pre@2x.png in Resources */,
 				5925A1141BB8494C00635EDB /* SCNavTabBar.bundle in Resources */,
 				44EE776A1BD61F8900932221 /* img_02_order@2x.png in Resources */,
 				44C13BC41BC366FE00597D7D /* readme.txt in Resources */,
@@ -1422,6 +1423,7 @@
 				5968612C1BC4121A00C73AD0 /* check_01.png in Resources */,
 				44F943601BB78E97000CAF90 /* img_unchecked.png in Resources */,
 				44EE77851BD61FFE00932221 /* img_02_order@2x.png in Resources */,
+				44DCED661BD8FE8F0079C15D /* img_02_order_pre@2x.png in Resources */,
 				44EE77821BD61FFE00932221 /* img_01_traffic@2x.png in Resources */,
 				44F943531BB78E97000CAF90 /* av1.jpg in Resources */,
 				59BA97051BC75B10007C386E /* home_bottom_tab.storyboard in Resources */,
@@ -1733,7 +1735,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: ahxdnet@163.com (5VU7QQT2WR)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "washcar/washcar-Prefix.pch";
