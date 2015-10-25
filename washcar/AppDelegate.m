@@ -10,6 +10,8 @@
 #import <AlipaySDK/AlipaySDK.h>
 #import "StoryboadUtil.h"
 #import "MayiHttpRequestManager.h"
+#import "WXApi.h"
+#import "payRequsestHandler.h"
 
 #define NotifyActionKey "NotifyAction"
 NSString* const NotificationCategoryIdent  = @"ACTIONABLE";
@@ -94,6 +96,8 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
         
     }
     
+    [WXApi registerApp:APP_ID withDescription:APP_ID];
+    
     application.applicationIconBadgeNumber = 0;
     if (![[NSUserDefaults standardUserDefaults] boolForKey:MayiUserIsNotFirstEnter]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Guide" bundle:nil];
@@ -157,12 +161,20 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    DLog(@"url:%@",url);
+    return YES;
+}
+
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
-    
-    
+    if (url == nil) {
+        return NO;
+    }
+    DLog(@"url:%@，url.host:%@,absoluteString:%@",url,url.host, [url absoluteString]);
     //跳转支付宝钱包进行支付，处理支付结果
     if ([url.host isEqualToString:@"safepay"]) {
         [[AlipaySDK defaultService] processOderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
@@ -175,9 +187,19 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
 
     }
     else {
-        
+        if ([url absoluteString] != nil && [[url absoluteString] rangeOfString:APP_ID].length > 0) {
+            if ([[url absoluteString] rangeOfString:@"ret=0"].length > 0) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:MayiPaySuccess object:nil userInfo:nil];
+            }
+        }
     }
     
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
+{
+    DLog(@"url:%@",url);
     return YES;
 }
 
@@ -203,6 +225,73 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - 微信回调
+
+-(void) onReq:(BaseReq*)req
+{
+    if([req isKindOfClass:[GetMessageFromWXReq class]])
+    {
+        // 微信请求App提供内容， 需要app提供内容后使用sendRsp返回
+        NSString *strTitle = [NSString stringWithFormat:@"微信请求App提供内容"];
+        NSString *strMsg = @"微信请求App提供内容，App要调用sendResp:GetMessageFromWXResp返回给微信";
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        alert.tag = 1000;
+        [alert show];
+    }
+    else if([req isKindOfClass:[ShowMessageFromWXReq class]])
+    {
+        ShowMessageFromWXReq* temp = (ShowMessageFromWXReq*)req;
+        WXMediaMessage *msg = temp.message;
+        
+        //显示微信传过来的内容
+        WXAppExtendObject *obj = msg.mediaObject;
+        
+        NSString *strTitle = [NSString stringWithFormat:@"微信请求App显示内容"];
+        NSString *strMsg = [NSString stringWithFormat:@"标题：%@ \n内容：%@ \n附带信息：%@ \n缩略图:%lu bytes\n\n", msg.title, msg.description, obj.extInfo, msg.thumbData.length];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else if([req isKindOfClass:[LaunchFromWXReq class]])
+    {
+        //从微信启动App
+        NSString *strTitle = [NSString stringWithFormat:@"从微信启动"];
+        NSString *strMsg = @"这是从微信启动的消息";
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+}
+
+-(void) onResp:(BaseResp*)resp
+{
+    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", resp.errCode];
+    NSString *strTitle;
+    
+    if([resp isKindOfClass:[SendMessageToWXResp class]])
+    {
+        strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
+    }
+    if([resp isKindOfClass:[PayResp class]]){
+        //支付返回结果，实际支付结果需要去微信服务器端查询
+        strTitle = [NSString stringWithFormat:@"支付结果"];
+        
+        switch (resp.errCode) {
+            case WXSuccess:
+                strMsg = @"支付结果：成功！";
+                NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
+                break;
+                
+            default:
+                strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
+                NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
+                break;
+        }
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 
