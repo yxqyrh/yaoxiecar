@@ -13,9 +13,9 @@
 +(BOOL)isEmty:(NSString *)str
 {
     if (str==nil||str.length==0) {
-        return NO;
+        return YES;
     }
-    return YES;
+    return NO;
 }
 
 + (NSString *) decimalwithFormat:(NSString *)format  floatV:(float)floatV
