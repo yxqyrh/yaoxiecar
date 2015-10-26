@@ -16,9 +16,12 @@
 #import "UserInfo.h"
 #import "NIAttributedLabel.h"
 
+#import "WXApi.h"
+#import "payRequsestHandler.h"
+
 
 @interface ReChargeViewController () {
-    //1 为 支付宝支付   2为余额支付  3为微信支付 4未充值卡
+    //1 为 支付宝支付  2为微信支付 4未充值卡
     int _payType;
     NSString *_sc;
     NSString *_accountLeft;
@@ -114,17 +117,20 @@
         if ([WDSystemUtils isEqualsInt:2 andJsonData:[responseObject objectForKey:@"res"]]) {
         
             
-            DLog(@"支付");
-//            [self runAliPayWithTitle:@"蚂蚁洗车账户充值" andPrice:_checkInMoney completionBlock:^(NSDictionary *resultDic) {
-//                
-//            }];
+            if (_payType == 1) {
             //
             [self runAliPayWithTitle:[responseObject objectForKey:@"name"] andDesc:[responseObject objectForKey:@"description"] andOrderNumber:[responseObject objectForKey:@"num"] andPrice:[responseObject objectForKey:@"value"] andNotifyURL:[responseObject objectForKey:@"notifyURL"] completionBlock:^(NSDictionary *resultDic) {
                 
             }];
+            }
+            else if (_payType == 2) {
+//                [self sendPayWXWithName:@"蚂蚁洗车充值" orderNumber:[responseObject objectForKey:@"num"] andPrice:@"0.02"];
+                
+                [self newPay:[responseObject objectForKey:@"num"]];
+            }
 
         }
-        
+
         
     } failture:^(NSError *error) {
         
@@ -187,6 +193,107 @@
     }
 }
 
+//============================================================
+// V3&V4支付流程实现
+// 注意:参数配置请查看服务器端Demo
+// 更新时间：2015年3月3日
+// 负责人：李启波（marcyli）
+//============================================================
+- (void)sendPayWXWithName:(NSString *)orderName orderNumber:(NSString *)orderNumber andPrice:(NSString *)orderPrice
+{
+    //{{{
+    //本实例只是演示签名过程， 请将该过程在商户服务器上实现
+    
+    //创建支付签名对象
+    payRequsestHandler *req = [payRequsestHandler alloc];
+    //初始化支付签名对象
+    [req init:APP_ID mch_id:MCH_ID];
+    //设置密钥
+    [req setKey:PARTNER_ID];
+    
+    //}}}
+    
+    CGFloat price = [orderPrice floatValue];
+    
+    //获取到实际调起微信支付的参数后，在app端调起支付
+    NSMutableDictionary *dict = [req sendPay_demo:orderName andOrderNumber:orderNumber  andOrderPrice:price];
+    
+    if(dict == nil){
+        //错误提示
+        NSString *debug = [req getDebugifo];
+        [SVProgressHUD showErrorWithStatus:debug];
+        
+        NSLog(@"%@\n\n",debug);
+    }else{
+        NSLog(@"%@\n\n",[req getDebugifo]);
+        //[self alert:@"确认" msg:@"下单成功，点击OK后调起支付！"];
+        
+        NSMutableString *stamp  = [dict objectForKey:@"timestamp"];
+        
+        //调起微信支付
+        PayReq* req             = [[PayReq alloc] init];
+        req.openID              = [dict objectForKey:@"appid"];
+        req.partnerId           = [dict objectForKey:@"partnerid"];
+        req.prepayId            = orderNumber;
+        req.nonceStr            = [dict objectForKey:@"noncestr"];
+        req.timeStamp           = stamp.intValue;
+        req.package             = [dict objectForKey:@"package"];
+        req.sign                = [dict objectForKey:@"sign"];
+        
+        [WXApi sendReq:req];
+    }
+}
+
+-(void)newPay:(NSString *)repayId
+{
+//    //创建支付签名对象
+    payRequsestHandler *req = [payRequsestHandler alloc];
+    //初始化支付签名对象
+    [req init:APP_ID mch_id:MCH_ID];
+    //设置密钥
+    [req setKey:PARTNER_ID];
+//
+//    NSMutableDictionary *dict = [req sendPay_demo:orderName andOrderNumber:orderNumber  andOrderPrice:price];
+    
+    
+    NSString    *package, *time_stamp, *nonce_str;
+    //设置支付参数
+    time_t now;
+    time(&now);
+    time_stamp  = [NSString stringWithFormat:@"%ld", now];
+    nonce_str	= [WXUtil md5:time_stamp];
+    //重新按提交格式组包，微信客户端暂只支持package=Sign=WXPay格式，须考虑升级后支持携带package具体参数的情况
+    //package       = [NSString stringWithFormat:@"Sign=%@",package];
+    package         = @"Sign=WXPay";
+    //第二次签名参数列表
+    NSMutableDictionary *signParams = [NSMutableDictionary dictionary];
+    [signParams setObject: APP_ID        forKey:@"appid"];
+    [signParams setObject: nonce_str    forKey:@"noncestr"];
+    [signParams setObject: package      forKey:@"package"];
+    [signParams setObject: MCH_ID        forKey:@"partnerid"];
+    [signParams setObject: time_stamp   forKey:@"timestamp"];
+    [signParams setObject: repayId     forKey:@"prepayid"];
+    //[signParams setObject: @"MD5"       forKey:@"signType"];
+    //生成签名
+    NSString *sign  = [req createMd5Sign:signParams];
+    
+    PayReq* req1             = [[PayReq alloc] init];
+    req1.openID              = APP_ID;
+    req1.partnerId           = MCH_ID;
+    req1.prepayId            = repayId;
+    req1.nonceStr            = nonce_str;
+    req1.timeStamp           = time_stamp.intValue;
+    req1.package             = package;
+    req1.sign                = sign;
+    
+    bool startWXSuccess = [WXApi sendReq:req1];
+    if (!startWXSuccess) {
+        [SVProgressHUD showErrorWithStatus:@"未安装微信"];
+        return;
+    }
+    
+}
+
 #pragma mark - RechargeAmountPopDelegate
 - (void)setRechargeValue:(int)value
 {
@@ -218,18 +325,23 @@
         _payType = 1;
         [self.tableView reloadData];
     }
+    
+    if (indexPath.row == 4) {
+        _payType = 2;
+        [self.tableView reloadData];
+    }
 //    else if (indexPath.row == 3) {
 //        _payType = 2;
 //        [self.tableView reloadData];
 //    }
     
-    if (indexPath.row == 4) {
+    if (indexPath.row == 5) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"ScratchcardViewController"];
         [self.navigationController pushViewController:viewController animated:YES];
     }
     
-    if (indexPath.row == 5) {
+    if (indexPath.row == 6) {
         
         [self czzxtj];
         return;
@@ -255,7 +367,7 @@
                 break;
         }
     }
-    else if (indexPath.row == 5) {
+    else if (indexPath.row == 6) {
         height = 50;
     }
     else {
@@ -268,7 +380,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4 + 2;
+    return 4 + 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -288,7 +400,7 @@
 
         }
     }
-    else if (indexPath.row == 5) {
+    else if (indexPath.row == 6) {
          reuseIdentifier = @"CommitCell";
     }
     else {
@@ -337,7 +449,29 @@
         
     }
     
+
     if (indexPath.row == 4) {
+        UIImageView *imageViewIcon = [(UIImageView *)cell viewWithTag:1];
+        imageViewIcon.image = [UIImage imageNamed:@"img_weixin"];
+        
+        UILabel *titleLabel = (UILabel *)[cell viewWithTag:2];
+        titleLabel.text = @"微信支付";
+        
+        UILabel *descLabel = (UILabel *)[cell viewWithTag:3];
+        descLabel.text = @"微信宝安全支付";
+        
+        UIImageView *imageViewCheck = [(UIImageView *)cell viewWithTag:4];
+        
+        if (_payType == 2) {
+            imageViewCheck.image = [UIImage imageNamed:@"img_checked"];
+        }
+        else {
+            imageViewCheck.image = [UIImage imageNamed:@"img_unchecked"];
+        }
+        
+    }
+    
+    if (indexPath.row == 5) {
         UIImageView *imageViewIcon = [(UIImageView *)cell viewWithTag:1];
         imageViewIcon.image = [UIImage imageNamed:@"img_guagua"];
         
@@ -350,29 +484,9 @@
         UIImageView *imageViewCheck = [(UIImageView *)cell viewWithTag:4];
         
         imageViewCheck.image = [UIImage imageNamed:@"img_arrow"];
-    
+        
         
     }
-//    if (indexPath.row == 4) {
-//        UIImageView *imageViewIcon = [(UIImageView *)cell viewWithTag:1];
-//        imageViewIcon.image = [UIImage imageNamed:@"img_weixin"];
-//        
-//        UILabel *titleLabel = (UILabel *)[cell viewWithTag:2];
-//        titleLabel.text = @"微信支付";
-//        
-//        UILabel *descLabel = (UILabel *)[cell viewWithTag:3];
-//        descLabel.text = @"微信宝安全支付";
-//        
-//        UIImageView *imageViewCheck = [(UIImageView *)cell viewWithTag:4];
-//        
-//        if (_payType == indexPath.row - 2) {
-//            imageViewCheck.image = [UIImage imageNamed:@"img_checked"];
-//        }
-//        else {
-//            imageViewCheck.image = [UIImage imageNamed:@"img_unchecked"];
-//        }
-//        
-//    }
     
     return cell;
 }
