@@ -224,7 +224,10 @@
         return;
     }
   
-    
+    if ([StringUtil isEmty:_userInfo.province ]||[StringUtil isEmty:_userInfo.city]||[StringUtil isEmty:_userInfo.area]||[StringUtil isEmty:_userInfo.plot]) {
+        [SVProgressHUD showErrorWithStatus:@"地址不全，无法注册"];
+        return;
+    }
     
     NSString *chePaiStr = [provinceStr.titleLabel.text stringByAppendingFormat:@"%@%@",_A_Z.titleLabel.text,_carNumberTextField.text];
     NSDictionary *parameters = [NSMutableDictionary dictionary];

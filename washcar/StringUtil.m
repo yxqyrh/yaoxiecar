@@ -10,6 +10,14 @@
 
 @implementation StringUtil
 
++(BOOL)isEmty:(NSString *)str
+{
+    if (str==nil||str.length==0) {
+        return NO;
+    }
+    return YES;
+}
+
 + (NSString *) decimalwithFormat:(NSString *)format  floatV:(float)floatV
 {
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
@@ -86,6 +94,8 @@
     }
 }
 
+
+
 //以上集合一起，并兼容14开头的
 + (BOOL)isMobileNumber:(NSString *)mobileNum
 {
@@ -94,5 +104,7 @@
     BOOL isMatch = [regextestmobile evaluateWithObject:mobileNum];
     return isMatch;
 }
+
+
 @end
 

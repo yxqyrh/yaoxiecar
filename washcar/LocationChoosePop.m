@@ -104,6 +104,7 @@
 }
 - (IBAction)ok:(id)sender {
     if([LocationInfo getInstance].area_name_province==nil||[LocationInfo getInstance].area_name_area==nil||[LocationInfo getInstance].area_name_city==nil||[LocationInfo getInstance].area_name_smallArea==nil){
+        
         [self makeToast:@"地址信息不全，请补全地址"];
         return;
     }

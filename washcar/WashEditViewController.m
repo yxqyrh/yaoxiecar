@@ -126,6 +126,10 @@
 
 -(void)washCommit
 {
+    if ([StringUtil isEmty:_userInfo.province ]||[StringUtil isEmty:_userInfo.city]||[StringUtil isEmty:_userInfo.area]||[StringUtil isEmty:_userInfo.plot]) {
+        [SVProgressHUD showErrorWithStatus:@"地址不全，无法下单"];
+        return;
+    }
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     [parameters setValue:_carNumberLabel.text forKey:@"carnumber"];

@@ -244,6 +244,11 @@
         return;
     }
     
+    if ([StringUtil isEmty:_userInfo.province ]||[StringUtil isEmty:_userInfo.city]||[StringUtil isEmty:_userInfo.area]||[StringUtil isEmty:_userInfo.plot]) {
+        [SVProgressHUD showErrorWithStatus:@"地址不全，无法修改个人信息"];
+        return;
+    }
+    
 //    if ([WDSystemUtils isEmptyOrNullString:_cheweihao.text]) {
 //        [self.view makeToast:@"车位号不能为空"];
 //        return;
