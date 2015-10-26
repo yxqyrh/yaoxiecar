@@ -199,6 +199,29 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString*, id> *)options
 {
+    if (url == nil) {
+        return NO;
+    }
+    DLog(@"url:%@，url.host:%@,absoluteString:%@",url,url.host, [url absoluteString]);
+    //跳转支付宝钱包进行支付，处理支付结果
+    if ([url.host isEqualToString:@"safepay"]) {
+        [[AlipaySDK defaultService] processOderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            DLog(@"resultDic:%@",resultDic);
+            if ([WDSystemUtils isEqualsInt:9000 andJsonData:[resultDic objectForKey:@"resultStatus"]]) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:MayiPaySuccess object:nil userInfo:resultDic];
+            }
+            
+        }];
+        
+    }
+    else {
+        if ([url absoluteString] != nil && [[url absoluteString] rangeOfString:APP_ID].length > 0) {
+            if ([[url absoluteString] rangeOfString:@"ret=0"].length > 0) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:MayiPaySuccess object:nil userInfo:nil];
+            }
+        }
+    }
+    
     DLog(@"url:%@",url);
     return YES;
 }
