@@ -244,7 +244,7 @@
             @catch (NSException *exception) {
                 _arrayList = nil;
                 if(self.channel==3){
-                    [LocationInfo getInstance].area_id_smallArea =@"-1";
+                    [LocationInfo getInstance].area_id_smallArea =@"";
                     [LocationInfo getInstance].area_name_smallArea =@"";
                     [SVProgressHUD showErrorWithStatus:@"该地区暂无服务网点"];
                     [self.navigationController popViewControllerAnimated:YES];

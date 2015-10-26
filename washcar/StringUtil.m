@@ -12,7 +12,7 @@
 
 +(BOOL)isEmty:(NSString *)str
 {
-    if (str==nil||str.length==0) {
+    if (str==nil||str.length==0||[@"" isEqualToString:str]||[@"-1" isEqualToString:str]) {
         return YES;
     }
     return NO;

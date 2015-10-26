@@ -243,9 +243,8 @@
         [self.view makeToast:@"地址不能为空"];
         return;
     }
-    
-    if ([StringUtil isEmty:_userInfo.province ]||[StringUtil isEmty:_userInfo.city]||[StringUtil isEmty:_userInfo.area]||[StringUtil isEmty:_userInfo.plot]) {
-        [SVProgressHUD showErrorWithStatus:@"地址不全，无法修改个人信息"];
+    if ([StringUtil isEmty:_userInfo.plot]) {
+        [SVProgressHUD showErrorWithStatus:@"没有小区信息，无法修改个人信息"];
         return;
     }
     
