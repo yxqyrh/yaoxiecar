@@ -231,6 +231,7 @@
         }
         else if ([WDSystemUtils isEqualsInt:4 andJsonData:[responseObject objectForKey:@"res"]]) {
             [self.view makeToast:[responseObject objectForKey:@"ts"]];
+             _isPaying = false;
             return ;
         }
         
