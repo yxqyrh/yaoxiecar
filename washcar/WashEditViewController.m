@@ -476,10 +476,13 @@
         
     }
     _addressLabel.text = locationName;
+    _userInfo.szdqstr =locationName;
     _userInfo.province =info.area_id_province;
     _userInfo.city = info.area_id_city;
     _userInfo.area = info.area_id_area;
     _userInfo.plot = info.area_id_smallArea;
+    
+   
 
 }
 //代金券代理回调
