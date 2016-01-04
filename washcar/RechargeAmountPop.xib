@@ -9,18 +9,17 @@
             <connections>
                 <outlet property="_100Check" destination="ilV-mQ-MAf" id="nHV-Hw-QNp"/>
                 <outlet property="_300Check" destination="pah-B6-faa" id="baJ-eE-9CS"/>
-                <outlet property="_50Check" destination="4VS-cm-IEN" id="XOv-a4-NXb"/>
                 <outlet property="_600Check" destination="hdA-Xv-SFM" id="HUl-0d-lxe"/>
                 <outlet property="innerView" destination="CtK-bB-yDD" id="1qu-oj-yg2"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="CtK-bB-yDD">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="199"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="155"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gLS-Ut-fA7">
-                    <rect key="frame" x="0.0" y="0.0" width="300" height="199"/>
+                    <rect key="frame" x="0.0" y="0.0" width="300" height="111"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <animations/>
                 </button>
@@ -33,35 +32,8 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" id="jul-6i-L2L">
-                    <rect key="frame" x="0.0" y="24.5" width="300" height="41"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unselected" id="4VS-cm-IEN">
-                            <rect key="frame" x="272" y="11" width="20" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                        </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="HBs-hI-afT">
-                            <rect key="frame" x="0.0" y="6" width="300" height="27"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="50元(首次充50送50，仅限一次)">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="btn_50:" destination="-1" eventType="touchUpInside" id="0a1-RG-jak"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <animations/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
                 <view contentMode="scaleToFill" id="6yU-wV-Jh6">
-                    <rect key="frame" x="0.0" y="58" width="300" height="41"/>
+                    <rect key="frame" x="0.0" y="24.5" width="300" height="41"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unselected" id="ilV-mQ-MAf">
@@ -88,7 +60,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="1gk-X6-14M">
-                    <rect key="frame" x="0.0" y="91.5" width="300" height="41"/>
+                    <rect key="frame" x="0.0" y="58" width="300" height="41"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unselected" id="pah-B6-faa">
@@ -115,7 +87,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="dr1-Dt-mLd">
-                    <rect key="frame" x="0.0" y="124.5" width="300" height="41"/>
+                    <rect key="frame" x="0.0" y="91.5" width="300" height="41"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unselected" id="hdA-Xv-SFM">

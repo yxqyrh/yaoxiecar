@@ -368,7 +368,7 @@
         self.SkipButton = [[UIButton alloc] initWithFrame:CGRectMake(self.frame.size.width - 80, self.PageControl.frame.origin.y, 80, self.PageControl.frame.size.height)];
     }
     
-    [self.SkipButton setTitle:@"Skip" forState:UIControlStateNormal];
+    [self.SkipButton setTitle:@"跳过" forState:UIControlStateNormal];
     [self.SkipButton addTarget:self action:@selector(skipIntroduction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.SkipButton];
 }
