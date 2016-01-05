@@ -103,15 +103,12 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zx7-IS-CEq">
-                                        <rect key="frame" x="8" y="184" width="288" height="80"/>
-                                        <color key="backgroundColor" red="0.082352941176470587" green="0.41568627450980389" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="常见问题解答">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltG-bV-9e6">
+                                        <rect key="frame" x="304" y="184" width="288" height="80"/>
+                                        <color key="backgroundColor" red="0.08235294118" green="0.41568627450000001" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="安全退出">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <segue destination="IUL-q8-CqG" kind="push" id="9M9-h5-L2b"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hC-Uc-zcA">
                                         <rect key="frame" x="205" y="96" width="190" height="80"/>
@@ -130,12 +127,15 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltG-bV-9e6">
-                                        <rect key="frame" x="304" y="184" width="288" height="80"/>
-                                        <color key="backgroundColor" red="0.08235294118" green="0.41568627450000001" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="安全退出">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zx7-IS-CEq">
+                                        <rect key="frame" x="8" y="184" width="288" height="80"/>
+                                        <color key="backgroundColor" red="0.082352941176470587" green="0.41568627450980389" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="常见问题解答">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="IUL-q8-CqG" kind="push" id="9M9-h5-L2b"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
