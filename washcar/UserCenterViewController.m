@@ -66,7 +66,8 @@
     _surplusMoney.layer.borderColor = (__bridge CGColorRef _Nullable)([UIColor colorWithRed:204/255.0 green:204/255.0  blue:255/255.0  alpha:1.0]);
     _surplusMoney.attributedText = [StringUtil getMenoyText:@"余额" :@"0.00" :@"元"];
     [self loadData:YES];
-    
+   
+    [self initBtnLayout];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self loadData:NO];
@@ -251,6 +252,120 @@
 -(void)settingImage:(UIImage *)image
 {
     self.userIcon.image=image;
+}
+-(void)initBtnLayout{
+    [self initBtn:_btn1 :@"common_problem_icon" :_btn1.titleLabel.text];
+    [self initBtn:_btn2 :@"common_problem_icon" :_btn2.titleLabel.text];
+    [self initBtn:_btn3 :@"common_problem_icon" :_btn3.titleLabel.text];
+    [self initBtn:_btn4 :@"common_problem_icon" :_btn4.titleLabel.text];
+    [self initBtn:_btn5 :@"common_problem_icon" :_btn5.titleLabel.text];
+    [self initBtn:_btn6 :@"common_problem_icon" :_btn6.titleLabel.text];
+    [self initBtn:_btn7 :@"common_problem_icon" :_btn7.titleLabel.text];
+    [self initBtn:_btn8 :@"common_problem_icon" :_btn8.titleLabel.text];
+}
+
+-(void) initBtn:(UIButton*)btn:(NSString*)iconName :(NSString*)btnTitle{
+    UIImage *image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(40, 40)];
+    NSString *title = btnTitle;
+    [btn setTitle:title forState:UIControlStateNormal];
+
+    [btn setImage:image forState:UIControlStateNormal];
+
+    CGSize imageSize = btn.imageView.frame.size;
+    CGSize titleSize = btn.titleLabel.frame.size;
+    
+    // get the height they will take up as a unit
+    CGFloat totalHeight = (imageSize.height + titleSize.height + 5);
+    
+    // raise the image and push it right to center it
+    btn.imageEdgeInsets = UIEdgeInsetsMake(- (totalHeight - imageSize.height), 0.0, 0.0, - titleSize.width);
+    
+    // lower the text and push it left to center it
+    btn.titleEdgeInsets = UIEdgeInsetsMake(0.0, - imageSize.width, - (totalHeight - titleSize.height),0.0);
+    
+    [[btn layer]setCornerRadius:8.0];
+}
+
+
+- (UIImage *)reSizeImage:(UIImage *)image toSize:(CGSize)reSize
+
+{
+    UIGraphicsBeginImageContext(CGSizeMake(reSize.width, reSize.height));
+    [image drawInRect:CGRectMake(0, 0, reSize.width, reSize.height)];
+    UIImage *reSizeImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return reSizeImage;
+    
+}
+
+- (IBAction)btn1Click:(id)sender {
+    
+    uivc = [StoryboadUtil getViewController:@"UserInfo" :@"UserInfoViewController"];
+    [self.navigationController pushViewController:uivc animated:YES];
+}
+- (IBAction)btn2Click:(id)sender {
+    vvc = [[VouchersThreeViewController alloc]init];
+    [self.navigationController pushViewController:vvc animated:YES];
+}
+- (IBAction)btn3Click:(id)sender {
+}
+
+- (IBAction)btn4Click:(id)sender {
+    mmvc = [board instantiateViewControllerWithIdentifier:@"MyMsgViewController"];
+    [ self.navigationController pushViewController:mmvc animated:YES];
+}
+
+- (IBAction)btn5Click:(id)sender {
+    clvc = [board instantiateViewControllerWithIdentifier:@"ComplaintViewController"];
+    [ self.navigationController pushViewController:clvc animated:YES];
+}
+
+- (IBAction)btn6Click:(id)sender {
+}
+
+- (IBAction)btn7Click:(id)sender {
+    cpvc = [[CommonProblemViewController alloc]init];
+    [ self.navigationController pushViewController:cpvc animated:YES];
+}
+- (IBAction)btn8Click:(id)sender {
+    
+    [self exitMayi];
+}
+//Res   1 退出成功  2退出失败
+-(void) exitMayi{
+    NSDictionary *parameters = [NSMutableDictionary dictionary];
+    [[MayiHttpRequestManager sharedInstance] POST:Quitlogin parameters:parameters showLoadingView:self.view success:^(id responseObject) {
+        NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
+        if ([@"1" isEqualToString:res]) {
+            [SVProgressHUD showSuccessWithStatus:@"退出成功！"];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:MayiUserIsSignIn];
+            
+            [GlobalVar sharedSingleton].uid = nil;
+            
+            [GlobalVar sharedSingleton].isloginid = nil;
+            [GlobalVar sharedSingleton].signState = MayiSignStateUnSigned;
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:MayiIndexPageNotifiction object:nil];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+            
+            
+            //            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sign" bundle:nil];
+            //            UIViewController *loginViewController = [storyboard instantiateInitialViewController];
+            //            loginViewController.modalTransitionStyle = UIModalPresentationFormSheet;//跳转效果
+            //            [self presentModalViewController:loginViewController animated:YES];//在这里一跳就行了。
+            //
+            //            //[self dismissModalViewControllerAnimated:YES];
+            //            [self removeFromParentViewController];
+        }else{
+            [SVProgressHUD showErrorWithStatus:@"退出失败！"];
+        }
+    } failture:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"退出失败！"];
+    }];
+    
 }
 
 @end
