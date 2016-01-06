@@ -46,7 +46,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="washControlClick:" destination="PmR-0B-Wbp" eventType="touchUpInside" id="PcJ-uX-0Hs"/>
+                                    <action selector="washControlClick:" destination="PmR-0B-Wbp" eventType="touchUpInside" id="FXH-Vb-B3N"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="710-l4-aGt">
@@ -109,6 +109,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="recharge:" destination="PmR-0B-Wbp" eventType="touchUpInside" id="pME-Mu-Nvf"/>
                                     <action selector="washControlClick:" destination="PmR-0B-Wbp" eventType="touchUpInside" id="iBU-za-Hlg"/>
                                 </connections>
                             </button>
@@ -125,6 +126,8 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="btn1" destination="BZY-UI-5qI" id="vEh-Q3-iXh"/>
+                        <outlet property="btn2" destination="TVy-F3-dzF" id="eDe-pa-TPz"/>
                         <outlet property="pageControl" destination="GDq-lB-5dx" id="j7H-Wm-kQ1"/>
                         <outlet property="scrollview" destination="710-l4-aGt" id="gBP-9C-rlG"/>
                     </connections>
@@ -161,6 +164,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="recharge:" destination="bFj-Ez-H33" eventType="touchUpInside" id="XmQ-sL-k9o"/>
                                     <action selector="washControlClick:" destination="PmR-0B-Wbp" eventType="touchUpInside" id="yh0-cb-bR7"/>
                                 </connections>
                             </button>
@@ -212,7 +216,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="washControlClick:" destination="PmR-0B-Wbp" eventType="touchUpInside" id="DHG-J4-LQ0"/>
+                                    <action selector="washControlClick:" destination="bFj-Ez-H33" eventType="touchUpInside" id="78X-vt-I5g"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -220,6 +224,8 @@
                     <navigationItem key="navigationItem" title="蚂蚁洗车" id="QiY-hR-4on"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="btn1" destination="4Ru-0J-e7y" id="zsp-Tt-rm3"/>
+                        <outlet property="btn2" destination="kei-X7-DLV" id="cDq-Yh-c1Y"/>
                         <outlet property="pageControl" destination="Xkr-1v-DNm" id="9cR-aZ-0wp"/>
                         <outlet property="scrollview" destination="ztS-CN-Wmr" id="mm1-jR-Dpd"/>
                     </connections>
@@ -256,7 +262,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="washControlClick:" destination="PmR-0B-Wbp" eventType="touchUpInside" id="Mnf-2A-qNF"/>
+                                    <action selector="washControlClick:" destination="nBv-hx-Vg7" eventType="touchUpInside" id="OHz-cV-as7"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="z3u-Ih-GzC">
@@ -268,6 +274,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="recharge:" destination="nBv-hx-Vg7" eventType="touchUpInside" id="4ed-W7-FkZ"/>
                                     <action selector="washControlClick:" destination="PmR-0B-Wbp" eventType="touchUpInside" id="2Ug-eW-Yb7"/>
                                 </connections>
                             </button>
@@ -315,6 +322,8 @@
                     <navigationItem key="navigationItem" title="蚂蚁洗车" id="knn-CT-Cpv"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="btn1" destination="51N-gp-GWA" id="db9-Sl-rKu"/>
+                        <outlet property="btn2" destination="z3u-Ih-GzC" id="fLu-Ac-R4U"/>
                         <outlet property="pageControl" destination="BPS-w3-eDt" id="Vm1-Hi-AeT"/>
                         <outlet property="scrollview" destination="PxJ-KP-4su" id="Sap-FF-HsE"/>
                     </connections>
@@ -340,7 +349,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="washControlClick:" destination="PmR-0B-Wbp" eventType="touchUpInside" id="Ugy-J4-7F7"/>
+                                    <action selector="washControlClick:" destination="cAQ-gv-76a" eventType="touchUpInside" id="HOM-fV-FoR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="o0d-CV-fzJ">
@@ -352,6 +361,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="recharge:" destination="cAQ-gv-76a" eventType="touchUpInside" id="NkG-Z4-atK"/>
                                     <action selector="washControlClick:" destination="PmR-0B-Wbp" eventType="touchUpInside" id="MDz-AE-O9p"/>
                                 </connections>
                             </button>
@@ -421,6 +431,8 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
+                        <outlet property="btn1" destination="CcN-Ux-WP5" id="FnJ-H1-kLD"/>
+                        <outlet property="btn2" destination="o0d-CV-fzJ" id="jlr-c9-yf1"/>
                         <outlet property="pageControl" destination="x1e-uh-rfr" id="DIW-pH-CSp"/>
                         <outlet property="scrollview" destination="1eh-HU-gKo" id="4N4-P8-WRy"/>
                     </connections>

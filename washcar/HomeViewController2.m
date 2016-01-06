@@ -273,13 +273,13 @@
         
 }
 
-#pragma mark - 点击事件
-- (IBAction)searchControlClick:(id)sender {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"违章查询" andUrl:@"http://m.weizhang8.cn/"];
-    [self.navigationController pushViewController:webController animated:YES];
-}
+//#pragma mark - 点击事件
+//- (IBAction)searchControlClick:(id)sender {
+//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
+//    [webController setTitle:@"违章查询" andUrl:@"http://m.weizhang8.cn/"];
+//    [self.navigationController pushViewController:webController animated:YES];
+//}
 
 
 
@@ -296,6 +296,12 @@
 //    [alertController showWithSender:self.view controller:self animated:YES completion:nil];
 //    return;
     
+//    [self jumpPageWithJudge:YES andSignedBlock:^{
+//        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        WashEditViewController *washController = [storyBoard instantiateViewControllerWithIdentifier:@"WashEditViewController"];
+//        [self.navigationController pushViewController:washController animated:YES];
+//    }];
+    
     [self jumpPageWithJudge:YES andSignedBlock:^{
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         WashEditViewController *washController = [storyBoard instantiateViewControllerWithIdentifier:@"WashEditViewController"];
@@ -303,27 +309,41 @@
     }];
     
 }
+- (IBAction)recharge:(id)sender {
+//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    ReChargeViewController *rechargeViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ReChargeViewController"];
+//    rechargeViewController.checkInMoney = 50;
+//    [self.navigationController pushViewController:rechargeViewController animated:YES];
+    
+    [self jumpPageWithJudge:YES andSignedBlock:^{
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ReChargeViewController *rechargeViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ReChargeViewController"];
+        rechargeViewController.checkInMoney = 50;
+        [self.navigationController pushViewController:rechargeViewController animated:YES];
+    }];
 
-- (IBAction)weatherControlClick:(id)sender {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"天气查询" andUrl:@"http://weather1.sina.cn/?vt=4"];
-    [self.navigationController pushViewController:webController animated:YES];
 }
 
-- (IBAction)InsuranceControlClick:(id)sender {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"保险理赔" andUrl:@"http://caifu.baidu.com/m#/carinsurance/index~city=%E4%B8%8A%E6%B5%B7&zt=pswise&qid=13064072473599934086"];
-    [self.navigationController pushViewController:webController animated:YES];
-}
-
-- (IBAction)trafficControlClick:(id)sender {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"交通查询" andUrl:@"http://m.ctrip.com/html5"];
-    [self.navigationController pushViewController:webController animated:YES];
-}
+//- (IBAction)weatherControlClick:(id)sender {
+//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
+//    [webController setTitle:@"天气查询" andUrl:@"http://weather1.sina.cn/?vt=4"];
+//    [self.navigationController pushViewController:webController animated:YES];
+//}
+//
+//- (IBAction)InsuranceControlClick:(id)sender {
+//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
+//    [webController setTitle:@"保险理赔" andUrl:@"http://caifu.baidu.com/m#/carinsurance/index~city=%E4%B8%8A%E6%B5%B7&zt=pswise&qid=13064072473599934086"];
+//    [self.navigationController pushViewController:webController animated:YES];
+//}
+//
+//- (IBAction)trafficControlClick:(id)sender {
+//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
+//    [webController setTitle:@"交通查询" andUrl:@"http://m.ctrip.com/html5"];
+//    [self.navigationController pushViewController:webController animated:YES];
+//}
 
 
 
