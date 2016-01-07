@@ -17,7 +17,7 @@
 @interface UserCenterViewController ()
 
 {
-    UserInfoViewController *uivc;
+  
     VouchersThreeViewController *vvc;
     MyMsgViewController *mmvc;
     ComplaintViewController *clvc;
@@ -149,8 +149,8 @@
 //                 uivc = [board instantiateViewControllerWithIdentifier:@"UserInfoViewController"];
 //            }
 //            
-            uivc = [StoryboadUtil getViewController:@"UserInfo" :@"UserInfoViewController"];
-            [self.navigationController pushViewController:uivc animated:YES];
+//            uivc = [StoryboadUtil getViewController:@"UserInfo" :@"UserInfoViewController"];
+//            [self.navigationController pushViewController:uivc animated:YES];
             break;
         case 1:
             vvc = [[VouchersThreeViewController alloc]init];
@@ -301,7 +301,7 @@
 
 - (IBAction)btn1Click:(id)sender {
     
-    uivc = [StoryboadUtil getViewController:@"UserInfo" :@"UserInfoViewController"];
+   CarManagerViewController *uivc = [StoryboadUtil getViewController:@"InvitationCode" :@"CarManagerViewController"];
     [self.navigationController pushViewController:uivc animated:YES];
 }
 - (IBAction)btn2Click:(id)sender {
@@ -309,6 +309,9 @@
     [self.navigationController pushViewController:vvc animated:YES];
 }
 - (IBAction)btn3Click:(id)sender {
+    
+    InvitationCodeViewController *invitationCode =[StoryboadUtil getViewController:@"InvitationCode" :@"InvitationCodeViewController"];
+    [self.navigationController pushViewController:invitationCode animated:YES];
 }
 
 - (IBAction)btn4Click:(id)sender {
