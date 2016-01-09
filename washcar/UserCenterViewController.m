@@ -254,23 +254,45 @@
     self.userIcon.image=image;
 }
 -(void)initBtnLayout{
-    [self initBtn:_btn1 :@"common_problem_icon" :_btn1.titleLabel.text];
-    [self initBtn:_btn2 :@"common_problem_icon" :_btn2.titleLabel.text];
-    [self initBtn:_btn3 :@"common_problem_icon" :_btn3.titleLabel.text];
-    [self initBtn:_btn4 :@"common_problem_icon" :_btn4.titleLabel.text];
-    [self initBtn:_btn5 :@"common_problem_icon" :_btn5.titleLabel.text];
-    [self initBtn:_btn6 :@"common_problem_icon" :_btn6.titleLabel.text];
-    [self initBtn:_btn7 :@"common_problem_icon" :_btn7.titleLabel.text];
-    [self initBtn:_btn8 :@"common_problem_icon" :_btn8.titleLabel.text];
+    [self initBtn:_btn1 :@"user_car_manager_icon" :_btn1.titleLabel.text];
+    [self initBtn:_btn2 :@"user_coupon_icon" :_btn2.titleLabel.text];
+    [self initBtn:_btn3 :@"user_invitation_icon" :_btn3.titleLabel.text];
+    [self initBtn:_btn4 :@"user_msg_icon" :_btn4.titleLabel.text];
+    [self initBtn:_btn5 :@"user_complaint_icon" :_btn5.titleLabel.text];
+    [self initBtn:_btn6 :@"user_update_icon" :_btn6.titleLabel.text];
+    [self initBtn:_btn7 :@"user_common_problem_icon" :_btn7.titleLabel.text];
+    [self initBtn:_btn8 :@"user_exit_icon" :_btn8.titleLabel.text];
+    float deviceNum = [StoryboadUtil getDeviceNum];
+    
+    int magin_bottom = 10;
+    if (deviceNum == 4.0) {
+        magin_bottom = 5;
+    }
+    if(deviceNum == 5.0){
+        magin_bottom = 80;
+    }
+    if (deviceNum == 6.0) {
+        magin_bottom = 100;
+    }
+    
+    if (deviceNum == 6.5) {
+        magin_bottom = 120;
+    }
+
+    [_btn8 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(_btnbody.mas_bottom).offset(-magin_bottom);
+        //别的
+    }];
 }
 
 -(void) initBtn:(UIButton*)btn:(NSString*)iconName :(NSString*)btnTitle{
-    UIImage *image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(40, 40)];
+    //UIImage *image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(40, 40)];
+   UIImage *image =[UIImage imageNamed:iconName] ;
     NSString *title = btnTitle;
     [btn setTitle:title forState:UIControlStateNormal];
 
     [btn setImage:image forState:UIControlStateNormal];
-
+    [btn setTintColor:[UIColor whiteColor]];
     CGSize imageSize = btn.imageView.frame.size;
     CGSize titleSize = btn.titleLabel.frame.size;
     

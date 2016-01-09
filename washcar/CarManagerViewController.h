@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
+#import "UserInfoViewController.h"
+#import "StoryboadUtil.h"
 
-@interface CarManagerViewController : UIViewController
+@interface CarManagerViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

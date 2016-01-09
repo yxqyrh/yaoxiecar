@@ -17,7 +17,18 @@
 #define IS_IPHONE_6Plus                            (IS_IPHONE && IS_WIDESCREEN_6Plus)
 @implementation StoryboadUtil
 
-
++(float)getDeviceNum{
+    if (IS_IPHONE_5) {
+        return 5.0;
+    }
+    if (IS_IPHONE_6) {
+        return 6.0;
+    }
+    if (IS_IPHONE_6Plus) {
+        return 6.5;
+    }
+    return 4.0;
+}
 
 +(id) getViewController:(NSString *) storyboadName:(NSString*)Identifier{
     UIViewController *controller;

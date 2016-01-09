@@ -11,5 +11,5 @@
 @interface StoryboadUtil : NSObject
 +(id) getViewController:(NSString *) storyboadName:(NSString*)Identifier;
 
-
++(float) getDeviceNum;
 @end

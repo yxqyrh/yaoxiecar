@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface InvitationCodeViewController : UIViewController
+#import "BaseViewController.h"
+#import "Share.h"
+@interface InvitationCodeViewController : BaseViewController
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F1C85381C4165AB00D524F8 /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1C85371C4165AB00D524F8 /* Share.m */; };
 		3F7831D01BCC106C0021E7F4 /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7831CF1BCC106C0021E7F4 /* Sign.storyboard */; };
 		3FA5701C1C3EC856007C82E3 /* CarManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA5701B1C3EC856007C82E3 /* CarManagerViewController.m */; };
 		3FA5701F1C3EC8C2007C82E3 /* InvitationCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA5701E1C3EC8C2007C82E3 /* InvitationCodeViewController.m */; };
@@ -190,7 +191,7 @@
 		59E16F011BB80F48009E4385 /* CommonProblem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E16F001BB80F48009E4385 /* CommonProblem.m */; };
 		59FA3B2A1C3BA5F100712023 /* UserCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59FA3B291C3BA5F100712023 /* UserCenter.storyboard */; };
 		59FA3B2C1C3BBC4300712023 /* InvitationCode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59FA3B2B1C3BBC4300712023 /* InvitationCode.storyboard */; };
-		59FA3B2E1C3BCABE00712023 /* share.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59FA3B2D1C3BCABE00712023 /* share.xib */; };
+		59FA3B2E1C3BCABE00712023 /* Shares.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59FA3B2D1C3BCABE00712023 /* Shares.xib */; };
 		5F8EFDAE142B7455EAB412DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF74D497A65057D62E58508 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -213,6 +214,8 @@
 
 /* Begin PBXFileReference section */
 		1D7C764897EF8778C98C82CC /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		3F1C85361C4165AB00D524F8 /* Share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Share.h; sourceTree = "<group>"; };
+		3F1C85371C4165AB00D524F8 /* Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share.m; sourceTree = "<group>"; };
 		3F7831CF1BCC106C0021E7F4 /* Sign.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
 		3FA5701A1C3EC856007C82E3 /* CarManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarManagerViewController.h; sourceTree = "<group>"; };
 		3FA5701B1C3EC856007C82E3 /* CarManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarManagerViewController.m; sourceTree = "<group>"; };
@@ -598,7 +601,7 @@
 		59E16F001BB80F48009E4385 /* CommonProblem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonProblem.m; sourceTree = "<group>"; };
 		59FA3B291C3BA5F100712023 /* UserCenter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserCenter.storyboard; sourceTree = "<group>"; };
 		59FA3B2B1C3BBC4300712023 /* InvitationCode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InvitationCode.storyboard; sourceTree = "<group>"; };
-		59FA3B2D1C3BCABE00712023 /* share.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = share.xib; sourceTree = "<group>"; };
+		59FA3B2D1C3BCABE00712023 /* Shares.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Shares.xib; sourceTree = "<group>"; };
 		CB7D551072C2407764E4BC7C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EAF74D497A65057D62E58508 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -834,6 +837,9 @@
 				59C360081BC9FF2F007890BE /* ChePaiPickView.h */,
 				59C360091BC9FF2F007890BE /* ChePaiPickView.m */,
 				59C3600D1BCA0031007890BE /* ChePaiPickView.xib */,
+				3F1C85361C4165AB00D524F8 /* Share.h */,
+				3F1C85371C4165AB00D524F8 /* Share.m */,
+				59FA3B2D1C3BCABE00712023 /* Shares.xib */,
 			);
 			name = popView;
 			sourceTree = "<group>";
@@ -1106,7 +1112,6 @@
 				59111E011BC66A1300C2CCA9 /* UserInfo.storyboard */,
 				59BA97041BC75B10007C386E /* home_bottom_tab.storyboard */,
 				59FA3B2B1C3BBC4300712023 /* InvitationCode.storyboard */,
-				59FA3B2D1C3BCABE00712023 /* share.xib */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1440,7 +1445,7 @@
 				44EE777E1BD61FFE00932221 /* img_01_guide@2x.png in Resources */,
 				59FA3B2C1C3BBC4300712023 /* InvitationCode.storyboard in Resources */,
 				44DCED681BD8FEA80079C15D /* img_03_me_pre@2x.png in Resources */,
-				59FA3B2E1C3BCABE00712023 /* share.xib in Resources */,
+				59FA3B2E1C3BCABE00712023 /* Shares.xib in Resources */,
 				59C360141BCA5D9C007890BE /* chepaibg.png in Resources */,
 				598AFC6D1BBA520C00787310 /* ColorChoosePop.xib in Resources */,
 				449290321BB7D72F00F699E7 /* WashStyleChoose.xib in Resources */,
@@ -1552,6 +1557,7 @@
 				44B7A3051BC389A9006FEAA0 /* base64.m in Sources */,
 				44B7A3131BC39FB6006FEAA0 /* Order.m in Sources */,
 				44F943281BB6FE1D000CAF90 /* MMDrawerBarButtonItem.m in Sources */,
+				3F1C85381C4165AB00D524F8 /* Share.m in Sources */,
 				4440C5781BDCC0A60077CFFA /* WXUtil.mm in Sources */,
 				449290231BB7D72F00F699E7 /* LocationChoosePop.m in Sources */,
 				44928FFE1BB7D6D700F699E7 /* UserInfoViewController.m in Sources */,

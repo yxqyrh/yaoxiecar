@@ -8,7 +8,11 @@
 
 #import "InvitationCodeViewController.h"
 
-@interface InvitationCodeViewController ()
+@interface InvitationCodeViewController (){
+    Share *share;
+}
+
+
 
 @end
 
@@ -17,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.navigationItem.title = @"邀请码";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,5 +38,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)shareAction:(id)sender {
+    
+    share = [Share defaultPopupView];
+    share.parentVC = self;
+    [share showView];
+  
+}
 
 @end

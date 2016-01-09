@@ -48,13 +48,13 @@
                                             <action selector="AZChosse:" destination="qfS-4r-jpS" eventType="touchUpInside" id="OaZ-CG-bhw"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="车牌后5位" minimumFontSize="15" id="ZpT-9I-uJ6">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="后五位数字或字母" textAlignment="center" minimumFontSize="15" id="ZpT-9I-uJ6">
                                         <rect key="frame" x="220" y="0.0" width="80" height="40"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
@@ -118,56 +118,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" id="68I-iA-Rm2">
-                                <rect key="frame" x="10" y="196" width="300" height="40"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_info_phone_icon" id="S3d-U8-WWz">
-                                        <rect key="frame" x="8" y="10" width="20" height="21"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="parking_lot_icon" id="bQ4-Av-fyW">
+                                        <rect key="frame" x="8" y="9" width="20" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电话" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="k88-PN-ZuM">
-                                        <rect key="frame" x="33" y="9" width="30" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L5x-8g-76f">
-                                        <rect key="frame" x="66" y="5" width="220" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" id="6z0-Fj-kS5">
-                                <rect key="frame" x="10" y="240" width="300" height="40"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_info_money_icon" id="s4j-BF-aOY">
-                                        <rect key="frame" x="8" y="10" width="20" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="余额" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jxp-tH-sbF">
-                                        <rect key="frame" x="34" y="9" width="30" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" id="rX6-Jr-fZD">
-                                        <rect key="frame" x="72" y="5" width="220" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -212,8 +166,8 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fi7-Em-k6J">
-                                <rect key="frame" x="10" y="241" width="300" height="35"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <rect key="frame" x="10" y="212" width="300" height="35"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.62745098039215685" blue="0.91764705882352937" alpha="0.98999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="确认编辑">
@@ -222,19 +176,6 @@
                                 </state>
                                 <connections>
                                     <action selector="commitInfo:" destination="qfS-4r-jpS" eventType="touchUpInside" id="fZA-Kh-jPQ"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xsp-pO-xug">
-                                <rect key="frame" x="10" y="389" width="300" height="35"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.024273532149999999" blue="0.01424165554" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="退出登录">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="exit:" destination="qfS-4r-jpS" eventType="touchUpInside" id="cHY-MT-PRK"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -247,10 +188,9 @@
                         <outlet property="CarColor" destination="Nbh-Pz-AdF" id="tRc-nn-mDd"/>
                         <outlet property="CarNum" destination="ZpT-9I-uJ6" id="ziJ-hy-o1F"/>
                         <outlet property="Loaction" destination="sko-Xl-8Jb" id="8QL-ex-zM2"/>
+                        <outlet property="actionBtn" destination="fi7-Em-k6J" id="42l-aU-OIq"/>
                         <outlet property="cheweihao" destination="4fP-IS-kGg" id="0dD-ee-PHc"/>
-                        <outlet property="phone" destination="L5x-8g-76f" id="8ce-n1-KMM"/>
                         <outlet property="provinceShort" destination="RR4-vh-yrz" id="Qjh-NU-2DN"/>
-                        <outlet property="surplusMoney" destination="rX6-Jr-fZD" id="H8z-aY-Ew9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Pp-kC-T17" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -261,10 +201,9 @@
     <resources>
         <image name="chepaibg.png" width="70" height="40"/>
         <image name="down_arrow" width="108" height="57"/>
+        <image name="parking_lot_icon" width="41" height="41"/>
         <image name="user_info_car_color" width="114" height="114"/>
         <image name="user_info_car_num_icon" width="114" height="114"/>
         <image name="user_info_location_icon" width="114" height="114"/>
-        <image name="user_info_money_icon" width="114" height="114"/>
-        <image name="user_info_phone_icon" width="114" height="114"/>
     </resources>
 </document>

@@ -40,15 +40,6 @@
                                 <rect key="frame" x="180" y="204" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="用户名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuD-yH-jl0">
-                                <rect key="frame" x="191" y="145" width="198" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="iXE-5G-Ffe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="余额0.00元" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voH-0R-32b">
                                 <rect key="frame" x="0.0" y="174" width="294" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -161,7 +152,7 @@
                                     <constraint firstItem="Pc7-hC-i74" firstAttribute="leading" secondItem="3hC-Uc-zcA" secondAttribute="trailing" constant="4" id="6O1-uY-jrd"/>
                                     <constraint firstItem="zx7-IS-CEq" firstAttribute="height" secondItem="ltG-bV-9e6" secondAttribute="height" id="8yR-t9-jpu"/>
                                     <constraint firstItem="51b-XM-jRd" firstAttribute="leading" secondItem="lTJ-8k-rtW" secondAttribute="trailing" constant="4" id="96l-uj-ArP"/>
-                                    <constraint firstAttribute="bottom" secondItem="zx7-IS-CEq" secondAttribute="bottom" constant="120" id="AJC-78-Jvf"/>
+                                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="zx7-IS-CEq" secondAttribute="bottom" constant="120" id="AJC-78-Jvf"/>
                                     <constraint firstItem="lTJ-8k-rtW" firstAttribute="height" secondItem="51b-XM-jRd" secondAttribute="height" id="Bn6-w2-ikn"/>
                                     <constraint firstItem="ltG-bV-9e6" firstAttribute="top" secondItem="Pc7-hC-i74" secondAttribute="bottom" constant="4" id="ET0-8g-FJP"/>
                                     <constraint firstItem="Pc7-hC-i74" firstAttribute="top" secondItem="51b-XM-jRd" secondAttribute="bottom" constant="4" id="Ebw-DR-CFE"/>
@@ -191,14 +182,23 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Icon@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="r9F-Ew-YSI">
-                                <rect key="frame" x="250" y="49" width="80" height="80"/>
+                                <rect key="frame" x="260" y="49" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="SEI-za-bZA"/>
                                     <constraint firstAttribute="height" constant="80" id="Vea-nk-fwi"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="用户名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuD-yH-jl0">
+                                <rect key="frame" x="201" y="145" width="198" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="iXE-5G-Ffe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="6kS-Gm-3Bg" secondAttribute="trailing" constant="-20" id="0Wy-YH-bu2"/>
                             <constraint firstItem="voH-0R-32b" firstAttribute="leading" secondItem="i8F-Nh-NcT" secondAttribute="leading" id="2Tg-kf-8el"/>

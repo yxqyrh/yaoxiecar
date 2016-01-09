@@ -49,10 +49,16 @@
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     // Do any additional setup after loading the view.
-    [self loadData];
+    
     chePaiPickView = [ChePaiPickView defaultView];
     chePaiPickView.delegate =self;
     [self.view addSubview:chePaiPickView];
+    self.navigationItem.title = self.title;
+    if ([self.title isEqualToString:@"车辆信息编辑"]) {
+     [self loadData];
+    }else{
+        _actionBtn.titleLabel.text = @"确认添加";
+    }
 }
 // 点击编辑框外面时，隐藏键盘
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
