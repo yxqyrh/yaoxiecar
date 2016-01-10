@@ -22,6 +22,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.title = @"邀请码";
+    share = [Share defaultPopupView];
+       [self.view addSubview:share];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,8 +42,7 @@
 */
 - (IBAction)shareAction:(id)sender {
     
-    share = [Share defaultPopupView];
-    share.parentVC = self;
+   
     [share showView];
   
 }

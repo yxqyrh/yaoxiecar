@@ -191,7 +191,6 @@
 		59E16F011BB80F48009E4385 /* CommonProblem.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E16F001BB80F48009E4385 /* CommonProblem.m */; };
 		59FA3B2A1C3BA5F100712023 /* UserCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59FA3B291C3BA5F100712023 /* UserCenter.storyboard */; };
 		59FA3B2C1C3BBC4300712023 /* InvitationCode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59FA3B2B1C3BBC4300712023 /* InvitationCode.storyboard */; };
-		59FA3B2E1C3BCABE00712023 /* Shares.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59FA3B2D1C3BCABE00712023 /* Shares.xib */; };
 		5F8EFDAE142B7455EAB412DE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAF74D497A65057D62E58508 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -601,7 +600,6 @@
 		59E16F001BB80F48009E4385 /* CommonProblem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonProblem.m; sourceTree = "<group>"; };
 		59FA3B291C3BA5F100712023 /* UserCenter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserCenter.storyboard; sourceTree = "<group>"; };
 		59FA3B2B1C3BBC4300712023 /* InvitationCode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = InvitationCode.storyboard; sourceTree = "<group>"; };
-		59FA3B2D1C3BCABE00712023 /* Shares.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Shares.xib; sourceTree = "<group>"; };
 		CB7D551072C2407764E4BC7C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EAF74D497A65057D62E58508 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -839,7 +837,6 @@
 				59C3600D1BCA0031007890BE /* ChePaiPickView.xib */,
 				3F1C85361C4165AB00D524F8 /* Share.h */,
 				3F1C85371C4165AB00D524F8 /* Share.m */,
-				59FA3B2D1C3BCABE00712023 /* Shares.xib */,
 			);
 			name = popView;
 			sourceTree = "<group>";
@@ -1445,7 +1442,6 @@
 				44EE777E1BD61FFE00932221 /* img_01_guide@2x.png in Resources */,
 				59FA3B2C1C3BBC4300712023 /* InvitationCode.storyboard in Resources */,
 				44DCED681BD8FEA80079C15D /* img_03_me_pre@2x.png in Resources */,
-				59FA3B2E1C3BCABE00712023 /* Shares.xib in Resources */,
 				59C360141BCA5D9C007890BE /* chepaibg.png in Resources */,
 				598AFC6D1BBA520C00787310 /* ColorChoosePop.xib in Resources */,
 				449290321BB7D72F00F699E7 /* WashStyleChoose.xib in Resources */,
