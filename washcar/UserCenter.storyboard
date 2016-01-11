@@ -50,13 +50,13 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXD-mK-eUu">
-                                <rect key="frame" x="294" y="174" width="306" height="34"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXD-mK-eUu">
+                                <rect key="frame" x="295" y="174" width="305" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.62745098040000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Lpi-nk-O4J"/>
                                 </constraints>
-                                <state key="normal" title="充值">
+                                <state key="normal" title="充值" image="user_recharge_icon">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -197,6 +197,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vYV-G3-biL">
+                                <rect key="frame" x="53" y="178" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="C8a-sw-dZX"/>
+                                    <constraint firstAttribute="height" constant="25" id="Xk2-0H-kbI"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -313,6 +320,7 @@
         <!--个人信息-->
         <scene sceneID="3Ml-2B-TxD">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YGa-Q7-Fus" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="UserInfoViewController" id="tgM-2J-mx5" customClass="UserInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IjF-ff-gJ6"/>
@@ -629,7 +637,6 @@
                         <outlet property="surplusMoney" destination="pSQ-kv-cIt" id="O7I-1Q-FPd"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YGa-Q7-Fus" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="876" y="971"/>
         </scene>
@@ -877,6 +884,7 @@
         <image name="user_info_location_icon" width="114" height="114"/>
         <image name="user_info_money_icon" width="114" height="114"/>
         <image name="user_info_phone_icon" width="114" height="114"/>
+        <image name="user_recharge_icon" width="27" height="27"/>
         <image name="voucher_reciver.png" width="1812" height="765"/>
     </resources>
 </document>

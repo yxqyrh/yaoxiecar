@@ -90,6 +90,8 @@
 //   [money appendFormat:@"余额"];
 //        [money appendFormat:num];
 //        [money appendFormat:@"元"]
+    
+    
      _surplusMoney.attributedText = [StringUtil getMenoyText:@"余额" :num :@"元"];
 }
 

@@ -8,7 +8,9 @@
 
 #import "CarManagerViewController.h"
 
-@interface CarManagerViewController ()
+@interface CarManagerViewController (){
+     NSArray *_array ;
+}
 
 
 @property NSMutableArray *objects;
@@ -26,6 +28,7 @@
     [addButton setTintColor:[UIColor whiteColor]];
     self.navigationItem.rightBarButtonItem = addButton;
       self.navigationItem.title = @"车辆管理";
+    [self loadData:YES];
 }
 
 - (void)insertNewObject:(id)sender {
@@ -59,7 +62,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return _array==nil?0:_array.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -71,6 +74,9 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault   reuseIdentifier:identifier];
     }
     
+    UILabel *carNum = (UILabel*)[cell viewWithTag:1];
+     NSDictionary *_dic = _array[indexPath.row];
+//    carNum.text = [_dic objectForKey:@"title"];
   
     return cell;
     
@@ -100,6 +106,37 @@
     
     uivc.title = title;
     [self.navigationController pushViewController:uivc animated:YES];
+}
+
+-(void)loadData:(BOOL) isShowLoading{
+    
+    UIView *loadingView;
+    if (isShowLoading) {
+        loadingView =self.view;
+    }
+    
+    NSDictionary *parameters = [NSMutableDictionary dictionary];
+//        [parameters setValue:[GlobalVar sharedSingleton].uid forKey:@"uid"];
+//        [parameters setValue:[GlobalVar sharedSingleton].isloginid forKey:@"isloginid"];
+    [[MayiHttpRequestManager sharedInstance] POST:CarManager parameters:parameters showLoadingView:loadingView success:^(id responseObject) {
+        DLog(@"responseObject%@",responseObject);
+        if (responseObject == nil) {
+            return ;
+        }
+        NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
+        if ([@"1" isEqualToString:res]) {
+            
+            _array= [responseObject objectForKey:@"list"];
+            if (_array!=nil&&_array.count>0) {
+                
+            }
+      
+        }
+    } failture:^(NSError *error) {
+        //        [SVProgressHUD showErrorWithStatus:@"获取用户信息失败"];
+    }];
+    
+    
 }
 
 @end

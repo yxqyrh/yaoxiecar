@@ -10,6 +10,7 @@
 #import "BaseViewController.h"
 #import "UserInfoViewController.h"
 #import "StoryboadUtil.h"
+#import "MayiHttpRequestManager.h"
 
 @interface CarManagerViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

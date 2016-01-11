@@ -138,6 +138,15 @@ NSString * const MyMsg = @"wdxx";
 
 //我的消息详情
 NSString * const MyMsgDetail = @"wdxxxq";
+//车辆管理
+NSString * const CarManager = @"clgl";
+
+//邀请码
+
+NSString * const InvitationCode = @"yqm";
+
+//添加车辆
+NSString * const AddCarNum = @"tjcling";
 
 
 /************************

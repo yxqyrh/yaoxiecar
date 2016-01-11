@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "Share.h"
-@interface InvitationCodeViewController : BaseViewController
+#import "MayiHttpRequestManager.h"
+@interface InvitationCodeViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property (weak, nonatomic) IBOutlet UILabel *myCode;
 
 @end
