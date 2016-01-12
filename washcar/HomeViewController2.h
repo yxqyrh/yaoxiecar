@@ -14,6 +14,8 @@
 typedef void(^signCompleteBlock)();
 
 @interface HomeViewController2: BaseViewController<UIScrollViewDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *btn1;
+@property (weak, nonatomic) IBOutlet UIButton *btn2;
 
 @end
 

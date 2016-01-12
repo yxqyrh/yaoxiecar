@@ -24,4 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *cheweihao;
 -(void) refresh;
 @property (strong, nonatomic) UIWindow *window;
+@property (weak, nonatomic) NSString *title;
+@property (weak, nonatomic) IBOutlet UIButton *actionBtn;
+
 @end

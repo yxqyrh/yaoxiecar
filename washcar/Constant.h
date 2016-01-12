@@ -151,6 +151,15 @@ FOUNDATION_EXPORT NSString * const MyMsg;
 
 //我的消息详情
 FOUNDATION_EXPORT NSString * const MyMsgDetail;
+
+//车辆管理
+FOUNDATION_EXPORT NSString * const CarManager;
+//邀请码
+FOUNDATION_EXPORT NSString * const InvitationCode;
+
+//添加车辆
+FOUNDATION_EXPORT NSString * const AddCarNum;
+
 /************************
  *支付的参数常量定义
  *

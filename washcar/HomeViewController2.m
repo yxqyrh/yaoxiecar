@@ -74,7 +74,10 @@
      //    4.监听scrollview的滚动
          self.scrollview.delegate = self;
     
-         [self addTimer];}
+         [self addTimer];
+ [self initBtn:_btn1 :@"user_car_manager_icon" :_btn1.titleLabel.text];
+    [self initBtn:_btn2 :@"user_car_manager_icon" :_btn1.titleLabel.text];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -273,13 +276,13 @@
         
 }
 
-#pragma mark - 点击事件
-- (IBAction)searchControlClick:(id)sender {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"违章查询" andUrl:@"http://m.weizhang8.cn/"];
-    [self.navigationController pushViewController:webController animated:YES];
-}
+//#pragma mark - 点击事件
+//- (IBAction)searchControlClick:(id)sender {
+//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
+//    [webController setTitle:@"违章查询" andUrl:@"http://m.weizhang8.cn/"];
+//    [self.navigationController pushViewController:webController animated:YES];
+//}
 
 
 
@@ -296,6 +299,12 @@
 //    [alertController showWithSender:self.view controller:self animated:YES completion:nil];
 //    return;
     
+//    [self jumpPageWithJudge:YES andSignedBlock:^{
+//        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        WashEditViewController *washController = [storyBoard instantiateViewControllerWithIdentifier:@"WashEditViewController"];
+//        [self.navigationController pushViewController:washController animated:YES];
+//    }];
+    
     [self jumpPageWithJudge:YES andSignedBlock:^{
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         WashEditViewController *washController = [storyBoard instantiateViewControllerWithIdentifier:@"WashEditViewController"];
@@ -303,28 +312,64 @@
     }];
     
 }
+- (IBAction)recharge:(id)sender {
+//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    ReChargeViewController *rechargeViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ReChargeViewController"];
+//    rechargeViewController.checkInMoney = 50;
+//    [self.navigationController pushViewController:rechargeViewController animated:YES];
+    
+    [self jumpPageWithJudge:YES andSignedBlock:^{
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ReChargeViewController *rechargeViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ReChargeViewController"];
+        rechargeViewController.checkInMoney = 50;
+        [self.navigationController pushViewController:rechargeViewController animated:YES];
+    }];
 
-- (IBAction)weatherControlClick:(id)sender {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"天气查询" andUrl:@"http://weather1.sina.cn/?vt=4"];
-    [self.navigationController pushViewController:webController animated:YES];
 }
 
-- (IBAction)InsuranceControlClick:(id)sender {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"保险理赔" andUrl:@"http://caifu.baidu.com/m#/carinsurance/index~city=%E4%B8%8A%E6%B5%B7&zt=pswise&qid=13064072473599934086"];
-    [self.navigationController pushViewController:webController animated:YES];
-}
+//- (IBAction)weatherControlClick:(id)sender {
+//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
+//    [webController setTitle:@"天气查询" andUrl:@"http://weather1.sina.cn/?vt=4"];
+//    [self.navigationController pushViewController:webController animated:YES];
+//}
+//
+//- (IBAction)InsuranceControlClick:(id)sender {
+//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
+//    [webController setTitle:@"保险理赔" andUrl:@"http://caifu.baidu.com/m#/carinsurance/index~city=%E4%B8%8A%E6%B5%B7&zt=pswise&qid=13064072473599934086"];
+//    [self.navigationController pushViewController:webController animated:YES];
+//}
+//
+//- (IBAction)trafficControlClick:(id)sender {
+//    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
+//    [webController setTitle:@"交通查询" andUrl:@"http://m.ctrip.com/html5"];
+//    [self.navigationController pushViewController:webController animated:YES];
+//}
 
-- (IBAction)trafficControlClick:(id)sender {
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"交通查询" andUrl:@"http://m.ctrip.com/html5"];
-    [self.navigationController pushViewController:webController animated:YES];
+-(void) initBtn:(UIButton*)btn:(NSString*)iconName :(NSString*)btnTitle{
+    //UIImage *image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(40, 40)];
+    UIImage *image =[UIImage imageNamed:iconName] ;
+    NSString *title = btnTitle;
+    [btn setTitle:title forState:UIControlStateNormal];
+    
+    [btn setImage:image forState:UIControlStateNormal];
+    [btn setTintColor:[UIColor whiteColor]];
+    CGSize imageSize = btn.imageView.frame.size;
+    CGSize titleSize = btn.titleLabel.frame.size;
+    
+    // get the height they will take up as a unit
+    CGFloat totalHeight = (imageSize.height + titleSize.height + 5);
+    
+    // raise the image and push it right to center it
+    btn.imageEdgeInsets = UIEdgeInsetsMake(- (totalHeight - imageSize.height), 0.0, 0.0, - titleSize.width);
+    
+    // lower the text and push it left to center it
+    btn.titleEdgeInsets = UIEdgeInsetsMake(0.0, - imageSize.width, - (totalHeight - titleSize.height),0.0);
+    
+//    [[btn layer]setCornerRadius:8.0];
 }
-
 
 
 @end

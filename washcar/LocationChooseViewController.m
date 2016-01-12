@@ -236,7 +236,7 @@
     [[MayiHttpRequestManager sharedInstance] POST:api parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
         
-         DLog(@"res=%@",res)
+         DLog(@"responseObject=%@",responseObject)
         if ([@"1" isEqualToString:res]) {
             @try {
                  _arrayList = [responseObject objectForKey:@"list"];
