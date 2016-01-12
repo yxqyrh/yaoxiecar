@@ -165,6 +165,8 @@
     _userInfo.city = info.area_id_city;
     _userInfo.area = info.area_id_area;
     _userInfo.plot = info.area_id_smallArea;
+    
+    NSLog(@"_userInfo.plot=%@",_userInfo.plot);
 
    
 }
@@ -272,23 +274,27 @@
 //    返回值
 //    Data res 1 编辑资料成功  2编辑资料失败
     NSString *chePaiStr = [_provinceShort.titleLabel.text stringByAppendingFormat:@"%@%@",_A_Z.titleLabel.text,_CarNum.text];
-    
-    [parameters setValue:chePaiStr forKey:@"carnumber"];
+    [parameters setValue:_provinceShort.titleLabel.text forKey:@"prov"];
+    [parameters setValue:_A_Z.titleLabel.text forKey:@"nevel"];
+    [parameters setValue:_CarNum.text forKey:@"LPN"];
     [parameters setValue:_userInfo.color forKey:@"color"];
     [parameters setValue:_userInfo.province forKey:@"province"];
     [parameters setValue:_userInfo.city forKey:@"city"];
-    [parameters setValue:_userInfo.area forKey:@"area"];
-    [parameters setValue:_userInfo.plot forKey:@"plot"];
-    [parameters setValue:_cheweihao.text forKey:@"cwh"];
+    [parameters setValue:_userInfo.area forKey:@"qu"];
+    [parameters setValue:_userInfo.plot forKey:@"address"];
+    [parameters setValue:_cheweihao.text forKey:@"parkNum"];
     [[MayiHttpRequestManager sharedInstance] POST:UserInfoEdit parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
         if ([@"1" isEqualToString:res]) {
      
             [SVProgressHUD showSuccessWithStatus:@"车牌编辑成功！"];
                        _userInfo.cwh =_cheweihao.text;
-        }else{
-             [SVProgressHUD showErrorWithStatus:@"车牌编辑失败！"];
+        }else if([@"2" isEqualToString:res]){
+            [SVProgressHUD showErrorWithStatus:@"车牌编辑失败！"];
+        }else if([@"5" isEqualToString:res]){
+            [SVProgressHUD showErrorWithStatus:@"该网点尚未开通，敬请期待"];
         }
+       
     } failture:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"车牌编辑失败！"];
     }];
@@ -347,38 +353,38 @@
     // uid=18550031362  Isloginid=14435112502766
     //    [parameters setValue:[GlobalVar sharedSingleton].uid forKey:@"uid"];
     //    [parameters setValue:[GlobalVar sharedSingleton].isloginid forKey:@"isloginid"];
-    if ([WDSystemUtils isEmptyOrNullString:_provinceShort.titleLabel.text]||[@"省简称" isEqualToString:_provinceShort.titleLabel.text]) {
-        [self.view makeToast:@"车牌号的省份简称不能为空"];
-        return;
-    }
-    
-    if ([WDSystemUtils isEmptyOrNullString:_A_Z.titleLabel.text]||[@"级别" isEqualToString:_A_Z.titleLabel.text]) {
-        [self.view makeToast:@"车牌号的省份字母级别不能为空"];
-        return;
-    }
-    if ([WDSystemUtils isEmptyOrNullString:_CarNum.text]||_CarNum.text.length!=5) {
-        [self.view makeToast:@"车牌后5位数不合法"];
-        return;
-    }
-    
-    if ([WDSystemUtils isEmptyOrNullString:_CarColor.text]) {
-        [self.view makeToast:@"汽车颜色不能为空"];
-        return;
-    }
-    
-    if ([WDSystemUtils isEmptyOrNullString:_Loaction.text]) {
-        [self.view makeToast:@"地址不能为空"];
-        return;
-    }
-    if ([StringUtil isEmty:_userInfo.plot]) {
-        [SVProgressHUD showErrorWithStatus:@"没有小区信息，无法添加车牌"];
-        return;
-    }
-    
-    //    if ([WDSystemUtils isEmptyOrNullString:_cheweihao.text]) {
-    //        [self.view makeToast:@"车位号不能为空"];
-    //        return;
-    //    }
+//    if ([WDSystemUtils isEmptyOrNullString:_provinceShort.titleLabel.text]||[@"省简称" isEqualToString:_provinceShort.titleLabel.text]) {
+//        [self.view makeToast:@"车牌号的省份简称不能为空"];
+//        return;
+//    }
+//    
+//    if ([WDSystemUtils isEmptyOrNullString:_A_Z.titleLabel.text]||[@"级别" isEqualToString:_A_Z.titleLabel.text]) {
+//        [self.view makeToast:@"车牌号的省份字母级别不能为空"];
+//        return;
+//    }
+//    if ([WDSystemUtils isEmptyOrNullString:_CarNum.text]||_CarNum.text.length!=5) {
+//        [self.view makeToast:@"车牌后5位数不合法"];
+//        return;
+//    }
+//    
+//    if ([WDSystemUtils isEmptyOrNullString:_CarColor.text]) {
+//        [self.view makeToast:@"汽车颜色不能为空"];
+//        return;
+//    }
+//    
+//    if ([WDSystemUtils isEmptyOrNullString:_Loaction.text]) {
+//        [self.view makeToast:@"地址不能为空"];
+//        return;
+//    }
+//    if ([StringUtil isEmty:_userInfo.plot]) {
+//        [SVProgressHUD showErrorWithStatus:@"没有小区信息，无法添加车牌"];
+//        return;
+//    }
+//    
+//        if ([WDSystemUtils isEmptyOrNullString:_cheweihao.text]) {
+//            [self.view makeToast:@"车位号不能为空"];
+//            return;
+//        }
     
     //    uid  注册或者登陆的标识  carnumber 车牌号 color颜色 province省  city市 area 县  plot小区 cwh车位号
     //    uid  是否登录的标识，所有必须登录才能使用的功能必须post过来这个参数
@@ -387,21 +393,40 @@
     //    Data res 1 编辑资料成功  2编辑资料失败
     NSString *chePaiStr = [_provinceShort.titleLabel.text stringByAppendingFormat:@"%@%@",_A_Z.titleLabel.text,_CarNum.text];
     
-    [parameters setValue:chePaiStr forKey:@"carnumber"];
+    [parameters setValue:_provinceShort.titleLabel.text forKey:@"prov"];
+    [parameters setValue:_A_Z.titleLabel.text forKey:@"nevel"];
+    [parameters setValue:_CarNum.text forKey:@"LPN"];
     [parameters setValue:_userInfo.color forKey:@"color"];
     [parameters setValue:_userInfo.province forKey:@"province"];
     [parameters setValue:_userInfo.city forKey:@"city"];
-    [parameters setValue:_userInfo.area forKey:@"area"];
-    [parameters setValue:_userInfo.plot forKey:@"plot"];
-    [parameters setValue:_cheweihao.text forKey:@"cwh"];
+    [parameters setValue:_userInfo.area forKey:@"qu"];
+    [parameters setValue:_userInfo.plot forKey:@"address"];
+    [parameters setValue:_cheweihao.text forKey:@"parkNum"];
+    
+    
+//    [parameters setValue:@"沪" forKey:@"prov"];
+//    [parameters setValue:@"A" forKey:@"nevel"];
+//    [parameters setValue:@"12345" forKey:@"LPN"];
+//    [parameters setValue:@"黑色" forKey:@"color"];
+//    [parameters setValue:@"上海" forKey:@"province"];
+//    [parameters setValue:@"上海" forKey:@"city"];
+//    [parameters setValue:@"徐汇区" forKey:@"qu"];
+//    [parameters setValue:@"上海小区" forKey:@"address"];
+//    [parameters setValue:@"123" forKey:@"parkNum"];
+//    
+    
     [[MayiHttpRequestManager sharedInstance] POST:AddCarNum parameters:parameters showLoadingView:self.view success:^(id responseObject) {
+        NSLog(@"responseObject=%@",responseObject);
+        
         NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
         if ([@"1" isEqualToString:res]) {
             
             [SVProgressHUD showSuccessWithStatus:@"添加车牌成功！"];
             _userInfo.cwh =_cheweihao.text;
-        }else{
+        }else if([@"2" isEqualToString:res]){
             [SVProgressHUD showErrorWithStatus:@"添加车牌失败！"];
+        }else if([@"5" isEqualToString:res]){
+            [SVProgressHUD showErrorWithStatus:@"该网点尚未开通，敬请期待"];
         }
     } failture:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"添加车牌失败！"];

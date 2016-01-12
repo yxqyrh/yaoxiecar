@@ -116,8 +116,6 @@
     }
     
     NSDictionary *parameters = [NSMutableDictionary dictionary];
-//        [parameters setValue:[GlobalVar sharedSingleton].uid forKey:@"uid"];
-//        [parameters setValue:[GlobalVar sharedSingleton].isloginid forKey:@"isloginid"];
     [[MayiHttpRequestManager sharedInstance] POST:CarManager parameters:parameters showLoadingView:loadingView success:^(id responseObject) {
         DLog(@"responseObject%@",responseObject);
         if (responseObject == nil) {

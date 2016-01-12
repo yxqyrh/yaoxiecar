@@ -22,7 +22,9 @@ static MayiHttpRequestManager *_instance = nil;
         if (_instance == nil) {
             _instance = [[self alloc] init];
 
-            _instance.serverUrl = @"http://mayi.ahxdnet.com/index.php?s=/Home/User/";
+//            _instance.serverUrl = @"http://mayi.ahxdnet.com/index.php?s=/Home/User/";
+            
+            _instance.serverUrl = @"http://myxc.ahwdcz.com/index.php?s=/Home/User/";
 
         }
     }
