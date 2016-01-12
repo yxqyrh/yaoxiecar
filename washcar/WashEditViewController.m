@@ -12,6 +12,7 @@
 #import "VoucherInfo.h"
 #import "StringUtil.h"
 #import "NIAttributedLabel.h"
+#import "Masonry.h"
 
 @interface WashEditViewController () {
     UILabel *_carNumberLabel;
@@ -74,7 +75,7 @@
     NSDictionary *parameters = [NSMutableDictionary dictionary];
     
     [parameters setValue:[GlobalVar sharedSingleton].uid forKey:@"uid"];
-
+//MayiWYXC
     [[MayiHttpRequestManager sharedInstance] POST:MayiWYXC parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         
         
@@ -242,6 +243,19 @@
 -(void)PayType:(int)type andValue:(CGFloat)payValue
 {
     
+}
+
+#pragma mark - LocationChooseDelegate 
+
+-(void)chooseLocation:(NSString *)address
+{
+    LocationInfo *info =[LocationInfo getInstance];
+    _addressLabel.text = address;
+    _userInfo.szdqstr =address;
+    _userInfo.province =info.area_id_province;
+    _userInfo.city = info.area_id_city;
+    _userInfo.area = info.area_id_area;
+    _userInfo.plot = info.area_id_smallArea;
 }
 
 #pragma mark - UITableViewDataSource
@@ -418,6 +432,12 @@
      [view refresh:_selectWashType.id];
 }
 - (IBAction)locationChoose:(id)sender {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LocationChoose1" bundle:nil];
+    LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
+    viewController.delegate = self;
+    [self.navigationController pushViewController:viewController animated:YES];
+    return;
+    
     [[LocationInfo getInstance] clear];
     LocationChoosePop *view = [LocationChoosePop defaultPopupView];
     view.parentVC = self;
@@ -463,6 +483,9 @@
     mLocationChooseViewController.mydelegate = self;
     mLocationChooseViewController.channel = channel;
     [self.navigationController pushViewController:mLocationChooseViewController animated:YES];
+    
+
+    
 }
 
 //地址选择确定回调

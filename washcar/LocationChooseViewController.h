@@ -10,7 +10,7 @@
 #import "BaseTableViewController.h"
 @protocol LocationChooseViewControllerDelegate<NSObject> // 代理传值方法
 @required
-- (void) showLocationChoose;
+- (void) showLocationChoose:(int)chanel;
 @end
 
 @interface LocationChooseViewController : BaseTableViewController<UITableViewDelegate,UITableViewDataSource>

@@ -15,9 +15,9 @@
 #import "ColorChoosePop.h"
 #import "LocationChoosePop.h"
 #import "WashStyleChoose.h"
-#import "LocationChooseViewController.h"
+#import "LocationChooseViewController1.h"
 #import "VoucherChoosePop.h"
 
-@interface WashEditViewController : BaseTableViewController <UITextViewDelegate,PayCompleteDelegate,ColorChoosePopDelegate,LocationChoosePopDelegate,WashStyleChooseDelegate,LocationChooseViewControllerDelegate,VoucherChoosePopDelegate>
+@interface WashEditViewController : BaseTableViewController <UITextViewDelegate,PayCompleteDelegate,ColorChoosePopDelegate,LocationChoosePopDelegate,WashStyleChooseDelegate,LocationChooseDelegate,VoucherChoosePopDelegate>
 
 @end
