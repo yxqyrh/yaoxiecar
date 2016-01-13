@@ -9,6 +9,11 @@
 #import "InvitationCodesViewController.h"
 
 @interface InvitationCodesViewController(){
+    
+    NSString *wdyqm;//我的验证码
+    NSDictionary 　*news;
+    NSArray  *yqmlist;
+    
    
 }
 
@@ -33,7 +38,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return yqmlist == nil?0:yqmlist.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -45,9 +50,14 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault   reuseIdentifier:identifier];
     }
     UILabel *title = (UILabel*)[cell viewWithTag:1];
-    title.text = @"2323";
+   
+     NSDictionary *_dic = yqmlist[indexPath.row];
+    NSString *uname = [_dic objectForKey:@"uname"];
     
-    
+    if ([StringUtil isEmty:uname]) {
+        uname = @"用户名未知";
+    }
+     title.text = uname;
     return cell;
     
 }
@@ -80,15 +90,21 @@
     NSDictionary *parameters = [NSMutableDictionary dictionary];
     //    [parameters setValue:[GlobalVar sharedSingleton].uid forKey:@"uid"];
     //    [parameters setValue:[GlobalVar sharedSingleton].isloginid forKey:@"isloginid"];
-    [[MayiHttpRequestManager sharedInstance] POST:MyMsg parameters:parameters showLoadingView:loadingView success:^(id responseObject) {
+    [[MayiHttpRequestManager sharedInstance] POST:InvitationCode parameters:parameters showLoadingView:loadingView success:^(id responseObject) {
         DLog(@"responseObject%@",responseObject);
         if (responseObject == nil) {
             return ;
         }
         NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
         if ([@"1" isEqualToString:res]) {
-            
-            
+            wdyqm = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"wdyqm"]];
+            news = [responseObject objectForKey:@"news"];
+            yqmlist = [responseObject objectForKey:@"yqmlist"];
+            if ([StringUtil isEmty:wdyqm]) {
+                wdyqm = @"暂无邀请码";
+            }
+            _myCode.text = wdyqm;
+            [_tableview reloadData];
             
         }
     } failture:^(NSError *error) {
