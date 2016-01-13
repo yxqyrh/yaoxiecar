@@ -26,6 +26,7 @@
        [self.view addSubview:share];
     _tableview.dataSource = self;
     _tableview.delegate = self;
+    [self loadData:YES];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
