@@ -36,6 +36,9 @@
     UserInfo *_userInfo;
     
     ChePaiPickView *chePaiPickView;
+    NSDictionary *dic;
+    NSDictionary *dz;
+    
     
 }
 
@@ -196,36 +199,54 @@
 //从网上加载数据
 -(void)loadData{
     NSDictionary *parameters = [NSMutableDictionary dictionary];
-    [[MayiHttpRequestManager sharedInstance] POST:MayiUserDetail parameters:parameters showLoadingView:self.view success:^(id responseObject) {
+    if (_clid!=nil) {
+       [parameters setValue:_clid forKey:@"id"];
+    }
+    
+    [[MayiHttpRequestManager sharedInstance] POST:CarEdit parameters:parameters showLoadingView:self.view success:^(id responseObject) {
+         NSLog(@"responseObject=%@",responseObject);
         NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
         if ([@"1" isEqualToString:res]) {
-             _userInfo = [UserInfo objectWithKeyValues:[responseObject objectForKey:@"0"]];
+//             _userInfo = [UserInfo objectWithKeyValues:[responseObject objectForKey:@"0"]];
             
-            [self refresh];
-          
+//
+            dic =[responseObject objectForKey:@"res_cl"];
+            dz  = [responseObject objectForKey:@"dz"];
+             [self refresh];
                    }
     } failture:^(NSError *error) {
         
     }];
 }
-
+//"dz": {
+//    "provincemc": "上海",
+//    "citymc": "上海",
+//    "areamc": "徐汇区",
+//    "plotmc": "上海小区",
+//    "province": "25",
+//    "city": "321",
+//    "area": "2706",
+//    "plot": "37"
+//},
 -(void)refresh{
     
-    _CarColor.text = _userInfo.color;
-    _phone.text = _userInfo.uid;
+    _CarColor.text = [dic objectForKey:@"color"];
+    _cheweihao.text = [dic objectForKey:@"cwh"];
+    NSString *cp1 =[dic objectForKey:@"cp1"];
+    NSString *cp2 =[dic objectForKey:@"cp2"];
+    NSString *cp3 =[dic objectForKey:@"cp3"];
+ 
+    
+    [_provinceShort setTitle:cp1 forState:UIControlStateNormal];
+    [_A_Z setTitle:cp2 forState:UIControlStateNormal];
+    _CarNum.text = cp3;
     
     
-    _surplusMoney.attributedText =[StringUtil getMenoyText:@"" :_userInfo.money :@"元"];
-    _cheweihao.text = _userInfo.cwh;
-     _Loaction.text = _userInfo.szdqstr;
-    if(_userInfo.carnumber!=nil&&_userInfo.carnumber.length==7){
-        NSString *jian = [_userInfo.carnumber substringToIndex:1];
-        NSString *ji = [_userInfo.carnumber substringWithRange:NSMakeRange(1,1)];
-        NSString *num = [_userInfo.carnumber substringFromIndex:2];
-        [_provinceShort setTitle:jian forState:UIControlStateNormal];
-        [_A_Z setTitle:ji forState:UIControlStateNormal];
-        _CarNum.text = num;
-    }
+    NSString *provincemc =[dz objectForKey:@"provincemc"];
+     NSString *citymc =[dz objectForKey:@"citymc"];
+     NSString *areamc =[dz objectForKey:@"areamc"];
+     NSString *plotmc =[dz objectForKey:@"plotmc"];
+   _Loaction.text = [provincemc stringByAppendingFormat:@"%@%@%@",citymc,areamc,plotmc];
  
 }
 

@@ -65,7 +65,7 @@ static MayiHttpRequestManager *_instance = nil;
 //        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 //            NSLog(@"Error: %@", error);
 //        }];
-        _manager = [[MKNetworkEngine alloc] initWithHostName:@"mayi.ahxdnet.com/index.php?s=/Home/User" customHeaderFields:nil];
+        _manager = [[MKNetworkEngine alloc] initWithHostName:@"myxc.ahwdcz.com/index.php?s=/Home/User" customHeaderFields:nil];
         
         return self;
     }

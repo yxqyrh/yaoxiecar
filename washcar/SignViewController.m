@@ -7,7 +7,6 @@
 //
 
 #import "SignViewController.h"
-#import "WDHttpRequestManager.h"
 #import "MayiHttpRequestManager.h"
 #import "StoryboadUtil.h"
 #import "StringUtil.h"

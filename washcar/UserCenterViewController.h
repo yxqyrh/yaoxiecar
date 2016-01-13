@@ -13,8 +13,8 @@
 #import "CommonProblemViewController.h"
 #import "ComplaintViewController.h"
 #import "ProgressHUD.h"
-#import "CarManagerViewController.h"
-#import "InvitationCodeViewController.h"
+#import "CarsManagerViewController.h"
+#import "InvitationCodesViewController.h"
 #import "Masonry.h"
 #import "StoryboadUtil.h"
 @interface UserCenterViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>

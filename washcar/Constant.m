@@ -150,7 +150,8 @@ NSString * const InvitationCode = @"yqm";
 
 //添加车辆
 NSString * const AddCarNum = @"tjcling";
-
+//车辆编辑
+NSString * const CarEdit = @"clbj";
 
 /************************
  *支付的参数常量定义

@@ -325,7 +325,7 @@
 
 - (IBAction)btn1Click:(id)sender {
     
-   CarManagerViewController *uivc = [StoryboadUtil getViewController:@"InvitationCode" :@"CarManagerViewController"];
+   CarsManagerViewController *uivc = [StoryboadUtil getViewController:@"InvitationCode" :@"CarsManagerViewController"];
     [self.navigationController pushViewController:uivc animated:YES];
 }
 - (IBAction)btn2Click:(id)sender {
@@ -334,7 +334,7 @@
 }
 - (IBAction)btn3Click:(id)sender {
     
-    InvitationCodeViewController *invitationCode =[StoryboadUtil getViewController:@"InvitationCode" :@"InvitationCodeViewController"];
+    InvitationCodesViewController *invitationCode =[StoryboadUtil getViewController:@"InvitationCode" :@"InvitationCodesViewController"];
     [self.navigationController pushViewController:invitationCode animated:YES];
 }
 

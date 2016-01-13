@@ -25,6 +25,7 @@
 -(void) refresh;
 @property (strong, nonatomic) UIWindow *window;
 @property (weak, nonatomic) NSString *title;
+@property (weak, nonatomic) NSString *clid;
 @property (weak, nonatomic) IBOutlet UIButton *actionBtn;
 
 @end

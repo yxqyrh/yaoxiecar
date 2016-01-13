@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--Invitation Code View Controller-->
+        <!--Invitation Codes View Controller-->
         <scene sceneID="Jke-CM-ZZp">
             <objects>
-                <viewController storyboardIdentifier="InvitationCodeViewController" id="3cc-eo-8NE" customClass="InvitationCodeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InvitationCodesViewController" id="3cc-eo-8NE" customClass="InvitationCodesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rNF-n5-ipT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -102,18 +102,18 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="myCode" destination="ms9-82-QJM" id="VgB-q3-GMo"/>
-                        <outlet property="tableview" destination="yDE-bS-onh" id="Ql4-BD-3iH"/>
+                        <outlet property="myCode" destination="ms9-82-QJM" id="FbU-0p-TmC"/>
+                        <outlet property="tableview" destination="yDE-bS-onh" id="veh-SE-21h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vtj-IB-zvl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-107" y="305"/>
         </scene>
-        <!--Car Manager View Controller-->
+        <!--Cars Manager View Controller-->
         <scene sceneID="eo5-zR-zxa">
             <objects>
-                <viewController storyboardIdentifier="CarManagerViewController" id="SBZ-zh-psc" customClass="CarManagerViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CarsManagerViewController" id="SBZ-zh-psc" customClass="CarsManagerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IYt-tK-42e">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -161,7 +161,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="8su-ld-b3n" id="JRO-dH-MiW"/>
+                        <outlet property="tableView" destination="8su-ld-b3n" id="133-aN-k5j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WdS-ro-Rcv" userLabel="First Responder" sceneMemberID="firstResponder"/>
