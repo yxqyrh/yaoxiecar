@@ -13,7 +13,9 @@
 #import "LocationInfo.h"
 #import "NIAttributedLabel.h"
 #import "ChePaiPickView.h"
-@interface RegisterViewController : BaseTableViewController<ColorChoosePopDelegate,LocationChoosePopDelegate,LocationChooseViewControllerDelegate,NIAttributedLabelDelegate,ChePaiPickViewDelegate>
+#import "WDLocationHelper.h"
+
+@interface RegisterViewController : BaseTableViewController<ColorChoosePopDelegate,LocationChoosePopDelegate,LocationChooseViewControllerDelegate,NIAttributedLabelDelegate,ChePaiPickViewDelegate,WDLocationHelperDelegate>
 
 
 @end

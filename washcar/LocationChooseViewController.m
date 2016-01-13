@@ -175,6 +175,7 @@
             default:
                 break;
         }
+        [_mydelegate showLocationChoose:self.channel];
         [self.navigationController popViewControllerAnimated:YES];
     }
  
@@ -184,7 +185,7 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-     [_mydelegate showLocationChoose];
+//     [_mydelegate showLocationChoose];
 }
 
 

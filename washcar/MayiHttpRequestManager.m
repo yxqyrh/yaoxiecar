@@ -23,9 +23,7 @@ static MayiHttpRequestManager *_instance = nil;
             _instance = [[self alloc] init];
 
 //            _instance.serverUrl = @"http://mayi.ahxdnet.com/index.php?s=/Home/User/";
-            
             _instance.serverUrl = @"http://myxc.ahwdcz.com/index.php?s=/Home/User/";
-
         }
     }
     return _instance;
@@ -145,7 +143,7 @@ showLoadingView:(UIView *)view
     MKNetworkOperation *op = [_manager operationWithPath:methodName params:dic httpMethod:@"POST" ssl:NO];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         id json = [operation responseJSON];
-//         DLog(@"response json:%@",json);
+         DLog(@"response json:%@",json);
         success(json);
        
         if (view != nil) {

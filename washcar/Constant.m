@@ -85,6 +85,9 @@ NSString * const MayiCZZXTJ = @"czzxtj";
 //提交洗车订单
 NSString * const MayiWYXCing = @"wyxcing";
 
+//注册时根据定位获取地址信息
+NSString * const MayiRegShow = @"regshow";
+
 //余额支付
 NSString * const MayiYEZF = @"yezf";
 

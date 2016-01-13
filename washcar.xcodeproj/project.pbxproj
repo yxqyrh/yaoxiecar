@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F1C85381C4165AB00D524F8 /* Share.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1C85371C4165AB00D524F8 /* Share.m */; };
 		3F7831D01BCC106C0021E7F4 /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7831CF1BCC106C0021E7F4 /* Sign.storyboard */; };
-		3FA5701C1C3EC856007C82E3 /* CarManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA5701B1C3EC856007C82E3 /* CarManagerViewController.m */; };
-		3FA5701F1C3EC8C2007C82E3 /* InvitationCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA5701E1C3EC8C2007C82E3 /* InvitationCodeViewController.m */; };
 		4440C56F1BDCC0920077CFFA /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4440C56C1BDCC0920077CFFA /* libWeChatSDK.a */; };
 		4440C5761BDCC0A60077CFFA /* ApiXml.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4440C5711BDCC0A60077CFFA /* ApiXml.mm */; };
 		4440C5771BDCC0A60077CFFA /* payRequsestHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4440C5731BDCC0A60077CFFA /* payRequsestHandler.mm */; };
@@ -25,6 +22,9 @@
 		44736C591BB57D27004D665D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44736C571BB57D27004D665D /* LaunchScreen.storyboard */; };
 		44736C641BB57D28004D665D /* washcarTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44736C631BB57D28004D665D /* washcarTests.m */; };
 		44736C6F1BB57D28004D665D /* washcarUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44736C6E1BB57D28004D665D /* washcarUITests.m */; };
+		4473C1171C43F716000130B8 /* PlotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4473C1151C43F716000130B8 /* PlotCell.m */; };
+		4473C1181C43F716000130B8 /* PlotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4473C1161C43F716000130B8 /* PlotCell.xib */; };
+		4473C11B1C452CA8000130B8 /* WDLocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4473C11A1C452CA8000130B8 /* WDLocationHelper.m */; };
 		4483618E1BC8FB63005396D5 /* RootViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4483618D1BC8FB63005396D5 /* RootViewController1.m */; };
 		448361921BCA0904005396D5 /* img_call_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 448361911BCA0904005396D5 /* img_call_phone@2x.png */; };
 		448361951BCAA767005396D5 /* ScratchcardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 448361941BCAA767005396D5 /* ScratchcardViewController.m */; };
@@ -76,6 +76,9 @@
 		449290601BB907BF00F699E7 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4492905F1BB907BF00F699E7 /* GuideViewController.m */; };
 		4492906B1BB9146F00F699E7 /* WDSystemUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4492906A1BB9146F00F699E7 /* WDSystemUtils.m */; };
 		44AEA2E21BC7D6A0007BBB89 /* navigation_bar_color@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44AEA2E11BC7D6A0007BBB89 /* navigation_bar_color@3x.png */; };
+		44B5CB831C426A3500141CBF /* LocationChoose1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44B5CB821C426A3500141CBF /* LocationChoose1.storyboard */; };
+		44B5CB861C426AB300141CBF /* LocationChooseViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B5CB851C426AB300141CBF /* LocationChooseViewController1.m */; };
+		44B5CB891C429F3C00141CBF /* SmallArea.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B5CB881C429F3C00141CBF /* SmallArea.m */; };
 		44B7A2261BC38400006FEAA0 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 44B7A2251BC38400006FEAA0 /* AlipaySDK.bundle */; };
 		44B7A3051BC389A9006FEAA0 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B7A2F51BC389A9006FEAA0 /* base64.m */; };
 		44B7A3061BC389A9006FEAA0 /* DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B7A2F81BC389A9006FEAA0 /* DataSigner.m */; };
@@ -149,6 +152,7 @@
 		44F943631BB78E97000CAF90 /* img_zhifubao.png in Resources */ = {isa = PBXBuildFile; fileRef = 44F943501BB78E97000CAF90 /* img_zhifubao.png */; };
 		44F943641BB78E97000CAF90 /* navigation_bar_back_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44F943511BB78E97000CAF90 /* navigation_bar_back_button@2x.png */; };
 		44F9436A1BB799B0000CAF90 /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F943691BB799B0000CAF90 /* OrderListViewController.m */; };
+		59111E001BC667F900C2CCA9 /* UserCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59111DFF1BC667F900C2CCA9 /* UserCenter.storyboard */; };
 		59111E021BC66A1300C2CCA9 /* UserInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59111E011BC66A1300C2CCA9 /* UserInfo.storyboard */; };
 		5925A1081BB8437000635EDB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5925A1071BB8437000635EDB /* Images.xcassets */; };
 		5925A1141BB8494C00635EDB /* SCNavTabBar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5925A10B1BB8494C00635EDB /* SCNavTabBar.bundle */; };
@@ -248,6 +252,11 @@
 		44736C6A1BB57D28004D665D /* washcarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = washcarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44736C6E1BB57D28004D665D /* washcarUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = washcarUITests.m; sourceTree = "<group>"; };
 		44736C701BB57D28004D665D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4473C1141C43F716000130B8 /* PlotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotCell.h; sourceTree = "<group>"; };
+		4473C1151C43F716000130B8 /* PlotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlotCell.m; sourceTree = "<group>"; };
+		4473C1161C43F716000130B8 /* PlotCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlotCell.xib; sourceTree = "<group>"; };
+		4473C1191C452CA8000130B8 /* WDLocationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDLocationHelper.h; sourceTree = "<group>"; };
+		4473C11A1C452CA8000130B8 /* WDLocationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDLocationHelper.m; sourceTree = "<group>"; };
 		4483618C1BC8FB63005396D5 /* RootViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController1.h; sourceTree = "<group>"; };
 		4483618D1BC8FB63005396D5 /* RootViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController1.m; sourceTree = "<group>"; };
 		448361911BCA0904005396D5 /* img_call_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_call_phone@2x.png"; sourceTree = "<group>"; };
@@ -336,6 +345,11 @@
 		449290691BB9146F00F699E7 /* WDSystemUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDSystemUtils.h; sourceTree = "<group>"; };
 		4492906A1BB9146F00F699E7 /* WDSystemUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDSystemUtils.m; sourceTree = "<group>"; };
 		44AEA2E11BC7D6A0007BBB89 /* navigation_bar_color@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_bar_color@3x.png"; sourceTree = "<group>"; };
+		44B5CB821C426A3500141CBF /* LocationChoose1.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationChoose1.storyboard; sourceTree = "<group>"; };
+		44B5CB841C426AB300141CBF /* LocationChooseViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationChooseViewController1.h; sourceTree = "<group>"; };
+		44B5CB851C426AB300141CBF /* LocationChooseViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationChooseViewController1.m; sourceTree = "<group>"; };
+		44B5CB871C429F3C00141CBF /* SmallArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmallArea.h; sourceTree = "<group>"; };
+		44B5CB881C429F3C00141CBF /* SmallArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmallArea.m; sourceTree = "<group>"; };
 		44B7A2171BC3822F006FEAA0 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		44B7A2181BC3822F006FEAA0 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		44B7A21B1BC38238006FEAA0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -786,6 +800,8 @@
 				44928FE81BB7D6D700F699E7 /* ComplaintViewController.m */,
 				44928FE91BB7D6D700F699E7 /* LocationChooseViewController.h */,
 				44928FEA1BB7D6D700F699E7 /* LocationChooseViewController.m */,
+				44B5CB841C426AB300141CBF /* LocationChooseViewController1.h */,
+				44B5CB851C426AB300141CBF /* LocationChooseViewController1.m */,
 				44928FEB1BB7D6D700F699E7 /* MyIntegralViewController.h */,
 				44928FED1BB7D6D700F699E7 /* MyMsgViewController.h */,
 				44928FEE1BB7D6D700F699E7 /* MyMsgViewController.m */,
@@ -1101,6 +1117,7 @@
 				59FA3B291C3BA5F100712023 /* UserCenter.storyboard */,
 				3F7831CF1BCC106C0021E7F4 /* Sign.storyboard */,
 				44928FE21BB7D67D00F699E7 /* LocationChoose.storyboard */,
+				44B5CB821C426A3500141CBF /* LocationChoose1.storyboard */,
 				44736C521BB57D27004D665D /* Main.storyboard */,
 				44F942AC1BB594A6000CAF90 /* Guide.storyboard */,
 				596860C01BC0EC8600C73AD0 /* home.storyboard */,
@@ -1136,6 +1153,8 @@
 				5968611E1BC38EC700C73AD0 /* DateUtil.m */,
 				596861231BC3B95700C73AD0 /* StringUtil.h */,
 				596861241BC3B95700C73AD0 /* StringUtil.m */,
+				4473C1191C452CA8000130B8 /* WDLocationHelper.h */,
+				4473C11A1C452CA8000130B8 /* WDLocationHelper.m */,
 			);
 			name = SystemUtils;
 			sourceTree = "<group>";
@@ -1157,6 +1176,8 @@
 				596861141BC25DA400C73AD0 /* LocationInfo.m */,
 				596861201BC3B21300C73AD0 /* VoucherInfo.h */,
 				596861211BC3B21300C73AD0 /* VoucherInfo.m */,
+				44B5CB871C429F3C00141CBF /* SmallArea.h */,
+				44B5CB881C429F3C00141CBF /* SmallArea.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1279,6 +1300,9 @@
 			children = (
 				59D64A261BB9539100C00A0F /* PopVoucherTableViewCell.h */,
 				59D64A271BB9539100C00A0F /* PopVoucherTableViewCell.m */,
+				4473C1141C43F716000130B8 /* PlotCell.h */,
+				4473C1151C43F716000130B8 /* PlotCell.m */,
+				4473C1161C43F716000130B8 /* PlotCell.xib */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -1433,6 +1457,7 @@
 				3F7831D01BCC106C0021E7F4 /* Sign.storyboard in Resources */,
 				44EE77621BD61E4800932221 /* img_guide_03@2x.png in Resources */,
 				5925A1081BB8437000635EDB /* Images.xcassets in Resources */,
+				44B5CB831C426A3500141CBF /* LocationChoose1.storyboard in Resources */,
 				44EE77841BD61FFE00932221 /* img_01_weather@2x.png in Resources */,
 				44EE77661BD61F0400932221 /* img_arrow@2x.png in Resources */,
 				44928FE31BB7D67D00F699E7 /* LocationChoose.storyboard in Resources */,
@@ -1450,6 +1475,7 @@
 				596861081BC1593A00C73AD0 /* test.storyboard in Resources */,
 				595F524F1BDA1AF800E18401 /* home_bg.png in Resources */,
 				59111E021BC66A1300C2CCA9 /* UserInfo.storyboard in Resources */,
+				4473C1181C43F716000130B8 /* PlotCell.xib in Resources */,
 				5952A11F1BC512F20023FEF5 /* voucher_timeover.png in Resources */,
 				5925A1141BB8494C00635EDB /* SCNavTabBar.bundle in Resources */,
 				44EE776A1BD61F8900932221 /* img_02_order@2x.png in Resources */,
@@ -1546,6 +1572,7 @@
 				44F942A01BB58F64000CAF90 /* WDTabBar.m in Sources */,
 				44928FF91BB7D6D700F699E7 /* LocationChooseViewController.m in Sources */,
 				448C44F91BBA3CCE00652607 /* OrderInfo.m in Sources */,
+				4473C1171C43F716000130B8 /* PlotCell.m in Sources */,
 				44F942E91BB64643000CAF90 /* ReChargeViewController.m in Sources */,
 				4492902C1BB7D72F00F699E7 /* UIViewController+LewPopupViewController.m in Sources */,
 				44B7A30A1BC389A9006FEAA0 /* openssl_wrapper.m in Sources */,
@@ -1569,6 +1596,7 @@
 				44F943191BB6E915000CAF90 /* Constant.m in Sources */,
 				59E16EFC1BB80F03009E4385 /* CollapseClickArrow.m in Sources */,
 				44F9429D1BB58B02000CAF90 /* BaseViewController.m in Sources */,
+				44B5CB861C426AB300141CBF /* LocationChooseViewController1.m in Sources */,
 				44928FFD1BB7D6D700F699E7 /* UserCenterViewController.m in Sources */,
 				44D649DB1BCE1C580009C8BF /* NetworkPhotoAlbumViewController.m in Sources */,
 				448C44E31BB9371300652607 /* MayiHttpRequestManager.m in Sources */,
@@ -1579,6 +1607,7 @@
 				446EDCEA1BBB11EC000A8D94 /* MYIntroductionView.m in Sources */,
 				5968610D1BC241B100C73AD0 /* StoryboadUtil.m in Sources */,
 				449290311BB7D72F00F699E7 /* WashStyleChoose.m in Sources */,
+				44B5CB891C429F3C00141CBF /* SmallArea.m in Sources */,
 				4492902F1BB7D72F00F699E7 /* VoucherChoosePop.m in Sources */,
 				44F943391BB6FE73000CAF90 /* QCSlideViewController.m in Sources */,
 				449290281BB7D72F00F699E7 /* LewPopupViewAnimationDrop.m in Sources */,
@@ -1613,6 +1642,7 @@
 				449290601BB907BF00F699E7 /* GuideViewController.m in Sources */,
 				5925A1171BB8494C00635EDB /* SCPopView.m in Sources */,
 				59E16EFD1BB80F03009E4385 /* CollapseClickCell.m in Sources */,
+				4473C11B1C452CA8000130B8 /* WDLocationHelper.m in Sources */,
 				44736C4E1BB57D27004D665D /* AppDelegate.m in Sources */,
 				44F9431A1BB6E915000CAF90 /* GlobalVar.m in Sources */,
 				44F942E11BB63CF9000CAF90 /* WebViewController.m in Sources */,
@@ -1778,8 +1808,8 @@
 			baseConfigurationReference = CB7D551072C2407764E4BC7C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: xu lu (5A6M3BM459)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xu lu (5A6M3BM459)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "washcar/washcar-Prefix.pch";
@@ -1809,7 +1839,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahxdnet.mayicar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "767cdc8d-276d-43a6-8eca-44e663d2f28d";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1819,8 +1849,8 @@
 			baseConfigurationReference = 1D7C764897EF8778C98C82CC /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Anhui Xiaodian Network Technology Co., Ltd. (4ZEJ9J7BRC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Anhui Xiaodian Network Technology Co., Ltd. (4ZEJ9J7BRC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "washcar/washcar-Prefix.pch";
@@ -1850,7 +1880,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahxdnet.mayicar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c891bddd-a0e9-46a6-a133-55011eaa2802";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

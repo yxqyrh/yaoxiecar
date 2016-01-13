@@ -28,6 +28,7 @@
     UITextField *_telephoneTextField;
     UIButton *_codeButton;
     UITextField *_verifyCodeTextField;
+    UITextField *_invitedCodeTextField;
     UserInfo *_userInfo;
     UIImageView *_agreeCheckImageView;
     NIAttributedLabel *_agreeLabel;
@@ -55,7 +56,39 @@
     chePaiPickView = [ChePaiPickView defaultView];
     chePaiPickView.delegate =self;
     [self.view addSubview:chePaiPickView];
+    
+    [WDLocationHelper getInstance].delegate = self;
+    [[WDLocationHelper getInstance] startUpdate];
   }
+
+#pragma mark - WDLocationHelperDelegate
+
+- (void)didGetLocation:(CLLocationCoordinate2D)coordinate
+{
+    [self registerShow:coordinate.longitude andLatitude:coordinate.latitude];
+}
+
+- (void)didGetLocationFail
+{
+    DLog(@"failed");
+}
+
+-(void)registerShow:(double)longitude andLatitude:(double)latitude
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+//    [parameters setObject:[NSNumber numberWithDouble:longitude] forKey:@"Longitude"];
+//    [parameters setObject:[NSNumber numberWithDouble:latitude] forKey:@"Latitude"];
+    [parameters setObject:[NSNumber numberWithDouble:117.27] forKey:@"Longitude"];
+    [parameters setObject:[NSNumber numberWithDouble:31.85] forKey:@"Latitude"];
+    [[MayiHttpRequestManager sharedInstance] POST:MayiRegShow parameters:parameters showLoadingView:self.view success:^(id responseObject) {
+       
+        
+    } failture:^(NSError *error) {
+      
+    }];
+}
+
+
 -(void)dismissKeyBoard{
     [_carNumberTextField resignFirstResponder];
     [_carPositionTextField resignFirstResponder];
@@ -123,12 +156,15 @@
             height = 55;
             break;
         case 6:
-            height = 31;
-            break;
-        case 7:
             height = 55;
             break;
+        case 7:
+            height = 31;
+            break;
         case 8:
+            height = 55;
+            break;
+        case 9:
             height = 15;
             break;
         default:
@@ -161,12 +197,12 @@
         DLog(@"view:%@",view);
     }
     
-    if (indexPath.row == 6) {
+    if (indexPath.row == 7) {
         _isAgree = !_isAgree;
         [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
    
-    if (indexPath.row == 7) {
+    if (indexPath.row == 8) {
         [self registerSubmit];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -318,7 +354,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 9;
+    return 10;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -344,12 +380,15 @@
             reuseIdentifier = @"ChechCodeCell";
             break;
         case 6:
-            reuseIdentifier = @"AgreeCell";
+            reuseIdentifier = @"InvitedCodeCell";
             break;
         case 7:
-            reuseIdentifier = @"CommitCell";
+            reuseIdentifier = @"AgreeCell";
             break;
         case 8:
+            reuseIdentifier = @"CommitCell";
+            break;
+        case 9:
             reuseIdentifier = @"PromiseCell";
             break;
         default:
@@ -411,6 +450,10 @@
     }
     
     if (indexPath.row == 6) {
+        _invitedCodeTextField = (UITextField *)[cell viewWithTag:2];
+    }
+    
+    if (indexPath.row == 7) {
         _agreeCheckImageView = (UIImageView *)[cell viewWithTag:2];
         if (_isAgree) {
             _agreeCheckImageView.image = [UIImage imageNamed:@"img_checked"];
@@ -421,8 +464,8 @@
         
         _agreeLabel = (NIAttributedLabel *)[cell viewWithTag:3];
         
-        NSRange range = [@"我已阅读并接受《蚂蚁洗车协议》" rangeOfString:@"《蚂蚁洗车协议》"];
-        _agreeLabel.text = @"我已阅读并接受《蚂蚁洗车协议》";
+        NSRange range = [@"我已阅读并接受《用户服务协议》" rangeOfString:@"《用户服务协议》"];
+        _agreeLabel.text = @"我已阅读并接受《用户服务协议》";
         _agreeLabel.linkColor = RGBCOLOR(0x28, 0x8c, 0xcf);
         [_agreeLabel addLink:[NSURL URLWithString:@"http://o2o.ahxiaodian.com/myxc/agreement.html"] range:range];
         _agreeLabel.dataDetectorTypes = NSTextCheckingTypeLink | NSTextCheckingTypePhoneNumber;
@@ -431,7 +474,7 @@
         _agreeLabel.delegate = self;
     }
     
-    if (indexPath.row == 8) {
+    if (indexPath.row == 9) {
         UILabel *label = (UILabel *)[cell viewWithTag:2];
         label.textColor = RGBCOLOR(254, 170, 110);
         label.backgroundColor = [UIColor clearColor];

@@ -83,6 +83,8 @@ FOUNDATION_EXPORT NSString * const MayiCZZXTJ;
 //提交洗车订单
 FOUNDATION_EXPORT NSString * const MayiWYXCing;
 
+FOUNDATION_EXPORT NSString * const MayiRegShow;
+
 //余额支付
 FOUNDATION_EXPORT NSString * const MayiYEZF;
 
