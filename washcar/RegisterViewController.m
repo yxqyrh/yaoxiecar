@@ -12,6 +12,8 @@
 #import "StoryboadUtil.h"
 #import "WebViewController.h"
 #import "StringUtil.h"
+#import "SmallArea.h"
+
 @interface RegisterViewController () {
     NSString *_carNumber;
     NSString *_carColor;
@@ -38,6 +40,8 @@
      ChePaiPickView *chePaiPickView;
     UIButton *provinceStr;
     UIButton *_A_Z;
+    
+    NSString *address;
 }
 
 @end
@@ -61,27 +65,61 @@
     [[WDLocationHelper getInstance] startUpdate];
   }
 
+#pragma mark - LocationChooseDelegate
+
+-(void)chooseLocation:(NSString *)address
+{
+    LocationInfo *info = [LocationInfo getInstance];
+    _addresssLabel.text = address;
+    _userInfo.province =info.area_id_province;
+    _userInfo.city = info.area_id_city;
+    _userInfo.area = info.area_id_area;
+    _userInfo.plot = info.area_id_smallArea;
+}
+
 #pragma mark - WDLocationHelperDelegate
 
 - (void)didGetLocation:(CLLocationCoordinate2D)coordinate
 {
     [self registerShow:coordinate.longitude andLatitude:coordinate.latitude];
+    [[WDLocationHelper getInstance] stopUpdate];
 }
 
 - (void)didGetLocationFail
 {
     DLog(@"failed");
+    [[WDLocationHelper getInstance] stopUpdate];
 }
 
 -(void)registerShow:(double)longitude andLatitude:(double)latitude
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//    [parameters setObject:[NSNumber numberWithDouble:longitude] forKey:@"Longitude"];
-//    [parameters setObject:[NSNumber numberWithDouble:latitude] forKey:@"Latitude"];
-    [parameters setObject:[NSNumber numberWithDouble:117.27] forKey:@"Longitude"];
-    [parameters setObject:[NSNumber numberWithDouble:31.85] forKey:@"Latitude"];
+    [parameters setObject:[NSNumber numberWithDouble:longitude] forKey:@"Longitude"];
+    [parameters setObject:[NSNumber numberWithDouble:latitude] forKey:@"Latitude"];
+//    [parameters setObject:[NSNumber numberWithDouble:117.27] forKey:@"Longitude"];
+//    [parameters setObject:[NSNumber numberWithDouble:31.85] forKey:@"Latitude"];
     [[MayiHttpRequestManager sharedInstance] POST:MayiRegShow parameters:parameters showLoadingView:self.view success:^(id responseObject) {
-       
+        if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
+            [LocationInfo getInstance].provinceList = [responseObject objectForKey:@"shenglist"];
+            [LocationInfo getInstance].cityList = [responseObject objectForKey:@"citylist"];
+            [LocationInfo getInstance].areaList = [LocationInfo getInstance].areaList = [responseObject objectForKey:@"qulist"];
+            [LocationInfo getInstance].plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
+            [LocationInfo getInstance].dz = [responseObject objectForKey:@"dz"];
+            
+            [LocationInfo getInstance].area_id_province =  [[LocationInfo getInstance].dz objectForKey:@"province"];
+            [LocationInfo getInstance].area_name_province =  [[LocationInfo getInstance].dz objectForKey:@"provincemc"];
+            
+            [LocationInfo getInstance].area_id_city =  [[LocationInfo getInstance].dz objectForKey:@"city"];
+            [LocationInfo getInstance].area_name_city =  [[LocationInfo getInstance].dz objectForKey:@"citymc"];
+            [LocationInfo getInstance].area_id_area =  [[LocationInfo getInstance].dz objectForKey:@"area"];
+            [LocationInfo getInstance].area_name_area =  [[LocationInfo getInstance].dz objectForKey:@"areamc"];
+            [LocationInfo getInstance].area_id_smallArea =  [[LocationInfo getInstance].dz objectForKey:@"plot"];
+            [LocationInfo getInstance].area_name_smallArea =  [[LocationInfo getInstance].dz objectForKey:@"plotmc"];
+            
+            _address = [NSString stringWithFormat:@"%@%@%@%@", [[LocationInfo getInstance].dz objectForKey:@"provincemc"],[[LocationInfo getInstance].dz objectForKey:@"citymc"],[[LocationInfo getInstance].dz objectForKey:@"areamc"],[[LocationInfo getInstance].dz objectForKey:@"plotmc"]];
+            
+            [self chooseLocation:_address];
+        }
         
     } failture:^(NSError *error) {
       
@@ -188,13 +226,11 @@
         DLog(@"view:%@",view);
     }
     else if (indexPath.row == 2) {
-        LocationChoosePop *view = [LocationChoosePop defaultPopupView];
-        view.parentVC = self;
-        
-        [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
-            
-        }];
-        DLog(@"view:%@",view);
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LocationChoose1" bundle:nil];
+        LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
+        viewController.delegate = self;
+        [self.navigationController pushViewController:viewController animated:YES];
+        return;
     }
     
     if (indexPath.row == 7) {
@@ -433,6 +469,7 @@
 //        if (![WDSystemUtils isEmptyOrNullString:_address]) {
 //            _addresssLabel.text = _address;
 //        }
+        _addresssLabel.text = _address;
     }
     
     if (indexPath.row == 3) {
@@ -620,46 +657,50 @@
     [_carColorLabel setText:[ColorChoosePop colorNameByValue:value]];
     _userInfo.color = _carColorLabel.text;
 }
--(void)showLocationChoose{
-    LocationChoosePop *view = [LocationChoosePop defaultPopupView];
-    view.parentVC = self;
-    view.mydelegate = self;
-    [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
-        NSLog(@"动画结束");
-    }];
-}
--(void)showDetailChoose:(int)channel{
-    UIStoryboard  *board=  [UIStoryboard storyboardWithName:@"LocationChoose" bundle:nil];
-    LocationChooseViewController *mLocationChooseViewController = [board instantiateViewControllerWithIdentifier:@"LocationChooseViewController"];
-    mLocationChooseViewController.mydelegate = self;
-    mLocationChooseViewController.channel = channel;
-    [self.navigationController pushViewController:mLocationChooseViewController animated:YES];
-}
--(void)ok{
-    LocationInfo *info =[LocationInfo getInstance];
-    NSString *locationName;
-    if ([info.area_name_province isEqualToString: info.area_name_city]) {
-        locationName = [info.area_name_province stringByAppendingFormat:@"%@%@" , info.area_name_area,info.area_name_smallArea ];
-    }else{
-        locationName = [info.area_name_province stringByAppendingFormat:@"%@%@%@",info.area_name_city,info.area_name_area,info.area_name_smallArea ];
-        
-    }
-    _addresssLabel.text = locationName;
-    _userInfo.province =info.area_id_province;
-    _userInfo.city = info.area_id_city;
-    _userInfo.area = info.area_id_area;
-    _userInfo.plot = info.area_id_smallArea;
-    
-}
+//-(void)showLocationChoose{
+//    LocationChoosePop *view = [LocationChoosePop defaultPopupView];
+//    view.parentVC = self;
+//    view.mydelegate = self;
+//    [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
+//        NSLog(@"动画结束");
+//    }];
+//}
+//-(void)showDetailChoose:(int)channel{
+//    UIStoryboard  *board=  [UIStoryboard storyboardWithName:@"LocationChoose" bundle:nil];
+//    LocationChooseViewController *mLocationChooseViewController = [board instantiateViewControllerWithIdentifier:@"LocationChooseViewController"];
+//    mLocationChooseViewController.mydelegate = self;
+//    mLocationChooseViewController.channel = channel;
+//    [self.navigationController pushViewController:mLocationChooseViewController animated:YES];
+//}
+//-(void)ok{
+//    LocationInfo *info =[LocationInfo getInstance];
+//    NSString *locationName;
+//    if ([info.area_name_province isEqualToString: info.area_name_city]) {
+//        locationName = [info.area_name_province stringByAppendingFormat:@"%@%@" , info.area_name_area,info.area_name_smallArea ];
+//    }else{
+//        locationName = [info.area_name_province stringByAppendingFormat:@"%@%@%@",info.area_name_city,info.area_name_area,info.area_name_smallArea ];
+//        
+//    }
+//    _addresssLabel.text = locationName;
+//    _userInfo.province =info.area_id_province;
+//    _userInfo.city = info.area_id_city;
+//    _userInfo.area = info.area_id_area;
+//    _userInfo.plot = info.area_id_smallArea;
+//    
+//}
 - (IBAction)locationChoose:(id)sender {
      [self dismissKeyBoard];
-        [[LocationInfo getInstance] clear];
-        LocationChoosePop *view = [LocationChoosePop defaultPopupView];
-        view.parentVC = self;
-        view.mydelegate = self;
-        [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
-            
-        }];
+//        [[LocationInfo getInstance] clear];
+//        LocationChoosePop *view = [LocationChoosePop defaultPopupView];
+//        view.parentVC = self;
+//        view.mydelegate = self;
+//        [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
+//            
+//        }];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LocationChoose1" bundle:nil];
+    LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
+    viewController.delegate = self;
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 - (IBAction)colorChoose:(id)sender {

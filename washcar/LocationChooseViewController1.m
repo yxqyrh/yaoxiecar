@@ -15,6 +15,7 @@
 @interface LocationChooseViewController1 (){
      NSArray *_arrayList;
     NSMutableArray *_searchResult;
+    NSArray *_nearPlots;
     UISearchDisplayController *_searchDisplayController;
 }
 
@@ -26,7 +27,6 @@
 @property (strong, nonatomic) IBOutlet UIControl *areaControl;
 @property (strong, nonatomic) IBOutlet UILabel *areaLabel;
 @property (strong, nonatomic) IBOutlet UITextView *smallAreaTextView;
-
 
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -78,7 +78,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"PlotCell" bundle:nil] forCellReuseIdentifier:@"PlotCell"];
     
     
-    [self initData:-1];
+    [self initData:2];
   
 }
 
@@ -94,6 +94,8 @@
 
 -(void)initData:(int)chanel
 {
+    _nearPlots = [LocationInfo getInstance].plotList;
+    
     if ([LocationInfo getInstance].area_name_province!=nil) {
         _provinceLabel.text = [LocationInfo getInstance].area_name_province;
     }else{
@@ -126,7 +128,7 @@
 //        [self.chooseStreet setTitle:@"选小区" forState:UIControlStateNormal];
     }
     
-    if (chanel == 2) {
+    if (chanel == 2 && [LocationInfo getInstance].area_id_area != nil) {
         [self findSmallArea];
     }
     
@@ -200,7 +202,7 @@
     [[MayiHttpRequestManager sharedInstance] POST:@"area" parameters:parameters showLoadingView:nil success:^(id responseObject) {
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
             _allPlots = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"list"]];
-            _filtedPlots = [NSMutableArray arrayWithArray:_allPlots];
+//            _filtedPlots = [NSMutableArray arrayWithArray:_allPlots];
             [self.tableView reloadData];
         }
         
@@ -246,16 +248,35 @@
 
 #pragma mark - UITableViewDataSource
 
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (tableView == self.tableView) {
+        if (section == 0) {
+            return @"附近的小区";
+        }
+        else {
+            return @"全部";
+        }
+    }
+    return nil;
+}
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     static NSString *reuseIdentifier = @"PlotCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     UILabel *labelPlot = (UILabel *)[cell viewWithTag:1];
     
     if (tableView == self.tableView) {
-        SmallArea *smallArea = [_allPlots objectAtIndex:indexPath.row];
-        labelPlot.text = smallArea.plot;
+        if (indexPath.section == 0) {
+            SmallArea *smallArea = [_nearPlots objectAtIndex:indexPath.row];
+            labelPlot.text = smallArea.plot;
+        }
+        else if (indexPath.section == 1) {
+            SmallArea *smallArea = [_allPlots objectAtIndex:indexPath.row];
+            labelPlot.text = smallArea.plot;
+        }
     }
     else {
         SmallArea *smallArea = [_searchResult objectAtIndex:indexPath.row];
@@ -266,16 +287,38 @@
     
 }
 
-
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     if (tableView == self.tableView) {
-        if (_allPlots == nil) {
-            return 0;
-        }
-        return _allPlots.count;
+        return 1;
     }
     else {
+        return 1;
+    }
+}
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (tableView == self.tableView) {
+        if (section == 0) {
+            if (_nearPlots == nil) {
+                return 0;
+            }
+            else {
+                return _nearPlots.count;
+            }
+        }
+        else  {
+            if (_allPlots == nil) {
+                return 0;
+            }
+            return _allPlots.count;
+        }
+
+    }
+    else
+    {
         _searchResult = [NSMutableArray array];
         NSString *searchText = _searchDisplayController.searchBar.text;
         
@@ -295,13 +338,27 @@
 #pragma mark - UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == self.tableView) {
-        SmallArea *smallArea  = [_allPlots objectAtIndex:indexPath.row];
-        _smallAreaTextView.text = smallArea.plot;
+        if (indexPath.section == 0) {
+            SmallArea *smallArea  = [_nearPlots objectAtIndex:indexPath.row];
+            _smallAreaTextView.text = smallArea.plot;
+            [LocationInfo getInstance].area_id_smallArea = smallArea.id;
+            [LocationInfo getInstance].area_name_smallArea = smallArea.plot;
+        }
+        else {
+            SmallArea *smallArea  = [_allPlots objectAtIndex:indexPath.row];
+            _smallAreaTextView.text = smallArea.plot;
+            [LocationInfo getInstance].area_id_smallArea = smallArea.id;
+            [LocationInfo getInstance].area_name_smallArea = smallArea.plot;
+            
+        }
+        
     }
     else {
         SmallArea *smallArea  = [_searchResult objectAtIndex:indexPath.row];
         _smallAreaTextView.text = smallArea.plot;
         
+        [LocationInfo getInstance].area_id_smallArea = smallArea.id;
+        [LocationInfo getInstance].area_name_smallArea = smallArea.plot;
         [_searchDisplayController setActive:NO animated:YES];
     }
 
@@ -318,6 +375,7 @@
     if (_delegate && [_delegate conformsToProtocol:@protocol(LocationChooseDelegate)]) {
         [_delegate chooseLocation:[self generalAddress]];
     }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

@@ -298,10 +298,10 @@
     [parameters setValue:province forKey:@"province"];
     [parameters setValue:city forKey:@"city"];
     [parameters setValue:area forKey:@"qu"];
-    [parameters setValue:[dz objectForKey:@"plotmc"] forKey:@"address"];
+    [parameters setValue:plotmc forKey:@"address"];
     [parameters setValue:_clid forKey:@"bj"];
     [parameters setValue:_cheweihao.text forKey:@"parkNum"];
-    [[MayiHttpRequestManager sharedInstance] POST:UserInfoEdit parameters:parameters showLoadingView:self.view success:^(id responseObject) {
+    [[MayiHttpRequestManager sharedInstance] POST:CarEditAction parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
         if ([@"1" isEqualToString:res]) {
             [SVProgressHUD showSuccessWithStatus:@"车牌编辑成功！"];

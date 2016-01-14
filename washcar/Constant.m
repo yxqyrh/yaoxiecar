@@ -42,7 +42,10 @@ NSString * const MayiIndexPageNotifiction = @"MayiIndexPageNotifiction";
  ************************/
 
 //获取图片域名
-NSString * const IMGURL = @"http://o2o.ahxiaodian.com/myxc/Uploads";
+//NSString * const IMGURL = @"http://o2o.ahxiaodian.com/myxc/Uploads";
+
+NSString * const IMGURL = @"http://myxc.ahwdcz.com/Uploads/";
+
 
 //发送短信验证码
 NSString * const MayiSendMsg = @"sendMsg";
@@ -152,6 +155,15 @@ NSString * const InvitationCode = @"yqm";
 NSString * const AddCarNum = @"tjcling";
 //车辆编辑
 NSString * const CarEdit = @"clbj";
+
+
+//车辆编辑动作
+NSString * const CarEditAction = @"clbjing";
+
+
+
+//首页顶部图片
+NSString * const Index = @"index";
 
 /************************
  *支付的参数常量定义

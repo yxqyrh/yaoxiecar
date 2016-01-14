@@ -10,6 +10,7 @@
 #import "BaseViewController.h"
 #import "SGFocusImageFrame.h"
 #import "SGFocusImageItem.h"
+#import "StringUtil.h"
 
 typedef void(^signCompleteBlock)();
 

@@ -16,5 +16,8 @@
 @property (nonatomic)NSString *area;
 @property (nonatomic)NSString *plot;
 @property (nonatomic)NSString *time;
+@property (nonatomic)NSString *Longitude;
+@property (nonatomic)NSString *Latitude;
+@property (nonatomic)NSString *s_id;
 
 @end
