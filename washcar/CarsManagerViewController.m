@@ -28,7 +28,11 @@
     [addButton setTintColor:[UIColor whiteColor]];
     self.navigationItem.rightBarButtonItem = addButton;
     self.navigationItem.title = @"车辆管理";
-    [self loadData:YES];
+//    [self loadData:YES];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+     [self loadData:YES];
 }
 
 - (void)insertNewObject:(id)sender {

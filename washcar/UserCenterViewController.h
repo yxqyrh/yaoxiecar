@@ -17,7 +17,7 @@
 #import "InvitationCodesViewController.h"
 #import "Masonry.h"
 #import "StoryboadUtil.h"
-@interface UserCenterViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface UserCenterViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *userIcon;
 @property (weak, nonatomic) IBOutlet UILabel *userPhone;
 @property (weak, nonatomic) IBOutlet UILabel *surplusMoney;

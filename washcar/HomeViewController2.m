@@ -12,10 +12,12 @@
 #import "MayiHttpRequestManager.h"
 #import "PSTAlertController.h"
 #import <Masonry.h>
-
+#import <UIImageView+WebCache.h>
 
 @interface HomeViewController2 (){
     NSInteger totalCount;
+    
+    NSArray *array;
    
 }
 
@@ -34,49 +36,74 @@
     self.parentViewController.title = @"蚂蚁洗车";
 //    [self loadImages];
     self.scrollview.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/640)*387);
-//    图片的宽
-       CGFloat imageW = self.scrollview.frame.size.width;
-     //    CGFloat imageW = 300;
-    //    图片高
-         CGFloat imageH = self.scrollview.frame.size.height;
-     //    图片的Y
-        CGFloat imageY = 0;
-     //    图片中数
-        totalCount = 2;
-     //   1.添加5张图片
-         for (int i = 0; i < totalCount; i++) {
-                 UIButton *page = [[UIButton alloc] init];
-                     //        图片X
-                 CGFloat imageX = i * imageW;
-         //        设置frame
-                 page.frame = CGRectMake(imageX, imageY, imageW, imageH);
-        //        设置图片
-             page.contentMode = UIViewContentModeScaleToFill;
-                 NSString *name = [NSString stringWithFormat:@"home_tab_%d", i + 1];
-             
-             [page setBackgroundImage:[UIImage imageNamed:name] forState:UIControlStateNormal];
-         //        隐藏指示条
-                 self.scrollview.showsHorizontalScrollIndicator = NO;
-                 [self.scrollview addSubview:page];
-             [page addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
-               page.tag = i;
-             }
-  
-    
-     //    2.设置scrollview的滚动范围
-         CGFloat contentW = totalCount *imageW;
-        //不允许在垂直方向上进行滚动
-        self.scrollview.contentSize = CGSizeMake(contentW, 0);
-    
-     //    3.设置分页
-        self.scrollview.pagingEnabled = YES;
-    
-     //    4.监听scrollview的滚动
-         self.scrollview.delegate = self;
-    
-         [self addTimer];
+
  [self initBtn:_btn1 :@"user_car_manager_icon" :_btn1.titleLabel.text];
     [self initBtn:_btn2 :@"user_car_manager_icon" :_btn1.titleLabel.text];
+    
+    [self loadImages];
+    
+}
+
+
+
+-(void)initGallery{
+    if (array==nil||array.count==0) {
+        return;
+    }
+    //    图片的宽
+    CGFloat imageW = self.scrollview.frame.size.width;
+    //    CGFloat imageW = 300;
+    //    图片高
+    CGFloat imageH = self.scrollview.frame.size.height;
+    //    图片的Y
+    CGFloat imageY = 0;
+    //    图片中数
+    totalCount = array.count;
+    //   1.添加5张图片
+    for (int i = 0; i < totalCount; i++) {
+        NSDictionary *dic = array[i];
+        NSString *pic = [dic objectForKey:@"tpurl"];
+        if ([StringUtil isEmty:pic]) {
+            continue;
+        }
+        UIImageView *page = [[UIImageView alloc] init];
+        //        图片X
+        CGFloat imageX = i * imageW;
+        //        设置frame
+        page.frame = CGRectMake(imageX, imageY, imageW, imageH);
+        //        设置图片
+        page.contentMode = UIViewContentModeScaleToFill;
+     
+//        NSString *imagePath = [IMGURL stringByAppendingString:pic];
+        
+//         NSString *imagePath = [IMGURL stringByAppendingString:pic];
+        
+//        NSLog(@"imagePath=%@",imagePath);
+        
+        
+        [page sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]];
+        
+//        [page setBackgroundImage:[UIImage imageNamed:name] forState:UIControlStateNormal];
+        //        隐藏指示条
+        self.scrollview.showsHorizontalScrollIndicator = NO;
+        [self.scrollview addSubview:page];
+//        [page addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
+        page.tag = i;
+    }
+    
+    
+    //    2.设置scrollview的滚动范围
+    CGFloat contentW = totalCount *imageW;
+    //不允许在垂直方向上进行滚动
+    self.scrollview.contentSize = CGSizeMake(contentW, 0);
+    
+    //    3.设置分页
+    self.scrollview.pagingEnabled = YES;
+    
+    //    4.监听scrollview的滚动
+    self.scrollview.delegate = self;
+    
+    [self addTimer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -110,10 +137,13 @@
 -(void)loadImages
 {
     NSDictionary *parameters = [NSMutableDictionary dictionary];
-    [[MayiHttpRequestManager sharedInstance] POST:MayiSYTP parameters:parameters showLoadingView:self.view success:^(id responseObject) {
+    [[MayiHttpRequestManager sharedInstance] POST:Index parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
 
+            array  = [responseObject objectForKey:@"pc"];
             
+            NSLog(@"array=%@",array);
+            [self initGallery];
         }
         
         

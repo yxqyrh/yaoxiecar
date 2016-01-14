@@ -402,13 +402,15 @@
     //CFShow((__bridge CFTypeRef)(infoDic));
     NSString *currentVersion = [infoDic objectForKey:@"CFBundleVersion"];
     
-    NSString *URL = @"http://itunes.apple.com/lookup?id=com.ahxdnet.mayicar";
+    NSString *URL = @"http://itunes.apple.com/lookup?id=1047519816";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString:URL]];
     [request setHTTPMethod:@"POST"];
     NSHTTPURLResponse *urlResponse = nil;
     NSError *error = nil;
     NSData *recervedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
+    
+    
     
 //    NSString *results = [[NSString alloc] initWithBytes:[recervedData bytes] length:[recervedData length] encoding:NSUTF8StringEncoding];
     
@@ -423,23 +425,28 @@
             //trackViewURL = [releaseInfo objectForKey:@"trackVireUrl"];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
             alert.tag = 10000;
+            alert.delegate = self;
             [alert show];
+            
         }
         else
         {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"此版本为最新版本" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             alert.tag = 10001;
+             alert.delegate = self;
             [alert show];
         }
     }
 }
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (alertView.tag==10000) {
-        if (buttonIndex==1) {
-            NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com"];
-            [[UIApplication sharedApplication]openURL:url];
-        }
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex==1) {
+        NSString *str = [NSString stringWithFormat:
+                         @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa /wa/viewContentsUserReviews?type=Purple+Software&id=%d",
+                        1047519816];
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+
     }
 }
 @end
