@@ -90,7 +90,9 @@
            washTypeArray = [WashType objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xcfs"]];
             _selectWashType = [washTypeArray objectAtIndex:0];
             voucherInfoArray = [VoucherInfo objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xcj"]];
-            _voucherInfo = [voucherInfoArray objectAtIndex:0];
+            if (voucherInfoArray != nil && voucherInfoArray.count > 0) {
+                _voucherInfo = [voucherInfoArray objectAtIndex:0];
+            }
             return ;
         }
         else if ([@"2" isEqualToString:[responseObject objectForKey:@"res"]]) {

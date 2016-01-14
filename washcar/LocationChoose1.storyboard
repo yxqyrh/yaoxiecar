@@ -238,7 +238,7 @@
                     <navigationItem key="navigationItem" id="Fu0-50-RpT">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Lh7-bg-bh3">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uvy-el-Xhg">
-                                <rect key="frame" x="447" y="7" width="133" height="30"/>
+                                <rect key="frame" x="536" y="8" width="44" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="确定"/>
                                 <connections>
