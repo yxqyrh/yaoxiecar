@@ -37,7 +37,7 @@
     myCollapseClick.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-80);
     [self.view addSubview:myCollapseClick];
     myCollapseClick.CollapseClickDelegate = self;
-    [self loadData];
+//    [self loadData];
     
 }
 
@@ -93,14 +93,12 @@
 
 -(void)loadData{
     NSDictionary *parameters = [NSMutableDictionary dictionary];
-    // uid=18550031362  Isloginid=14435112502766
-//    [parameters setValue:[GlobalVar sharedSingleton].uid forKey:@"uid"];
-//    [parameters setValue:[GlobalVar sharedSingleton].isloginid forKey:@"isloginid"];
-    DLog(@"uid=%@  Isloginid=%@",[GlobalVar sharedSingleton].uid,[GlobalVar sharedSingleton].isloginid);
     [[MayiHttpRequestManager sharedInstance] POST:problemApi parameters:parameters showLoadingView:self.view success:^(id responseObject) {
+        NSLog(@"responseObject%@",responseObject);
         NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
         if ([@"1" isEqualToString:res]) {
             _array= [responseObject objectForKey:@"list"];
+            
             if (_array!=nil&&_array.count>0) {
                 [myCollapseClick reloadCollapseClick];
                 [myCollapseClick openCollapseClickCellAtIndex:0 animated:NO];

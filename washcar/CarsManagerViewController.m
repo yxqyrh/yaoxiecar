@@ -1,15 +1,15 @@
 //
-//  CarManagerViewController.m
+//  CarsManagerViewController.m
 //  washcar
 //
-//  Created by jingyaxie on 16/1/8.
-//  Copyright © 2016年 CSB. All rights reserved.
+//  Created by xiejingya on 1/13/16.
+//  Copyright © 2016 CSB. All rights reserved.
 //
 
-#import "CarManagerViewController.h"
+#import "CarsManagerViewController.h"
 
-@interface CarManagerViewController (){
-     NSArray *_array ;
+@interface CarsManagerViewController  (){
+    NSArray *_array ;
 }
 
 
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation CarManagerViewController
+@implementation CarsManagerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,20 +27,24 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     [addButton setTintColor:[UIColor whiteColor]];
     self.navigationItem.rightBarButtonItem = addButton;
-      self.navigationItem.title = @"车辆管理";
-    [self loadData:YES];
+    self.navigationItem.title = @"车辆管理";
+//    [self loadData:YES];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+     [self loadData:YES];
 }
 
 - (void)insertNewObject:(id)sender {
-//    if (!self.objects) {
-//        self.objects = [[NSMutableArray alloc] init];
-//    }
-//    [self.objects insertObject:[NSDate date] atIndex:0];
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-//    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    //    if (!self.objects) {
+    //        self.objects = [[NSMutableArray alloc] init];
+    //    }
+    //    [self.objects insertObject:[NSDate date] atIndex:0];
+    //    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    //    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     
     
-    [self showAddOrEditCarManager:@"添加车辆"];
+    [self showAddOrEditCarManager:@"添加车辆":nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -48,14 +52,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
     
@@ -75,9 +79,18 @@
     }
     
     UILabel *carNum = (UILabel*)[cell viewWithTag:1];
-     NSDictionary *_dic = _array[indexPath.row];
-//    carNum.text = [_dic objectForKey:@"title"];
-  
+    NSDictionary *_dic = _array[indexPath.row];
+//    cp1 = "\U6caa";
+    //                    cp2 = A;
+    //                    cp3 = 12345;
+    
+    NSString *cp1 =[_dic objectForKey:@"cp1"];
+     NSString *cp2 =[_dic objectForKey:@"cp2"];
+     NSString *cp3 =[_dic objectForKey:@"cp3"];
+    
+    
+        carNum.text = [cp1 stringByAppendingFormat:@"%@%@",cp2, cp3];
+    
     return cell;
     
 }
@@ -96,17 +109,55 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *_dic = _array[indexPath.row];
+
     
-    [self showAddOrEditCarManager:@"车辆信息编辑"];
+    NSString *clid =[_dic objectForKey:@"id"];
+
+    [self showAddOrEditCarManager:@"车辆信息编辑":clid];
     
 }
 
--(void)showAddOrEditCarManager:(NSString *) title{
+-(void)showAddOrEditCarManager:(NSString *) title :(NSString*)clid{
     UserInfoViewController  *uivc = [StoryboadUtil getViewController:@"UserInfo" :@"UserInfoViewController"];
     
     uivc.title = title;
+    uivc.clid = clid;
     [self.navigationController pushViewController:uivc animated:YES];
 }
+//{
+//    list =     (
+//                {
+//                    area = 2706;
+//                    city = 321;
+//                    color = "\U9ed1\U8272";
+//                    cp1 = "\U6caa";
+//                    cp2 = A;
+//                    cp3 = 12345;
+//                    cwh = 11;
+//                    id = 37;
+//                    plot = 387;
+//                    province = 25;
+//                    time = 1452650752;
+//                    uid = 18550031362;
+//                },
+//                {
+//                    area = 2706;
+//                    city = 321;
+//                    color = "\U9ed1\U8272";
+//                    cp1 = "\U6caa";
+//                    cp2 = A;
+//                    cp3 = 12345;
+//                    cwh = 11;
+//                    id = 38;
+//                    plot = 387;
+//                    province = 25;
+//                    time = 1452652761;
+//                    uid = 18550031362;
+//                }
+//                );
+//    res = 1;
+//}
 
 -(void)loadData:(BOOL) isShowLoading{
     
@@ -127,8 +178,10 @@
             _array= [responseObject objectForKey:@"list"];
             if (_array!=nil&&_array.count>0) {
                 
+                [_tableView reloadData];
+                
             }
-      
+            
         }
     } failture:^(NSError *error) {
         //        [SVProgressHUD showErrorWithStatus:@"获取用户信息失败"];

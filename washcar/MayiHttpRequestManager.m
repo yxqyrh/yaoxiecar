@@ -120,8 +120,7 @@ showLoadingView:(UIView *)view
     
     NSString *urlString = [NSString stringWithFormat:@"%@%@", _serverUrl, methodName];
     
-    DLog(@"请求 %@\nURL: %@\n参数：%@", [[self methodDescription] objectForKey:methodName], urlString, parameters);
-    
+   
     if (parameters == nil) {
         dic = [NSMutableDictionary dictionaryWithCapacity:1];
         
@@ -139,6 +138,8 @@ showLoadingView:(UIView *)view
         [dic setObject:[GlobalVar sharedSingleton].isloginid forKey:@"isloginid"];
         [dic setObject:[GlobalVar sharedSingleton].uid forKey:@"uid"];
     }
+    DLog(@"请求 %@\nURL: %@\n参数：%@", [[self methodDescription] objectForKey:methodName], urlString, dic);
+    
     MKNetworkOperation *op = [_manager operationWithPath:methodName params:dic httpMethod:@"POST" ssl:NO];
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         id json = [operation responseJSON];

@@ -69,7 +69,6 @@
 		449290311BB7D72F00F699E7 /* WashStyleChoose.m in Sources */ = {isa = PBXBuildFile; fileRef = 4492901F1BB7D72F00F699E7 /* WashStyleChoose.m */; };
 		449290321BB7D72F00F699E7 /* WashStyleChoose.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449290201BB7D72F00F699E7 /* WashStyleChoose.xib */; };
 		449290351BB7DA1800F699E7 /* CommonProblemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 449290341BB7DA1800F699E7 /* CommonProblemTableViewCell.m */; };
-		449290531BB8FB6D00F699E7 /* WDHttpRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 449290501BB8FB6D00F699E7 /* WDHttpRequestManager.m */; };
 		449290561BB8FD6400F699E7 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 449290551BB8FD6400F699E7 /* Toast+UIView.m */; };
 		4492905C1BB9052100F699E7 /* EAIntroPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 449290591BB9052100F699E7 /* EAIntroPage.m */; };
 		4492905D1BB9052100F699E7 /* EAIntroView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4492905B1BB9052100F699E7 /* EAIntroView.m */; };
@@ -152,7 +151,6 @@
 		44F943631BB78E97000CAF90 /* img_zhifubao.png in Resources */ = {isa = PBXBuildFile; fileRef = 44F943501BB78E97000CAF90 /* img_zhifubao.png */; };
 		44F943641BB78E97000CAF90 /* navigation_bar_back_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44F943511BB78E97000CAF90 /* navigation_bar_back_button@2x.png */; };
 		44F9436A1BB799B0000CAF90 /* OrderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F943691BB799B0000CAF90 /* OrderListViewController.m */; };
-		59111E001BC667F900C2CCA9 /* UserCenter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59111DFF1BC667F900C2CCA9 /* UserCenter.storyboard */; };
 		59111E021BC66A1300C2CCA9 /* UserInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59111E011BC66A1300C2CCA9 /* UserInfo.storyboard */; };
 		5925A1081BB8437000635EDB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5925A1071BB8437000635EDB /* Images.xcassets */; };
 		5925A1141BB8494C00635EDB /* SCNavTabBar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5925A10B1BB8494C00635EDB /* SCNavTabBar.bundle */; };
@@ -181,6 +179,8 @@
 		5968612C1BC4121A00C73AD0 /* check_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 5968612A1BC4121A00C73AD0 /* check_01.png */; };
 		5968612D1BC4121A00C73AD0 /* check_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5968612B1BC4121A00C73AD0 /* check_2.png */; };
 		596BBD641BBBC62B006DE98F /* HomeViewController2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596BBD631BBBC62B006DE98F /* HomeViewController2ViewController.m */; };
+		597623951C45F8AE00EBDD6E /* CarsManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597623941C45F8AE00EBDD6E /* CarsManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		597623981C45F8C400EBDD6E /* InvitationCodesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597623971C45F8C400EBDD6E /* InvitationCodesViewController.m */; settings = {ASSET_TAGS = (); }; };
 		598AFC6D1BBA520C00787310 /* ColorChoosePop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598AFC6C1BBA520C00787310 /* ColorChoosePop.xib */; };
 		59BA97051BC75B10007C386E /* home_bottom_tab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59BA97041BC75B10007C386E /* home_bottom_tab.storyboard */; };
 		59C3600A1BC9FF2F007890BE /* ChePaiPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C360091BC9FF2F007890BE /* ChePaiPickView.m */; };
@@ -220,10 +220,6 @@
 		3F1C85361C4165AB00D524F8 /* Share.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Share.h; sourceTree = "<group>"; };
 		3F1C85371C4165AB00D524F8 /* Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share.m; sourceTree = "<group>"; };
 		3F7831CF1BCC106C0021E7F4 /* Sign.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
-		3FA5701A1C3EC856007C82E3 /* CarManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarManagerViewController.h; sourceTree = "<group>"; };
-		3FA5701B1C3EC856007C82E3 /* CarManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarManagerViewController.m; sourceTree = "<group>"; };
-		3FA5701D1C3EC8C2007C82E3 /* InvitationCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitationCodeViewController.h; sourceTree = "<group>"; };
-		3FA5701E1C3EC8C2007C82E3 /* InvitationCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitationCodeViewController.m; sourceTree = "<group>"; };
 		4440C56C1BDCC0920077CFFA /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		4440C56D1BDCC0920077CFFA /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		4440C56E1BDCC0920077CFFA /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
@@ -332,8 +328,6 @@
 		449290201BB7D72F00F699E7 /* WashStyleChoose.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WashStyleChoose.xib; sourceTree = "<group>"; };
 		449290331BB7DA1800F699E7 /* CommonProblemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonProblemTableViewCell.h; sourceTree = "<group>"; };
 		449290341BB7DA1800F699E7 /* CommonProblemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonProblemTableViewCell.m; sourceTree = "<group>"; };
-		4492904F1BB8FB6D00F699E7 /* WDHttpRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDHttpRequestManager.h; sourceTree = "<group>"; };
-		449290501BB8FB6D00F699E7 /* WDHttpRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDHttpRequestManager.m; sourceTree = "<group>"; };
 		449290541BB8FD6400F699E7 /* Toast+UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Toast+UIView.h"; sourceTree = "<group>"; };
 		449290551BB8FD6400F699E7 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
 		449290581BB9052100F699E7 /* EAIntroPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAIntroPage.h; sourceTree = "<group>"; };
@@ -593,6 +587,10 @@
 		5968612B1BC4121A00C73AD0 /* check_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_2.png; sourceTree = "<group>"; };
 		596BBD621BBBC62B006DE98F /* HomeViewController2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController2ViewController.h; sourceTree = "<group>"; };
 		596BBD631BBBC62B006DE98F /* HomeViewController2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController2ViewController.m; sourceTree = "<group>"; };
+		597623931C45F8AE00EBDD6E /* CarsManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarsManagerViewController.h; sourceTree = "<group>"; };
+		597623941C45F8AE00EBDD6E /* CarsManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarsManagerViewController.m; sourceTree = "<group>"; };
+		597623961C45F8C400EBDD6E /* InvitationCodesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitationCodesViewController.h; sourceTree = "<group>"; };
+		597623971C45F8C400EBDD6E /* InvitationCodesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitationCodesViewController.m; sourceTree = "<group>"; };
 		598AFC6C1BBA520C00787310 /* ColorChoosePop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorChoosePop.xib; sourceTree = "<group>"; };
 		59BA97041BC75B10007C386E /* home_bottom_tab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = home_bottom_tab.storyboard; sourceTree = "<group>"; };
 		59C360081BC9FF2F007890BE /* ChePaiPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChePaiPickView.h; sourceTree = "<group>"; };
@@ -815,10 +813,10 @@
 				44928FF61BB7D6D700F699E7 /* VouchersViewController.m */,
 				5925A1181BB84A5E00635EDB /* VouchersThreeViewController.h */,
 				5925A1191BB84A5E00635EDB /* VouchersThreeViewController.m */,
-				3FA5701A1C3EC856007C82E3 /* CarManagerViewController.h */,
-				3FA5701B1C3EC856007C82E3 /* CarManagerViewController.m */,
-				3FA5701D1C3EC8C2007C82E3 /* InvitationCodeViewController.h */,
-				3FA5701E1C3EC8C2007C82E3 /* InvitationCodeViewController.m */,
+				597623931C45F8AE00EBDD6E /* CarsManagerViewController.h */,
+				597623941C45F8AE00EBDD6E /* CarsManagerViewController.m */,
+				597623961C45F8C400EBDD6E /* InvitationCodesViewController.h */,
+				597623971C45F8C400EBDD6E /* InvitationCodesViewController.m */,
 			);
 			name = UserCenter;
 			sourceTree = "<group>";
@@ -1139,8 +1137,6 @@
 				4492906A1BB9146F00F699E7 /* WDSystemUtils.m */,
 				449290541BB8FD6400F699E7 /* Toast+UIView.h */,
 				449290551BB8FD6400F699E7 /* Toast+UIView.m */,
-				4492904F1BB8FB6D00F699E7 /* WDHttpRequestManager.h */,
-				449290501BB8FB6D00F699E7 /* WDHttpRequestManager.m */,
 				44F943151BB6E915000CAF90 /* Constant.h */,
 				44F943161BB6E915000CAF90 /* Constant.m */,
 				44F943171BB6E915000CAF90 /* GlobalVar.h */,
@@ -1563,8 +1559,6 @@
 				59C3600A1BC9FF2F007890BE /* ChePaiPickView.m in Sources */,
 				44D649DA1BCE1C580009C8BF /* MDPhotoAlbumViewController.m in Sources */,
 				596861221BC3B21300C73AD0 /* VoucherInfo.m in Sources */,
-				449290531BB8FB6D00F699E7 /* WDHttpRequestManager.m in Sources */,
-				3FA5701F1C3EC8C2007C82E3 /* InvitationCodeViewController.m in Sources */,
 				5968611A1BC2E5D900C73AD0 /* DateTool.m in Sources */,
 				59E16F011BB80F48009E4385 /* CommonProblem.m in Sources */,
 				44F9430C1BB6C90F000CAF90 /* PayTableViewController.m in Sources */,
@@ -1580,7 +1574,6 @@
 				44B7A3051BC389A9006FEAA0 /* base64.m in Sources */,
 				44B7A3131BC39FB6006FEAA0 /* Order.m in Sources */,
 				44F943281BB6FE1D000CAF90 /* MMDrawerBarButtonItem.m in Sources */,
-				3F1C85381C4165AB00D524F8 /* Share.m in Sources */,
 				4440C5781BDCC0A60077CFFA /* WXUtil.mm in Sources */,
 				449290231BB7D72F00F699E7 /* LocationChoosePop.m in Sources */,
 				44928FFE1BB7D6D700F699E7 /* UserInfoViewController.m in Sources */,
@@ -1611,7 +1604,6 @@
 				4492902F1BB7D72F00F699E7 /* VoucherChoosePop.m in Sources */,
 				44F943391BB6FE73000CAF90 /* QCSlideViewController.m in Sources */,
 				449290281BB7D72F00F699E7 /* LewPopupViewAnimationDrop.m in Sources */,
-				3FA5701C1C3EC856007C82E3 /* CarManagerViewController.m in Sources */,
 				44F943381BB6FE73000CAF90 /* QCSlideSwitchView.m in Sources */,
 				44928FFB1BB7D6D700F699E7 /* MyMsgViewController.m in Sources */,
 				596861151BC25DA400C73AD0 /* LocationInfo.m in Sources */,
@@ -1628,7 +1620,9 @@
 				449290561BB8FD6400F699E7 /* Toast+UIView.m in Sources */,
 				44F942D41BB61F1C000CAF90 /* SGFocusImageItem.m in Sources */,
 				449290271BB7D72F00F699E7 /* LewPopupBackgroundView.m in Sources */,
+				597623981C45F8C400EBDD6E /* InvitationCodesViewController.m in Sources */,
 				44B7A3061BC389A9006FEAA0 /* DataSigner.m in Sources */,
+				597623951C45F8AE00EBDD6E /* CarsManagerViewController.m in Sources */,
 				4440C5761BDCC0A60077CFFA /* ApiXml.mm in Sources */,
 				4492906B1BB9146F00F699E7 /* WDSystemUtils.m in Sources */,
 				4492905C1BB9052100F699E7 /* EAIntroPage.m in Sources */,
@@ -1828,7 +1822,7 @@
 					"$(PROJECT_DIR)/washcar/alipay",
 				);
 				INFOPLIST_FILE = washcar/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1869,7 +1863,7 @@
 					"$(PROJECT_DIR)/washcar/alipay",
 				);
 				INFOPLIST_FILE = washcar/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -160,6 +160,17 @@ FOUNDATION_EXPORT NSString * const InvitationCode;
 //添加车辆
 FOUNDATION_EXPORT NSString * const AddCarNum;
 
+//车辆编辑
+FOUNDATION_EXPORT NSString * const CarEdit;
+
+
+//车辆编辑 动作
+FOUNDATION_EXPORT NSString * const CarEditAction;
+
+
+
+//首页顶部图片
+FOUNDATION_EXPORT NSString * const Index;
 /************************
  *支付的参数常量定义
  *

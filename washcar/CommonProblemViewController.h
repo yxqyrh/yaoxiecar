@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 #import "CollapseClick.h"
-#import "WDHttpRequestManager.h"
 #import "Constant.h"
 #import "BaseViewController.h"
 @interface CommonProblemViewController : BaseViewController<CollapseClickDelegate,UITextFieldDelegate>{
