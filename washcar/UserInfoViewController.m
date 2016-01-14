@@ -94,14 +94,19 @@
    
     
 }
-- (IBAction)chooseLocation:(id)sender {
-    [[LocationInfo getInstance] clear];
-    LocationChoosePop *view = [LocationChoosePop defaultPopupView];
-        view.parentVC = self;
-    view.mydelegate = self;
-        [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
-            NSLog(@"动画结束");
-        }];
+- (IBAction)showLocation:(id)sender {
+//    [[LocationInfo getInstance] clear];
+//    LocationChoosePop *view = [LocationChoosePop defaultPopupView];
+//        view.parentVC = self;
+//    view.mydelegate = self;
+//        [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
+//            NSLog(@"动画结束");
+//        }];
+    
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LocationChoose1" bundle:nil];
+    LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
+    viewController.delegate = self;
+    [self.navigationController pushViewController:viewController animated:YES];
     
 }
 
@@ -126,16 +131,6 @@
     color = _CarColor.text;
 }
 
-//设置地址
-
--(void) showLocationChoose{
-    LocationChoosePop *view = [LocationChoosePop defaultPopupView];
-    view.parentVC = self;
-     view.mydelegate = self;
-    [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
-        NSLog(@"动画结束");
-    }];
-}
 
 -(void)showDetailChoose:(int)channel{
     UIStoryboard  *board=  [UIStoryboard storyboardWithName:@"LocationChoose" bundle:nil];
@@ -165,6 +160,16 @@
 
 
    
+}
+
+-(void)chooseLocation:(NSString *)address
+{
+    LocationInfo *info = [LocationInfo getInstance];
+    _Loaction.text = address;
+    province =info.area_id_province;
+    city = info.area_id_city;
+    area = info.area_id_area;
+    plot = info.area_id_smallArea;
 }
 
 /*

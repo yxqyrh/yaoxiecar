@@ -179,8 +179,8 @@
 		5968612C1BC4121A00C73AD0 /* check_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 5968612A1BC4121A00C73AD0 /* check_01.png */; };
 		5968612D1BC4121A00C73AD0 /* check_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5968612B1BC4121A00C73AD0 /* check_2.png */; };
 		596BBD641BBBC62B006DE98F /* HomeViewController2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596BBD631BBBC62B006DE98F /* HomeViewController2ViewController.m */; };
-		597623951C45F8AE00EBDD6E /* CarsManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597623941C45F8AE00EBDD6E /* CarsManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
-		597623981C45F8C400EBDD6E /* InvitationCodesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597623971C45F8C400EBDD6E /* InvitationCodesViewController.m */; settings = {ASSET_TAGS = (); }; };
+		597623951C45F8AE00EBDD6E /* CarsManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597623941C45F8AE00EBDD6E /* CarsManagerViewController.m */; };
+		597623981C45F8C400EBDD6E /* InvitationCodesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597623971C45F8C400EBDD6E /* InvitationCodesViewController.m */; };
 		598AFC6D1BBA520C00787310 /* ColorChoosePop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598AFC6C1BBA520C00787310 /* ColorChoosePop.xib */; };
 		59BA97051BC75B10007C386E /* home_bottom_tab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59BA97041BC75B10007C386E /* home_bottom_tab.storyboard */; };
 		59C3600A1BC9FF2F007890BE /* ChePaiPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C360091BC9FF2F007890BE /* ChePaiPickView.m */; };
@@ -833,7 +833,6 @@
 				449290041BB7D72F00F699E7 /* LocationChoosePop.h */,
 				449290051BB7D72F00F699E7 /* LocationChoosePop.m */,
 				448C44FA1BBA519600652607 /* LocationChoosePop.xib */,
-				4492900A1BB7D72F00F699E7 /* popupViewController */,
 				449290181BB7D72F00F699E7 /* RechargeAmountPop.h */,
 				449290191BB7D72F00F699E7 /* RechargeAmountPop.m */,
 				4492901A1BB7D72F00F699E7 /* RechargeAmountPop.xib */,
@@ -1099,6 +1098,7 @@
 				5925A1091BB8494C00635EDB /* SCNavTabBar */,
 				59E16EF31BB80F03009E4385 /* CollapseClick */,
 				44F942CE1BB61EF8000CAF90 /* SGFocusImage */,
+				4492900A1BB7D72F00F699E7 /* popupViewController */,
 				44F943071BB6C70B000CAF90 /* PopoverView.h */,
 				44F943081BB6C70B000CAF90 /* PopoverView.m */,
 				44F942B11BB59BF8000CAF90 /* WDTabBarItem.h */,

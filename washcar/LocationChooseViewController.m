@@ -239,7 +239,7 @@
          DLog(@"responseObject=%@",responseObject)
         if ([@"1" isEqualToString:res]) {
             @try {
-                 _arrayList = [responseObject objectForKey:@"list"];
+                 _arrayList = [responseObject objectForKey:@"shenglist"];
                 _arrayList.count;
             }
             @catch (NSException *exception) {

@@ -44,22 +44,13 @@
 + (instancetype)defaultPopupView{
     return [[ColorChoosePop alloc]initWithFrame:CGRectMake(0, 0, POP_WIDTH, 300)];
 }
-- (IBAction)dismissAction:(id)sender{
-    [_parentVC lew_dismissPopupView];
-}
-
-
-
-- (IBAction)black:(id)sender {
-    [self choose:0];
-    
-}
 - (IBAction)colorItemClick:(id)sender
 {
-    UIControl *control = (UIControl *)sender;
+    UIControl  *control = (UIControl *)sender;
     NSInteger tag = control.tag;
     
     [self choose:tag];
+
 }
 
 
