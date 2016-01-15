@@ -218,7 +218,7 @@ static NSOperationQueue *_sharedNetworkQueue;
   }
   else if([self.reachability currentReachabilityStatus] == NotReachable)
   {
-//    DLog(@"Server [%@] is not reachable", self.hostName);
+    DLog(@"Server [%@] is not reachable", self.hostName);
     [self freezeOperations];
   }
   

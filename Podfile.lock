@@ -83,6 +83,7 @@ PODS:
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
   - SVProgressHUD (1.1.2)
+  - UMengSocial (4.4)
 
 DEPENDENCIES:
   - AFNetworking
@@ -94,17 +95,19 @@ DEPENDENCIES:
   - Nimbus
   - SDWebImage (~> 3.7.1)
   - SVProgressHUD (~> 1.0)
+  - UMengSocial (~> 4.3)
 
 SPEC CHECKSUMS:
-  AFNetworking: 8bee59492a6ff15d69130efa4d0dc67e0094a52a
-  AlipaySDK-2.0: 9bc50cc0e7d3d83b2336c66c92a2acbcf7978bac
-  Masonry: 2cb49fd14d203d2db5ca6bb017135b235dde9980
-  MJExtension: 4d179914dbec2b6ca826f8296181fc1d4013781e
+  AFNetworking: 10e85a00bb0f475124e4ff2677bf15693b2c1523
+  AlipaySDK-2.0: 75e0f3aa6a7a269c486078759e16695447645580
+  Masonry: 4972309f2f134de9dd312f4dc4a21359b50e6caa
+  MJExtension: 62af61e1a53da0a244c3ae3aff415159bcbd0f0b
   MJRefresh: 1331c095479ceae5b8ae32daa8855c93be0138e4
-  MKNetworkKit: 83e6296a8d42e98a71880424a889773654846d74
-  Nimbus: 14fd6f034c5f53d3dccef6cfd5763959497289a9
-  Reachability: 8e9635e3cb4f98e7f825e51147f677ecc694d0e7
-  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
-  SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
+  MKNetworkKit: 60ad3c83b62183e40ba75ce772c9427c25b520de
+  Nimbus: 3d6dfdeabf548ba4eb43be24e74fd202fb8c4e22
+  Reachability: dd9aa4fb6667b9f787690a74f53cb7634ce99893
+  SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
+  SVProgressHUD: 3afb875b9eb23acd1bed9b82495695c68621a8b2
+  UMengSocial: aba7296602310385114d82c255539a7bef3b7ab0
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.39.0

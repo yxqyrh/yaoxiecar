@@ -191,6 +191,8 @@ FOUNDATION_EXPORT NSString *const SellerID;
 //安全校验码（MD5）密钥，以数字和字母组成的32位字符
 FOUNDATION_EXPORT NSString *const MD5_KEY;
 
+FOUNDATION_EXPORT NSString *const UMENG_APP_KEY;
+
 //商户私钥，自助生成
 FOUNDATION_EXPORT NSString *const PartnerPrivKey;
 
