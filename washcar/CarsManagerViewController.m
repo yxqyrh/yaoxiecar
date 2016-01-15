@@ -7,7 +7,7 @@
 //
 
 #import "CarsManagerViewController.h"
-
+#import "GlobalVar.h"
 @interface CarsManagerViewController  (){
     NSArray *_array ;
 }
@@ -79,15 +79,17 @@
     }
     
     UILabel *carNum = (UILabel*)[cell viewWithTag:1];
-    NSDictionary *_dic = _array[indexPath.row];
+    CarInfo *mCarInfo = _array[indexPath.row];
 //    cp1 = "\U6caa";
     //                    cp2 = A;
     //                    cp3 = 12345;
     
-    NSString *cp1 =[_dic objectForKey:@"cp1"];
-     NSString *cp2 =[_dic objectForKey:@"cp2"];
-     NSString *cp3 =[_dic objectForKey:@"cp3"];
+    NSString *cp1 =mCarInfo.cp1;
+     NSString *cp2 =mCarInfo.cp2;
+     NSString *cp3 =mCarInfo.cp3;
     
+   
+     
     
         carNum.text = [cp1 stringByAppendingFormat:@"%@%@",cp2, cp3];
     
@@ -109,10 +111,10 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSDictionary *_dic = _array[indexPath.row];
+     CarInfo *mCarInfo = _array[indexPath.row];
 
     
-    NSString *clid =[_dic objectForKey:@"id"];
+    NSString *clid =mCarInfo.id;
 
     [self showAddOrEditCarManager:@"车辆信息编辑":clid];
     
@@ -174,8 +176,9 @@
         }
         NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
         if ([@"1" isEqualToString:res]) {
-            
-            _array= [responseObject objectForKey:@"list"];
+            _array = [CarInfo objectArrayWithKeyValuesArray: [responseObject objectForKey:@"list"]];
+//            _array= [responseObject objectForKey:@"list"];
+            [GlobalVar sharedSingleton].carInfoList = _array;
             if (_array!=nil&&_array.count>0) {
                 
                 [_tableView reloadData];

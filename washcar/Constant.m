@@ -177,6 +177,8 @@ NSString *const kProductName = @"productName";
 NSString *const kNotifyURL = @"NotifyURL";
 
 
+
+NSString *const UMENG_APP_KEY = @"5695bfaae0f55ac07f0002ba";
 //合作身份者id，以2088开头的16位纯数字
 NSString *const PartnerID = @"2088021525285754";
 //收款支付宝账号
