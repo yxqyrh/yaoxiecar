@@ -198,6 +198,12 @@
 		596BBD641BBBC62B006DE98F /* HomeViewController2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596BBD631BBBC62B006DE98F /* HomeViewController2ViewController.m */; };
 		597623951C45F8AE00EBDD6E /* CarsManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597623941C45F8AE00EBDD6E /* CarsManagerViewController.m */; };
 		597623981C45F8C400EBDD6E /* InvitationCodesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 597623971C45F8C400EBDD6E /* InvitationCodesViewController.m */; };
+		5989AC3A1C488AC50071D33C /* TQMultistageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5989AC391C488AC50071D33C /* TQMultistageTableView.m */; settings = {ASSET_TAGS = (); }; };
+		5989AC3D1C48C0F90071D33C /* CarInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5989AC3C1C48C0F90071D33C /* CarInfo.m */; settings = {ASSET_TAGS = (); }; };
+		5989AC401C48CA480071D33C /* CarNumChoose.m in Sources */ = {isa = PBXBuildFile; fileRef = 5989AC3F1C48CA480071D33C /* CarNumChoose.m */; settings = {ASSET_TAGS = (); }; };
+		5989AC421C48CA650071D33C /* CarNumChoose.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5989AC411C48CA650071D33C /* CarNumChoose.xib */; settings = {ASSET_TAGS = (); }; };
+		5989AC461C48E39D0071D33C /* CarNumChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5989AC441C48E39C0071D33C /* CarNumChooseCell.m */; settings = {ASSET_TAGS = (); }; };
+		5989AC471C48E39D0071D33C /* CarNumChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5989AC451C48E39C0071D33C /* CarNumChooseCell.xib */; settings = {ASSET_TAGS = (); }; };
 		598AFC6D1BBA520C00787310 /* ColorChoosePop.xib in Resources */ = {isa = PBXBuildFile; fileRef = 598AFC6C1BBA520C00787310 /* ColorChoosePop.xib */; };
 		59BA97051BC75B10007C386E /* home_bottom_tab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59BA97041BC75B10007C386E /* home_bottom_tab.storyboard */; };
 		59C3600A1BC9FF2F007890BE /* ChePaiPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C360091BC9FF2F007890BE /* ChePaiPickView.m */; };
@@ -629,6 +635,16 @@
 		597623941C45F8AE00EBDD6E /* CarsManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarsManagerViewController.m; sourceTree = "<group>"; };
 		597623961C45F8C400EBDD6E /* InvitationCodesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitationCodesViewController.h; sourceTree = "<group>"; };
 		597623971C45F8C400EBDD6E /* InvitationCodesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitationCodesViewController.m; sourceTree = "<group>"; };
+		5989AC381C488AC50071D33C /* TQMultistageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TQMultistageTableView.h; sourceTree = "<group>"; };
+		5989AC391C488AC50071D33C /* TQMultistageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TQMultistageTableView.m; sourceTree = "<group>"; };
+		5989AC3B1C48C0F80071D33C /* CarInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarInfo.h; sourceTree = "<group>"; };
+		5989AC3C1C48C0F90071D33C /* CarInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarInfo.m; sourceTree = "<group>"; };
+		5989AC3E1C48CA480071D33C /* CarNumChoose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarNumChoose.h; sourceTree = "<group>"; };
+		5989AC3F1C48CA480071D33C /* CarNumChoose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarNumChoose.m; sourceTree = "<group>"; };
+		5989AC411C48CA650071D33C /* CarNumChoose.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarNumChoose.xib; sourceTree = "<group>"; };
+		5989AC431C48E39C0071D33C /* CarNumChooseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarNumChooseCell.h; sourceTree = "<group>"; };
+		5989AC441C48E39C0071D33C /* CarNumChooseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarNumChooseCell.m; sourceTree = "<group>"; };
+		5989AC451C48E39C0071D33C /* CarNumChooseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarNumChooseCell.xib; sourceTree = "<group>"; };
 		598AFC6C1BBA520C00787310 /* ColorChoosePop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorChoosePop.xib; sourceTree = "<group>"; };
 		59BA97041BC75B10007C386E /* home_bottom_tab.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = home_bottom_tab.storyboard; sourceTree = "<group>"; };
 		59C360081BC9FF2F007890BE /* ChePaiPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChePaiPickView.h; sourceTree = "<group>"; };
@@ -969,6 +985,9 @@
 				59C3600D1BCA0031007890BE /* ChePaiPickView.xib */,
 				3F1C85361C4165AB00D524F8 /* Share.h */,
 				3F1C85371C4165AB00D524F8 /* Share.m */,
+				5989AC3E1C48CA480071D33C /* CarNumChoose.h */,
+				5989AC3F1C48CA480071D33C /* CarNumChoose.m */,
+				5989AC411C48CA650071D33C /* CarNumChoose.xib */,
 			);
 			name = popView;
 			sourceTree = "<group>";
@@ -1209,6 +1228,7 @@
 		44F942941BB58A5B000CAF90 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				5989AC371C488AC50071D33C /* TQMultistageTableView */,
 				4440C56B1BDCC0670077CFFA /* wxpay */,
 				44C13B8A1BC353D500597D7D /* alipay */,
 				446EDCE41BBB118A000A8D94 /* MyIntroductionView */,
@@ -1293,6 +1313,8 @@
 				596861211BC3B21300C73AD0 /* VoucherInfo.m */,
 				44B5CB871C429F3C00141CBF /* SmallArea.h */,
 				44B5CB881C429F3C00141CBF /* SmallArea.m */,
+				5989AC3B1C48C0F80071D33C /* CarInfo.h */,
+				5989AC3C1C48C0F90071D33C /* CarInfo.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1410,6 +1432,15 @@
 			path = ProgressHUD;
 			sourceTree = "<group>";
 		};
+		5989AC371C488AC50071D33C /* TQMultistageTableView */ = {
+			isa = PBXGroup;
+			children = (
+				5989AC381C488AC50071D33C /* TQMultistageTableView.h */,
+				5989AC391C488AC50071D33C /* TQMultistageTableView.m */,
+			);
+			path = TQMultistageTableView;
+			sourceTree = "<group>";
+		};
 		59D64A251BB9536200C00A0F /* cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1418,6 +1449,9 @@
 				4473C1141C43F716000130B8 /* PlotCell.h */,
 				4473C1151C43F716000130B8 /* PlotCell.m */,
 				4473C1161C43F716000130B8 /* PlotCell.xib */,
+				5989AC431C48E39C0071D33C /* CarNumChooseCell.h */,
+				5989AC441C48E39C0071D33C /* CarNumChooseCell.m */,
+				5989AC451C48E39C0071D33C /* CarNumChooseCell.xib */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -1582,8 +1616,10 @@
 				44928FE31BB7D67D00F699E7 /* LocationChoose.storyboard in Resources */,
 				44EE77681BD61F4200932221 /* img_01_wash@2x.png in Resources */,
 				44EE77601BD61E4800932221 /* img_guide_01@2x.png in Resources */,
+				5989AC471C48E39D0071D33C /* CarNumChooseCell.xib in Resources */,
 				44EE77831BD61FFE00932221 /* img_01_wash@2x.png in Resources */,
 				44EE777E1BD61FFE00932221 /* img_01_guide@2x.png in Resources */,
+				5989AC421C48CA650071D33C /* CarNumChoose.xib in Resources */,
 				59FA3B2C1C3BBC4300712023 /* InvitationCode.storyboard in Resources */,
 				44DCED681BD8FEA80079C15D /* img_03_me_pre@2x.png in Resources */,
 				4473C1341C48C33F000130B8 /* ShareSDK.bundle in Resources */,
@@ -1709,6 +1745,7 @@
 				4473C1171C43F716000130B8 /* PlotCell.m in Sources */,
 				44F942E91BB64643000CAF90 /* ReChargeViewController.m in Sources */,
 				4492902C1BB7D72F00F699E7 /* UIViewController+LewPopupViewController.m in Sources */,
+				5989AC3D1C48C0F90071D33C /* CarInfo.m in Sources */,
 				44B7A30A1BC389A9006FEAA0 /* openssl_wrapper.m in Sources */,
 				5925A1161BB8494C00635EDB /* SCNavTabBar.m in Sources */,
 				44B7A3051BC389A9006FEAA0 /* base64.m in Sources */,
@@ -1730,6 +1767,7 @@
 				59E16EFC1BB80F03009E4385 /* CollapseClickArrow.m in Sources */,
 				44F9429D1BB58B02000CAF90 /* BaseViewController.m in Sources */,
 				44B5CB861C426AB300141CBF /* LocationChooseViewController1.m in Sources */,
+				5989AC461C48E39D0071D33C /* CarNumChooseCell.m in Sources */,
 				44928FFD1BB7D6D700F699E7 /* UserCenterViewController.m in Sources */,
 				44D649DB1BCE1C580009C8BF /* NetworkPhotoAlbumViewController.m in Sources */,
 				448C44E31BB9371300652607 /* MayiHttpRequestManager.m in Sources */,
@@ -1747,6 +1785,7 @@
 				44F943381BB6FE73000CAF90 /* QCSlideSwitchView.m in Sources */,
 				44928FFB1BB7D6D700F699E7 /* MyMsgViewController.m in Sources */,
 				596861151BC25DA400C73AD0 /* LocationInfo.m in Sources */,
+				5989AC3A1C488AC50071D33C /* TQMultistageTableView.m in Sources */,
 				448C44E71BB97FAC00652607 /* RegisterViewController.m in Sources */,
 				44F9432B1BB6FE1D000CAF90 /* QCViewController.m in Sources */,
 				596861251BC3B95700C73AD0 /* StringUtil.m in Sources */,
@@ -1754,6 +1793,7 @@
 				5968611F1BC38EC700C73AD0 /* DateUtil.m in Sources */,
 				44928FF71BB7D6D700F699E7 /* CommonProblemViewController.m in Sources */,
 				59D64A281BB9539100C00A0F /* PopVoucherTableViewCell.m in Sources */,
+				5989AC401C48CA480071D33C /* CarNumChoose.m in Sources */,
 				44928FFC1BB7D6D700F699E7 /* testViewController.m in Sources */,
 				44928FFF1BB7D6D700F699E7 /* VouchersViewController.m in Sources */,
 				4492905D1BB9052100F699E7 /* EAIntroView.m in Sources */,

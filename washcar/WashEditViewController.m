@@ -451,12 +451,34 @@
 - (IBAction)colorChoose:(id)sender {
     [_descTextView resignFirstResponder];
     [_cheWeiNumTextField resignFirstResponder];
-    ColorChoosePop *view = [ColorChoosePop defaultPopupView];
+    CarNumChoose *view = [CarNumChoose defaultPopupView];
     view.parentVC = self;
     view.delegate = self;
+    [view initTableView];
     [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
      
     }];
+    
+    
+    
+// UIActionSheet   *myActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"相册", @"拍照", nil];
+//    [myActionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+   
+    switch (buttonIndex) {
+        case 0:
+          
+            break;
+            
+        case 1:
+          
+            break;
+            
+        default:
+            break;
+    }
 }
 -(void)sendColorValue:(NSInteger)value{
     [_carColorLabel setText:[ColorChoosePop colorNameByValue:value]];

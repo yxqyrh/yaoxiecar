@@ -11,9 +11,11 @@
 #import "CollapseClick.h"
 #import "Constant.h"
 #import "BaseViewController.h"
-@interface CommonProblemViewController : BaseViewController<CollapseClickDelegate,UITextFieldDelegate>{
-    CollapseClick *myCollapseClick;
-}
+#import "TQMultistageTableView.h"
+@interface CommonProblemViewController : BaseViewController<UITextFieldDelegate,TQTableViewDataSource,TQTableViewDelegate>{
 
+    
+}
+@property (nonatomic, strong) TQMultistageTableView *mTableView;
 
 @end

@@ -36,5 +36,5 @@ typedef NS_ENUM (NSInteger, MayiSignState) {
 
 // uid=18550031362  Isloginid=14435112502766
 
-
+@property (nonatomic)NSArray* carInfoList;
 @end
