@@ -10,6 +10,10 @@
 #import "BaseViewController.h"
 #import "MayiHttpRequestManager.h"
 #import "StringUtil.h"
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+
 @interface InvitationCodesViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-@property (weak, nonatomic) IBOutlet UILabel *myCode;@end
+@property (weak, nonatomic) IBOutlet UILabel *myCode;
+@end

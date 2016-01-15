@@ -41,7 +41,7 @@ THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
-			<string>支付宝(中国)网络技术有限公司  版权所有.</string>
+			<string>&#25903;&#20184;&#23453;(&#20013;&#22269;)&#32593;&#32476;&#25216;&#26415;&#26377;&#38480;&#20844;&#21496;  &#29256;&#26435;&#25152;&#26377;.</string>
 			<key>Title</key>
 			<string>AlipaySDK-2.0</string>
 			<key>Type</key>
@@ -438,6 +438,15 @@ including Freepik Icons. Please consult their
 respective headers for the terms of their individual licenses.</string>
 			<key>Title</key>
 			<string>SVProgressHUD</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
+			<string>Copyright 2011 - 2015 UMeng.com. All rights reserved.
+</string>
+			<key>Title</key>
+			<string>UMengSocial</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>

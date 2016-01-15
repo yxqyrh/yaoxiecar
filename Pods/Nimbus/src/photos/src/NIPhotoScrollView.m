@@ -126,12 +126,8 @@
     // Ensure that empty areas of the scroll view are draggable.
     self.backgroundColor = [UIColor blackColor];
     _scrollView.backgroundColor = self.backgroundColor;
-    
-      CGRect rect = [UIScreen mainScreen].applicationFrame;
-      CGFloat width  = rect.size.width * 2;
-      
-    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, width)];
-      _imageView.contentMode = UIViewContentModeScaleAspectFit;
+
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
 
     [_scrollView addSubview:_imageView];
     [self addSubview:_scrollView];
@@ -234,12 +230,7 @@
 
 - (void)setImage:(UIImage *)image photoSize:(NIPhotoScrollViewPhotoSize)photoSize {
   _imageView.image = image;
-    CGRect rect = _imageView.frame;
-    
-//    NSLog(@"rect old:%@",rect);
-//  [_imageView sizeToFit];
-    rect = _imageView.frame;
-//     NSLog(@"rect new:%@",rect);
+  [_imageView sizeToFit];
 
   if (nil == image) {
     self.photoSize = NIPhotoScrollViewPhotoSizeUnknown;
