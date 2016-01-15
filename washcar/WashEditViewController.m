@@ -37,6 +37,8 @@
     NSArray *voucherInfoArray;//代金券列表
     
     bool _isFirstEnter;
+    
+    NSString *_address;
 }
 
 @end
@@ -80,7 +82,7 @@
 
 - (void)didGetLocation:(CLLocationCoordinate2D)coordinate
 {
-    [self loadMyInfo];
+    [self loadMyInfoWithLocation:coordinate.longitude andLatitude:coordinate.latitude];
     [[WDLocationHelper getInstance] stopUpdate];
 }
 
@@ -106,12 +108,12 @@
     [LocationInfo getInstance].area_name_city =  [[LocationInfo getInstance].dz objectForKey:@"citymc"];
     [LocationInfo getInstance].area_id_area =  [[LocationInfo getInstance].dz objectForKey:@"area"];
     [LocationInfo getInstance].area_name_area =  [[LocationInfo getInstance].dz objectForKey:@"areamc"];
-    [LocationInfo getInstance].area_id_smallArea =  [[LocationInfo getInstance].dz objectForKey:@"plot"];
-    [LocationInfo getInstance].area_name_smallArea =  [[LocationInfo getInstance].dz objectForKey:@"plotmc"];
+//    [LocationInfo getInstance].area_id_smallArea =  [[LocationInfo getInstance].dz objectForKey:@"plot"];
+//    [LocationInfo getInstance].area_name_smallArea =  [[LocationInfo getInstance].dz objectForKey:@"plotmc"];
     
     
     
-    NSString *address = [NSString stringWithFormat:@"%@%@%@%@", [[LocationInfo getInstance].dz objectForKey:@"provincemc"],[[LocationInfo getInstance].dz objectForKey:@"citymc"],[[LocationInfo getInstance].dz objectForKey:@"areamc"],[[LocationInfo getInstance].dz objectForKey:@"plotmc"]];
+   
     
     SmallArea *plot0 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user"]];
     SmallArea *plot1 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user1"]];
@@ -121,13 +123,23 @@
     SmallArea *plot5 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user5"]];
     
     NSMutableArray *nearPlotList = [@[plot0,plot1,plot2,plot3,plot4,plot5] mutableCopy];
+    
+    [LocationInfo getInstance].area_name_smallArea = plot0.plot;
+    [LocationInfo getInstance].area_id_smallArea =  plot0.id;
+    
+     _address = [NSString stringWithFormat:@"%@%@%@%@", [[LocationInfo getInstance].dz objectForKey:@"provincemc"],[[LocationInfo getInstance].dz objectForKey:@"citymc"],[[LocationInfo getInstance].dz objectForKey:@"areamc"],[LocationInfo getInstance].area_name_smallArea];
+    if (_addressLabel != nil) {
+        _addressLabel.text = _address;
+    }
 }
 
--(void)loadMyInfo
+-(void)loadMyInfoWithLocation:(double)longitude andLatitude:(double)latitude
 {
-    NSDictionary *parameters = [NSMutableDictionary dictionary];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
-    [parameters setValue:[GlobalVar sharedSingleton].uid forKey:@"uid"];
+    [parameters setObject:[NSNumber numberWithDouble:longitude] forKey:@"Latitude"];
+    [parameters setObject:[NSNumber numberWithDouble:latitude] forKey:@"Longitude"];
+    
 //MayiWYXC
     [[MayiHttpRequestManager sharedInstance] POST:MayiWYXC parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         
@@ -384,7 +396,8 @@
     if (indexPath.row == 2) {
         _addressLabel = (UILabel *)[cell viewWithTag:2];
         if (_userInfo != nil) {
-            _addressLabel.text = _userInfo.szdqstr;
+//            _addressLabel.text = _userInfo.szdqstr;
+            _addressLabel.text = _address;
         }
     }
     

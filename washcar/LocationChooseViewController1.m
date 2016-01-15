@@ -118,6 +118,7 @@
     }
     
     if ([LocationInfo getInstance].area_name_smallArea!=nil) {
+        _smallAreaTextView.text = [LocationInfo getInstance].area_name_smallArea;
 //        NSString *tmp =[LocationInfo getInstance].area_name_smallArea;
 //        if(tmp == nil ||[tmp isEqualToString:@""]||tmp.length == 0){
 //            [self.chooseStreet setTitle:@"该地区暂无服务网点" forState:UIControlStateNormal];

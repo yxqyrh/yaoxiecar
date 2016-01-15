@@ -94,8 +94,8 @@
 -(void)registerShow:(double)longitude andLatitude:(double)latitude
 {
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:[NSNumber numberWithDouble:longitude] forKey:@"Longitude"];
-    [parameters setObject:[NSNumber numberWithDouble:latitude] forKey:@"Latitude"];
+    [parameters setObject:[NSNumber numberWithDouble:latitude] forKey:@"Longitude"];
+    [parameters setObject:[NSNumber numberWithDouble:longitude] forKey:@"Latitude"];
 //    [parameters setObject:[NSNumber numberWithDouble:117.27] forKey:@"Longitude"];
 //    [parameters setObject:[NSNumber numberWithDouble:31.85] forKey:@"Latitude"];
     [[MayiHttpRequestManager sharedInstance] POST:MayiRegShow parameters:parameters showLoadingView:self.view success:^(id responseObject) {
