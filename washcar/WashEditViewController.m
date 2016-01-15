@@ -451,10 +451,10 @@
 - (IBAction)colorChoose:(id)sender {
     [_descTextView resignFirstResponder];
     [_cheWeiNumTextField resignFirstResponder];
-    CarNumChoose *view = [CarNumChoose defaultPopupView];
+    ColorChoosePop *view = [ColorChoosePop defaultPopupView];
     view.parentVC = self;
     view.delegate = self;
-    [view initTableView];
+   
     [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
      
     }];
