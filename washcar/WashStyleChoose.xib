@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WashStyleChoose">
             <connections>
-                <outlet property="carIn" destination="6DW-kO-aEY" id="I3X-0F-R2l"/>
-                <outlet property="carOut" destination="9rk-ag-XcC" id="t2p-Xs-qhB"/>
-                <outlet property="innerView" destination="gwb-33-ziZ" id="Yeh-6c-mqK"/>
+                <outlet property="innerView" destination="gwb-33-ziZ" id="OHG-ks-dyz"/>
+                <outlet property="tableView" destination="5ft-fG-Kak" id="lBx-iU-sQA"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -16,75 +16,23 @@
             <rect key="frame" x="0.0" y="0.0" width="300" height="170"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2c8-AE-Uox">
-                    <rect key="frame" x="0.0" y="0.0" width="300" height="170"/>
-                    <animations/>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择洗车方式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ldk-oD-cJF">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择洗车方式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ldk-oD-cJF">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="35"/>
-                    <animations/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.62745098040000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="35" id="UMp-Hq-OQu"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6DW-kO-aEY">
-                    <rect key="frame" x="0.0" y="106" width="300" height="40"/>
-                    <animations/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="5ft-fG-Kak">
+                    <rect key="frame" x="0.0" y="34" width="300" height="136"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="ScL-JX-IHH"/>
-                    </constraints>
-                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="内外全洗">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="chooseIn:" destination="-1" eventType="touchUpInside" id="reZ-ss-dmF"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9rk-ag-XcC">
-                    <rect key="frame" x="0.0" y="52" width="300" height="40"/>
-                    <animations/>
-                    <color key="backgroundColor" red="0.0" green="0.62745098040000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="ZLS-UA-zh3"/>
-                    </constraints>
-                    <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="车身清洗">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="chooseOut:" destination="-1" eventType="touchUpInside" id="xAj-WE-gww"/>
-                    </connections>
-                </button>
+                </tableView>
             </subviews>
-            <animations/>
             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="9rk-ag-XcC" secondAttribute="trailing" id="0vU-ar-gZo"/>
-                <constraint firstItem="2c8-AE-Uox" firstAttribute="top" secondItem="gwb-33-ziZ" secondAttribute="top" id="AO9-20-1x3"/>
-                <constraint firstAttribute="centerX" secondItem="9rk-ag-XcC" secondAttribute="centerX" id="D0W-r9-qZx"/>
-                <constraint firstAttribute="trailing" secondItem="Ldk-oD-cJF" secondAttribute="trailing" id="Q85-3I-tga"/>
-                <constraint firstAttribute="trailing" secondItem="2c8-AE-Uox" secondAttribute="trailing" id="TbN-Yn-fXI"/>
-                <constraint firstItem="6DW-kO-aEY" firstAttribute="top" secondItem="9rk-ag-XcC" secondAttribute="bottom" constant="14" id="UFH-Uc-Ivy"/>
-                <constraint firstItem="6DW-kO-aEY" firstAttribute="leading" secondItem="gwb-33-ziZ" secondAttribute="leading" id="bOT-fw-iew"/>
-                <constraint firstItem="9rk-ag-XcC" firstAttribute="leading" secondItem="gwb-33-ziZ" secondAttribute="leading" id="c4F-G4-V4E"/>
-                <constraint firstItem="Ldk-oD-cJF" firstAttribute="top" secondItem="gwb-33-ziZ" secondAttribute="top" id="cxf-2k-uff"/>
-                <constraint firstItem="2c8-AE-Uox" firstAttribute="leading" secondItem="gwb-33-ziZ" secondAttribute="leading" id="fbi-X7-fTO"/>
-                <constraint firstAttribute="trailing" secondItem="6DW-kO-aEY" secondAttribute="trailing" id="gtk-lI-y4X"/>
-                <constraint firstAttribute="bottom" secondItem="2c8-AE-Uox" secondAttribute="bottom" id="hZt-OU-5lt"/>
-                <constraint firstAttribute="centerX" secondItem="6DW-kO-aEY" secondAttribute="centerX" id="nhA-ZO-1l9"/>
-                <constraint firstItem="9rk-ag-XcC" firstAttribute="top" secondItem="Ldk-oD-cJF" secondAttribute="bottom" constant="17" id="oDb-gl-eSe"/>
-                <constraint firstItem="Ldk-oD-cJF" firstAttribute="leading" secondItem="gwb-33-ziZ" secondAttribute="leading" id="ufN-1P-9Gv"/>
-            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="390" y="325"/>
+            <point key="canvasLocation" x="306" y="303"/>
         </view>
     </objects>
 </document>

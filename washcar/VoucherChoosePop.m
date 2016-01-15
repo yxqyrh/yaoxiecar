@@ -51,8 +51,8 @@
 //    cell.title.text = [@"优惠代金券金额:" stringByAppendingFormat:@"%@%@" ,voucherInfo.value,@"元"];
     
     cell.title.attributedText = [StringUtil getMenoyText:@"优惠代金券金额:" :voucherInfo.value :@"元"];
-    cell.btn.tag = indexPath.row;
-    [cell.btn addTarget:self action:@selector(onCellClick:) forControlEvents:UIControlEventTouchUpInside];
+//    cell.btn.tag = indexPath.row;
+//    [cell.btn addTarget:self action:@selector(onCellClick:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
     
 }
@@ -74,12 +74,12 @@
         [_parentVC lew_dismissPopupViewWithanimation:[LewPopupViewAnimationFade new]];
     }
 }
--(void) onCellClick:(UIButton *)btn{
-    int row = btn.tag;
-    VoucherInfo *voucherInfo = _voucherInfoArray[row];
-    [_delegate setVoucherInfo:voucherInfo];
-    [_parentVC lew_dismissPopupViewWithanimation:[LewPopupViewAnimationFade new]];
-}
+//-(void) onCellClick:(UIButton *)btn{
+//    int row = btn.tag;
+//    VoucherInfo *voucherInfo = _voucherInfoArray[row];
+//    [_delegate setVoucherInfo:voucherInfo];
+//    [_parentVC lew_dismissPopupViewWithanimation:[LewPopupViewAnimationFade new]];
+//}
 
 
 @end

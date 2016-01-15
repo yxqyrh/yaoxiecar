@@ -114,11 +114,15 @@
         UIView *backgroundView = [[LewPopupBackgroundView alloc] initWithFrame:sourceView.bounds];
         backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         backgroundView.backgroundColor = [UIColor clearColor];
+        UIButton *bgbtn = [[UIButton alloc]initWithFrame:backgroundView.frame];
+        [bgbtn addTarget:self action:@selector(lew_dismissPopupView) forControlEvents:UIControlEventTouchDragInside];
+        [backgroundView addSubview:bgbtn];
         [overlayView addSubview:backgroundView];
         
+        
 //         Make the Background Clickable
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(lew_dismissPopupView)];
-        [overlayView addGestureRecognizer:tap];
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(lew_dismissPopupView)];
+//        [overlayView addGestureRecognizer:tap];
         self.lewOverlayView = overlayView;
     }
     

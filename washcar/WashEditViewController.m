@@ -14,6 +14,7 @@
 #import "NIAttributedLabel.h"
 #import "Masonry.h"
 #import "SmallArea.h"
+#import "CarInfo.h"
 
 @interface WashEditViewController () {
     UILabel *_carNumberLabel;
@@ -133,6 +134,8 @@
         
         
         if ([@"1" isEqualToString:[responseObject objectForKey:@"res"]] || 1 == [[responseObject objectForKey:@"res"] intValue]) {
+            
+            [GlobalVar sharedSingleton].carInfoList = [CarInfo objectArrayWithKeyValuesArray: [responseObject objectForKey:@"clgl"]];
             _userInfo = [UserInfo objectWithKeyValues:[responseObject objectForKey:@"grzl"]];
             
             if (_userInfo != nil) {
@@ -369,9 +372,15 @@
     
     if (indexPath.row == 0) {
         _carNumberLabel = (UILabel *)[cell viewWithTag:2];
-        if (_userInfo != nil) {
-            _carNumberLabel.text = _userInfo.carnumber;
+//        if (_userInfo != nil) {
+//            _carNumberLabel.text = _userInfo.carnumber;
+//        }
+        if ([GlobalVar sharedSingleton].carInfoList.count>0) {
+            CarInfo *info =  [GlobalVar sharedSingleton].carInfoList[0];
+            NSString *str = [info.cp1 stringByAppendingFormat:@"%@%@",info.cp2,info.cp3];
+            _carNumberLabel.text = str;
         }
+      
     }
     
     if (indexPath.row == 1) {
@@ -477,16 +486,25 @@
         
     }
 }
+- (IBAction)showCarNumList:(id)sender {
+    CarNumChoose *view = [CarNumChoose defaultPopupView];
+    view.parentVC = self;
+    view.delegate = self;
+//    [view initTableView];
+    [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
+        
+    }];
+}
 - (IBAction)washStyle:(id)sender {
     [_descTextView resignFirstResponder];
     [_cheWeiNumTextField resignFirstResponder];
     WashStyleChoose *view = [WashStyleChoose defaultPopupView];
     view.parentVC = self;
     view.delegate = self;
+    view.washTypeArray = washTypeArray;
     [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
 
     }];
-     [view refresh:_selectWashType.id];
 }
 - (IBAction)locationChoose:(id)sender {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LocationChoose1" bundle:nil];
@@ -591,5 +609,13 @@
 -(void)setVoucherInfo:(VoucherInfo *)value{
     _voucherInfo =value;
     [self.tableView reloadData];
+}
+//车牌选择回调
+-(void)setCarNum:(int)index{
+//    _carNumberLabel.text =
+    CarInfo *info =  [GlobalVar sharedSingleton].carInfoList[index];
+    NSString *str = [info.cp1 stringByAppendingFormat:@"%@%@",info.cp2,info.cp3];
+    _carNumberLabel.text = str;
+
 }
 @end

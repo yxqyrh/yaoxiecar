@@ -66,7 +66,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _array==nil?0:_array.count;
+    return [GlobalVar sharedSingleton].carInfoList.count;;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -79,7 +79,7 @@
     }
     
     UILabel *carNum = (UILabel*)[cell viewWithTag:1];
-    CarInfo *mCarInfo = _array[indexPath.row];
+    CarInfo *mCarInfo = [GlobalVar sharedSingleton].carInfoList[indexPath.row];
 //    cp1 = "\U6caa";
     //                    cp2 = A;
     //                    cp3 = 12345;
@@ -111,7 +111,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-     CarInfo *mCarInfo = _array[indexPath.row];
+     CarInfo *mCarInfo = [GlobalVar sharedSingleton].carInfoList[indexPath.row];
 
     
     NSString *clid =mCarInfo.id;

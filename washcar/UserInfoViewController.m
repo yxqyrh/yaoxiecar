@@ -281,7 +281,7 @@
     }
  
     if ([StringUtil isEmty:plot]) {
-        [SVProgressHUD showErrorWithStatus:@"没有小区信息，无法修改个人信息"];
+        [SVProgressHUD showErrorWithStatus:@"没有小区信息，无法编辑车辆信息"];
         return;
     }
     

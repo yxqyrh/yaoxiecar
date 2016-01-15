@@ -8,42 +8,10 @@
 
 #import "WashStyleChoose.h"
 #import "CommonMacro.h"
+#import "WashType.h"
 
 @implementation WashStyleChoose
-- (IBAction)chooseOut:(id)sender {
-    self.carOut.backgroundColor = [UIColor whiteColor];
-    [ self.carOut setTitleColor:[UIColor blackColor]forState:UIControlStateNormal];
-    self.carIn.backgroundColor = COMMON_BACKGROUNDCOLOR;
-    self.carIn.titleLabel.textColor = [UIColor whiteColor];
-    [ self.carIn setTitleColor:[UIColor whiteColor]forState:UIControlStateNormal];
-    [self.delegate setWashStyle:0];
-    [_parentVC lew_dismissPopupViewWithanimation:[LewPopupViewAnimationFade new]];
-    
-}
-- (IBAction)chooseIn:(id)sender {
-    self.carOut.backgroundColor = [UIColor whiteColor];
-    self.carOut.titleLabel.textColor = [UIColor blackColor];
-    self.carIn.backgroundColor = COMMON_BACKGROUNDCOLOR;
-    self.carIn.titleLabel.textColor = [UIColor whiteColor];
-    [self.delegate setWashStyle:1];
-    [_parentVC lew_dismissPopupViewWithanimation:[LewPopupViewAnimationFade new]];
-}
 
--(void)refresh:(NSString *)washStyle{
-    if ([washStyle isEqualToString:@"1"]) {
-        self.carOut.backgroundColor = COMMON_BACKGROUNDCOLOR;
-        [ self.carOut setTitleColor:[UIColor whiteColor]forState:UIControlStateNormal];
-        self.carIn.backgroundColor = [UIColor whiteColor];
-        [ self.carIn setTitleColor:[UIColor blackColor]forState:UIControlStateNormal];
-        
-    }else {
-        self.carOut.backgroundColor = [UIColor whiteColor];
-        [ self.carOut setTitleColor:[UIColor blackColor]forState:UIControlStateNormal];
-        self.carIn.backgroundColor = COMMON_BACKGROUNDCOLOR;
-        self.carIn.titleLabel.textColor = [UIColor whiteColor];
-        [ self.carIn setTitleColor:[UIColor whiteColor]forState:UIControlStateNormal];
-    }
-}
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -56,18 +24,55 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
         [[NSBundle mainBundle] loadNibNamed:[[self class] description] owner:self options:nil];
         _innerView.frame = frame;
         [self addSubview:_innerView];
+        
     }
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
     return self;
 }
 
 + (instancetype)defaultPopupView{
     return [[WashStyleChoose alloc]initWithFrame:CGRectMake(0, 0, POP_WIDTH, 180)];
 }
-- (IBAction)dismissAction:(id)sender{
-    [_parentVC lew_dismissPopupView];
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+    
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *cellIdentifier = @"CarNumChooseCell";
+    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (cell==nil) {
+        cell= [[[NSBundle mainBundle]loadNibNamed:@"CarNumChooseCell" owner:nil options:nil] firstObject];
+    }
+    UILabel *title = [cell viewWithTag:1];
+    WashType *_WashType = _washTypeArray[indexPath.row];
+  title.text = _WashType.fs;
+    return cell;
+    
+}
+
+
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if(_washTypeArray==nil)
+    {
+        return 0;
+    }
+    return  _washTypeArray.count;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    
+    if (_delegate != nil && [_delegate conformsToProtocol:@protocol(WashStyleChooseDelegate)]) { // 如果协议响应了sendValue:方法
+        // 通知执行协议方法
+        
+        [_delegate setWashStyle:indexPath.row];
+        [_parentVC lew_dismissPopupViewWithanimation:[LewPopupViewAnimationFade new]];
+    }
 }
 @end
