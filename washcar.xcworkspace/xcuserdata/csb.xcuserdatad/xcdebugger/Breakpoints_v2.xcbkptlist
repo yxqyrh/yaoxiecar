@@ -1295,7 +1295,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
-            landmarkName = "-scaleImage:scaleToSize:"
+            landmarkName = "-initGallery"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1311,7 +1311,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
             endingLineNumber = "87"
-            landmarkName = "-scaleImage:scaleToSize:"
+            landmarkName = "-initGallery"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1327,7 +1327,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
             endingLineNumber = "85"
-            landmarkName = "-scaleImage:scaleToSize:"
+            landmarkName = "-initGallery"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3001,7 +3001,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "245"
             endingLineNumber = "245"
-            landmarkName = "-jumpPageWithJudge:andSignedBlock:"
+            landmarkName = "-foucusImageFrame:didSelectItem:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4295,6 +4295,84 @@
             startingLineNumber = "148"
             endingLineNumber = "148"
             landmarkName = "-loadData:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/Constant.h"
+            timestampString = "474542406.893676"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "133"
+            endingLineNumber = "133">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/UserCenterViewController.m"
+            timestampString = "474544983.364722"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
+            landmarkName = "-imageCropper:didFinished:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/UserCenterViewController.m"
+            timestampString = "474544983.364722"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "283"
+            endingLineNumber = "283"
+            landmarkName = "-imageCropper:didFinished:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/UserCenterViewController.m"
+            timestampString = "474544983.364722"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
+            landmarkName = "-imageCropper:didFinished:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/UserCenterViewController.m"
+            timestampString = "474544983.364722"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "-imageCropper:didFinished:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

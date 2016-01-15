@@ -40,6 +40,8 @@
 		4473C13D1C48C3D0000130B8 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4473C13C1C48C3D0000130B8 /* libstdc++.tbd */; };
 		4473C13F1C48C3DD000130B8 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4473C13E1C48C3DD000130B8 /* JavaScriptCore.framework */; };
 		4473C1411C48C3F8000130B8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4473C1401C48C3F8000130B8 /* MessageUI.framework */; };
+		4473C1431C48EDD4000130B8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4473C1421C48EDD4000130B8 /* MobileCoreServices.framework */; };
+		4473C1471C48EF1C000130B8 /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4473C1461C48EF1C000130B8 /* VPImageCropperViewController.m */; };
 		4483618E1BC8FB63005396D5 /* RootViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4483618D1BC8FB63005396D5 /* RootViewController1.m */; };
 		448361921BCA0904005396D5 /* img_call_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 448361911BCA0904005396D5 /* img_call_phone@2x.png */; };
 		448361951BCAA767005396D5 /* ScratchcardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 448361941BCAA767005396D5 /* ScratchcardViewController.m */; };
@@ -286,6 +288,9 @@
 		4473C13C1C48C3D0000130B8 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		4473C13E1C48C3DD000130B8 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/PrivateFrameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		4473C1401C48C3F8000130B8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		4473C1421C48EDD4000130B8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		4473C1451C48EF1C000130B8 /* VPImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPImageCropperViewController.h; sourceTree = "<group>"; };
+		4473C1461C48EF1C000130B8 /* VPImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPImageCropperViewController.m; sourceTree = "<group>"; };
 		4483618C1BC8FB63005396D5 /* RootViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController1.h; sourceTree = "<group>"; };
 		4483618D1BC8FB63005396D5 /* RootViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController1.m; sourceTree = "<group>"; };
 		448361911BCA0904005396D5 /* img_call_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_call_phone@2x.png"; sourceTree = "<group>"; };
@@ -654,6 +659,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4473C1431C48EDD4000130B8 /* MobileCoreServices.framework in Frameworks */,
 				4473C1411C48C3F8000130B8 /* MessageUI.framework in Frameworks */,
 				4473C13F1C48C3DD000130B8 /* JavaScriptCore.framework in Frameworks */,
 				4473C13D1C48C3D0000130B8 /* libstdc++.tbd in Frameworks */,
@@ -696,6 +702,7 @@
 		12DEF3C5B4393D0D25F10FC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4473C1421C48EDD4000130B8 /* MobileCoreServices.framework */,
 				4473C1401C48C3F8000130B8 /* MessageUI.framework */,
 				4473C13E1C48C3DD000130B8 /* JavaScriptCore.framework */,
 				4473C13C1C48C3D0000130B8 /* libstdc++.tbd */,
@@ -872,9 +879,19 @@
 			path = WeChatSDK;
 			sourceTree = "<group>";
 		};
+		4473C1441C48EF1C000130B8 /* VPImageCropper */ = {
+			isa = PBXGroup;
+			children = (
+				4473C1451C48EF1C000130B8 /* VPImageCropperViewController.h */,
+				4473C1461C48EF1C000130B8 /* VPImageCropperViewController.m */,
+			);
+			path = VPImageCropper;
+			sourceTree = "<group>";
+		};
 		448361B11BCD32A3005396D5 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				4473C1441C48EF1C000130B8 /* VPImageCropper */,
 				4473C11C1C48C330000130B8 /* ShareSdk */,
 				44EE778D1BD778A400932221 /* PSTAlertController */,
 				448361B21BCD32B8005396D5 /* include */,
@@ -1687,6 +1704,7 @@
 				44B7A30B1BC389A9006FEAA0 /* RSADataSigner.m in Sources */,
 				44F942A01BB58F64000CAF90 /* WDTabBar.m in Sources */,
 				44928FF91BB7D6D700F699E7 /* LocationChooseViewController.m in Sources */,
+				4473C1471C48EF1C000130B8 /* VPImageCropperViewController.m in Sources */,
 				448C44F91BBA3CCE00652607 /* OrderInfo.m in Sources */,
 				4473C1171C43F716000130B8 /* PlotCell.m in Sources */,
 				44F942E91BB64643000CAF90 /* ReChargeViewController.m in Sources */,
