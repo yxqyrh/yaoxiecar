@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3F1F81B81C492F3800572172 /* TQMultistageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F81B71C492F3800572172 /* TQMultistageTableView.m */; };
 		3F7831D01BCC106C0021E7F4 /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7831CF1BCC106C0021E7F4 /* Sign.storyboard */; };
+		3F7AD17B1C494D8500AC634C /* CarNumChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F7AD1791C494D8500AC634C /* CarNumChooseCell.xib */; };
+		3F7AD17D1C494F8300AC634C /* WashCarTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F7AD17C1C494F8300AC634C /* WashCarTypeCell.xib */; };
 		4440C56F1BDCC0920077CFFA /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4440C56C1BDCC0920077CFFA /* libWeChatSDK.a */; };
 		4440C5761BDCC0A60077CFFA /* ApiXml.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4440C5711BDCC0A60077CFFA /* ApiXml.mm */; };
 		4440C5771BDCC0A60077CFFA /* payRequsestHandler.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4440C5731BDCC0A60077CFFA /* payRequsestHandler.mm */; };
@@ -243,6 +245,8 @@
 		3F1F81B61C492F3800572172 /* TQMultistageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TQMultistageTableView.h; sourceTree = "<group>"; };
 		3F1F81B71C492F3800572172 /* TQMultistageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TQMultistageTableView.m; sourceTree = "<group>"; };
 		3F7831CF1BCC106C0021E7F4 /* Sign.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
+		3F7AD1791C494D8500AC634C /* CarNumChooseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarNumChooseCell.xib; sourceTree = "<group>"; };
+		3F7AD17C1C494F8300AC634C /* WashCarTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WashCarTypeCell.xib; sourceTree = "<group>"; };
 		4440C56C1BDCC0920077CFFA /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		4440C56D1BDCC0920077CFFA /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		4440C56E1BDCC0920077CFFA /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
@@ -1444,6 +1448,8 @@
 				4473C1141C43F716000130B8 /* PlotCell.h */,
 				4473C1151C43F716000130B8 /* PlotCell.m */,
 				4473C1161C43F716000130B8 /* PlotCell.xib */,
+				3F7AD1791C494D8500AC634C /* CarNumChooseCell.xib */,
+				3F7AD17C1C494F8300AC634C /* WashCarTypeCell.xib */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -1588,6 +1594,7 @@
 				44EE77791BD61FFE00932221 /* img_01_car_pre@2x.png in Resources */,
 				4492902E1BB7D72F00F699E7 /* RechargeAmountPop.xib in Resources */,
 				5925A11F1BB8A9D300635EDB /* ProgressHUD.bundle in Resources */,
+				3F7AD17B1C494D8500AC634C /* CarNumChooseCell.xib in Resources */,
 				44736C561BB57D27004D665D /* Assets.xcassets in Resources */,
 				5952A11D1BC512F20023FEF5 /* voucher_nouse.png in Resources */,
 				4473C1301C48C33F000130B8 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
@@ -1633,6 +1640,7 @@
 				448C45001BBAB6C800652607 /* CancelChoosePop.xib in Resources */,
 				59E16EFE1BB80F03009E4385 /* CollapseClickCell.xib in Resources */,
 				5968612C1BC4121A00C73AD0 /* check_01.png in Resources */,
+				3F7AD17D1C494F8300AC634C /* WashCarTypeCell.xib in Resources */,
 				44F943601BB78E97000CAF90 /* img_unchecked.png in Resources */,
 				44EE77851BD61FFE00932221 /* img_02_order@2x.png in Resources */,
 				44DCED661BD8FE8F0079C15D /* img_02_order_pre@2x.png in Resources */,

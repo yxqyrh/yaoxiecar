@@ -53,6 +53,10 @@
                // cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
                  cell= [[[NSBundle mainBundle]loadNibNamed:@"CarNumChooseCell" owner:nil options:nil] firstObject];
             }
+    UILabel *title = [cell viewWithTag:1];
+    NSDictionary *dic = _dataArray[indexPath.row];
+    NSString *str = [dic objectForKey:@"title"];
+    title.text = str;
     return cell;
     
 }
@@ -60,20 +64,21 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    if (_dataArray==nil) {
-//        return 0;
-//    }
-//    return _dataArray.count;
-    return 5;
+    if (_dataArray==nil) {
+        return 0;
+    }
+    return _dataArray.count;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *dic = _dataArray[indexPath.row];
+    
 //    VoucherInfo *voucherInfo = _voucherInfoArray[indexPath.row];
-//    if (_delegate != nil && [_delegate conformsToProtocol:@protocol(VoucherChoosePopDelegate)]) { // 如果协议响应了sendValue:方法
-//        // 通知执行协议方法
-//        
-//        [_delegate setVoucherInfo:voucherInfo];
-//        [_parentVC lew_dismissPopupViewWithanimation:[LewPopupViewAnimationFade new]];
-//    }
+    if (_delegate != nil && [_delegate conformsToProtocol:@protocol(CarNumChooseDelegate)]) { // 如果协议响应了sendValue:方法
+        // 通知执行协议方法
+        
+        [_delegate setWashStyle:dic];
+        [_parentVC lew_dismissPopupViewWithanimation:[LewPopupViewAnimationFade new]];
+    }
 }
 
 @end
