@@ -123,6 +123,8 @@ NSString * const Complaint =  @"ts";
 
 //个人信息编辑
 NSString * const UserInfoEdit =  @"gexxbj";
+//上传头像
+NSString * const UserAvatarEdit =  @"sctx";
 
 //用户推出
 

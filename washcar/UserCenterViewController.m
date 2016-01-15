@@ -14,6 +14,10 @@
 #import "ReChargeViewController.h"
 #import "StoryboadUtil.h"
 #import "StringUtil.h"
+#import "PSTAlertController.h"
+
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <UIImageView+WebCache.h>
 
 @interface UserCenterViewController ()
 
@@ -220,6 +224,7 @@
             _userPhone.text = uname;
             [self setMoney:money];
             icon_url =[IMGURL stringByAppendingString:upicture];
+            [_userIcon sd_setImageWithURL:[NSURL URLWithString:icon_url] placeholderImage:[UIImage imageNamed:@"icon.png"]];
 //            [self performSelectorInBackground:@selector(download) withObject:nil];
         }
     } failture:^(NSError *error) {
@@ -254,8 +259,191 @@
 //设置显示图片
 -(void)settingImage:(UIImage *)image
 {
-    self.userIcon.image=image;
+//    self.userIcon.image=image;
 }
+
+#pragma mark VPImageCropperDelegate
+- (void)imageCropper:(VPImageCropperViewController *)cropperViewController didFinished:(UIImage *)editedImage {
+    
+    
+    
+    [cropperViewController dismissViewControllerAnimated:YES completion:^{
+        // TO DO
+    }];
+    
+    if (editedImage != nil) {
+//        [SVProgressHUD showWithStatus:@"上传中，请稍后"];
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+         NSData *data = UIImageJPEGRepresentation(editedImage, 1);
+
+        
+        [[MayiHttpRequestManager sharedInstance] POSTFile:UserAvatarEdit parameters:parameters data:data forKey:@"tx" showLoadingView:self.view
+         success:^(id responseObject) {
+           
+                DLog(@"开始,上传头像成功");
+//             [SVProgressHUD dismiss];
+                //                _user.avatar = @"https://linkup.wondersgroup.com/newavatar.jpg";
+                //                _user.avatar100 = _user.avatar;
+                //                _user.avatar300 = _user.avatar;
+                //                //            [self loadData:[GlobalVar sharedSingleton].myId];
+                //                [[SDImageCache sharedImageCache] storeImage:editedImage forKey:_user.avatar];
+                //                [[SDImageCache sharedImageCache] storeImage:editedImage forKey:_user.avatar100];
+                //                [[SDImageCache sharedImageCache] storeImage:editedImage forKey:_user.avatar300];
+                //                [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:_user.avatar100]];
+                //                [_avatarImageView sd_setImageWithURL:[NSURL URLWithString:_user.avatar100] placeholderImage:nil options:SDWebImageRefreshCached];
+                //                sleep(5);
+                //                [self loadData:[GlobalVar sharedSingleton].myId showProgress:NO];
+             
+             _userIcon.image = editedImage;
+            
+        } failture:^(NSError *error) {
+            DLog(@"error:%@",error);
+        }];
+    }
+}
+
+- (void)imageCropperDidCancel:(VPImageCropperViewController *)cropperViewController {
+    [cropperViewController dismissViewControllerAnimated:YES completion:^{
+    }];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:^() {
+        UIImage *portraitImg = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        portraitImg = [self imageByScalingToMaxSize:portraitImg];
+        // 裁剪
+        VPImageCropperViewController *imgEditorVC = [[VPImageCropperViewController alloc] initWithImage:portraitImg cropFrame:CGRectMake(0, 100.0f, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.width) limitScaleRatio:3.0];
+        imgEditorVC.delegate = self;
+        [self presentViewController:imgEditorVC animated:YES completion:^{
+            // TO DO
+        }];
+    }];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:^(){
+    }];
+}
+
+#pragma mark image scale utility
+- (UIImage *)imageByScalingToMaxSize:(UIImage *)sourceImage {
+    if (sourceImage.size.width < ORIGINAL_MAX_WIDTH) return sourceImage;
+    CGFloat btWidth = 0.0f;
+    CGFloat btHeight = 0.0f;
+    if (sourceImage.size.width > sourceImage.size.height) {
+        btHeight = ORIGINAL_MAX_WIDTH;
+        btWidth = sourceImage.size.width * (ORIGINAL_MAX_WIDTH / sourceImage.size.height);
+    } else {
+        btWidth = ORIGINAL_MAX_WIDTH;
+        btHeight = sourceImage.size.height * (ORIGINAL_MAX_WIDTH / sourceImage.size.width);
+    }
+    CGSize targetSize = CGSizeMake(btWidth, btHeight);
+    return [self imageByScalingAndCroppingForSourceImage:sourceImage targetSize:targetSize];
+}
+
+- (UIImage *)imageByScalingAndCroppingForSourceImage:(UIImage *)sourceImage targetSize:(CGSize)targetSize {
+    UIImage *newImage = nil;
+    CGSize imageSize = sourceImage.size;
+    CGFloat width = imageSize.width;
+    CGFloat height = imageSize.height;
+    CGFloat targetWidth = targetSize.width;
+    CGFloat targetHeight = targetSize.height;
+    CGFloat scaleFactor = 0.0;
+    CGFloat scaledWidth = targetWidth;
+    CGFloat scaledHeight = targetHeight;
+    CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
+    if (CGSizeEqualToSize(imageSize, targetSize) == NO)
+    {
+        CGFloat widthFactor = targetWidth / width;
+        CGFloat heightFactor = targetHeight / height;
+        
+        if (widthFactor > heightFactor)
+            scaleFactor = widthFactor; // scale to fit height
+        else
+            scaleFactor = heightFactor; // scale to fit width
+        scaledWidth  = width * scaleFactor;
+        scaledHeight = height * scaleFactor;
+        
+        // center the image
+        if (widthFactor > heightFactor)
+        {
+            thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5;
+        }
+        else
+            if (widthFactor < heightFactor)
+            {
+                thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
+            }
+    }
+    UIGraphicsBeginImageContext(targetSize); // this will crop
+    CGRect thumbnailRect = CGRectZero;
+    thumbnailRect.origin = thumbnailPoint;
+    thumbnailRect.size.width  = scaledWidth;
+    thumbnailRect.size.height = scaledHeight;
+    
+    [sourceImage drawInRect:thumbnailRect];
+    
+    newImage = UIGraphicsGetImageFromCurrentImageContext();
+    if(newImage == nil) NSLog(@"could not scale image");
+    
+    //pop the context to get back to the default
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+
+- (IBAction)userButtonClicked:(id)sender {
+    PSTAlertController *alertController = [PSTAlertController alertControllerWithTitle:nil message:nil preferredStyle:PSTAlertControllerStyleActionSheet];
+    [alertController addAction:[PSTAlertAction actionWithTitle:@"拍摄新照片" style:PSTAlertActionStyleDefault handler:^(PSTAlertAction *action) {
+        DLog(@"拍摄新照片");
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+            controller.sourceType = UIImagePickerControllerSourceTypeCamera;
+            if ([UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront]) {
+                controller.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+            }
+            NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
+            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+            controller.mediaTypes = mediaTypes;
+            controller.delegate = self;
+            [self presentViewController:controller
+                               animated:YES
+                             completion:^(void){
+                                 NSLog(@"Picker View Controller is presented");
+                             }];
+        }
+    }]];
+    
+    [alertController addAction:[PSTAlertAction actionWithTitle:@"从相册选择" style:PSTAlertActionStyleDefault handler:^(PSTAlertAction *action) {
+        DLog(@"从相册选择");
+        
+        if ([UIImagePickerController isSourceTypeAvailable:
+             UIImagePickerControllerSourceTypePhotoLibrary]) {
+            
+            UIImagePickerController *controller = [[UIImagePickerController alloc] init];
+            controller.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            NSMutableArray *mediaTypes = [[NSMutableArray alloc] init];
+            [mediaTypes addObject:(__bridge NSString *)kUTTypeImage];
+            controller.mediaTypes = mediaTypes;
+            controller.delegate = self;
+            [self presentViewController:controller
+                               animated:YES
+                             completion:^(void){
+                                 NSLog(@"Picker View Controller is presented");
+                             }];
+        }
+        
+    }]];
+    
+    [alertController addAction:[PSTAlertAction actionWithTitle:@"取消" style:PSTAlertActionStyleCancel handler:^(PSTAlertAction *action) {
+        DLog(@"取消");
+    }]];
+    
+    [alertController showWithSender:self.view controller:self animated:YES completion:nil];
+    
+}
+
 -(void)initBtnLayout{
     [self initBtn:_btn1 :@"user_car_manager_icon" :_btn1.titleLabel.text];
     [self initBtn:_btn2 :@"user_coupon_icon" :_btn2.titleLabel.text];

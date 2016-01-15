@@ -17,7 +17,11 @@
 #import "InvitationCodesViewController.h"
 #import "Masonry.h"
 #import "StoryboadUtil.h"
-@interface UserCenterViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
+#import "VPImageCropperViewController.h"
+
+#define ORIGINAL_MAX_WIDTH 900.0f
+
+@interface UserCenterViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,VPImageCropperDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *userIcon;
 @property (weak, nonatomic) IBOutlet UILabel *userPhone;
 @property (weak, nonatomic) IBOutlet UILabel *surplusMoney;

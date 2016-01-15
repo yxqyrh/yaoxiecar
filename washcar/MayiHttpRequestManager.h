@@ -34,5 +34,13 @@
                          success:(void (^)(id responseObject))success
                         failture:(void(^)(NSError *error))failture;
 
+- (void)POSTFile:(NSString *)methodName
+      parameters:(id)parameters
+            data:(NSData *)data
+          forKey:(NSString *)key
+ showLoadingView:(UIView *)view
+         success:(void (^)(id responseObject))success
+        failture:(void(^)(NSError *error))failture;
+
 
 @end

@@ -17,6 +17,7 @@
 #import "WashStyleChoose.h"
 #import "LocationChooseViewController1.h"
 #import "VoucherChoosePop.h"
+#import "WDLocationHelper.h"
 
 
 @interface WashEditViewController : BaseTableViewController <UITextViewDelegate,PayCompleteDelegate,ColorChoosePopDelegate,LocationChoosePopDelegate,WashStyleChooseDelegate,LocationChooseDelegate,VoucherChoosePopDelegate>

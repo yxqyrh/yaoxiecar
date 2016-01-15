@@ -129,7 +129,8 @@ FOUNDATION_EXPORT NSString * const Complaint;
 //个人信息编辑
 FOUNDATION_EXPORT NSString * const UserInfoEdit;
 
-
+//上传头像
+FOUNDATION_EXPORT NSString * const UserAvatarEdit;
 
 //用户推出
 FOUNDATION_EXPORT NSString * const Quitlogin;

@@ -163,5 +163,66 @@ showLoadingView:(UIView *)view
 }
 
 
+- (void)POSTFile:(NSString *)methodName
+  parameters:(id)parameters
+            data:(NSData *)data
+          forKey:(NSString *)key
+showLoadingView:(UIView *)view
+     success:(void (^)(id responseObject))success
+    failture:(void(^)(NSError *error))failture;
+{
+    
+    if (view != nil) {
+        [view makeToastActivity];
+    }
+    NSMutableDictionary *dic = nil;
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", _serverUrl, methodName];
+    
+    
+    if (parameters == nil) {
+        dic = [NSMutableDictionary dictionaryWithCapacity:1];
+        
+    }
+    else {
+        if ([parameters isKindOfClass:[NSMutableDictionary class]]) {
+            dic = parameters;
+        }
+        else if ([parameters isKindOfClass:[NSDictionary class]]) {
+            dic = [parameters mutableCopy];
+        }
+    }
+    [dic setObject:@"ab1ffd1cbc6cdd121679e8f00e505311" forKey:@"key"];
+    if ([GlobalVar sharedSingleton].isloginid != nil) {
+        [dic setObject:[GlobalVar sharedSingleton].isloginid forKey:@"isloginid"];
+        [dic setObject:[GlobalVar sharedSingleton].uid forKey:@"uid"];
+    }
+    DLog(@"请求 %@\nURL: %@\n参数：%@", [[self methodDescription] objectForKey:methodName], urlString, dic);
+    
+    MKNetworkOperation *op = [_manager operationWithPath:methodName params:dic httpMethod:@"POST" ssl:NO];
+    [op addData:data forKey:key mimeType:@"image/jpeg" fileName:@"test.jpg"];
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        id json = [operation responseJSON];
+        DLog(@"response json:%@",json);
+        success(json);
+        
+        if (view != nil) {
+            [view hideToastActivity];
+        }
+        
+    }errorHandler:^(MKNetworkOperation *errorOp, NSError* err) {
+        NSLog(@"MKNetwork request error : %@", [err localizedDescription]);
+        failture(err);
+        if (view != nil) {
+            [view hideToastActivity];
+        }
+    }];
+    [_manager enqueueOperation:op];
+    
+    
+}
+
+
+
 
 @end
