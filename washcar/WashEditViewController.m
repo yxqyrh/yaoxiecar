@@ -15,6 +15,8 @@
 #import "Masonry.h"
 #import "SmallArea.h"
 #import "CarInfo.h"
+#import "UserInfoViewController.h"
+#import "StoryboadUtil.h"
 
 @interface WashEditViewController () {
     UILabel *_carNumberLabel;
@@ -510,13 +512,23 @@
     }
 }
 - (IBAction)showCarNumList:(id)sender {
-    CarNumChoose *view = [CarNumChoose defaultPopupView];
-    view.parentVC = self;
-    view.delegate = self;
-//    [view initTableView];
-    [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
-        
-    }];
+    if ([GlobalVar sharedSingleton].carInfoList.count>0) {
+        CarNumChoose *view = [CarNumChoose defaultPopupView];
+        view.parentVC = self;
+        view.delegate = self;
+        //    [view initTableView];
+        [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
+            
+        }];
+
+    }else{
+        UserInfoViewController  *uivc = [StoryboadUtil getViewController:@"UserInfo" :@"UserInfoViewController"];
+        uivc.title = @"添加车辆";
+        uivc.clid = nil;
+        [self.navigationController pushViewController:uivc animated:YES];
+    }
+
+    
 }
 - (IBAction)washStyle:(id)sender {
     [_descTextView resignFirstResponder];

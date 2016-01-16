@@ -11,6 +11,7 @@
 #import "SGFocusImageFrame.h"
 #import "SGFocusImageItem.h"
 #import "StringUtil.h"
+#import "WebViewController.h"
 
 typedef void(^signCompleteBlock)();
 

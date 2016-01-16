@@ -201,7 +201,6 @@
      [[MayiHttpRequestManager sharedInstance] POST:UserCenter parameters:parameters showLoadingView:loadingView success:^(id responseObject) {
         NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
         if ([@"1" isEqualToString:res]) {
-            DLog(@"%@",responseObject)
             NSDictionary *dir = [responseObject objectForKey:@"grzx"];
             NSString *countxcj =[dir objectForKey:@"countxcj"];
             NSString *countxx =[dir objectForKey:@"countxx"];
