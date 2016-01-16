@@ -218,10 +218,10 @@
             }
             if([countxx integerValue]>0){
 //                msgNum.hidden = NO;
-                 [self initBtn:_btn4 :@"user_msg_icon_new" :_btn3.titleLabel.text];
+                 [self initBtn:_btn4 :@"user_msg_icon_new" :_btn4.titleLabel.text];
             }else{
 //                msgNum.hidden = YES;
-                 [self initBtn:_btn4 :@"user_msg_icon" :_btn3.titleLabel.text];
+                 [self initBtn:_btn4 :@"user_msg_icon" :_btn4.titleLabel.text];
             }
             if([@"" isEqualToString:uname]||uname==nil){
                 uname = [GlobalVar sharedSingleton].uid ;
