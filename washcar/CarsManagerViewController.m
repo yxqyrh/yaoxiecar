@@ -141,9 +141,11 @@
         if ([@"1" isEqualToString:res]) {
             
             [GlobalVar sharedSingleton].carInfoList  = [CarInfo objectArrayWithKeyValuesArray: [responseObject objectForKey:@"list"]];
-            if ([GlobalVar sharedSingleton].carInfoList !=nil&&[GlobalVar sharedSingleton].carInfoList .count>0) {
-                [_tableView reloadData];
-            }
+//            if ([GlobalVar sharedSingleton].carInfoList !=nil&&[GlobalVar sharedSingleton].carInfoList .count>0) {
+//               
+//            }
+            
+             [_tableView reloadData];
             
         }
     } failture:^(NSError *error) {

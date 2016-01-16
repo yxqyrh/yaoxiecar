@@ -1538,7 +1538,7 @@
 				TargetAttributes = {
 					44736C451BB57D27004D665D = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = 4ZEJ9J7BRC;
+						DevelopmentTeam = PBR2UYPQ89;
 					};
 					44736C5E1BB57D28004D665D = {
 						CreatedOnToolsVersion = 7.0;
@@ -2075,8 +2075,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jingyaxiegm@gmail.com (J5J69BZW2M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: jingyaxiegm@gmail.com (J5J69BZW2M)";
 				INFOPLIST_FILE = washcarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wondersgroup.washcarTests;
@@ -2090,8 +2090,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jingyaxiegm@gmail.com (J5J69BZW2M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xu lu (5A6M3BM459)";
 				INFOPLIST_FILE = washcarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wondersgroup.washcarTests;
