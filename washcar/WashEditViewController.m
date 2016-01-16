@@ -125,14 +125,15 @@
     self.provinceList = [responseObject objectForKey:@"shenglist"];
     self.cityList = [responseObject objectForKey:@"citylist"];
     self.areaList = [LocationInfo getInstance].areaList = [responseObject objectForKey:@"qulist"];
-    self.plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
+//    self.plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
+    self.plotList = nearPlotList;
     self.dz = [responseObject objectForKey:@"dz"];
     
     
     _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],plot0.plot];
     
     [self chooseLocation:_address
-              provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:[self.dz objectForKey:@"plot"]];
+              provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:plot0.id];
     
     if (_addressLabel != nil) {
         _addressLabel.text = _address;

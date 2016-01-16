@@ -17,8 +17,8 @@
     NSMutableArray *_searchResult;
     NSArray *_nearPlots;
     UISearchDisplayController *_searchDisplayController;
-    
-    NSString *_provinceId;
+
+     NSString *_provinceId;
     NSString *_provinceName;
     NSString *_cityId;
     NSString *_cityName;
@@ -103,33 +103,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    if (_provinceName!=nil) {
-        _provinceLabel.text = _provinceName;
-    }else{
-        _provinceLabel.text = @"选省";
-    }
-    
-    if (_cityName!=nil) {
-        _cityLabel.text = _cityName;
-    }else {
-        _cityLabel.text = @"选城市";
-        
-    }
-    
-    
-    if (_areaName!=nil) {
-        _areaLabel.text = _areaName;
-        
-    }else{
-        _areaLabel.text = @"选区县";
-    }
-    
-    if (_plotName!=nil) {
-        _smallAreaTextView.text = _plotName;
-        
-    }else{
-        
-    }
+    [self refreshView];
 }
 
 -(void)initDataDZ:(NSDictionary *)dz
@@ -143,38 +117,22 @@
     _cityName = [dz objectForKey:@"citymc"];;
     _areaId = [dz objectForKey:@"area"];;
     _areaName = [dz objectForKey:@"areamc"];;
-    _plotId = [dz objectForKey:@"plot"];;
+    _plotId = [dz objectForKey:@"plot"];
     _plotName = [dz objectForKey:@"plotmc"];
+    if (_plotName == nil || [@"" isEqualToString:_plotName]) {
+        if (nearPlots != nil) {
+            SmallArea *smallArea = [nearPlots objectAtIndex:0];
+            _plotName = smallArea.plot;
+            _plotId = smallArea.id;
+            
+            _provinceId = smallArea.province;
+            _cityId = smallArea.city;
+            _areaId = smallArea.area;
+        }
+    }
+
     
-//    if (_provinceName!=nil) {
-//        _provinceLabel.text = _provinceName;
-//    }else{
-//        _provinceLabel.text = @"选省";
-//    }
-//    
-//    if (_cityName!=nil) {
-//        _cityLabel.text = _cityName;
-//    }else {
-//        _cityLabel.text = @"选城市";
-//        
-//    }
-//    
-//    
-//    if (_areaName!=nil) {
-//        _areaLabel.text = _areaName;
-//        
-//    }else{
-//        _areaLabel.text = @"选区县";
-//    }
-//    
-//    if (_plotName!=nil) {
-//        _smallAreaTextView.text = _plotName;
-//
-//    }else{
-//
-//    }
-    
-    if (_areaId != nil) {
+    if (_areaId != nil && (nearPlots == nil || nearPlots.count == 0)) {
         [self findSmallArea];
     }
     
@@ -300,6 +258,7 @@
     [[MayiHttpRequestManager sharedInstance] POST:@"area" parameters:parameters showLoadingView:nil success:^(id responseObject) {
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
             _allPlots = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"list"]];
+            _nearPlots = _allPlots;
 //            _filtedPlots = [NSMutableArray arrayWithArray:_allPlots];
             [self.tableView reloadData];
         }
@@ -340,29 +299,139 @@
 
 #pragma mark - LocationChooseViewControllerDelegate
 
+-(void)refreshView
+{
+    if (_provinceName!=nil) {
+        _provinceLabel.text = _provinceName;
+    }else{
+        _provinceLabel.text = @"选省";
+    }
+    
+    if (_cityName!=nil) {
+        _cityLabel.text = _cityName;
+    }else {
+        _cityLabel.text = @"选城市";
+        
+    }
+    
+    
+    if (_areaName!=nil) {
+        _areaLabel.text = _areaName;
+        
+    }else{
+        _areaLabel.text = @"选区县";
+    }
+    
+    if (_plotName!=nil) {
+        _smallAreaTextView.text = _plotName;
+        
+    }else{
+        _smallAreaTextView.text = @"";
+    }
+    [self.tableView reloadData];
+}
+
 - (void) showAreaChannel:(int)chanel
                       id:(NSString *)id
                     name:(NSString *)name
 {
     switch(chanel) {
         case 0:
-            _provinceId = id;
-            _provinceName = name;
-            _provinceLabel.text = name;
+            if (_provinceId == nil || [@"" isEqualToString:_provinceId]) {
+                _provinceId = id;
+                _provinceName = name;
+                _provinceLabel.text = name;
+                
+                
+            }
+            else {//_provinceId is not empty
+                if ([_provinceId isEqualToString:id]) {
+                    
+                }
+                else {
+                    _provinceId = id;
+                    _provinceName = name;
+                    _provinceLabel.text = name;
+                    
+                    _cityId = nil;
+                    _cityName = nil;
+                    
+                    _areaId = nil;
+                    _areaName = nil;
+                    
+                    _plotId = nil;
+                    _plotName = nil;
+                    
+                    _nearPlots = nil;
+                    
+                    
+                }
+            }
+            
             break;
         case 1:
-            _cityId = id;
-            _cityName = name;
-            _cityLabel.text = name;
+            
+            if (_cityId == nil || [@"" isEqualToString:_cityId]) {
+                _cityId = id;
+                _cityName = name;
+                _cityLabel.text = name;
+            }
+            else {//_provinceId is not empty
+                if ([_provinceId isEqualToString:id]) {
+                    
+                }
+                else {
+                    _cityId = id;
+                    _cityName = name;
+                    _cityLabel.text = name;
+                    
+                    _areaName = nil;
+                    _areaId = nil;
+                    
+                    _plotId = nil;
+                    _plotName = nil;
+                    
+                    _nearPlots = nil;
+                    
+                    
+                }
+            }
             break;
         case 2:
             _areaId = id;
             _areaName = name;
             _areaLabel.text = name;
+            
+            if (_areaId == nil || [@"" isEqualToString:_areaId]) {
+                _areaId = id;
+                _areaName = name;
+                _areaLabel.text = name;
+                
+                [self findSmallArea];
+            }
+            else {//_provinceId is not empty
+                if ([_provinceId isEqualToString:id]) {
+                    
+                }
+                else {
+                    _areaId = id;
+                    _areaName = name;
+                    _areaLabel.text = name;
+                    
+                    _plotId = nil;
+                    _plotName = nil;
+                    
+                    _nearPlots = nil;
+                    
+                    [self findSmallArea];
+                }
+            }
+            
             break;
         case 3:
             break;
     }
+    [self refreshView];
 }
 
 
@@ -493,6 +562,27 @@
 }
 
 - (IBAction)rightButtonClicked:(id)sender {
+    if ([WDSystemUtils isEmptyOrNullString:_provinceName]) {
+        [SVProgressHUD showErrorWithStatus:@"未选择省份"];
+        return;
+    }
+    
+    if ([WDSystemUtils isEmptyOrNullString:_cityId]) {
+        [SVProgressHUD showErrorWithStatus:@"未选择城市"];
+        return;
+    }
+    
+    if ([WDSystemUtils isEmptyOrNullString:_areaId]) {
+        [SVProgressHUD showErrorWithStatus:@"未选择区县"];
+        return;
+    }
+    
+    if ([WDSystemUtils isEmptyOrNullString:_plotId]) {
+        [SVProgressHUD showErrorWithStatus:@"未选择小区"];
+        return;
+    }
+    
+    
     if (_delegate && [_delegate conformsToProtocol:@protocol(LocationChooseDelegate)]) {
         [_delegate chooseLocation:[self generalAddress] provinceId:_provinceId cityId:_cityId areaId:_areaId plotId:_plotId];
     }
