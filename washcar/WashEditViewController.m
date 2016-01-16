@@ -132,7 +132,7 @@
     _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],plot0.plot];
     
     [self chooseLocation:_address
-              provinceId: self.area_id_province cityId: self.area_id_city areaId: self.area_id_area plotId: self.area_id_smallArea];
+              provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:[self.dz objectForKey:@"plot"]];
     
     if (_addressLabel != nil) {
         _addressLabel.text = _address;

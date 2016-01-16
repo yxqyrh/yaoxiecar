@@ -132,7 +132,7 @@
             _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],[self.dz objectForKey:@"plotmc"]];
             
             [self chooseLocation:_address
-             provinceId: self.area_id_province cityId: self.area_id_city areaId: self.area_id_area plotId: self.area_id_smallArea];
+             provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:[self.dz objectForKey:@"plot"]];
         }
         
     } failture:^(NSError *error) {
@@ -330,7 +330,7 @@
     [parameters setValue:_telephoneTextField.text forKey:@"uid"];//手机号
     [parameters setValue:_verifyCodeTextField.text forKey:@"yzm"];
     [parameters setValue:_verifyCodeId forKey:@"yzmid"];
-    
+//    [parameters setValue:_invitedCodeTextField.text forKey:@"yqm"];
     
     [[MayiHttpRequestManager sharedInstance] POST:MayiUserRegister parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         
@@ -374,7 +374,7 @@
         }
         
     } failture:^(NSError *error) {
-        [self.view makeToast:@"注册失败"];
+         [SVProgressHUD showErrorWithStatus:@"注册失败"];
     }];
 }
 
@@ -643,7 +643,7 @@
             NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
             dispatch_async(dispatch_get_main_queue(), ^{
                 //设置界面的按钮显示 根据自己需求设置
-                NSLog(@"____%@",strTime);
+//                NSLog(@"____%@",strTime);
                 [_codeButton setTitle:[NSString stringWithFormat:@"%@秒后重新获取",strTime] forState:UIControlStateNormal];
                 _codeButton.userInteractionEnabled = NO;
                 [_codeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
@@ -659,7 +659,7 @@
 
 -(void)timeDesend
 {
-    DLog(@"_timeInterval:%@",[NSString stringWithFormat:@"%i秒",_timeInterval]);
+//    DLog(@"_timeInterval:%@",[NSString stringWithFormat:@"%i秒",_timeInterval]);
     
     _codeButtonTitle = [NSString stringWithFormat:@"%i秒",_timeInterval--];
     
