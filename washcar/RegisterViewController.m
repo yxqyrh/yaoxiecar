@@ -301,9 +301,13 @@
         return;
     }
     
-    NSString *chePaiStr = [provinceStr.titleLabel.text stringByAppendingFormat:@"%@%@",_A_Z.titleLabel.text,_carNumberTextField.text];
+//    NSString *chePaiStr = [provinceStr.titleLabel.text stringByAppendingFormat:@"%@%@",_A_Z.titleLabel.text,_carNumberTextField.text];
     NSDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setValue:chePaiStr forKey:@"ucarNumber"];
+//    [parameters setValue:chePaiStr forKey:@"ucarNumber"];
+    
+    [parameters setValue:provinceStr.titleLabel.text forKey:@"cp1"];
+    [parameters setValue:_A_Z.titleLabel.text forKey:@"cp2"];
+    [parameters setValue:_carNumberTextField.text forKey:@"cp3"];
     [parameters setValue:_carColorLabel.text forKey:@"ucolor"];
     [parameters setValue:_userInfo.province forKey:@"province"];
     [parameters setValue:_userInfo.city forKey:@"city"];
