@@ -10,11 +10,11 @@
 #import "LocationChoosePop.h"
 #import "ColorChoosePop.h"
 #import "VoucherChoosePop.h"
-#import "LocationChooseViewController.h"
+#import "WDLocationHelper.h"
 #import "LocationChooseViewController1.h"
 #import "BaseViewController.h"
 #import "ChePaiPickView.h"
-@interface UserInfoViewController : BaseViewController<ColorChoosePopDelegate,LocationChooseViewControllerDelegate,LocationChoosePopDelegate,ChePaiPickViewDelegate,LocationChooseDelegate>
+@interface UserInfoViewController : BaseViewController<ColorChoosePopDelegate,LocationChooseViewControllerDelegate,LocationChoosePopDelegate,ChePaiPickViewDelegate,LocationChooseDelegate,WDLocationHelperDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *CarNum;
 @property (weak, nonatomic) IBOutlet UIButton *provinceShort;
 @property (weak, nonatomic) IBOutlet UIButton *A_Z;

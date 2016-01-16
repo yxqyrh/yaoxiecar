@@ -17,6 +17,15 @@
     NSMutableArray *_searchResult;
     NSArray *_nearPlots;
     UISearchDisplayController *_searchDisplayController;
+    
+    NSString *_provinceId;
+    NSString *_provinceName;
+    NSString *_cityId;
+    NSString *_cityName;
+    NSString *_areaId;
+    NSString *_areaName;
+    NSString *_plotId;
+    NSString *_plotName;
 }
 
 
@@ -30,6 +39,9 @@
 
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+
+
 
 @end
 
@@ -76,9 +88,6 @@
     _searchDisplayController.delegate = self;
     [_searchDisplayController.searchResultsTableView registerNib:[UINib nibWithNibName:@"PlotCell" bundle:nil] forCellReuseIdentifier:@"PlotCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"PlotCell" bundle:nil] forCellReuseIdentifier:@"PlotCell"];
-    
-    
-    [self initData:2];
   
 }
 
@@ -92,32 +101,132 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)initData:(int)chanel
+-(void)viewDidAppear:(BOOL)animated
 {
-    _nearPlots = [LocationInfo getInstance].plotList;
-    
-    if ([LocationInfo getInstance].area_name_province!=nil) {
-        _provinceLabel.text = [LocationInfo getInstance].area_name_province;
+    if (_provinceName!=nil) {
+        _provinceLabel.text = _provinceName;
     }else{
         _provinceLabel.text = @"选省";
     }
     
-    if ([LocationInfo getInstance].area_name_city!=nil) {
-        _cityLabel.text = [LocationInfo getInstance].area_name_city;
+    if (_cityName!=nil) {
+        _cityLabel.text = _cityName;
+    }else {
+        _cityLabel.text = @"选城市";
+        
+    }
+    
+    
+    if (_areaName!=nil) {
+        _areaLabel.text = _areaName;
+        
+    }else{
+        _areaLabel.text = @"选区县";
+    }
+    
+    if (_plotName!=nil) {
+        _smallAreaTextView.text = _plotName;
+        
+    }else{
+        
+    }
+}
+
+-(void)initDataDZ:(NSDictionary *)dz
+                nearPlots:(NSArray *)nearPlots
+
+{
+    _nearPlots = nearPlots;
+    _provinceId = [dz objectForKey:@"province"];
+    _provinceName = [dz objectForKey:@"provincemc"];;
+    _cityId = [dz objectForKey:@"city"];;
+    _cityName = [dz objectForKey:@"citymc"];;
+    _areaId = [dz objectForKey:@"area"];;
+    _areaName = [dz objectForKey:@"areamc"];;
+    _plotId = [dz objectForKey:@"plot"];;
+    _plotName = [dz objectForKey:@"plotmc"];
+    
+//    if (_provinceName!=nil) {
+//        _provinceLabel.text = _provinceName;
+//    }else{
+//        _provinceLabel.text = @"选省";
+//    }
+//    
+//    if (_cityName!=nil) {
+//        _cityLabel.text = _cityName;
+//    }else {
+//        _cityLabel.text = @"选城市";
+//        
+//    }
+//    
+//    
+//    if (_areaName!=nil) {
+//        _areaLabel.text = _areaName;
+//        
+//    }else{
+//        _areaLabel.text = @"选区县";
+//    }
+//    
+//    if (_plotName!=nil) {
+//        _smallAreaTextView.text = _plotName;
+//
+//    }else{
+//
+//    }
+    
+    if (_areaId != nil) {
+        [self findSmallArea];
+    }
+    
+   
+    
+}
+
+
+-(void)initDataProvinceId:(NSString *)provinceId
+             provinceName:(NSString *)provinceName
+                   cityId:(NSString *)cityId
+                 cityName:(NSString *)cityName
+                   areaId:(NSString *)areaId
+                 areaName:(NSString *)areaName
+                   plotId:(NSString *)plotId
+                 plotName:(NSString *)plotName
+                nearPlots:(NSArray *)nearPlots
+
+{
+    _nearPlots = nearPlots;
+    _provinceId = provinceId;
+    _provinceName = provinceName;
+    _cityId = cityId;
+    _cityName = cityName;
+    _areaId = areaId;
+    _areaName = areaName;
+    _plotId = plotId;
+    _plotName = plotName;
+    
+    if (_provinceName!=nil) {
+        _provinceLabel.text = _provinceName;
+    }else{
+        _provinceLabel.text = @"选省";
+    }
+    
+    if (_cityName!=nil) {
+        _cityLabel.text = _cityName;
     }else {
         _cityLabel.text = @"选城市";
 
     }
     
     
-    if ([LocationInfo getInstance].area_name_area!=nil) {
-        _areaLabel.text = [LocationInfo getInstance].area_name_area;
+    if (_areaName!=nil) {
+        _areaLabel.text = _areaName;
         
     }else{
         _areaLabel.text = @"选区县";
     }
     
-    if ([LocationInfo getInstance].area_name_smallArea!=nil) {
+    if (_plotName!=nil) {
+        _smallAreaTextView.text = _plotName;
 //        NSString *tmp =[LocationInfo getInstance].area_name_smallArea;
 //        if(tmp == nil ||[tmp isEqualToString:@""]||tmp.length == 0){
 //            [self.chooseStreet setTitle:@"该地区暂无服务网点" forState:UIControlStateNormal];
@@ -128,7 +237,7 @@
 //        [self.chooseStreet setTitle:@"选小区" forState:UIControlStateNormal];
     }
     
-    if (chanel == 2 && [LocationInfo getInstance].area_id_area != nil) {
+    if (_areaId != nil) {
         [self findSmallArea];
     }
     
@@ -171,24 +280,13 @@
     [_smallAreaTextView resignFirstResponder];
 }
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if ([text isEqualToString:@"\n"]){
-        if (_delegate && [_delegate conformsToProtocol:@protocol(LocationChooseDelegate)]) {
-            [_delegate chooseLocation:[self generalAddress]];
-        }
-        
-        return NO;
-    }
-    
-    return YES;
-}
+
 
 -(NSString *)generalAddress
 {
-    [LocationInfo getInstance].area_id_smallArea = @"";
-    [LocationInfo getInstance].area_name_smallArea = @"";
-    NSString *address = [NSString stringWithFormat:@"%@%@%@%@",[LocationInfo getInstance].area_name_province,[LocationInfo getInstance].area_name_city,
-                         [LocationInfo getInstance].area_name_area,_smallAreaTextView.text];
+
+    NSString *address = [NSString stringWithFormat:@"%@%@%@%@",_provinceName,_cityName,
+                         _areaName,_plotName];
     return address;
 }
 
@@ -197,7 +295,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 //    [parameters setObject:[LocationInfo getInstance].area_id_province forKey:@"province"];
 //    [parameters setObject:[LocationInfo getInstance].area_id_city forKey:@"city"];
-    [parameters setObject:[LocationInfo getInstance].area_id_area forKey:@"area"];
+    [parameters setObject:_areaId forKey:@"area"];
 
     [[MayiHttpRequestManager sharedInstance] POST:@"area" parameters:parameters showLoadingView:nil success:^(id responseObject) {
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
@@ -218,6 +316,7 @@
     LocationChooseViewController *mLocationChooseViewController = [board instantiateViewControllerWithIdentifier:@"LocationChooseViewController"];
     mLocationChooseViewController.mydelegate = self;
     mLocationChooseViewController.channel = 0;
+    mLocationChooseViewController.arrayList = _provinceList;
     [self.navigationController pushViewController:mLocationChooseViewController animated:YES];
 }
 
@@ -226,6 +325,7 @@
     LocationChooseViewController *mLocationChooseViewController = [board instantiateViewControllerWithIdentifier:@"LocationChooseViewController"];
     mLocationChooseViewController.mydelegate = self;
     mLocationChooseViewController.channel = 1;
+    mLocationChooseViewController.parentId = _provinceId;
     [self.navigationController pushViewController:mLocationChooseViewController animated:YES];
 }
 
@@ -234,14 +334,35 @@
     LocationChooseViewController *mLocationChooseViewController = [board instantiateViewControllerWithIdentifier:@"LocationChooseViewController"];
     mLocationChooseViewController.mydelegate = self;
     mLocationChooseViewController.channel = 2;
+    mLocationChooseViewController.parentId = _cityId;
     [self.navigationController pushViewController:mLocationChooseViewController animated:YES];
 }
 
 #pragma mark - LocationChooseViewControllerDelegate
 
-- (void) showLocationChoose:(int)chanel
+- (void) showAreaChannel:(int)chanel
+                      id:(NSString *)id
+                    name:(NSString *)name
 {
-    [self initData:chanel];
+    switch(chanel) {
+        case 0:
+            _provinceId = id;
+            _provinceName = name;
+            _provinceLabel.text = name;
+            break;
+        case 1:
+            _cityId = id;
+            _cityName = name;
+            _cityLabel.text = name;
+            break;
+        case 2:
+            _areaId = id;
+            _areaName = name;
+            _areaLabel.text = name;
+            break;
+        case 3:
+            break;
+    }
 }
 
 
@@ -341,14 +462,14 @@
         if (indexPath.section == 0) {
             SmallArea *smallArea  = [_nearPlots objectAtIndex:indexPath.row];
             _smallAreaTextView.text = smallArea.plot;
-            [LocationInfo getInstance].area_id_smallArea = smallArea.id;
-            [LocationInfo getInstance].area_name_smallArea = smallArea.plot;
+            _plotId = smallArea.id;
+            _plotName = smallArea.plot;
         }
         else {
             SmallArea *smallArea  = [_allPlots objectAtIndex:indexPath.row];
             _smallAreaTextView.text = smallArea.plot;
-            [LocationInfo getInstance].area_id_smallArea = smallArea.id;
-            [LocationInfo getInstance].area_name_smallArea = smallArea.plot;
+            _plotId = smallArea.id;
+            _plotName = smallArea.plot;
             
         }
         
@@ -357,8 +478,8 @@
         SmallArea *smallArea  = [_searchResult objectAtIndex:indexPath.row];
         _smallAreaTextView.text = smallArea.plot;
         
-        [LocationInfo getInstance].area_id_smallArea = smallArea.id;
-        [LocationInfo getInstance].area_name_smallArea = smallArea.plot;
+        _plotId = smallArea.id;
+        _plotName = smallArea.plot;
         [_searchDisplayController setActive:NO animated:YES];
     }
 
@@ -373,7 +494,7 @@
 
 - (IBAction)rightButtonClicked:(id)sender {
     if (_delegate && [_delegate conformsToProtocol:@protocol(LocationChooseDelegate)]) {
-        [_delegate chooseLocation:[self generalAddress]];
+        [_delegate chooseLocation:[self generalAddress] provinceId:_provinceId cityId:_cityId areaId:_areaId plotId:_plotId];
     }
     [self.navigationController popViewControllerAnimated:YES];
 }

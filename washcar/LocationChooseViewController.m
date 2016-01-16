@@ -33,35 +33,45 @@
     DLog(@"_channel=%d",self.channel);
     switch (self.channel) {
         case 0:
-            [self loadProvinceList];
+//            [self loadProvinceList];
             self.navigationItem.title = @"省份列表";
+            [mengban removeFromSuperview];
+            
             break;
         case 1:
             self.navigationItem.title = @"城市列表";
-            self.area_id = [LocationInfo getInstance].area_id_province;
-            [self loadCityList];
+//            self.area_id = [LocationInfo getInstance].area_id_province;
+//            [self loadCityList];
+            [self loadData:CityApi withParentId:_parentId];
             break;
         case 2:
             self.navigationItem.title = @"地区列表";
-            self.area_id = [LocationInfo getInstance].area_id_city;
-            [self loadAreaList];
+//            self.area_id = [LocationInfo getInstance].area_id_city;
+            [self loadData:AreaApi withParentId:_parentId];
+//            [self loadAreaList];
             break;
         case 3:
             self.navigationItem.title = @"小区列表";
-             self.area_id = [LocationInfo getInstance].area_id_area;
-             [self loadSmallAreaList];
+//             self.area_id = [LocationInfo getInstance].area_id_area;
+            [self loadData:AreaApi withParentId:_parentId];
+
+//             [self loadSmallAreaList];
             break;
             
         default:
             break;
     }
     [self.navigationItem.backBarButtonItem setTitle:@""];
+    
+  
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 /*
 #pragma mark - Navigation
@@ -171,11 +181,12 @@
             case 3:
                 [LocationInfo getInstance].area_id_smallArea =area_id;
                 [LocationInfo getInstance].area_name_smallArea =name;
+                
                 break;
             default:
                 break;
         }
-        [_mydelegate showLocationChoose:self.channel];
+        [_mydelegate showAreaChannel:self.channel id:area_id name:name];
         [self.navigationController popViewControllerAnimated:YES];
     }
  
@@ -189,34 +200,37 @@
 }
 
 
--(void)loadProvinceList{
-    [self loadData:ProvinceApi];
-}
--(void)loadCityList{
-    [self loadData:CityApi];
-    
-}
--(void)loadAreaList{
-    [self loadData:AreaApi];
-}
--(void)loadSmallAreaList{
-    [self loadData:SmallAreaApi];
-}
+//-(void)loadProvinceList{
+//    [self loadData:ProvinceApi];
+//}
+//-(void)loadCityList{
+//    [self loadData:CityApi];
+//    
+//}
+//-(void)loadAreaList{
+//    [self loadData:AreaApi];
+//}
+//-(void)loadSmallAreaList{
+//    [self loadData:SmallAreaApi];
+//}
 
 
--(void) loadData:(NSString *) api{
+-(void) loadData:(NSString *) api withParentId:(NSString *)parentId{
     NSDictionary *parameters = [NSMutableDictionary dictionary];
     
-    NSLog(@"_area_id=%@",_area_id);
+    NSLog(@"_area_id=%@",parentId);
     NSString *key;
     
-      if (_area_id!=nil) {
+      if (parentId!=nil) {
           switch (self.channel) {
               case 0:
-                  
+
+                  return;
                 break;
+                  
               case 1:
                   key = @"province";
+                  
                   break;
               case 2:
                   key = @"city";
@@ -227,7 +241,7 @@
               default:
                   break;
           }
-          [parameters setValue:_area_id forKey:key];
+          [parameters setValue:parentId forKey:key];
       }
     
     
@@ -239,8 +253,8 @@
          DLog(@"responseObject=%@",responseObject)
         if ([@"1" isEqualToString:res]) {
             @try {
-                 _arrayList = [responseObject objectForKey:@"shenglist"];
-                _arrayList.count;
+                 _arrayList = [responseObject objectForKey:@"list"];
+
             }
             @catch (NSException *exception) {
                 _arrayList = nil;

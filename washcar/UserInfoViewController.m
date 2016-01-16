@@ -15,10 +15,12 @@
 #import "CancelChoosePop.h"
 #import "AppDelegate.h"
 #import "StringUtil.h"
+#import "SmallArea.h"
+
 @interface UserInfoViewController (){
     
     NSString *carnumber ;
-    
+    NSString *_address;
     NSString *color;
     NSString *cwh;
     float money;
@@ -44,6 +46,23 @@
     
 }
 
+@property   (nonatomic)NSString *area_id_province;
+@property    (nonatomic)NSString *area_id_city;
+@property    (nonatomic)NSString *area_id_area;
+@property    (nonatomic) NSString *area_id_smallArea;
+
+@property    (nonatomic) NSString *area_name_province;
+@property    (nonatomic) NSString *area_name_city;
+@property    (nonatomic) NSString *area_name_area;
+@property    (nonatomic) NSString *area_name_smallArea;
+
+@property (nonatomic)NSArray *provinceList;
+@property (nonatomic)NSArray *cityList;
+@property (nonatomic)NSArray *areaList;
+@property (nonatomic)NSArray *plotList;
+@property (nonatomic)NSDictionary *dz;
+
+@property (assign)bool isEdit;
 
 @end
 
@@ -60,11 +79,14 @@
     [self.view addSubview:chePaiPickView];
     self.navigationItem.title = self.title;
     if ([self.title isEqualToString:@"车辆信息编辑"]) {
-     [self loadData];
+        [self loadData];
     }else{
         [_actionBtn setTitle:@"确认添加" forState:UIControlStateNormal];
+        
 //        _actionBtn.titleLabel.text = @"确认添加";
     }
+    [WDLocationHelper getInstance].delegate = self;
+    [[WDLocationHelper getInstance] startUpdate];
 }
 // 点击编辑框外面时，隐藏键盘
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -91,9 +113,50 @@
     if(A_Z!=nil&&A_Z.length>0){
           [_A_Z setTitle:A_Z forState:UIControlStateNormal];
     }
-   
-    
 }
+
+#pragma mark - WDLocationHelperDelegate
+
+- (void)didGetLocation:(CLLocationCoordinate2D)coordinate
+{
+    [self registerShow:coordinate.longitude andLatitude:coordinate.latitude];
+    [[WDLocationHelper getInstance] stopUpdate];
+}
+
+- (void)didGetLocationFail
+{
+    DLog(@"failed");
+    [[WDLocationHelper getInstance] stopUpdate];
+}
+
+-(void)registerShow:(double)longitude andLatitude:(double)latitude
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:[NSNumber numberWithDouble:latitude] forKey:@"Longitude"];
+    [parameters setObject:[NSNumber numberWithDouble:longitude] forKey:@"Latitude"];
+    //    [parameters setObject:[NSNumber numberWithDouble:117.27] forKey:@"Longitude"];
+    //    [parameters setObject:[NSNumber numberWithDouble:31.85] forKey:@"Latitude"];
+    [[MayiHttpRequestManager sharedInstance] POST:MayiRegShow parameters:parameters showLoadingView:self.view success:^(id responseObject) {
+        if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
+            self.provinceList = [responseObject objectForKey:@"shenglist"];
+            self.cityList = [responseObject objectForKey:@"citylist"];
+            self.areaList = [LocationInfo getInstance].areaList = [responseObject objectForKey:@"qulist"];
+            self.plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
+            self.dz = [responseObject objectForKey:@"dz"];
+            
+            
+            _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],[self.dz objectForKey:@"plotmc"]];
+            
+            [self chooseLocation:_address
+                      provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:[self.dz objectForKey:@"plot"]];
+        }
+        
+    } failture:^(NSError *error) {
+        
+    }];
+}
+
+
 - (IBAction)showLocation:(id)sender {
 //    [[LocationInfo getInstance] clear];
 //    LocationChoosePop *view = [LocationChoosePop defaultPopupView];
@@ -106,7 +169,10 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LocationChoose1" bundle:nil];
     LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
     viewController.delegate = self;
+    viewController.provinceList = self.provinceList;
+    [viewController initDataDZ:self.dz nearPlots:self.plotList];
     [self.navigationController pushViewController:viewController animated:YES];
+    return;
     
 }
 
@@ -162,15 +228,31 @@
    
 }
 
+#pragma mark - LocationChooseDelegate
+
 -(void)chooseLocation:(NSString *)address
+           provinceId:(NSString *)provinceId
+               cityId:(NSString *)cityId
+               areaId:(NSString *)areaId
+               plotId:(NSString *)plotId
 {
-    LocationInfo *info = [LocationInfo getInstance];
+    
     _Loaction.text = address;
-    province =info.area_id_province;
-    city = info.area_id_city;
-    area = info.area_id_area;
-    plot = info.area_id_smallArea;
+    province =provinceId;
+    city = cityId;
+    area = areaId;
+    plot = plotId;
 }
+
+//-(void)chooseLocation:(NSString *)address
+//{
+//    LocationInfo *info = [LocationInfo getInstance];
+//    _Loaction.text = address;
+//    province =info.area_id_province;
+//    city = info.area_id_city;
+//    area = info.area_id_area;
+//    plot = info.area_id_smallArea;
+//}
 
 /*
 #pragma mark - Navigation

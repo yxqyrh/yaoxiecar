@@ -38,7 +38,26 @@
     NSArray *voucherInfoArray;//代金券列表
     
     bool _isFirstEnter;
+    
+    NSString *_address;
 }
+
+
+@property   (nonatomic)NSString *area_id_province;
+@property    (nonatomic)NSString *area_id_city;
+@property    (nonatomic)NSString *area_id_area;
+@property    (nonatomic) NSString *area_id_smallArea;
+
+@property    (nonatomic) NSString *area_name_province;
+@property    (nonatomic) NSString *area_name_city;
+@property    (nonatomic) NSString *area_name_area;
+@property    (nonatomic) NSString *area_name_smallArea;
+
+@property (nonatomic)NSArray *provinceList;
+@property (nonatomic)NSArray *cityList;
+@property (nonatomic)NSArray *areaList;
+@property (nonatomic)NSArray *plotList;
+@property (nonatomic)NSDictionary *dz;
 
 @end
 
@@ -81,7 +100,7 @@
 
 - (void)didGetLocation:(CLLocationCoordinate2D)coordinate
 {
-    [self loadMyInfo];
+    [self loadMyInfoWithLocation:coordinate.longitude andLatitude:coordinate.latitude];
     [[WDLocationHelper getInstance] stopUpdate];
 }
 
@@ -94,26 +113,6 @@
 
 -(void)loadAddress:(id)responseObject
 {
-    [LocationInfo getInstance].provinceList = [responseObject objectForKey:@"shenglist"];
-    [LocationInfo getInstance].cityList = [responseObject objectForKey:@"citylist"];
-    [LocationInfo getInstance].areaList = [LocationInfo getInstance].areaList = [responseObject objectForKey:@"qulist"];
-    [LocationInfo getInstance].plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
-    [LocationInfo getInstance].dz = [responseObject objectForKey:@"dz"];
-    
-    [LocationInfo getInstance].area_id_province =  [[LocationInfo getInstance].dz objectForKey:@"province"];
-    [LocationInfo getInstance].area_name_province =  [[LocationInfo getInstance].dz objectForKey:@"provincemc"];
-    
-    [LocationInfo getInstance].area_id_city =  [[LocationInfo getInstance].dz objectForKey:@"city"];
-    [LocationInfo getInstance].area_name_city =  [[LocationInfo getInstance].dz objectForKey:@"citymc"];
-    [LocationInfo getInstance].area_id_area =  [[LocationInfo getInstance].dz objectForKey:@"area"];
-    [LocationInfo getInstance].area_name_area =  [[LocationInfo getInstance].dz objectForKey:@"areamc"];
-    [LocationInfo getInstance].area_id_smallArea =  [[LocationInfo getInstance].dz objectForKey:@"plot"];
-    [LocationInfo getInstance].area_name_smallArea =  [[LocationInfo getInstance].dz objectForKey:@"plotmc"];
-    
-    
-    
-    NSString *address = [NSString stringWithFormat:@"%@%@%@%@", [[LocationInfo getInstance].dz objectForKey:@"provincemc"],[[LocationInfo getInstance].dz objectForKey:@"citymc"],[[LocationInfo getInstance].dz objectForKey:@"areamc"],[[LocationInfo getInstance].dz objectForKey:@"plotmc"]];
-    
     SmallArea *plot0 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user"]];
     SmallArea *plot1 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user1"]];
     SmallArea *plot2 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user2"]];
@@ -122,13 +121,31 @@
     SmallArea *plot5 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user5"]];
     
     NSMutableArray *nearPlotList = [@[plot0,plot1,plot2,plot3,plot4,plot5] mutableCopy];
+    
+    self.provinceList = [responseObject objectForKey:@"shenglist"];
+    self.cityList = [responseObject objectForKey:@"citylist"];
+    self.areaList = [LocationInfo getInstance].areaList = [responseObject objectForKey:@"qulist"];
+    self.plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
+    self.dz = [responseObject objectForKey:@"dz"];
+    
+    
+    _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],plot0.plot];
+    
+    [self chooseLocation:_address
+              provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:[self.dz objectForKey:@"plot"]];
+    
+    if (_addressLabel != nil) {
+        _addressLabel.text = _address;
+    }
 }
 
--(void)loadMyInfo
+-(void)loadMyInfoWithLocation:(double)longitude andLatitude:(double)latitude
 {
-    NSDictionary *parameters = [NSMutableDictionary dictionary];
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
-    [parameters setValue:[GlobalVar sharedSingleton].uid forKey:@"uid"];
+    [parameters setObject:[NSNumber numberWithDouble:longitude] forKey:@"Latitude"];
+    [parameters setObject:[NSNumber numberWithDouble:latitude] forKey:@"Longitude"];
+    
 //MayiWYXC
     [[MayiHttpRequestManager sharedInstance] POST:MayiWYXC parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         
@@ -160,7 +177,7 @@
        
         
     } failture:^(NSError *error) {
-        [self.view makeToast:@"注册失败"];
+        [self.view makeToast:@"获取信息失败"];
     }];
 }
 
@@ -308,14 +325,18 @@
 #pragma mark - LocationChooseDelegate 
 
 -(void)chooseLocation:(NSString *)address
+           provinceId:(NSString *)provinceId
+               cityId:(NSString *)cityId
+               areaId:(NSString *)areaId
+               plotId:(NSString *)plotId
 {
-    LocationInfo *info =[LocationInfo getInstance];
+
     _addressLabel.text = address;
     _userInfo.szdqstr =address;
-    _userInfo.province =info.area_id_province;
-    _userInfo.city = info.area_id_city;
-    _userInfo.area = info.area_id_area;
-    _userInfo.plot = info.area_id_smallArea;
+    _userInfo.province =provinceId;
+    _userInfo.city = cityId;
+    _userInfo.area = areaId;
+    _userInfo.plot = plotId;
 }
 
 #pragma mark - UITableViewDataSource
@@ -393,7 +414,8 @@
     if (indexPath.row == 2) {
         _addressLabel = (UILabel *)[cell viewWithTag:2];
         if (_userInfo != nil) {
-            _addressLabel.text = _userInfo.szdqstr;
+//            _addressLabel.text = _userInfo.szdqstr;
+            _addressLabel.text = _address;
         }
     }
     
@@ -510,6 +532,8 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LocationChoose1" bundle:nil];
     LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
     viewController.delegate = self;
+    viewController.provinceList = self.provinceList;
+    [viewController initDataDZ:self.dz nearPlots:self.plotList];
     [self.navigationController pushViewController:viewController animated:YES];
     return;
     
