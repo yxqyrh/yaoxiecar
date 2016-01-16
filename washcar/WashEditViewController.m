@@ -177,7 +177,7 @@
        
         
     } failture:^(NSError *error) {
-        [self.view makeToast:@"注册失败"];
+        [self.view makeToast:@"获取信息失败"];
     }];
 }
 
