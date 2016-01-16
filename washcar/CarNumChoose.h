@@ -14,7 +14,7 @@
 #import "LewPopupViewAnimationDrop.h"
 @protocol CarNumChooseDelegate<NSObject> // 代理传值方法
 @required
-- (void)setWashStyle:(NSString*)carNumId;
+- (void)setCarNum:(int)index;
 @end
 @interface CarNumChoose : UIView<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, weak)UIViewController *parentVC;
@@ -26,4 +26,5 @@
 @property (nonatomic) NSArray *dataArray;
 
 -(void)initTableView;
+
 @end

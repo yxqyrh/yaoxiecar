@@ -7,7 +7,7 @@
 //
 
 #import "CarNumChoose.h"
-
+#import "CarInfo.h"
 @implementation CarNumChoose
 
 /*
@@ -27,6 +27,7 @@
         [self addSubview:_innerView];
        
     }
+    [self initTableView];
     return self;
 }
 -(void)initTableView{
@@ -37,7 +38,7 @@
 }
 
 + (instancetype)defaultPopupView{
-    return [[CarNumChoose alloc]initWithFrame:CGRectMake(0, 0, POP_WIDTH, 200)];
+    return [[CarNumChoose alloc]initWithFrame:CGRectMake(0, 0, POP_WIDTH-16, 240)];
 }
 
 
@@ -53,6 +54,11 @@
                // cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
                  cell= [[[NSBundle mainBundle]loadNibNamed:@"CarNumChooseCell" owner:nil options:nil] firstObject];
             }
+    UILabel *title = [cell viewWithTag:1];
+   
+    CarInfo *info =  [GlobalVar sharedSingleton].carInfoList[indexPath.row];
+    NSString *str = [info.cp1 stringByAppendingFormat:@"%@%@",info.cp2,info.cp3];
+    title.text = str;
     return cell;
     
 }
@@ -60,20 +66,25 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    if (_dataArray==nil) {
-//        return 0;
-//    }
-//    return _dataArray.count;
-    return 5;
+
+    return  [GlobalVar sharedSingleton].carInfoList.count;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    VoucherInfo *voucherInfo = _voucherInfoArray[indexPath.row];
-//    if (_delegate != nil && [_delegate conformsToProtocol:@protocol(VoucherChoosePopDelegate)]) { // 如果协议响应了sendValue:方法
-//        // 通知执行协议方法
-//        
-//        [_delegate setVoucherInfo:voucherInfo];
-//        [_parentVC lew_dismissPopupViewWithanimation:[LewPopupViewAnimationFade new]];
-//    }
+    
+
+
+    if (_delegate != nil && [_delegate conformsToProtocol:@protocol(CarNumChooseDelegate)]) { // 如果协议响应了sendValue:方法
+        // 通知执行协议方法
+        
+        [_delegate setCarNum:indexPath.row];
+        [_parentVC lew_dismissPopupViewWithanimation:[LewPopupViewAnimationFade new]];
+    }
 }
+//-(void) onCellClick:(UIButton *)btn{
+//    int row = btn.tag;
+//    VoucherInfo *voucherInfo = _voucherInfoArray[row];
+//    [_delegate setVoucherInfo:voucherInfo];
+//    [_parentVC lew_dismissPopupViewWithanimation:[LewPopupViewAnimationFade new]];
+//}
 
 @end

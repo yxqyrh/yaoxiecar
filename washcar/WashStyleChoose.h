@@ -16,16 +16,14 @@
 #import "LewPopupViewAnimationDrop.h"
 @protocol WashStyleChooseDelegate<NSObject> // 代理传值方法
 @required
-- (void)setWashStyle:(NSInteger*)value;
+- (void)setWashStyle:(int)index;
 @end
 
-@interface WashStyleChoose : UIView
+@interface WashStyleChoose : UIView<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, weak)UIViewController *parentVC;
-
 @property (strong, nonatomic) IBOutlet UIView *innerView;
-@property (weak, nonatomic) IBOutlet UIButton *carOut;
-@property (weak, nonatomic) IBOutlet UIButton *carIn;
 + (instancetype)defaultPopupView;
 @property (nonatomic) id<WashStyleChooseDelegate> delegate;
--(void)refresh:(NSString*)washStyle;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property  NSArray *washTypeArray;//洗车方式列表
 @end

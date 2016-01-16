@@ -11,7 +11,13 @@
 @interface WashType : NSObject
 
 @property (nonatomic)NSString *id;
-@property (nonatomic)NSString *fs;
 @property (nonatomic)NSString *value;
+@property (nonatomic)NSString *area;
+@property (nonatomic)NSString *city;
+@property (nonatomic)NSString *early_time;
+@property (nonatomic)NSString *fs;
+@property (nonatomic)NSString *last_time;
+@property (nonatomic)NSString *method;
+@property (nonatomic)NSString *province;
 
 @end
