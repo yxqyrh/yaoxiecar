@@ -209,14 +209,19 @@
             NSString *uname =(NSString*)[dir objectForKey:@"uname"];
             NSString *upicture =(NSString*)[dir objectForKey:@"upicture"];
             if([countxcj integerValue]>0){
-                voucherNum.hidden = NO;
+//                voucherNum.hidden = NO;
+                 [self initBtn:_btn2 :@"user_coupon_icon" :_btn2.titleLabel.text];
             }else{
-                 voucherNum.hidden = YES;
+//                 voucherNum.hidden = YES;
+                [self initBtn:_btn2 :@"user_coupon_icon_new" :_btn2.titleLabel.text];
+               
             }
             if([countxx integerValue]>0){
-                msgNum.hidden = NO;
+//                msgNum.hidden = NO;
+                 [self initBtn:_btn4 :@"user_msg_icon_new" :_btn3.titleLabel.text];
             }else{
-                msgNum.hidden = YES;
+//                msgNum.hidden = YES;
+                 [self initBtn:_btn4 :@"user_msg_icon" :_btn3.titleLabel.text];
             }
             if([@"" isEqualToString:uname]||uname==nil){
                 uname = [GlobalVar sharedSingleton].uid ;
@@ -483,7 +488,7 @@
     [btn setTitle:title forState:UIControlStateNormal];
 
     [btn setImage:image forState:UIControlStateNormal];
-    [btn setTintColor:[UIColor whiteColor]];
+//    [btn setTintColor:[UIColor whiteColor]];
     CGSize imageSize = btn.imageView.frame.size;
     CGSize titleSize = btn.titleLabel.frame.size;
     

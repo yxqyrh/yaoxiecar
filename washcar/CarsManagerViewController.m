@@ -139,7 +139,7 @@
         }
         NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
         if ([@"1" isEqualToString:res]) {
-            [SVProgressHUD showErrorWithStatus:@"删除成功"];
+            
             [GlobalVar sharedSingleton].carInfoList  = [CarInfo objectArrayWithKeyValuesArray: [responseObject objectForKey:@"list"]];
             if ([GlobalVar sharedSingleton].carInfoList !=nil&&[GlobalVar sharedSingleton].carInfoList .count>0) {
                 [_tableView reloadData];
@@ -147,7 +147,7 @@
             
         }
     } failture:^(NSError *error) {
-                [SVProgressHUD showErrorWithStatus:@"删除失败"];
+//                [SVProgressHUD showErrorWithStatus:@"删除失败"];
     }];
     
     
@@ -171,7 +171,7 @@
         }
         NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
         if ([@"1" isEqualToString:res]) {
-            
+            [SVProgressHUD showErrorWithStatus:@"删除成功"];
             [[GlobalVar sharedSingleton].carInfoList  removeObjectAtIndex:indexPath.row];
             [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 //            _array = [CarInfo objectArrayWithKeyValuesArray: [responseObject objectForKey:@"list"]];
@@ -184,7 +184,7 @@
             
         }
     } failture:^(NSError *error) {
-        //        [SVProgressHUD showErrorWithStatus:@"获取用户信息失败"];
+            [SVProgressHUD showErrorWithStatus:@"删除失败"];
     }];
     
 
