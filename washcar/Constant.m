@@ -166,7 +166,8 @@ NSString * const CarEditAction = @"clbjing";
 
 //首页顶部图片
 NSString * const Index = @"index";
-
+//删除车辆
+NSString * const DelCL = @"cldel";
 /************************
  *支付的参数常量定义
  *

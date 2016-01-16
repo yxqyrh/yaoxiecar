@@ -37,8 +37,8 @@
 //    [self loadImages];
     self.scrollview.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/640)*387);
 
- [self initBtn:_btn1 :@"user_car_manager_icon" :_btn1.titleLabel.text];
-    [self initBtn:_btn2 :@"user_car_manager_icon" :_btn1.titleLabel.text];
+// [self initBtn:_btn1 :@"user_car_manager_icon" :_btn1.titleLabel.text];
+//    [self initBtn:_btn2 :@"user_car_manager_icon" :_btn1.titleLabel.text];
     
     [self loadImages];
     
@@ -378,28 +378,28 @@
 //    [self.navigationController pushViewController:webController animated:YES];
 //}
 
--(void) initBtn:(UIButton*)btn:(NSString*)iconName :(NSString*)btnTitle{
-    //UIImage *image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(40, 40)];
-    UIImage *image =[UIImage imageNamed:iconName] ;
-    NSString *title = btnTitle;
-    [btn setTitle:title forState:UIControlStateNormal];
-    
-    [btn setImage:image forState:UIControlStateNormal];
-    [btn setTintColor:[UIColor whiteColor]];
-    CGSize imageSize = btn.imageView.frame.size;
-    CGSize titleSize = btn.titleLabel.frame.size;
-    
-    // get the height they will take up as a unit
-    CGFloat totalHeight = (imageSize.height + titleSize.height + 5);
-    
-    // raise the image and push it right to center it
-    btn.imageEdgeInsets = UIEdgeInsetsMake(- (totalHeight - imageSize.height), 0.0, 0.0, - titleSize.width);
-    
-    // lower the text and push it left to center it
-    btn.titleEdgeInsets = UIEdgeInsetsMake(0.0, - imageSize.width, - (totalHeight - titleSize.height),0.0);
-    
-//    [[btn layer]setCornerRadius:8.0];
-}
+//-(void) initBtn:(UIButton*)btn:(NSString*)iconName :(NSString*)btnTitle{
+//    //UIImage *image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(40, 40)];
+//    UIImage *image =[UIImage imageNamed:iconName] ;
+//    NSString *title = btnTitle;
+//    [btn setTitle:title forState:UIControlStateNormal];
+//    
+//    [btn setImage:image forState:UIControlStateNormal];
+//    [btn setTintColor:[UIColor whiteColor]];
+//    CGSize imageSize = btn.imageView.frame.size;
+//    CGSize titleSize = btn.titleLabel.frame.size;
+//    
+//    // get the height they will take up as a unit
+//    CGFloat totalHeight = (imageSize.height + titleSize.height + 5);
+//    
+//    // raise the image and push it right to center it
+//    btn.imageEdgeInsets = UIEdgeInsetsMake(- (totalHeight - imageSize.height), 0.0, 0.0, - titleSize.width);
+//    
+//    // lower the text and push it left to center it
+//    btn.titleEdgeInsets = UIEdgeInsetsMake(0.0, - imageSize.width, - (totalHeight - titleSize.height),0.0);
+//    
+////    [[btn layer]setCornerRadius:8.0];
+//}
 
 
 @end

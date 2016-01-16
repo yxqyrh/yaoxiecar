@@ -87,10 +87,6 @@
     NSString *cp1 =mCarInfo.cp1;
      NSString *cp2 =mCarInfo.cp2;
      NSString *cp3 =mCarInfo.cp3;
-    
-   
-     
-    
         carNum.text = [cp1 stringByAppendingFormat:@"%@%@",cp2, cp3];
     
     return cell;
@@ -102,64 +98,31 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.objects removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-    }
+    
+    
+//    NSLog(@"dsds");
+    [self delRow:YES :indexPath];
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//        [[GlobalVar sharedSingleton].carInfoList  removeObjectAtIndex:indexPath.row];
+//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+//    }
 }
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
      CarInfo *mCarInfo = [GlobalVar sharedSingleton].carInfoList[indexPath.row];
-
-    
     NSString *clid =mCarInfo.id;
-
     [self showAddOrEditCarManager:@"车辆信息编辑":clid];
     
 }
 
 -(void)showAddOrEditCarManager:(NSString *) title :(NSString*)clid{
     UserInfoViewController  *uivc = [StoryboadUtil getViewController:@"UserInfo" :@"UserInfoViewController"];
-    
     uivc.title = title;
     uivc.clid = clid;
     [self.navigationController pushViewController:uivc animated:YES];
 }
-//{
-//    list =     (
-//                {
-//                    area = 2706;
-//                    city = 321;
-//                    color = "\U9ed1\U8272";
-//                    cp1 = "\U6caa";
-//                    cp2 = A;
-//                    cp3 = 12345;
-//                    cwh = 11;
-//                    id = 37;
-//                    plot = 387;
-//                    province = 25;
-//                    time = 1452650752;
-//                    uid = 18550031362;
-//                },
-//                {
-//                    area = 2706;
-//                    city = 321;
-//                    color = "\U9ed1\U8272";
-//                    cp1 = "\U6caa";
-//                    cp2 = A;
-//                    cp3 = 12345;
-//                    cwh = 11;
-//                    id = 38;
-//                    plot = 387;
-//                    province = 25;
-//                    time = 1452652761;
-//                    uid = 18550031362;
-//                }
-//                );
-//    res = 1;
-//}
+
 
 -(void)loadData:(BOOL) isShowLoading{
     
@@ -170,27 +133,61 @@
     
     NSDictionary *parameters = [NSMutableDictionary dictionary];
     [[MayiHttpRequestManager sharedInstance] POST:CarManager parameters:parameters showLoadingView:loadingView success:^(id responseObject) {
-        DLog(@"responseObject%@",responseObject);
+        
         if (responseObject == nil) {
             return ;
         }
         NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
         if ([@"1" isEqualToString:res]) {
-            _array = [CarInfo objectArrayWithKeyValuesArray: [responseObject objectForKey:@"list"]];
-//            _array= [responseObject objectForKey:@"list"];
-            [GlobalVar sharedSingleton].carInfoList = _array;
-            if (_array!=nil&&_array.count>0) {
-                
+            [SVProgressHUD showErrorWithStatus:@"删除成功"];
+            [GlobalVar sharedSingleton].carInfoList  = [CarInfo objectArrayWithKeyValuesArray: [responseObject objectForKey:@"list"]];
+            if ([GlobalVar sharedSingleton].carInfoList !=nil&&[GlobalVar sharedSingleton].carInfoList .count>0) {
                 [_tableView reloadData];
-                
             }
+            
+        }
+    } failture:^(NSError *error) {
+                [SVProgressHUD showErrorWithStatus:@"删除失败"];
+    }];
+    
+    
+}
+
+-(void)delRow:(BOOL) isShowLoading :(NSIndexPath *)indexPath{
+    CarInfo *mCarInfo = [GlobalVar sharedSingleton].carInfoList[indexPath.row];
+    NSString *clid = mCarInfo.id;
+
+    UIView *loadingView;
+    if (isShowLoading) {
+        loadingView =self.view;
+    }
+    
+    NSDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:clid forKey:@"id"];
+    [[MayiHttpRequestManager sharedInstance] POST:DelCL parameters:parameters showLoadingView:loadingView success:^(id responseObject) {
+        NSLog(@"responseObject=%@",responseObject);
+        if (responseObject == nil) {
+            return ;
+        }
+        NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
+        if ([@"1" isEqualToString:res]) {
+            
+            [[GlobalVar sharedSingleton].carInfoList  removeObjectAtIndex:indexPath.row];
+            [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            _array = [CarInfo objectArrayWithKeyValuesArray: [responseObject objectForKey:@"list"]];
+//            [GlobalVar sharedSingleton].carInfoList = _array;
+//            if (_array!=nil&&_array.count>0) {
+//                
+//                [_tableView reloadData];
+//                
+//            }
             
         }
     } failture:^(NSError *error) {
         //        [SVProgressHUD showErrorWithStatus:@"获取用户信息失败"];
     }];
     
-    
+
 }
 
 @end
