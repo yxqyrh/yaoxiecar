@@ -12,7 +12,11 @@
 
 @protocol LocationChooseDelegate <NSObject>
 
--(void)chooseLocation:(NSString *)address;
+-(void)chooseLocation:(NSString *)address
+           provinceId:(NSString *)provinceId
+               cityId:(NSString *)cityId
+               areaId:(NSString *)areaId
+               plotId:(NSString *)plotId;
 
 @end
 
@@ -25,6 +29,21 @@
 
 @property (weak,nonatomic)NSObject<LocationChooseDelegate> *delegate;
 
+@property (nonatomic) NSArray *provinceList;
+
 -(void)initWithDic:(NSDictionary *)result;
+
+-(void)initDataProvinceId:(NSString *)provinceId
+             provinceName:(NSString *)provinceName
+                   cityId:(NSString *)cityId
+                 cityName:(NSString *)cityName
+                   areaId:(NSString *)areaId
+                 areaName:(NSString *)areaName
+                   plotId:(NSString *)plotId
+                 plotName:(NSString *)plotName
+                nearPlots:(NSArray *)nearPlots;
+
+-(void)initDataDZ:(NSDictionary *)dz
+        nearPlots:(NSArray *)nearPlots;
 
 @end

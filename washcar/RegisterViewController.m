@@ -42,7 +42,26 @@
     UIButton *_A_Z;
     
     NSString *address;
+    
+    
 }
+
+@property   (nonatomic)NSString *area_id_province;
+@property    (nonatomic)NSString *area_id_city;
+@property    (nonatomic)NSString *area_id_area;
+@property    (nonatomic) NSString *area_id_smallArea;
+
+@property    (nonatomic) NSString *area_name_province;
+@property    (nonatomic) NSString *area_name_city;
+@property    (nonatomic) NSString *area_name_area;
+@property    (nonatomic) NSString *area_name_smallArea;
+
+@property (nonatomic)NSArray *provinceList;
+@property (nonatomic)NSArray *cityList;
+@property (nonatomic)NSArray *areaList;
+@property (nonatomic)NSArray *plotList;
+@property (nonatomic)NSDictionary *dz;
+
 
 @end
 
@@ -68,13 +87,16 @@
 #pragma mark - LocationChooseDelegate
 
 -(void)chooseLocation:(NSString *)address
+           provinceId:(NSString *)provinceId
+               cityId:(NSString *)cityId
+               areaId:(NSString *)areaId
+               plotId:(NSString *)plotId
 {
-    LocationInfo *info = [LocationInfo getInstance];
     _addresssLabel.text = address;
-    _userInfo.province =info.area_id_province;
-    _userInfo.city = info.area_id_city;
-    _userInfo.area = info.area_id_area;
-    _userInfo.plot = info.area_id_smallArea;
+    _userInfo.province =provinceId;
+    _userInfo.city = cityId;
+    _userInfo.area = areaId;
+    _userInfo.plot = plotId;
 }
 
 #pragma mark - WDLocationHelperDelegate
@@ -100,25 +122,17 @@
 //    [parameters setObject:[NSNumber numberWithDouble:31.85] forKey:@"Latitude"];
     [[MayiHttpRequestManager sharedInstance] POST:MayiRegShow parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
-            [LocationInfo getInstance].provinceList = [responseObject objectForKey:@"shenglist"];
-            [LocationInfo getInstance].cityList = [responseObject objectForKey:@"citylist"];
-            [LocationInfo getInstance].areaList = [LocationInfo getInstance].areaList = [responseObject objectForKey:@"qulist"];
-            [LocationInfo getInstance].plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
-            [LocationInfo getInstance].dz = [responseObject objectForKey:@"dz"];
+            self.provinceList = [responseObject objectForKey:@"shenglist"];
+            self.cityList = [responseObject objectForKey:@"citylist"];
+            self.areaList = [LocationInfo getInstance].areaList = [responseObject objectForKey:@"qulist"];
+            self.plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
+            self.dz = [responseObject objectForKey:@"dz"];
             
-            [LocationInfo getInstance].area_id_province =  [[LocationInfo getInstance].dz objectForKey:@"province"];
-            [LocationInfo getInstance].area_name_province =  [[LocationInfo getInstance].dz objectForKey:@"provincemc"];
             
-            [LocationInfo getInstance].area_id_city =  [[LocationInfo getInstance].dz objectForKey:@"city"];
-            [LocationInfo getInstance].area_name_city =  [[LocationInfo getInstance].dz objectForKey:@"citymc"];
-            [LocationInfo getInstance].area_id_area =  [[LocationInfo getInstance].dz objectForKey:@"area"];
-            [LocationInfo getInstance].area_name_area =  [[LocationInfo getInstance].dz objectForKey:@"areamc"];
-            [LocationInfo getInstance].area_id_smallArea =  [[LocationInfo getInstance].dz objectForKey:@"plot"];
-            [LocationInfo getInstance].area_name_smallArea =  [[LocationInfo getInstance].dz objectForKey:@"plotmc"];
+            _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],[self.dz objectForKey:@"plotmc"]];
             
-            _address = [NSString stringWithFormat:@"%@%@%@%@", [[LocationInfo getInstance].dz objectForKey:@"provincemc"],[[LocationInfo getInstance].dz objectForKey:@"citymc"],[[LocationInfo getInstance].dz objectForKey:@"areamc"],[[LocationInfo getInstance].dz objectForKey:@"plotmc"]];
-            
-            [self chooseLocation:_address];
+            [self chooseLocation:_address
+             provinceId: self.area_id_province cityId: self.area_id_city areaId: self.area_id_area plotId: self.area_id_smallArea];
         }
         
     } failture:^(NSError *error) {
@@ -226,11 +240,14 @@
         DLog(@"view:%@",view);
     }
     else if (indexPath.row == 2) {
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LocationChoose1" bundle:nil];
-        LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
-        viewController.delegate = self;
-        [self.navigationController pushViewController:viewController animated:YES];
-        return;
+//        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LocationChoose1" bundle:nil];
+//        LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
+//        viewController.delegate = self;
+//        [viewController initDataDZ:self.dz nearPlots:self.plotList];
+//        
+//        [self.navigationController pushViewController:viewController animated:YES];
+//        
+//        return;
     }
     
     if (indexPath.row == 7) {
@@ -657,37 +674,8 @@
     [_carColorLabel setText:[ColorChoosePop colorNameByValue:value]];
     _userInfo.color = _carColorLabel.text;
 }
-//-(void)showLocationChoose{
-//    LocationChoosePop *view = [LocationChoosePop defaultPopupView];
-//    view.parentVC = self;
-//    view.mydelegate = self;
-//    [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
-//        NSLog(@"动画结束");
-//    }];
-//}
-//-(void)showDetailChoose:(int)channel{
-//    UIStoryboard  *board=  [UIStoryboard storyboardWithName:@"LocationChoose" bundle:nil];
-//    LocationChooseViewController *mLocationChooseViewController = [board instantiateViewControllerWithIdentifier:@"LocationChooseViewController"];
-//    mLocationChooseViewController.mydelegate = self;
-//    mLocationChooseViewController.channel = channel;
-//    [self.navigationController pushViewController:mLocationChooseViewController animated:YES];
-//}
-//-(void)ok{
-//    LocationInfo *info =[LocationInfo getInstance];
-//    NSString *locationName;
-//    if ([info.area_name_province isEqualToString: info.area_name_city]) {
-//        locationName = [info.area_name_province stringByAppendingFormat:@"%@%@" , info.area_name_area,info.area_name_smallArea ];
-//    }else{
-//        locationName = [info.area_name_province stringByAppendingFormat:@"%@%@%@",info.area_name_city,info.area_name_area,info.area_name_smallArea ];
-//        
-//    }
-//    _addresssLabel.text = locationName;
-//    _userInfo.province =info.area_id_province;
-//    _userInfo.city = info.area_id_city;
-//    _userInfo.area = info.area_id_area;
-//    _userInfo.plot = info.area_id_smallArea;
-//    
-//}
+
+
 - (IBAction)locationChoose:(id)sender {
      [self dismissKeyBoard];
 //        [[LocationInfo getInstance] clear];
@@ -700,6 +688,8 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LocationChoose1" bundle:nil];
     LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
     viewController.delegate = self;
+    viewController.provinceList = self.provinceList;
+     [viewController initDataDZ:self.dz nearPlots:self.plotList];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

@@ -42,6 +42,23 @@
     NSString *_address;
 }
 
+
+@property   (nonatomic)NSString *area_id_province;
+@property    (nonatomic)NSString *area_id_city;
+@property    (nonatomic)NSString *area_id_area;
+@property    (nonatomic) NSString *area_id_smallArea;
+
+@property    (nonatomic) NSString *area_name_province;
+@property    (nonatomic) NSString *area_name_city;
+@property    (nonatomic) NSString *area_name_area;
+@property    (nonatomic) NSString *area_name_smallArea;
+
+@property (nonatomic)NSArray *provinceList;
+@property (nonatomic)NSArray *cityList;
+@property (nonatomic)NSArray *areaList;
+@property (nonatomic)NSArray *plotList;
+@property (nonatomic)NSDictionary *dz;
+
 @end
 
 @implementation WashEditViewController
@@ -96,26 +113,6 @@
 
 -(void)loadAddress:(id)responseObject
 {
-    [LocationInfo getInstance].provinceList = [responseObject objectForKey:@"shenglist"];
-    [LocationInfo getInstance].cityList = [responseObject objectForKey:@"citylist"];
-    [LocationInfo getInstance].areaList = [LocationInfo getInstance].areaList = [responseObject objectForKey:@"qulist"];
-    [LocationInfo getInstance].plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
-    [LocationInfo getInstance].dz = [responseObject objectForKey:@"dz"];
-    
-    [LocationInfo getInstance].area_id_province =  [[LocationInfo getInstance].dz objectForKey:@"province"];
-    [LocationInfo getInstance].area_name_province =  [[LocationInfo getInstance].dz objectForKey:@"provincemc"];
-    
-    [LocationInfo getInstance].area_id_city =  [[LocationInfo getInstance].dz objectForKey:@"city"];
-    [LocationInfo getInstance].area_name_city =  [[LocationInfo getInstance].dz objectForKey:@"citymc"];
-    [LocationInfo getInstance].area_id_area =  [[LocationInfo getInstance].dz objectForKey:@"area"];
-    [LocationInfo getInstance].area_name_area =  [[LocationInfo getInstance].dz objectForKey:@"areamc"];
-//    [LocationInfo getInstance].area_id_smallArea =  [[LocationInfo getInstance].dz objectForKey:@"plot"];
-//    [LocationInfo getInstance].area_name_smallArea =  [[LocationInfo getInstance].dz objectForKey:@"plotmc"];
-    
-    
-    
-   
-    
     SmallArea *plot0 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user"]];
     SmallArea *plot1 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user1"]];
     SmallArea *plot2 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user2"]];
@@ -125,10 +122,18 @@
     
     NSMutableArray *nearPlotList = [@[plot0,plot1,plot2,plot3,plot4,plot5] mutableCopy];
     
-    [LocationInfo getInstance].area_name_smallArea = plot0.plot;
-    [LocationInfo getInstance].area_id_smallArea =  plot0.id;
+    self.provinceList = [responseObject objectForKey:@"shenglist"];
+    self.cityList = [responseObject objectForKey:@"citylist"];
+    self.areaList = [LocationInfo getInstance].areaList = [responseObject objectForKey:@"qulist"];
+    self.plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
+    self.dz = [responseObject objectForKey:@"dz"];
     
-     _address = [NSString stringWithFormat:@"%@%@%@%@", [[LocationInfo getInstance].dz objectForKey:@"provincemc"],[[LocationInfo getInstance].dz objectForKey:@"citymc"],[[LocationInfo getInstance].dz objectForKey:@"areamc"],[LocationInfo getInstance].area_name_smallArea];
+    
+    _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],plot0.plot];
+    
+    [self chooseLocation:_address
+              provinceId: self.area_id_province cityId: self.area_id_city areaId: self.area_id_area plotId: self.area_id_smallArea];
+    
     if (_addressLabel != nil) {
         _addressLabel.text = _address;
     }
@@ -320,14 +325,18 @@
 #pragma mark - LocationChooseDelegate 
 
 -(void)chooseLocation:(NSString *)address
+           provinceId:(NSString *)provinceId
+               cityId:(NSString *)cityId
+               areaId:(NSString *)areaId
+               plotId:(NSString *)plotId
 {
-    LocationInfo *info =[LocationInfo getInstance];
+
     _addressLabel.text = address;
     _userInfo.szdqstr =address;
-    _userInfo.province =info.area_id_province;
-    _userInfo.city = info.area_id_city;
-    _userInfo.area = info.area_id_area;
-    _userInfo.plot = info.area_id_smallArea;
+    _userInfo.province =provinceId;
+    _userInfo.city = cityId;
+    _userInfo.area = areaId;
+    _userInfo.plot = plotId;
 }
 
 #pragma mark - UITableViewDataSource
@@ -523,6 +532,8 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LocationChoose1" bundle:nil];
     LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
     viewController.delegate = self;
+    viewController.provinceList = self.provinceList;
+    [viewController initDataDZ:self.dz nearPlots:self.plotList];
     [self.navigationController pushViewController:viewController animated:YES];
     return;
     

@@ -10,7 +10,9 @@
 #import "BaseTableViewController.h"
 @protocol LocationChooseViewControllerDelegate<NSObject> // 代理传值方法
 @required
-- (void) showLocationChoose:(int)chanel;
+- (void) showAreaChannel:(int)chanel
+                id:(NSString *)id
+                name:(NSString *)name;
 @end
 
 @interface LocationChooseViewController : BaseTableViewController<UITableViewDelegate,UITableViewDataSource>
@@ -19,10 +21,13 @@
 -(void)loadAreaList;
 -(void)loadSmallAreaList;
 -(void)chooseLoaction:(NSString*)area_id:(NSString*)name;
--(void)loadData:(NSString *) api;
-@property NSString *area_id;//地区id
+@property NSString *parentId;//地区id
 @property int channel;//代表是0 代表省份  1：city  2：area   3：smallArea
 @property (strong, nonatomic) IBOutlet UITableView *tableview;
 
 @property (nonatomic) id<LocationChooseViewControllerDelegate> mydelegate;
+
+@property (nonatomic) NSArray* arrayList;;
+
+
 @end
