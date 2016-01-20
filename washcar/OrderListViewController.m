@@ -15,6 +15,7 @@
  #import <UIImageView+WebCache.h>
 #import "MDPhotoAlbumViewController.h"
 #import <Masonry.h>
+#import "PSTAlertController.h"
 
 @interface OrderListViewController () {
     int _selectIndex;
@@ -68,7 +69,8 @@
     
     self.tableView.backgroundColor = GeneralBackgroundColor;
     
-    [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
+//    [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
+       self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
     //    [self.tableView headerBeginRefreshing];
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 
@@ -184,7 +186,8 @@
                 }
                 
                 if (_orders.count >= 10) {
-                    [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
+                    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
+//                    [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
                 }
                 
 //                [_orders addObjectsFromArray:array];
@@ -402,6 +405,10 @@
     
     cell.backgroundColor = GeneralBackgroundColor;
     
+    UILongPressGestureRecognizer *longPressGestrureRecognizer = [[UILongPressGestureRecognizer alloc] init];
+    [longPressGestrureRecognizer addTarget:self action:@selector(longPressCell:)];
+    [cell addGestureRecognizer:longPressGestrureRecognizer];
+    
     UIView *bgView = [cell viewWithTag:1];
     bgView.layer.borderColor = GeneralLineCGColor;
     bgView.layer.cornerRadius = 5;
@@ -564,6 +571,10 @@
 
 }
 
+-(void)longPressCell:(id)sender
+{
+    
+}
 
 
 -(IBAction)cancelButtonClicked:(id)sender

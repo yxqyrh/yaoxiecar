@@ -32,9 +32,9 @@
     // Do any additional setup after loading the view.
     
 //    NSString* timeStr = @"2011-01-26 17:40:50";
-     [_tableview addHeaderWithTarget:self action:@selector(headerRereshing)];
+  //   [_tableview addHeaderWithTarget:self action:@selector(headerRereshing)];
     
-    
+     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
   
 }
 -(void)headerRereshing{
@@ -198,7 +198,8 @@
                     [_arry addObjectsFromArray:arry_tmp];
                     if (_arry.count==10) {
                         // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
-                        [_tableview addFooterWithTarget:self action:@selector(footerRereshing)];
+//                        [_tableview addFooterWithTarget:self action:@selector(footerRereshing)];
+                        self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
                         page = 1;
                     }
                 }else{
@@ -207,7 +208,7 @@
                         page++;
                     }
                     if (arry_tmp.count<10) {
-                        [_tableview removeFooter];
+//                        [_tableview removeFooter];
                     }
                 }
             }

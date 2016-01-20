@@ -32,8 +32,8 @@
     _arry = [[NSMutableArray alloc]init];
     page = 1;
     [self loadData:MyMsg :page:YES];
-    
-    [_tableview addHeaderWithTarget:self action:@selector(headerRereshing)];
+    _tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
+//    [_tableview addHeaderWithTarget:self action:@selector(headerRereshing)];
     //    [self.tableView headerBeginRefreshing];
     isReadMap = [[NSMutableDictionary alloc]init ];
     
@@ -218,7 +218,8 @@
                     [_arry addObjectsFromArray:arry_tmp];
                     if (_arry.count==10) {
                         // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
-                        [_tableview addFooterWithTarget:self action:@selector(footerRereshing)];
+//                        [_tableview addFooterWithTarget:self action:@selector(footerRereshing)];
+                        _tableview.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
                         page = 1;
                     }
                 }else{
@@ -227,7 +228,7 @@
                         page++;
                     }
                     if (arry_tmp.count<10) {
-                        [_tableview removeFooter];
+//                        [_tableview removeFooter];
                     }
                 }
             }

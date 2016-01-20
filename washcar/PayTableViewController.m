@@ -252,14 +252,29 @@
             return;
         }
         else if ([WDSystemUtils isEqualsInt:4 andJsonData:[responseObject objectForKey:@"res"]]) {
-            [self.view makeToast:[responseObject objectForKey:@"ts"]];
+            [SVProgressHUD showErrorWithStatus:@"已使用过首单"];
              _isPaying = false;
+            return ;
+        }
+        else if ([WDSystemUtils isEqualsInt:5 andJsonData:[responseObject objectForKey:@"res"]]) {
+            [SVProgressHUD showErrorWithStatus:@"该网点尚未开通，敬请期待"];
+            _isPaying = false;
+            return ;
+        }
+        else if ([WDSystemUtils isEqualsInt:8 andJsonData:[responseObject objectForKey:@"res"]]) {
+            [SVProgressHUD showErrorWithStatus:@"您选择的洗车方式不在服务时间内"];
+            _isPaying = false;
+            return ;
+        }
+        else if ([WDSystemUtils isEqualsInt:10 andJsonData:[responseObject objectForKey:@"res"]]) {
+            [SVProgressHUD showErrorWithStatus:@"该地区已经满额"];
+            _isPaying = false;
             return ;
         }
         
     } failture:^(NSError *error) {
         _isPaying = false;
-        [self.view makeToast:@"操作失败"];
+         [SVProgressHUD showErrorWithStatus:@"操作失败"];
     }];
     
 
