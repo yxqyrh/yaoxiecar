@@ -31,11 +31,11 @@
     _arry = [[NSMutableArray alloc]init];
     // Do any additional setup after loading the view.
     
-//    NSString* timeStr = @"2011-01-26 17:40:50";
-  //   [_tableview addHeaderWithTarget:self action:@selector(headerRereshing)];
+    //    NSString* timeStr = @"2011-01-26 17:40:50";
+    [_tableview addHeaderWithTarget:self action:@selector(headerRereshing)];
     
-     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
-  
+    
+    
 }
 -(void)headerRereshing{
     [_tableview.header beginRefreshing];
@@ -43,7 +43,7 @@
 }
 
 -(void)footerRereshing{
-     [self refreshData:page+1:NO];
+    [self refreshData:page+1:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,14 +52,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 
@@ -93,25 +93,25 @@
         time.text = [NSString stringWithString:str];
     }
     if (self.voucherType==1) {
-         NSMutableString *str = [[NSMutableString alloc]init];
+        NSMutableString *str = [[NSMutableString alloc]init];
         [str appendFormat:@"使用时间："];
         [str appendFormat:[DateUtil nsdateToString:[DateUtil changeSpToTime:[_voucherInfo objectForKey:@"time"]]:@"yyyy-MM-dd"]];
     }
-   
-    if (self.voucherType==0) {
-        [bg setImage:[UIImage imageNamed:@"voucher_reciver.png"]];
-    }
+    
     if (self.voucherType==1) {
-        [bg setImage:[UIImage imageNamed:@"voucher_used.png"]];
-    }
-    if (self.voucherType==2) {
         [bg setImage:[UIImage imageNamed:@"voucher_nouse.png"]];
     }
-     NSString *isvalidity = [NSString stringWithFormat:@"%@",[_voucherInfo objectForKey:@"isvalidity"]];
+    if (self.voucherType==2) {
+        [bg setImage:[UIImage imageNamed:@"voucher_used.png"]];
+    }
+    if (self.voucherType==3) {
+        [bg setImage:[UIImage imageNamed:@"voucher_reciver.png"]];
+    }
+    NSString *isvalidity = [NSString stringWithFormat:@"%@",[_voucherInfo objectForKey:@"isvalidity"]];
     
     if ([@"2" isEqualToString:isvalidity]) {
- 
-         [bg setImage:[UIImage imageNamed:@"voucher_timeover.png"]];
+        
+        [bg setImage:[UIImage imageNamed:@"voucher_timeover.png"]];
     }
     return cell;
     
@@ -129,8 +129,8 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.voucherType==0) {
-         selectIndex = indexPath.row;
-         NSDictionary *_voucherInfo = _arry[selectIndex];
+        selectIndex = indexPath.row;
+        NSDictionary *_voucherInfo = _arry[selectIndex];
         NSString *isvalidity = [NSString stringWithFormat:@"%@",[_voucherInfo objectForKey:@"isvalidity"]];
         DLog(@"didSelectRowAtIndexPath isvalidity=%@",isvalidity);
         if ([@"2" isEqualToString:isvalidity]) {
@@ -152,25 +152,25 @@
     DLog(@"viewWillAppear voucherType=%d",self.voucherType);
     
     
-//    //未领取洗车券
-//    NSString * const NotReceivingVoucher = @"xcjwlq";
-//    
-//    //已领取洗车券
-//    NSString * const HasReceivingVoucher = @"xcjysy";
-//    
-//    //未使用洗车券
-//    NSString * const NoUseVoucher = @"xcjwsy";
+    //    //未领取洗车券
+    //    NSString * const NotReceivingVoucher = @"xcjwlq";
+    //
+    //    //已领取洗车券
+    //    NSString * const HasReceivingVoucher = @"xcjysy";
+    //
+    //    //未使用洗车券
+    //    NSString * const NoUseVoucher = @"xcjwsy";
     //获取未使用的代金券
-    if (self.voucherType==0) {
-        [self loadData:NotReceivingVoucher :pager:isShowLoading];
+    if (self.voucherType==1) {
+        [self loadData:NoUseVoucher :pager:isShowLoading];
     }
     //获取已经使用的代金券
-    if (self.voucherType==1) {
+    if (self.voucherType==2) {
         [self loadData:HasReceivingVoucher :pager :isShowLoading];
     }
     //获取未领取洗车券
-    if (self.voucherType==2) {
-         [self loadData:NoUseVoucher :pager :isShowLoading];
+    if (self.voucherType==3) {
+        [self loadData:NotReceivingVoucher :pager :isShowLoading];
     }
 }
 
@@ -198,7 +198,7 @@
                     [_arry addObjectsFromArray:arry_tmp];
                     if (_arry.count==10) {
                         // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
-//                        [_tableview addFooterWithTarget:self action:@selector(footerRereshing)];
+                        //                        [_tableview addFooterWithTarget:self action:@selector(footerRereshing)];
                         self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
                         page = 1;
                     }
@@ -208,7 +208,7 @@
                         page++;
                     }
                     if (arry_tmp.count<10) {
-//                        [_tableview removeFooter];
+                        //                        [_tableview removeFooter];
                     }
                 }
             }
@@ -222,12 +222,12 @@
                 [_tableview.header endRefreshing];
                 [_tableview.footer endRefreshing];
             }
-
+            
         }else{
-//            [SVProgressHUD showErrorWithStatus:@"洗车券获取失败！"];
+            //            [SVProgressHUD showErrorWithStatus:@"洗车券获取失败！"];
         }
     } failture:^(NSError *error) {
-//        [SVProgressHUD showErrorWithStatus:@"洗车券获取失败！"];
+        //        [SVProgressHUD showErrorWithStatus:@"洗车券获取失败！"];
     }];
 }
 
@@ -237,20 +237,20 @@
     if (isShowLoading) {
         loadingView = self.view;
     }
-     NSDictionary *_voucherInfo = _arry[selectIndex];
-     NSDictionary *parameters = [NSMutableDictionary dictionary];
-     [parameters setValue:[_voucherInfo objectForKey:@"id"] forKey:@"id"];
+    NSDictionary *_voucherInfo = _arry[selectIndex];
+    NSDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:[_voucherInfo objectForKey:@"id"] forKey:@"id"];
     [[MayiHttpRequestManager sharedInstance] POST:url parameters:parameters showLoadingView:loadingView success:^(id responseObject) {
         NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
         if ([@"2" isEqualToString:res]) {
             [SVProgressHUD showSuccessWithStatus:@"洗车券领取成功！"];
             [self headerRereshing];
         }else{
-          [SVProgressHUD showErrorWithStatus:@"洗车券领取失败！"];
+            [SVProgressHUD showErrorWithStatus:@"洗车券领取失败！"];
         }
     } failture:^(NSError *error) {
-     [SVProgressHUD showErrorWithStatus:@"洗车券领取失败！"];
+        [SVProgressHUD showErrorWithStatus:@"洗车券领取失败！"];
     }];
-
+    
 }
 @end
