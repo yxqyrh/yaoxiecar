@@ -14,6 +14,7 @@
 #import <Masonry.h>
 #import <UIImageView+WebCache.h>
 
+
 @interface HomeViewController2 (){
     NSInteger totalCount;
     
@@ -42,12 +43,45 @@
     
     [self loadImages];
     
+    
+    [self showNotifiction];
 }
 
-
+-(void)showNotifiction
+{
+    
+    [[MayiHttpRequestManager sharedInstance] POST:@"ggts" parameters:nil showLoadingView:nil success:^(id responseObject) {
+        
+        DLog(@"responseObject:%@",responseObject);
+        
+        if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
+            bool isShowNotifiction = [[NSUserDefaults standardUserDefaults] valueForKey:MayiIsShowNotifiction];
+            int notifictionId = [[NSUserDefaults standardUserDefaults] valueForKey:MayiLastNotifictionId];
+            
+            if (isShowNotifiction || [WDSystemUtils isEqualsInt:notifictionId andJsonData:[responseObject objectForKey:@"id"]]) {
+                PSTAlertController *alertController = [PSTAlertController alertControllerWithTitle:@"提示" message:[responseObject objectForKey:@"mes"] preferredStyle:PSTAlertControllerStyleAlert];
+                [alertController addAction:[PSTAlertAction actionWithTitle:@"不再提醒" handler:^(PSTAlertAction *action) {
+                    [[NSUserDefaults standardUserDefaults] setValue:false forKey:MayiIsShowNotifiction];
+                    [[NSUserDefaults standardUserDefaults] setValue:[responseObject objectForKey:@"id"] forKey:MayiLastNotifictionId];
+                    
+                    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:MayiUserIsSignIn];
+                }]];
+                [alertController addAction:[PSTAlertAction actionWithTitle:@"确认" handler:^(PSTAlertAction *action) {
+                    
+                }]];
+                [alertController showWithSender:self.view controller:self animated:YES completion:nil];
+            }
+        }
+        
+        
+    } failture:^(NSError *error) {
+        
+    }];
+}
 
 -(void)initGallery{
-    if (array==nil||array.count==0) {
+    
+    if (array==nil|| ![array isKindOfClass:[NSArray class]] ||  array.count==0) {
         return;
     }
     //    图片的宽

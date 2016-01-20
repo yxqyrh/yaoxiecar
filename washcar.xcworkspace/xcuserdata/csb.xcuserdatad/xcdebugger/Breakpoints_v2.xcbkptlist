@@ -410,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/SignViewController.m"
-            timestampString = "474365339.35603"
+            timestampString = "474793106.149127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "-startTime"
             landmarkType = "5">
          </BreakpointContent>
@@ -426,11 +426,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/SignViewController.m"
-            timestampString = "474365339.35603"
+            timestampString = "474793106.149127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "-codeButtonClicked:"
             landmarkType = "5">
          </BreakpointContent>
@@ -472,11 +472,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "485"
-            endingLineNumber = "485"
+            startingLineNumber = "499"
+            endingLineNumber = "499"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -488,11 +488,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "488"
-            endingLineNumber = "488"
+            startingLineNumber = "502"
+            endingLineNumber = "502"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -504,11 +504,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/SignViewController.m"
-            timestampString = "474365339.35603"
+            timestampString = "474793106.149127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "159"
-            endingLineNumber = "159"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "-startTime"
             landmarkType = "5">
          </BreakpointContent>
@@ -520,11 +520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "513"
-            endingLineNumber = "513"
+            startingLineNumber = "528"
+            endingLineNumber = "528"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -536,11 +536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "512"
-            endingLineNumber = "512"
+            startingLineNumber = "527"
+            endingLineNumber = "527"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -552,11 +552,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
             landmarkName = "-registerSubmit"
             landmarkType = "5">
          </BreakpointContent>
@@ -584,11 +584,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "275"
-            endingLineNumber = "275"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "-registerSubmit"
             landmarkType = "5">
             <Locations>
@@ -632,11 +632,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
             landmarkName = "-registerSubmit"
             landmarkType = "5">
          </BreakpointContent>
@@ -648,11 +648,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "-registerSubmit"
             landmarkType = "5">
          </BreakpointContent>
@@ -664,11 +664,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/SignViewController.m"
-            timestampString = "474365339.35603"
+            timestampString = "474793106.149127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "-signButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -680,11 +680,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/SignViewController.m"
-            timestampString = "474365339.35603"
+            timestampString = "474793106.149127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-signButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -712,11 +712,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/SignViewController.m"
-            timestampString = "474365339.35603"
+            timestampString = "474793106.149127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "-signButtonClick:"
             landmarkType = "5">
             <Locations>
@@ -760,11 +760,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/SignViewController.m"
-            timestampString = "474365339.35603"
+            timestampString = "474793106.149127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "@implementation SignViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -776,11 +776,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/SignViewController.m"
-            timestampString = "474365339.35603"
+            timestampString = "474793106.149127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "-startTime"
             landmarkType = "5">
          </BreakpointContent>
@@ -792,11 +792,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/SignViewController.m"
-            timestampString = "474365339.35603"
+            timestampString = "474793106.149127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-signButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -941,7 +941,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "142"
             endingLineNumber = "142"
-            landmarkName = "-loadMyInfoWithLocation:andLatitude:"
+            landmarkName = "-loadAddress:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -957,7 +957,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
             endingLineNumber = "95"
-            landmarkName = "-didReceiveMemoryWarning"
+            landmarkName = "-touchesBegan:withEvent:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -989,8 +989,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
             endingLineNumber = "112"
-            landmarkName = "@implementation WashEditViewController"
-            landmarkType = "3">
+            landmarkName = "-didGetLocationFail"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1101,8 +1101,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "184"
             endingLineNumber = "184"
-            landmarkName = "@implementation WashEditViewController"
-            landmarkType = "3">
+            landmarkName = "-loadMyInfoWithLocation:andLatitude:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1288,11 +1288,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/HomeViewController2.m"
-            timestampString = "467106255.856524"
+            timestampString = "474984083.569973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "-initGallery"
             landmarkType = "5">
          </BreakpointContent>
@@ -1304,11 +1304,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/HomeViewController2.m"
-            timestampString = "467106255.856524"
+            timestampString = "474984083.569973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "-initGallery"
             landmarkType = "5">
          </BreakpointContent>
@@ -1320,11 +1320,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/HomeViewController2.m"
-            timestampString = "467106255.856524"
+            timestampString = "474984083.569973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "-initGallery"
             landmarkType = "5">
          </BreakpointContent>
@@ -1352,11 +1352,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/PayTableViewController.m"
-            timestampString = "467469462.602032"
+            timestampString = "474911727.015211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "-payOrder"
             landmarkType = "5">
          </BreakpointContent>
@@ -1368,11 +1368,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/PayTableViewController.m"
-            timestampString = "467469462.602032"
+            timestampString = "474911727.015211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
             landmarkName = "-payOrder"
             landmarkType = "5">
          </BreakpointContent>
@@ -1400,11 +1400,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/PayTableViewController.m"
-            timestampString = "467469462.602032"
+            timestampString = "474911727.015211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "210"
-            endingLineNumber = "210"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "-payOrder"
             landmarkType = "5">
             <Locations>
@@ -1469,7 +1469,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "205"
             endingLineNumber = "205"
-            landmarkName = "-washCommit"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1485,7 +1485,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
             endingLineNumber = "206"
-            landmarkName = "-washCommit"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1672,11 +1672,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/PayTableViewController.m"
-            timestampString = "467469462.602032"
+            timestampString = "474911727.015211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "-payOrder"
             landmarkType = "5">
          </BreakpointContent>
@@ -1768,11 +1768,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "596"
-            endingLineNumber = "596"
+            startingLineNumber = "611"
+            endingLineNumber = "611"
             landmarkName = "-codeButtonClicked:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1784,11 +1784,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "600"
-            endingLineNumber = "600"
+            startingLineNumber = "615"
+            endingLineNumber = "615"
             landmarkName = "-codeButtonClicked:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1800,11 +1800,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "598"
-            endingLineNumber = "598"
+            startingLineNumber = "613"
+            endingLineNumber = "613"
             landmarkName = "-codeButtonClicked:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1816,11 +1816,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "430"
-            endingLineNumber = "430"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1832,11 +1832,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "595"
-            endingLineNumber = "595"
+            startingLineNumber = "610"
+            endingLineNumber = "610"
             landmarkName = "-codeButtonClicked:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1864,11 +1864,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/PayTableViewController.m"
-            timestampString = "467469462.602032"
+            timestampString = "474911727.015211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2024,11 +2024,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/PayTableViewController.m"
-            timestampString = "467469462.602032"
+            timestampString = "474911727.015211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2040,11 +2040,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
             landmarkName = "-registerSubmit"
             landmarkType = "5">
          </BreakpointContent>
@@ -2056,11 +2056,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "325"
+            endingLineNumber = "325"
             landmarkName = "-registerSubmit"
             landmarkType = "5">
             <Locations>
@@ -2104,11 +2104,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
             landmarkName = "-registerSubmit"
             landmarkType = "5">
          </BreakpointContent>
@@ -2120,11 +2120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "-registerSubmit"
             landmarkType = "5">
          </BreakpointContent>
@@ -2136,11 +2136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2152,11 +2152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "310"
-            endingLineNumber = "310"
+            startingLineNumber = "311"
+            endingLineNumber = "311"
             landmarkName = "-registerSubmit"
             landmarkType = "5">
          </BreakpointContent>
@@ -2184,11 +2184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2392,11 +2392,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/RegisterViewController.m"
-            timestampString = "474629340.896931"
+            timestampString = "474988012.46388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "268"
+            endingLineNumber = "268"
             landmarkName = "-registerSubmit"
             landmarkType = "5">
          </BreakpointContent>
@@ -2477,8 +2477,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "196"
             endingLineNumber = "196"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
-            landmarkType = "5">
+            landmarkName = "@implementation WashEditViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2994,11 +2994,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/HomeViewController2.m"
-            timestampString = "467135047.494132"
+            timestampString = "474984083.569973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "245"
-            endingLineNumber = "245"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "-foucusImageFrame:didSelectItem:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3314,11 +3314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/PayTableViewController.m"
-            timestampString = "467469477.431838"
+            timestampString = "474911727.015211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "-payOrder"
             landmarkType = "5">
          </BreakpointContent>
@@ -3330,11 +3330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/PayTableViewController.m"
-            timestampString = "467469480.57167"
+            timestampString = "474911727.015211"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "-payOrder"
             landmarkType = "5">
          </BreakpointContent>
@@ -3500,7 +3500,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/ColorChoosePop.m"
@@ -3717,8 +3717,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "327"
             endingLineNumber = "327"
-            landmarkName = "-chooseLocation:provinceId:cityId:areaId:plotId:"
-            landmarkType = "5">
+            landmarkName = "@implementation WashEditViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3799,6 +3799,38 @@
             endingLineNumber = "152"
             landmarkName = "-loadMyInfoWithLocation:andLatitude:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WashEditViewController loadMyInfoWithLocation:andLatitude:]"
+                  moduleName = "&#x8682;&#x8681;&#x6d17;&#x8f66;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/csb/Documents/work/mayi_github/yaoxiecar/washcar/WashEditViewController.m"
+                  timestampString = "474986908.332923"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "328">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__61-[WashEditViewController loadMyInfoWithLocation:andLatitude:]_block_invoke"
+                  moduleName = "&#x8682;&#x8681;&#x6d17;&#x8f66;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/csb/Documents/work/mayi_github/yaoxiecar/washcar/WashEditViewController.m"
+                  timestampString = "474986908.33317"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4141,11 +4173,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/SignViewController.m"
-            timestampString = "474365339.35603"
+            timestampString = "474793106.149127"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "-signButtonClick:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4285,11 +4317,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/Constant.h"
-            timestampString = "474542406.893676"
+            timestampString = "474984083.569973"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133">
+            startingLineNumber = "138"
+            endingLineNumber = "138">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4817,6 +4849,198 @@
             startingLineNumber = "128"
             endingLineNumber = "128"
             landmarkName = "-loadAddress:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/ColorChoosePop.h"
+            timestampString = "474648239.944276"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "redView"
+            landmarkType = "19">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/ColorChoosePop.h"
+            timestampString = "474648242.70842"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "greenView"
+            landmarkType = "19">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/SignViewController.m"
+            timestampString = "474792865.852474"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "codeView"
+            landmarkType = "19">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/HomeViewController2.m"
+            timestampString = "474984083.569973"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "-initGallery"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/WashEditViewController.m"
+            timestampString = "474904485.749691"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "-loadMyInfoWithLocation:andLatitude:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/SignViewController.m"
+            timestampString = "474962620.387634"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "-signButtonClick:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/RootViewController1.m"
+            timestampString = "474966821.606476"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-showNotifiction"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/RootViewController1.m"
+            timestampString = "474966882.472246"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-showNotifiction"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[RootViewController1 showNotifiction]"
+                  moduleName = "&#x8682;&#x8681;&#x6d17;&#x8f66;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/csb/Documents/work/mayi_github/yaoxiecar/washcar/RootViewController1.m"
+                  timestampString = "474988370.159657"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[RootViewController1 showNotifiction]_block_invoke"
+                  moduleName = "&#x8682;&#x8681;&#x6d17;&#x8f66;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/csb/Documents/work/mayi_github/yaoxiecar/washcar/RootViewController1.m"
+                  timestampString = "474988370.15985"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/RootViewController1.m"
+            timestampString = "474967212.621778"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/HomeViewController2.m"
+            timestampString = "474984083.569973"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-showNotifiction"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

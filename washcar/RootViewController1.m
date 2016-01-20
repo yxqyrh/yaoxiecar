@@ -12,6 +12,7 @@
 #import "MMDrawerController.h"
 #import "MMDrawerVisualState.h"
 #import "QCSlideViewController.h"
+#import "MayiHttpRequestManager.h"
 
 @interface RootViewController1 ()
 
@@ -62,8 +63,28 @@
     self.viewControllers=@[c1,drawerController,c3];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showOrder) name:MayiOrderNotifiction object:nil];
     
+    [self showNotifiction];
+    
     //    [NSNotificationCenter defaultCenter] addObserverForName:@"OrderNotifiction" object:nil queue:mo; usingBlock:<#^(NSNotification * _Nonnull note)block#>
 }
+
+-(void)showNotifiction
+{
+    
+    [[MayiHttpRequestManager sharedInstance] POST:@"ggts" parameters:nil showLoadingView:nil success:^(id responseObject) {
+        
+        DLog(@"responseObject:%@",responseObject);
+        
+        if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
+            
+        }
+        
+        
+    } failture:^(NSError *error) {
+
+    }];
+}
+
 
 -(void)showOrder
 {

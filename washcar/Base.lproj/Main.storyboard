@@ -78,8 +78,8 @@
                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mda-sB-x8O">
                                             <rect key="frame" x="10" y="5" width="300" height="45"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_01_car_number.png" translatesAutoresizingMaskIntoConstraints="NO" id="OCb-Ih-5eX">
-                                                    <rect key="frame" x="10" y="13" width="25" height="19"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="reg_icon_car_number" translatesAutoresizingMaskIntoConstraints="NO" id="OCb-Ih-5eX">
+                                                    <rect key="frame" x="10" y="7" width="25" height="25"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="车牌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEw-On-Wq2">
                                                     <rect key="frame" x="50" y="14" width="42" height="17"/>
@@ -137,8 +137,8 @@
                                         <view tag="1" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a4R-ze-ov5">
                                             <rect key="frame" x="10" y="5" width="300" height="35"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_01_car_color.png" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-2S-ZGV">
-                                                    <rect key="frame" x="10" y="11" width="23" height="23"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="reg_icon_car_color" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-2S-ZGV">
+                                                    <rect key="frame" x="10" y="8" width="25" height="25"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="颜色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keN-Uh-yee">
                                                     <rect key="frame" x="50" y="14" width="42" height="17"/>
@@ -198,8 +198,8 @@
                                         <view tag="1" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GeI-rn-SEW">
                                             <rect key="frame" x="10" y="5" width="300" height="35"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img_01_location.png" translatesAutoresizingMaskIntoConstraints="NO" id="g5h-3h-KND">
-                                                    <rect key="frame" x="13" y="10" width="16" height="25"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="reg_icon_postion" translatesAutoresizingMaskIntoConstraints="NO" id="g5h-3h-KND">
+                                                    <rect key="frame" x="13" y="7" width="25" height="25"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0w-Uf-FJz">
                                                     <rect key="frame" x="105" y="15" width="167" height="15"/>
@@ -268,7 +268,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="parking_lot_icon" translatesAutoresizingMaskIntoConstraints="NO" id="bkB-65-HQe">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="reg_icon_car" translatesAutoresizingMaskIntoConstraints="NO" id="bkB-65-HQe">
                                             <rect key="frame" x="19" y="13" width="25" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="25" id="MOO-k3-XxB"/>
@@ -277,8 +277,8 @@
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="4jn-Lr-N4b" firstAttribute="leading" secondItem="bkB-65-HQe" secondAttribute="trailing" constant="15" id="1vn-Pe-dgf"/>
-                                        <constraint firstItem="YAK-x1-5Uo" firstAttribute="leading" secondItem="4jn-Lr-N4b" secondAttribute="trailing" constant="8" id="5Nq-PJ-N6K"/>
+                                        <constraint firstItem="4jn-Lr-N4b" firstAttribute="leading" secondItem="bkB-65-HQe" secondAttribute="trailing" constant="14" id="1vn-Pe-dgf"/>
+                                        <constraint firstItem="YAK-x1-5Uo" firstAttribute="leading" secondItem="4jn-Lr-N4b" secondAttribute="trailing" constant="20" id="5Nq-PJ-N6K"/>
                                         <constraint firstItem="4jn-Lr-N4b" firstAttribute="centerY" secondItem="RHJ-vq-f8i" secondAttribute="centerY" id="656-Rp-XzC"/>
                                         <constraint firstItem="vc4-cQ-2NW" firstAttribute="centerY" secondItem="RHJ-vq-f8i" secondAttribute="centerY" id="Oya-Sj-EbE"/>
                                         <constraint firstItem="YAK-x1-5Uo" firstAttribute="centerY" secondItem="RHJ-vq-f8i" secondAttribute="centerY" id="arR-t1-jGY"/>
@@ -308,7 +308,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="洗车方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ClQ-td-2rX">
-                                                    <rect key="frame" x="8" y="14" width="86" height="17"/>
+                                                    <rect key="frame" x="13" y="14" width="86" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -369,7 +369,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="使用优惠券" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tem-2P-E7p">
-                                                    <rect key="frame" x="8" y="14" width="91" height="17"/>
+                                                    <rect key="frame" x="13" y="14" width="91" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -411,7 +411,7 @@
                                             <rect key="frame" x="10" y="8" width="300" height="35"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="洗车价格" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMQ-6e-hA7">
-                                                    <rect key="frame" x="8" y="14" width="91" height="17"/>
+                                                    <rect key="frame" x="13" y="14" width="91" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -428,7 +428,7 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Ng7-i5-r3o" secondAttribute="trailing" constant="8" id="Bp4-UD-APT"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ng7-i5-r3o" secondAttribute="trailing" constant="10" id="Bp4-UD-APT"/>
                                                 <constraint firstItem="Ng7-i5-r3o" firstAttribute="centerY" secondItem="ldg-C5-mUs" secondAttribute="centerY" id="u04-7K-pPB"/>
                                             </constraints>
                                         </view>
@@ -448,7 +448,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" text="备注（例：车辆停在8栋东面马路）" translatesAutoresizingMaskIntoConstraints="NO" id="f9d-Lz-70K">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" text="备注：请详细描述车辆信息" translatesAutoresizingMaskIntoConstraints="NO" id="f9d-Lz-70K">
                                             <rect key="frame" x="10" y="5" width="300" height="90"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="textColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -907,16 +907,6 @@
                                 <constraint firstAttribute="bottom" secondItem="ddb-Pu-cOd" secondAttribute="bottom" id="k8o-MH-omr"/>
                             </constraints>
                         </view>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Q0E-kX-9gf">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jE2-d2-Y4R">
-                                <rect key="frame" x="279" y="9" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="img_call_phone.png"/>
-                                <connections>
-                                    <action selector="callPhoneClick:" destination="9RV-yf-nWL" eventType="touchUpInside" id="ubz-pe-efC"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
                         <connections>
                             <outlet property="backBarButtonItem" destination="3fZ-d4-a6k" id="myQ-he-Bqm"/>
                             <outlet property="leftBarButtonItem" destination="3fZ-d4-a6k" id="2ud-6D-BWY"/>
@@ -1189,16 +1179,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="img_01_car_color.png" width="73" height="72"/>
-        <image name="img_01_car_number.png" width="72" height="54"/>
         <image name="img_01_guide" width="17" height="16"/>
         <image name="img_01_insurance.png" width="178" height="177"/>
-        <image name="img_01_location.png" width="55" height="72"/>
         <image name="img_01_search.png" width="177" height="177"/>
         <image name="img_01_traffic.png" width="178" height="178"/>
         <image name="img_01_wash.png" width="316" height="316"/>
         <image name="img_01_weather.png" width="178" height="178"/>
-        <image name="img_call_phone.png" width="25" height="25"/>
-        <image name="parking_lot_icon" width="41" height="41"/>
+        <image name="reg_icon_car" width="25" height="25"/>
+        <image name="reg_icon_car_color" width="20" height="20"/>
+        <image name="reg_icon_car_number" width="20" height="20"/>
+        <image name="reg_icon_postion" width="20" height="20"/>
     </resources>
 </document>

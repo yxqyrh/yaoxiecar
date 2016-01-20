@@ -16,6 +16,7 @@
 
 #import "WXApi.h"
 #import "payRequsestHandler.h"
+#import "PSTAlertController.h"
 
 @interface PayTableViewController () {
     int _payType;
@@ -60,7 +61,28 @@
     
     if (indexPath.row == 4) {
         DLog(@"支付");
-        [self payOrder];
+        
+        NSString *payTypeTitle = nil;
+        if (_payType == 1) {
+            payTypeTitle = @"支付宝支付";
+        }
+        else if (_payType == 2) {
+            payTypeTitle = @"余额支付";
+        }
+        else if (_payType == 3) {
+            payTypeTitle = @"微信支付";
+        }
+        
+        
+        PSTAlertController *alertController = [PSTAlertController alertControllerWithTitle:payTypeTitle message:[NSString stringWithFormat:@"是否使用%@?\n支付金额%@元    ",payTypeTitle,_payValue ] preferredStyle:PSTAlertControllerStyleAlert];
+        [alertController addAction:[PSTAlertAction actionWithTitle:@"确定" style:PSTAlertActionStyleDefault handler:^(PSTAlertAction *action) {
+             [self payOrder];
+        }]];
+
+        [alertController addAction:[PSTAlertAction actionWithTitle:@"取消" style:PSTAlertActionStyleCancel handler:nil]];
+        [alertController showWithSender:self.view controller:self animated:YES completion:nil];
+        
+//        [self payOrder];
     }
 }
 

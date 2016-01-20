@@ -71,7 +71,7 @@
     
     UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width
                                                                            , 44)];
-    searchBar.placeholder = @"搜索";
+    searchBar.placeholder = @"模糊查找小区";
     
     // 添加 searchbar 到 headerview
     self.tableView.tableHeaderView = searchBar;
@@ -442,7 +442,7 @@
 {
     if (tableView == self.tableView) {
         if (section == 0) {
-            return @"附近的小区";
+            return @"附近的网点";
         }
         else {
             return @"全部";

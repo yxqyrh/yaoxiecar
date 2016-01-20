@@ -70,10 +70,6 @@
                 controller = tmp;
             }
         }
-        
-        
-        
-        
     }
     @catch (NSException *exception) {
 //        controller = nil;

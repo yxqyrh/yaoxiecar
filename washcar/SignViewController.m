@@ -19,6 +19,8 @@
 @property (strong, nonatomic) IBOutlet UITextField *codeTextField;
 @property (strong, nonatomic) IBOutlet UIView *phoneView;
 @property (strong, nonatomic) IBOutlet UIView *codeView;
+@property (strong, nonatomic) IBOutlet UIButton *signButton;
+@property (strong, nonatomic) IBOutlet UIButton *registerButton;
 
 @end
 
@@ -26,14 +28,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.navigationItem.title = @"登录";
+     self.navigationItem.title = @"安全登录";
     // Do any additional setup after loading the view.
     _verifyCodeId = 0;
     _phoneView.layer.borderWidth = 0.5;
     _phoneView.layer.borderColor = GeneralLineCGColor;
+    _phoneView.layer.cornerRadius = 5;
     
     _codeView.layer.borderWidth = 0.5;
     _codeView.layer.borderColor = GeneralLineCGColor;
+    _codeView.layer.cornerRadius = 5;
+    
+    _codeButton.layer.cornerRadius = 5;
+    
+    _signButton.layer.cornerRadius = 2;
+    _registerButton.layer.cornerRadius = 2;
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -147,7 +157,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 //设置界面的按钮显示 根据自己需求设置
                 NSLog(@"____%@",strTime);
-                [_codeButton setTitle:[NSString stringWithFormat:@"%@秒后重新获取",strTime] forState:UIControlStateNormal];
+                [_codeButton setTitle:[NSString stringWithFormat:@"%@秒后获取",strTime] forState:UIControlStateNormal];
                 _codeButton.userInteractionEnabled = NO;
                 [_codeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
                 

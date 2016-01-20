@@ -27,6 +27,11 @@ FOUNDATION_EXPORT NSString * const MayiUidKey;
 
 FOUNDATION_EXPORT NSString * const MayiIsLoginId;
 
+//是否显示通告
+FOUNDATION_EXPORT NSString * const MayiIsShowNotifiction;
+//上一个通告的id
+FOUNDATION_EXPORT NSString * const MayiLastNotifictionId;
+
 /************************
  *notifiction 定义
  *

@@ -256,6 +256,7 @@
     }
    
     if (indexPath.row == 8) {
+        [self textFieldDidEndEditing:_carNumberTextField];
         [self registerSubmit];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -407,6 +408,18 @@
     
 }
 
+#pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    NSString *text = textField.text;
+    textField.text = [text uppercaseString];
+}
+
+
+
+
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -471,6 +484,7 @@
     
     if (indexPath.row == 0) {
         _carNumberTextField = (UITextField *)[cell viewWithTag:2];
+        _carNumberTextField.delegate = self;
         
         provinceStr  = (UIButton*)[cell viewWithTag:3];
         _A_Z = (UIButton*)[cell viewWithTag:4];
@@ -500,6 +514,7 @@
     if (indexPath.row == 4) {
         _telephoneTextField = (UITextField *)[cell viewWithTag:2];
         _codeButton = (UIButton *)[cell viewWithTag:3];
+        _codeButton.layer.cornerRadius = 3;
         [_codeButton setTitle:_codeButtonTitle forState:UIControlStateNormal];
     }
     

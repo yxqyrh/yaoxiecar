@@ -18,6 +18,10 @@ NSString * const MayiUidKey = @"uid";
 
 NSString * const MayiIsLoginId = @"isloginid";
 
+//是否显示通告
+NSString * const MayiIsShowNotifiction = @"shownotifiction";
+//上一个通告的id
+NSString * const MayiLastNotifictionId = @"lastnotifictionid";
 
 /************************
  *notifiction 定义

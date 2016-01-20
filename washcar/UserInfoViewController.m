@@ -85,6 +85,9 @@
         
 //        _actionBtn.titleLabel.text = @"确认添加";
     }
+    
+    _CarNum.delegate = self;
+    
     [WDLocationHelper getInstance].delegate = self;
     [[WDLocationHelper getInstance] startUpdate];
 }
@@ -113,6 +116,13 @@
     if(A_Z!=nil&&A_Z.length>0){
           [_A_Z setTitle:A_Z forState:UIControlStateNormal];
     }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    _CarNum.text = [_CarNum.text uppercaseString];
 }
 
 #pragma mark - WDLocationHelperDelegate
@@ -265,7 +275,9 @@
 */
 
 - (IBAction)commitInfo:(id)sender {
+    [self textFieldDidEndEditing:_CarNum];
     if ([@"确认添加" isEqualToString :_actionBtn.titleLabel.text]) {
+        
         [self addCarNum];
     }else{
         [self commitEditCarInfo];
