@@ -231,7 +231,8 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
-    [parameters setValue:dateString forKey:@"time"];
+        NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
+    [parameters setValue:[NSNumber numberWithDouble:time] forKey:@"time"];
 
     if (!_isFirstEdit) {
         [parameters setValue:_descTextView.text forKey:@"remark"];

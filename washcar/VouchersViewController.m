@@ -32,7 +32,7 @@
     // Do any additional setup after loading the view.
     
     //    NSString* timeStr = @"2011-01-26 17:40:50";
-    [_tableview addHeaderWithTarget:self action:@selector(headerRereshing)];
+    self.tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
     
     
     
