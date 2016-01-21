@@ -227,7 +227,7 @@
     [parameters setValue:_selectWashType.value forKey:@"methodsval"];
     [parameters setValue:_voucherInfo.id forKey:@"xcjid"];
     [parameters setValue:_voucherInfo.value forKey:@"xcjje"];
-     [parameters setValue:_userInfo.color forKey:@"color"];
+         [parameters setValue:_userInfo.color forKey:@"color"];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];

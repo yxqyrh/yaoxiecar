@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F1F81B81C492F3800572172 /* TQMultistageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F81B71C492F3800572172 /* TQMultistageTableView.m */; };
+		3F2D76A11C511234007B7107 /* complaint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F2D76A01C511234007B7107 /* complaint.storyboard */; };
 		3F7831D01BCC106C0021E7F4 /* Sign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F7831CF1BCC106C0021E7F4 /* Sign.storyboard */; };
 		3F7AD17B1C494D8500AC634C /* CarNumChooseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F7AD1791C494D8500AC634C /* CarNumChooseCell.xib */; };
 		3F7AD17D1C494F8300AC634C /* WashCarTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F7AD17C1C494F8300AC634C /* WashCarTypeCell.xib */; };
@@ -244,6 +245,7 @@
 		3F1C85371C4165AB00D524F8 /* Share.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Share.m; sourceTree = "<group>"; };
 		3F1F81B61C492F3800572172 /* TQMultistageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TQMultistageTableView.h; sourceTree = "<group>"; };
 		3F1F81B71C492F3800572172 /* TQMultistageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TQMultistageTableView.m; sourceTree = "<group>"; };
+		3F2D76A01C511234007B7107 /* complaint.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = complaint.storyboard; sourceTree = "<group>"; };
 		3F7831CF1BCC106C0021E7F4 /* Sign.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sign.storyboard; sourceTree = "<group>"; };
 		3F7AD1791C494D8500AC634C /* CarNumChooseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarNumChooseCell.xib; sourceTree = "<group>"; };
 		3F7AD17C1C494F8300AC634C /* WashCarTypeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WashCarTypeCell.xib; sourceTree = "<group>"; };
@@ -1271,6 +1273,7 @@
 				59111E011BC66A1300C2CCA9 /* UserInfo.storyboard */,
 				59BA97041BC75B10007C386E /* home_bottom_tab.storyboard */,
 				59FA3B2B1C3BBC4300712023 /* InvitationCode.storyboard */,
+				3F2D76A01C511234007B7107 /* complaint.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1622,6 +1625,7 @@
 				44DCED681BD8FEA80079C15D /* img_03_me_pre@2x.png in Resources */,
 				4473C1341C48C33F000130B8 /* ShareSDK.bundle in Resources */,
 				59C360141BCA5D9C007890BE /* chepaibg.png in Resources */,
+				3F2D76A11C511234007B7107 /* complaint.storyboard in Resources */,
 				598AFC6D1BBA520C00787310 /* ColorChoosePop.xib in Resources */,
 				449290321BB7D72F00F699E7 /* WashStyleChoose.xib in Resources */,
 				44D9C25F1BDA1E9600216BFB /* img_01_car_number@2x.png in Resources */,
