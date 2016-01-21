@@ -33,7 +33,7 @@
     page = 1;
     [self loadData:MyMsg :page:YES];
     _tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
-//    [_tableview addHeaderWithTarget:self action:@selector(headerRereshing)];
+    //    [_tableview addHeaderWithTarget:self action:@selector(headerRereshing)];
     //    [self.tableView headerBeginRefreshing];
     isReadMap = [[NSMutableDictionary alloc]init ];
     
@@ -77,6 +77,11 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault   reuseIdentifier:identifier];
     }
     
+    
+    
+    UIView *body = [cell viewWithTag:8];
+    body.layer.masksToBounds = YES; //没这句话它圆不起来
+    body.layer.cornerRadius = 6.0; //设置图片圆角的尺度
     UILabel *title = (UILabel*)[cell viewWithTag:1];
     UILabel *time = (UILabel*)[cell viewWithTag:2];
     UILabel *detail = (UILabel*)[cell viewWithTag:4];
@@ -103,13 +108,14 @@
     }
     NSString *key = [NSString stringWithFormat:@"%d",(int)indexPath.row];
     detail.hidden = YES;
-     more.hidden = NO;
+    more.hidden = NO;
     if ([[isReadMap allKeys]containsObject:key] ) {
         detail.hidden = NO;
         isRead.hidden = YES;
         more.hidden = YES;
-       
+        
     }
+    
     
     
     return cell;
@@ -127,7 +133,7 @@
 //
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *key = [NSString stringWithFormat:@"%d",(int)indexPath.row];
-  
+    
     if ([[isReadMap allKeys]containsObject:key] ) {
         // 用何種字體進行顯示
         UIFont *font = [UIFont systemFontOfSize:14];
@@ -141,10 +147,10 @@
     }else{
         return 75;
     }
-
+    
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-     int  row = indexPath.row;
+    int  row = indexPath.row;
     NSString *key = [NSString stringWithFormat:@"%d",row];
     if ([[isReadMap allKeys]containsObject:key] ) {
         //        [isReadMap removeObjectForKey:key];
@@ -167,32 +173,18 @@
     [self.tableview reloadData];
 }
 
-//-(void)seeDetail:(UIButton*)btn{
-//    int  row = btn.tag;
-//    NSString *key = [NSString stringWithFormat:@"%d",row];
-//    if ([[isReadMap allKeys]containsObject:key] ) {
-////        [isReadMap removeObjectForKey:key];
-//    }else{
-//        [isReadMap setValue:key forKey:key];
-//        NSDictionary *_dic = _arry[row];
-//        int judge = 0;
-//        @try {
-//            judge =[[_dic objectForKey:@"judge"] integerValue];
-//        }
-//        @catch (NSException *exception) {
-//            judge = 0;
-//        }
-//        if(judge==0){
-//            NSString *msgid = [_dic objectForKey:@"id"];
-//            [self seenMoreHttp:msgid];
-//        }
-//    }
-//    
-//    [self.tableview reloadData];
-//    
-//    
-//}
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self delRow:YES :indexPath];
+    
+}
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return @"删除";
+}
 -(void)loadData:(NSString*)url:(int)pager:(BOOL)isShowLoading{
     
     UIView *loadingView;
@@ -218,7 +210,7 @@
                     [_arry addObjectsFromArray:arry_tmp];
                     if (_arry.count==10) {
                         // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
-//                        [_tableview addFooterWithTarget:self action:@selector(footerRereshing)];
+                        //                        [_tableview addFooterWithTarget:self action:@selector(footerRereshing)];
                         _tableview.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
                         page = 1;
                     }
@@ -228,7 +220,7 @@
                         page++;
                     }
                     if (arry_tmp.count<10) {
-//                        [_tableview removeFooter];
+                        //                        [_tableview removeFooter];
                     }
                 }
             }
@@ -264,6 +256,37 @@
         }
     } failture:^(NSError *error) {
         //        [SVProgressHUD showErrorWithStatus:@"洗车券获取失败！"];
+    }];
+    
+    
+}
+-(void)delRow:(BOOL) isShowLoading :(NSIndexPath *)indexPath{
+    NSDictionary *_dic = _arry[indexPath.row];
+    
+    //    CarInfo *mCarInfo = [GlobalVar sharedSingleton].carInfoList[indexPath.row];
+    NSString *msgid = [_dic objectForKey:@"id"];
+    
+    UIView *loadingView;
+    if (isShowLoading) {
+        loadingView =self.view;
+    }
+    
+    NSDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setValue:msgid forKey:@"id"];
+    [[MayiHttpRequestManager sharedInstance] POST:DelMSG parameters:parameters showLoadingView:loadingView success:^(id responseObject) {
+        NSLog(@"responseObject=%@",responseObject);
+        if (responseObject == nil) {
+            return ;
+        }
+        NSString *res = [NSString stringWithFormat:@"%@",[responseObject objectForKey:@"res"]];
+        if ([@"1" isEqualToString:res]) {
+            [SVProgressHUD showErrorWithStatus:@"删除成功"];
+            [_arry  removeObjectAtIndex:indexPath.row];
+            [_tableview deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            
+        }
+    } failture:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"删除失败"];
     }];
     
     

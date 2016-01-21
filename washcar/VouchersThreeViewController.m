@@ -19,25 +19,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-      self.navigationItem.title = @"洗车券";
+    self.navigationItem.title = @"洗车券";
     self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     // Do any additional setup after loading the view.
     board = [UIStoryboard storyboardWithName:@"UserCenter" bundle:nil];
-     NSMutableArray *vcs = [[NSMutableArray alloc]init];
-    VouchersViewController * all =[board instantiateViewControllerWithIdentifier:@"VouchersViewController"];
-    all.title = @"全部";
-    all.voucherType = 0;
-    [vcs addObject:all];
+    NSMutableArray *vcs = [[NSMutableArray alloc]init];
+    VouchersViewController *noused = [board instantiateViewControllerWithIdentifier:@"VouchersViewController"];
+    noused.title = @"未使用";
+    noused.voucherType = 1;
+    [vcs addObject:noused];
     VouchersViewController *used = [board instantiateViewControllerWithIdentifier:@"VouchersViewController"];
     used.title = @"已使用";
-    used.voucherType = 1;
-   
+    used.voucherType = 2;
+    
     [vcs addObject:used];
-    VouchersViewController *noused = [board instantiateViewControllerWithIdentifier:@"VouchersViewController"];
-     noused.title = @"未使用";
-     noused.voucherType = 2;
-    [vcs addObject:noused];
+    VouchersViewController * all =[board instantiateViewControllerWithIdentifier:@"VouchersViewController"];
+    all.title = @"已过期";
+    all.voucherType = 3;
+    [vcs addObject:all];
+    
+    
     SCNavTabBarController *navTabBarController = [[SCNavTabBarController alloc] init];
     navTabBarController.subViewControllers = vcs;
     navTabBarController.showArrowButton = FALSE;
@@ -51,13 +53,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

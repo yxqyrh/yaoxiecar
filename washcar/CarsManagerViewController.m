@@ -28,11 +28,12 @@
     [addButton setTintColor:[UIColor whiteColor]];
     self.navigationItem.rightBarButtonItem = addButton;
     self.navigationItem.title = @"车辆管理";
-//    [self loadData:YES];
+    [_tableView   setSeparatorColor:[UIColor    grayColor]];
+    //    [self loadData:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-     [self loadData:YES];
+    [self loadData:YES];
 }
 
 - (void)insertNewObject:(id)sender {
@@ -77,17 +78,18 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault   reuseIdentifier:identifier];
     }
-    
+    //    cell.layer.masksToBounds = YES; //没这句话它圆不起来
+    //    cell.layer.cornerRadius = 6.0; //设置图片圆角的尺度
     UILabel *carNum = (UILabel*)[cell viewWithTag:1];
     CarInfo *mCarInfo = [GlobalVar sharedSingleton].carInfoList[indexPath.row];
-//    cp1 = "\U6caa";
+    //    cp1 = "\U6caa";
     //                    cp2 = A;
     //                    cp3 = 12345;
     
     NSString *cp1 =mCarInfo.cp1;
-     NSString *cp2 =mCarInfo.cp2;
-     NSString *cp3 =mCarInfo.cp3;
-        carNum.text = [cp1 stringByAppendingFormat:@"%@%@",cp2, cp3];
+    NSString *cp2 =mCarInfo.cp2;
+    NSString *cp3 =mCarInfo.cp3;
+    carNum.text = [cp1 stringByAppendingFormat:@"%@%@",cp2, cp3];
     
     return cell;
     
@@ -99,18 +101,14 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
-//    NSLog(@"dsds");
     [self delRow:YES :indexPath];
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [[GlobalVar sharedSingleton].carInfoList  removeObjectAtIndex:indexPath.row];
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-//    }
+    
+}
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return @"删除";
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-     CarInfo *mCarInfo = [GlobalVar sharedSingleton].carInfoList[indexPath.row];
+    CarInfo *mCarInfo = [GlobalVar sharedSingleton].carInfoList[indexPath.row];
     NSString *clid =mCarInfo.id;
     [self showAddOrEditCarManager:@"车辆信息编辑":clid];
     
@@ -122,7 +120,9 @@
     uivc.clid = clid;
     [self.navigationController pushViewController:uivc animated:YES];
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50.0f;
+}
 
 -(void)loadData:(BOOL) isShowLoading{
     
@@ -141,15 +141,15 @@
         if ([@"1" isEqualToString:res]) {
             
             [GlobalVar sharedSingleton].carInfoList  = [CarInfo objectArrayWithKeyValuesArray: [responseObject objectForKey:@"list"]];
-//            if ([GlobalVar sharedSingleton].carInfoList !=nil&&[GlobalVar sharedSingleton].carInfoList .count>0) {
-//               
-//            }
+            //            if ([GlobalVar sharedSingleton].carInfoList !=nil&&[GlobalVar sharedSingleton].carInfoList .count>0) {
+            //
+            //            }
             
-             [_tableView reloadData];
+            [_tableView reloadData];
             
         }
     } failture:^(NSError *error) {
-//                [SVProgressHUD showErrorWithStatus:@"删除失败"];
+        //                [SVProgressHUD showErrorWithStatus:@"删除失败"];
     }];
     
     
@@ -158,7 +158,7 @@
 -(void)delRow:(BOOL) isShowLoading :(NSIndexPath *)indexPath{
     CarInfo *mCarInfo = [GlobalVar sharedSingleton].carInfoList[indexPath.row];
     NSString *clid = mCarInfo.id;
-
+    
     UIView *loadingView;
     if (isShowLoading) {
         loadingView =self.view;
@@ -176,20 +176,20 @@
             [SVProgressHUD showErrorWithStatus:@"删除成功"];
             [[GlobalVar sharedSingleton].carInfoList  removeObjectAtIndex:indexPath.row];
             [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//            _array = [CarInfo objectArrayWithKeyValuesArray: [responseObject objectForKey:@"list"]];
-//            [GlobalVar sharedSingleton].carInfoList = _array;
-//            if (_array!=nil&&_array.count>0) {
-//                
-//                [_tableView reloadData];
-//                
-//            }
+            //            _array = [CarInfo objectArrayWithKeyValuesArray: [responseObject objectForKey:@"list"]];
+            //            [GlobalVar sharedSingleton].carInfoList = _array;
+            //            if (_array!=nil&&_array.count>0) {
+            //
+            //                [_tableView reloadData];
+            //
+            //            }
             
         }
     } failture:^(NSError *error) {
-            [SVProgressHUD showErrorWithStatus:@"删除失败"];
+        [SVProgressHUD showErrorWithStatus:@"删除失败"];
     }];
     
-
+    
 }
 
 @end

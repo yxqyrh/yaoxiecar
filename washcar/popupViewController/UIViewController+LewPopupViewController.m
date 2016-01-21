@@ -80,7 +80,7 @@
 #pragma mark - view handle
 
 - (void)presentPopupView:(UIView*)popupView animation:(id<LewPopupAnimation>)animation dismissed:(void(^)(void))dismissed{
-
+    
     
     // check if source view controller is not in destination
     if ([self.lewOverlayView.subviews containsObject:popupView]) return;
@@ -91,18 +91,21 @@
     self.lewPopupAnimation = animation;
     
     UIView *sourceView = [self topView];
-
+    
     // customize popupView
     popupView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin;
     popupView.tag = kLEWPopupViewTag;
     popupView.layer.shadowPath = [UIBezierPath bezierPathWithRect:popupView.bounds].CGPath;
-    popupView.layer.masksToBounds = NO;
+    //    popupView.layer.masksToBounds = NO;
+    
+    popupView.layer.masksToBounds = YES; //没这句话它圆不起来
+    popupView.layer.cornerRadius = 12.0; //设置图片圆角的尺度
     popupView.layer.shadowOffset = CGSizeMake(5, 5);
     popupView.layer.shadowRadius = 5;
     popupView.layer.shadowOpacity = 0.5;
     popupView.layer.shouldRasterize = YES;
     popupView.layer.rasterizationScale = [[UIScreen mainScreen] scale];
-    
+    //     [[popupView layer]setCornerRadius:8.0];
     // Add overlay
     if (self.lewOverlayView == nil) {
         UIView *overlayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
@@ -120,23 +123,25 @@
         [overlayView addSubview:backgroundView];
         
         
-//         Make the Background Clickable
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(lew_dismissPopupView)];
-//        [overlayView addGestureRecognizer:tap];
+        //         Make the Background Clickable
+        //        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(lew_dismissPopupView)];
+        //        [overlayView addGestureRecognizer:tap];
         self.lewOverlayView = overlayView;
     }
     
     [self.lewOverlayView addSubview:popupView];
     [sourceView addSubview:self.lewOverlayView];
-
+    
     self.lewOverlayView.alpha = 1.0f;
+    
+    
     popupView.center = self.lewOverlayView.center;
     if (animation) {
         [animation showView:popupView overlayView:self.lewOverlayView];
     }
     
     [self setLewDismissCallback:dismissed];
-
+    
 }
 
 - (void)dismissPopupViewWithAnimation:(id<LewPopupAnimation>)animation{
@@ -173,7 +178,7 @@
     while (recentView.parentViewController != nil) {
         recentView = recentView.parentViewController;
     }
-//    recentView.view.frame = CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT);
+    //    recentView.view.frame = CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT);
     return recentView.view;
 }
 
