@@ -15,7 +15,7 @@
 #import "StoryboadUtil.h"
 #import "StringUtil.h"
 #import "PSTAlertController.h"
-
+#import "ComplaintListViewController.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <UIImageView+WebCache.h>
 
@@ -537,8 +537,11 @@
 }
 
 - (IBAction)btn5Click:(id)sender {
-    clvc = [board instantiateViewControllerWithIdentifier:@"ComplaintViewController"];
-    [ self.navigationController pushViewController:clvc animated:YES];
+    ComplaintListViewController  *cplist = [StoryboadUtil getViewController:@"complaint" :@"ComplaintListViewController"];
+    [self.navigationController pushViewController:cplist animated:YES];
+    
+    
+
 }
 
 - (IBAction)btn6Click:(id)sender {
