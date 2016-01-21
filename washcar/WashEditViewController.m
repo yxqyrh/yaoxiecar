@@ -135,7 +135,7 @@
     _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],plot0.plot];
     
     [self chooseLocation:_address
-              provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:plot0.id];
+              provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:plot0.id plotName:plot0.plot];
     
     if (_addressLabel != nil) {
         _addressLabel.text = _address;
@@ -213,16 +213,14 @@
     }
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
-    [parameters setValue:_carNumberLabel.text forKey:@"carnumber"];
+    [parameters setValue:_carNumberLabel.text forKey:@"prov"];
     [parameters setValue:_userInfo.province forKey:@"province"];
     [parameters setValue:_userInfo.city forKey:@"city"];
     [parameters setValue:_userInfo.area forKey:@"area"];
-    [parameters setValue:_userInfo.plot forKey:@"plot"];
-    [parameters setValue:_selectWashType.fs forKey:@"methods"];
+//    [parameters setValue:_userInfo.plot forKey:@"plot"];
+    [parameters setValue:_userInfo.plotName forKey:@"plot"];
+    [parameters setValue:_selectWashType.id forKey:@"methods"];
     [parameters setValue:_cheWeiNumTextField.text forKey:@"cwh"];
-    
-    
-    
     
 //    double value = [_selectWashType.value doubleValue] - (_voucherInfo == nil ? 0 : [_voucherInfo.value doubleValue]);
     
@@ -233,7 +231,6 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *dateString = [dateFormatter stringFromDate:[NSDate date]];
-
     [parameters setValue:dateString forKey:@"time"];
 
     if (!_isFirstEdit) {
@@ -332,6 +329,7 @@
                cityId:(NSString *)cityId
                areaId:(NSString *)areaId
                plotId:(NSString *)plotId
+             plotName:(NSString *)plotName
 {
 
     _addressLabel.text = address;
@@ -340,6 +338,7 @@
     _userInfo.city = cityId;
     _userInfo.area = areaId;
     _userInfo.plot = plotId;
+    _userInfo.plotName = plotName;
 }
 
 #pragma mark - UITableViewDataSource

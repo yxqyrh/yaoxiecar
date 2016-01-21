@@ -584,7 +584,7 @@
     
     
     if (_delegate && [_delegate conformsToProtocol:@protocol(LocationChooseDelegate)]) {
-        [_delegate chooseLocation:[self generalAddress] provinceId:_provinceId cityId:_cityId areaId:_areaId plotId:_plotId];
+        [_delegate chooseLocation:[self generalAddress] provinceId:_provinceId cityId:_cityId areaId:_areaId plotId:_plotId plotName:_plotName];
     }
     [self.navigationController popViewControllerAnimated:YES];
 }

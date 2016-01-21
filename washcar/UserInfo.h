@@ -22,6 +22,7 @@
 @property (nonatomic)NSString *city;
 @property (nonatomic)NSString *area;
 @property (nonatomic)NSString *plot;
+@property (nonatomic)NSString *plotName;
 @property (nonatomic)NSDate *time;
 @property (nonatomic)NSString *szdqstr;
 

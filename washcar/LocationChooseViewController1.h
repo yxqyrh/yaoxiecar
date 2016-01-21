@@ -16,7 +16,8 @@
            provinceId:(NSString *)provinceId
                cityId:(NSString *)cityId
                areaId:(NSString *)areaId
-               plotId:(NSString *)plotId;
+               plotId:(NSString *)plotId
+             plotName:(NSString *)plotName;
 
 @end
 
