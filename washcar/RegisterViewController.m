@@ -91,12 +91,14 @@
                cityId:(NSString *)cityId
                areaId:(NSString *)areaId
                plotId:(NSString *)plotId
+             plotName:(NSString *)plotName
 {
     _addresssLabel.text = address;
     _userInfo.province =provinceId;
     _userInfo.city = cityId;
     _userInfo.area = areaId;
     _userInfo.plot = plotId;
+    _userInfo.plotName = plotName;
 }
 
 #pragma mark - WDLocationHelperDelegate
@@ -132,7 +134,7 @@
             _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],[self.dz objectForKey:@"plotmc"]];
             
             [self chooseLocation:_address
-             provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:[self.dz objectForKey:@"plot"]];
+             provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:[self.dz objectForKey:@"plot"] plotName:[self.dz objectForKey:@"plotmc"]];
         }
         
     } failture:^(NSError *error) {

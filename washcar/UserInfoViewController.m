@@ -158,7 +158,7 @@
             _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],[self.dz objectForKey:@"plotmc"]];
             
             [self chooseLocation:_address
-                      provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:[self.dz objectForKey:@"plot"]];
+                      provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:[self.dz objectForKey:@"plot"] plotName:[self.dz objectForKey:@"plotmc"]];
         }
         
     } failture:^(NSError *error) {
@@ -245,6 +245,7 @@
                cityId:(NSString *)cityId
                areaId:(NSString *)areaId
                plotId:(NSString *)plotId
+             plotName:(NSString *)plotName
 {
     
     _Loaction.text = address;
@@ -252,6 +253,7 @@
     city = cityId;
     area = areaId;
     plot = plotId;
+    plotmc = plotName;
 }
 
 //-(void)chooseLocation:(NSString *)address
