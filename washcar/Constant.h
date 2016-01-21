@@ -179,7 +179,8 @@ FOUNDATION_EXPORT NSString * const CarEditAction;
 FOUNDATION_EXPORT NSString * const Index;
 //删除车辆
 FOUNDATION_EXPORT NSString * const DelCL;
-
+//删除消息
+FOUNDATION_EXPORT NSString * const DelMSG;
 
 /************************
  *支付的参数常量定义

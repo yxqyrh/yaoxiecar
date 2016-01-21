@@ -17,7 +17,7 @@
     int page;
     int selectIndex;
 }
-@property (strong, nonatomic) IBOutlet UITableView *tableview;
+
 
 @end
 

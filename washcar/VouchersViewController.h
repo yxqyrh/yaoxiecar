@@ -11,4 +11,6 @@
 #import "BaseTableViewController.h"
 @interface VouchersViewController : BaseTableViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 @property int  voucherType ;//0 代表未领取的洗车卷 1：已使用的洗车卷 2：未使用的洗车卷
+
+@property (strong, nonatomic) IBOutlet UITableView *tableview;
 @end

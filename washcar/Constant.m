@@ -150,6 +150,7 @@ NSString * const MyMsg = @"wdxx";
 
 //我的消息详情
 NSString * const MyMsgDetail = @"wdxxxq";
+NSString * const DelMSG = @"wdxxsc";
 //车辆管理
 NSString * const CarManager = @"clgl";
 
