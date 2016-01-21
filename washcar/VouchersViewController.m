@@ -17,7 +17,7 @@
     int page;
     int selectIndex;
 }
-@property (strong, nonatomic) IBOutlet UITableView *tableview;
+
 
 @end
 
@@ -32,7 +32,7 @@
     // Do any additional setup after loading the view.
     
     //    NSString* timeStr = @"2011-01-26 17:40:50";
-    [_tableview addHeaderWithTarget:self action:@selector(headerRereshing)];
+//    [_tableview addHeaderWithTarget:self action:@selector(headerRereshing)];
     
     
     
