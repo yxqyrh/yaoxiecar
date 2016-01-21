@@ -218,7 +218,7 @@
     [parameters setValue:_userInfo.city forKey:@"city"];
     [parameters setValue:_userInfo.area forKey:@"area"];
 //    [parameters setValue:_userInfo.plot forKey:@"plot"];
-    [parameters setValue:@"时代大厦" forKey:@"plot"];
+    [parameters setValue:_userInfo.plotName forKey:@"plot"];
     [parameters setValue:_selectWashType.id forKey:@"methods"];
     [parameters setValue:_cheWeiNumTextField.text forKey:@"cwh"];
     
