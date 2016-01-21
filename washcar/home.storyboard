@@ -44,13 +44,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="710-l4-aGt">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="206"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="GDq-lB-5dx">
-                                        <rect key="frame" x="8" y="178" width="304" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                        <color key="pageIndicatorTintColor" red="0.019626504350000001" green="0.35187815659999999" blue="0.012075341640000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    </pageControl>
-                                </subviews>
                                 <color key="backgroundColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PS8-5x-jop">
@@ -78,7 +71,6 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="pageControl" destination="GDq-lB-5dx" id="j7H-Wm-kQ1"/>
                         <outlet property="scrollview" destination="710-l4-aGt" id="gBP-9C-rlG"/>
                     </connections>
                 </viewController>
@@ -97,13 +89,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ztS-CN-Wmr">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="Xkr-1v-DNm">
-                                        <rect key="frame" x="8" y="219" width="304" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                        <color key="pageIndicatorTintColor" red="0.019626504350000001" green="0.35187815659999999" blue="0.012075341640000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    </pageControl>
-                                </subviews>
                             </scrollView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" id="6pv-te-3NB">
                                 <rect key="frame" x="0.0" y="264" width="320" height="304"/>
@@ -126,7 +111,6 @@
                     <navigationItem key="navigationItem" title="蚂蚁洗车" id="QiY-hR-4on"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="pageControl" destination="Xkr-1v-DNm" id="9cR-aZ-0wp"/>
                         <outlet property="scrollview" destination="ztS-CN-Wmr" id="mm1-jR-Dpd"/>
                     </connections>
                 </viewController>
@@ -149,13 +133,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="PxJ-KP-4su">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="277"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="BPS-w3-eDt">
-                                        <rect key="frame" x="8" y="245" width="359" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                        <color key="pageIndicatorTintColor" red="0.019626504350000001" green="0.35187815659999999" blue="0.012075341640000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    </pageControl>
-                                </subviews>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0IH-Yg-PBM">
                                 <rect key="frame" x="122" y="371" width="130" height="180"/>
@@ -174,7 +151,6 @@
                     <navigationItem key="navigationItem" title="蚂蚁洗车" id="knn-CT-Cpv"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="pageControl" destination="BPS-w3-eDt" id="Vm1-Hi-AeT"/>
                         <outlet property="scrollview" destination="PxJ-KP-4su" id="Sap-FF-HsE"/>
                     </connections>
                 </viewController>
@@ -197,13 +173,6 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="1eh-HU-gKo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="297"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="x1e-uh-rfr">
-                                        <rect key="frame" x="8" y="263" width="398" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                        <color key="pageIndicatorTintColor" red="0.019626504350000001" green="0.35187815659999999" blue="0.012075341640000001" alpha="1" colorSpace="calibratedRGB"/>
-                                    </pageControl>
-                                </subviews>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ifM-4N-o0t">
                                 <rect key="frame" x="132" y="426" width="150" height="200"/>
@@ -233,7 +202,6 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="pageControl" destination="x1e-uh-rfr" id="DIW-pH-CSp"/>
                         <outlet property="scrollview" destination="1eh-HU-gKo" id="4N4-P8-WRy"/>
                     </connections>
                 </viewController>
