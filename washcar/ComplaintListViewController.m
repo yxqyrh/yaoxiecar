@@ -53,9 +53,36 @@
     return array==nil?0:array.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
 
-    return 200;
+    static NSString *identifier = @"ComplaintListCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault   reuseIdentifier:identifier];
+    }
+    
+    NSDictionary *dic = array[indexPath.row];
+    UILabel *titleLabel =  (UILabel*)[cell viewWithTag:1];
+    UILabel *timeLabel =  (UILabel*)[cell viewWithTag:2];
+    UILabel *contentLabel =  (UILabel*)[cell viewWithTag:6];
+    UIView *view1 = [cell viewWithTag:3];
+
+    
+    //    content.scrollEnabled = NO;
+    titleLabel.text = [dic objectForKey:@"mes"];
+    timeLabel.text = [dic objectForKey:@"time"];
+    
+    [titleLabel sizeToFit];
+    
+    
+    
+    [contentLabel sizeToFit];
+    
+    CGFloat height = 0;
+    
+    height +=  titleLabel.frame.size.height + contentLabel.frame.size.height + 40;
+    DLog(@"height:%f",height);
+    return height;
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -68,34 +95,25 @@
     }
     
     NSDictionary *dic = array[indexPath.row];
-    UITextView *title =  (UITextView*)[cell viewWithTag:1];
-    UILabel *time =  (UILabel*)[cell viewWithTag:2];
-    UITextView *content =  (UITextView*)[cell viewWithTag:3];
-    UIView *view1 = [cell viewWithTag:4];
-    UIView *view2 = [cell viewWithTag:5];
+    UILabel *titleLabel =  (UILabel*)[cell viewWithTag:1];
+    UILabel *timeLabel =  (UILabel*)[cell viewWithTag:2];
+    UIView *view2 = [cell viewWithTag:3];
+    UILabel *contentLabel =  (UILabel*)[cell viewWithTag:6];
+
    
 //    content.scrollEnabled = NO;
-    title.text = [dic objectForKey:@"mes"];
-    time.text = [dic objectForKey:@"time"];
+    titleLabel.text = [dic objectForKey:@"mes"];
+    [titleLabel sizeToFit];
+    timeLabel.text = [dic objectForKey:@"time"];
     
     NSString *str = [dic objectForKey:@"content"];
     if (str== nil||str.length == 0) {
         str = @"暂无回复";
     }
-    content.text = str;
+    contentLabel.text = str;
+    [contentLabel sizeToFit];
     
-    
-    UIFont *font_mes = [UIFont systemFontOfSize:15];
-    // 該行要顯示的內容
-    NSString *mes = [dic objectForKey:@"mes"];
-    // 計算出顯示完內容需要的最小尺寸
-    CGSize size_mes = [mes sizeWithFont:font_mes constrainedToSize:CGSizeMake(title.frame.size.width, 1000.0f) lineBreakMode:UILineBreakModeWordWrap];
-    UIFont *font_content = [UIFont systemFontOfSize:14];
-    // 該行要顯示的內容
-    NSString *content_str = [dic objectForKey:@"content"];
-    // 計算出顯示完內容需要的最小尺寸
-    CGSize size_content = [content_str sizeWithFont:font_content constrainedToSize:CGSizeMake(content.frame.size.width, 1000.0f) lineBreakMode:UILineBreakModeWordWrap];
-    view1.frame = CGRectMake(0, 0, SCREEN_WIDTH, size_mes.height);
+
 //    view2.frame = CGRectMake(0, view2.frame.origin.y, SCREEN_WIDTH, size_content.height);
     
     

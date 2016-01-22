@@ -222,12 +222,12 @@
     _isPaying = true;
     [_washParameters setObject:@(_payType) forKey:@"type"];
     [[MayiHttpRequestManager sharedInstance] POST:MayiWYXCing parameters:_washParameters showLoadingView:self.view success:^(id responseObject) {
-        if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
+        if ([WDSystemUtils isEqualsInt:2 andJsonData:[responseObject objectForKey:@"res"]]) {
             [SVProgressHUD showErrorWithStatus:@"获取失败"];
             _isPaying = false;
             return ;
         }
-        else if ([WDSystemUtils isEqualsInt:2 andJsonData:[responseObject objectForKey:@"res"]]) {
+        else if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
 //[responseObject objectForKey:@"zfje"]
             if (_payType == 1) {
                 _isPaying = false;

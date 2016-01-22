@@ -16,6 +16,7 @@
 #import "MDPhotoAlbumViewController.h"
 #import <Masonry.h>
 #import "PSTAlertController.h"
+#import "MyTableViewCell.h"
 
 @interface OrderListViewController () {
     int _selectIndex;
@@ -75,7 +76,11 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 
     
-    
+    if (_pageIndex != 1) {
+        UILongPressGestureRecognizer *longPressGestrureRecognizer = [[UILongPressGestureRecognizer alloc] init];
+        [longPressGestrureRecognizer addTarget:self action:@selector(longPressCell:)];
+        [self.tableView addGestureRecognizer:longPressGestrureRecognizer];
+    }
     // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
 //    [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
     
@@ -318,8 +323,9 @@
         }
         
         
-       
         
+       
+       
        
         
         UIView *bgView = [cell viewWithTag:1];
@@ -337,6 +343,11 @@
         else if (_pageType == 2) {
             height += imageCollectionViewHeight;
         }
+        
+        if (_pageType == 1) {
+            height += 35;
+        }
+        
          DLog(@"height:%f", height);
         height += 10;
         return height;
@@ -401,13 +412,10 @@
         reuseIdentifier = @"OrderInfoCell";
     }
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
+    MyTableViewCell *cell = (MyTableViewCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.backgroundColor = GeneralBackgroundColor;
     
-    UILongPressGestureRecognizer *longPressGestrureRecognizer = [[UILongPressGestureRecognizer alloc] init];
-    [longPressGestrureRecognizer addTarget:self action:@selector(longPressCell:)];
-    [cell addGestureRecognizer:longPressGestrureRecognizer];
+   
     
     UIView *bgView = [cell viewWithTag:1];
     bgView.layer.borderColor = GeneralLineCGColor;
@@ -507,6 +515,20 @@
                 [collectionView reloadData];
             }
             
+            if (![WDSystemUtils isEqualsInt:0 andJsonData:order.pj]) {
+                UIButton *button = [cell viewWithTag:35];
+                button.userInteractionEnabled = NO;
+                button.backgroundColor = [UIColor lightGrayColor];
+                [button setTitle:@"已评价" forState:UIControlStateNormal];
+            }
+            else {
+                UIButton *button = [cell viewWithTag:35];
+                button.backgroundColor = RGBCOLOR(73, 180, 252);
+                button.userInteractionEnabled = YES;
+                [button setTitle:@"评价订单" forState:UIControlStateNormal];
+                [button addTarget:self action:@selector(evaluateWashWorkers:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            
         }
         else if (_pageType == 3) {            
             if (![WDSystemUtils isEmptyOrNullString:order.unsubscribe]) {
@@ -560,9 +582,27 @@
                     }];
                 }
             }
-            
-            
         }
+    }
+    
+    
+    if (_pageType == 1) {
+        UIButton *phoneButton = (UIButton *)[cell viewWithTag:31];
+        phoneButton.backgroundColor = RGBCOLOR(73, 180, 252);
+        phoneButton.userInteractionEnabled = YES;
+        [phoneButton addTarget:self action:@selector(connectWashWorkers:) forControlEvents:UIControlEventTouchUpInside];
+        
+        if (order.xcgsjh != nil
+            && ![@"" isEqualToString:order.xcgsjh] &&
+            ![@"<null>" isEqualToString:order.xcgsjh]) {
+            phoneButton.hidden = NO;
+        }
+        else {
+            phoneButton.hidden = NO;
+        }
+        
+        UILabel *label = [cell viewWithTag:33];
+        label.text = order.yjxcsj;
     }
     
     [bgView setNeedsUpdateConstraints];
@@ -571,9 +611,115 @@
 
 }
 
--(void)longPressCell:(id)sender
+-(void)evaluateWashWorkers:(id)sender
 {
+    OrderInfo *orderInfo = [_orders objectAtIndex:_selectIndex];
+    PSTAlertController *alertController = [PSTAlertController alertControllerWithTitle:nil message:@"您对我们的服务还满意吗？" preferredStyle:PSTAlertControllerStyleActionSheet];
+    [alertController addAction:[PSTAlertAction actionWithTitle:@"满意" style:PSTAlertActionStyleDefault handler:^(PSTAlertAction *action) {
+        [self evaluateCommit:1];
+    }]];
+    [alertController addAction:[PSTAlertAction actionWithTitle:@"基本满意" style:PSTAlertActionStyleDefault handler:^(PSTAlertAction *action) {
+        [self evaluateCommit:2];
+    }]];
+    [alertController addAction:[PSTAlertAction actionWithTitle:@"不满意" style:PSTAlertActionStyleDefault handler:^(PSTAlertAction *action) {
+        [self evaluateCommit:3];
+    }]];
+    [alertController addAction:[PSTAlertAction actionWithTitle:@"取消" style:PSTAlertActionStyleCancel handler:^(PSTAlertAction *action) {
+        
+    }]];
+    [alertController showWithSender:self.view controller:self animated:YES completion:nil];
     
+}
+
+-(void)evaluateCommit:(int)type
+{
+    NSDictionary *parameters = [NSMutableDictionary dictionary];
+    OrderInfo *order = [_orders objectAtIndex:_selectIndex];
+    [parameters setValue:order.id forKey:@"tjtj"];
+    [parameters setValue:@(type) forKey:@"pj"];
+    
+    [[MayiHttpRequestManager sharedInstance] POST:MayiPJOrder parameters:parameters showLoadingView:self.view success:^(id responseObject) {
+        
+        DLog(@"responseObject:%@",responseObject);
+        
+        if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
+            [SVProgressHUD showSuccessWithStatus:@"评价成功"];
+            order.pj = [NSString stringWithFormat:@"%i",type];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:_selectIndex inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+        if ([WDSystemUtils isEqualsInt:2 andJsonData:[responseObject objectForKey:@"res"]]) {
+            [SVProgressHUD showErrorWithStatus:@"评价失败"];
+        }
+        
+    } failture:^(NSError *error) {
+        [self.view makeToast:@"删除失败"];
+    }];
+}
+
+-(void)connectWashWorkers:(id)sender
+{
+    OrderInfo *order = [_orders objectAtIndex:_selectIndex];;
+    if (order.xcgsjh != nil
+        && ![@"" isEqualToString:order.xcgsjh] &&
+        ![@"<null>" isEqualToString:order.xcgsjh]) {
+        PSTAlertController *alertController = [PSTAlertController alertControllerWithTitle:@"联系洗车工" message:@"" preferredStyle:PSTAlertControllerStyleActionSheet];
+        [alertController addAction:[PSTAlertAction actionWithTitle:order.xcgsjh handler:^(PSTAlertAction *action) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:\/\/%@",order.xcgsjh]]];
+        }]];
+        [alertController addAction:[PSTAlertAction actionWithTitle:@"取消" style:PSTAlertActionStyleCancel handler:nil]];
+        [alertController showWithSender:self.view controller:self animated:YES completion:nil];
+        
+    }
+    else {
+        PSTAlertController *alertController = [PSTAlertController alertControllerWithTitle:@"无法获取洗车工的手机号" message:@"" preferredStyle:PSTAlertControllerStyleAlert];
+        [alertController addAction:[PSTAlertAction actionWithTitle:@"取消" style:PSTAlertActionStyleCancel handler:nil]];
+        [alertController showWithSender:self.view controller:self animated:YES completion:nil];
+    }
+}
+
+-(void)longPressCell:(UIGestureRecognizer *)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        CGPoint location = [recognizer locationInView:self.tableView];
+        NSIndexPath * indexPath = [self.tableView indexPathForRowAtPoint:location];
+        MyTableViewCell *cell = (MyTableViewCell *)recognizer.view;
+        　　　　　//这里把cell做为第一响应(cell默认是无法成为responder,需要重写canBecomeFirstResponder方法)
+        [cell becomeFirstResponder];
+        
+        PSTAlertController *alertController = [PSTAlertController alertControllerWithTitle:@"删除" message:@"确定要删除当前订单吗？" preferredStyle:PSTAlertControllerStyleAlert];
+        [alertController addAction:[PSTAlertAction actionWithTitle:@"删除" style:PSTAlertActionStyleDestructive handler:^(PSTAlertAction *action) {
+            [self deleteOrder:indexPath];
+        }]];
+        [alertController addAction:[PSTAlertAction actionWithTitle:@"取消" style:PSTAlertActionStyleCancel handler:^(PSTAlertAction *action) {
+            
+        }]];
+        [alertController showWithSender:self.view controller:self animated:YES completion:nil];
+        
+    }
+}
+
+-(void)deleteOrder:(NSIndexPath *)indexpath
+{
+    NSDictionary *parameters = [NSMutableDictionary dictionary];
+    OrderInfo *order = [_orders objectAtIndex:indexpath.row];
+    [parameters setValue:order.id forKey:@"id"];
+    
+    [[MayiHttpRequestManager sharedInstance] POST:MayiDeleteOrder parameters:parameters showLoadingView:self.view success:^(id responseObject) {
+        
+        DLog(@"responseObject:%@",responseObject);
+        
+        if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
+            [SVProgressHUD showSuccessWithStatus:@"删除成功"];
+            [_orders removeObjectAtIndex:indexpath.row];
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexpath, nil] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+        if ([WDSystemUtils isEqualsInt:2 andJsonData:[responseObject objectForKey:@"res"]]) {
+            [SVProgressHUD showErrorWithStatus:@"删除失败"];
+        }
+        
+    } failture:^(NSError *error) {
+        [self.view makeToast:@"删除失败"];
+    }];
 }
 
 

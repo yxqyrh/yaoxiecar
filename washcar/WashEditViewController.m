@@ -653,6 +653,7 @@
     CarInfo *info =  [GlobalVar sharedSingleton].carInfoList[index];
     NSString *str = [info.cp1 stringByAppendingFormat:@"%@%@",info.cp2,info.cp3];
     _carNumberLabel.text = str;
-
+    _cheWeiNumTextField.text = info.cwh;
+    _carColorLabel.text = info.color;
 }
 @end

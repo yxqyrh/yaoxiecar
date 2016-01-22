@@ -49,6 +49,7 @@
 		4473C1411C48C3F8000130B8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4473C1401C48C3F8000130B8 /* MessageUI.framework */; };
 		4473C1431C48EDD4000130B8 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4473C1421C48EDD4000130B8 /* MobileCoreServices.framework */; };
 		4473C1471C48EF1C000130B8 /* VPImageCropperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4473C1461C48EF1C000130B8 /* VPImageCropperViewController.m */; };
+		4475ABD71C5226E900F98099 /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4475ABD61C5226E900F98099 /* MyTableViewCell.m */; };
 		4483618E1BC8FB63005396D5 /* RootViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 4483618D1BC8FB63005396D5 /* RootViewController1.m */; };
 		448361921BCA0904005396D5 /* img_call_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 448361911BCA0904005396D5 /* img_call_phone@2x.png */; };
 		448361951BCAA767005396D5 /* ScratchcardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 448361941BCAA767005396D5 /* ScratchcardViewController.m */; };
@@ -312,6 +313,8 @@
 		4473C1421C48EDD4000130B8 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4473C1451C48EF1C000130B8 /* VPImageCropperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPImageCropperViewController.h; sourceTree = "<group>"; };
 		4473C1461C48EF1C000130B8 /* VPImageCropperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VPImageCropperViewController.m; sourceTree = "<group>"; };
+		4475ABD51C5226E900F98099 /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
+		4475ABD61C5226E900F98099 /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
 		4483618C1BC8FB63005396D5 /* RootViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController1.h; sourceTree = "<group>"; };
 		4483618D1BC8FB63005396D5 /* RootViewController1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController1.m; sourceTree = "<group>"; };
 		448361911BCA0904005396D5 /* img_call_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img_call_phone@2x.png"; sourceTree = "<group>"; };
@@ -1477,6 +1480,8 @@
 				4473C1161C43F716000130B8 /* PlotCell.xib */,
 				3F7AD1791C494D8500AC634C /* CarNumChooseCell.xib */,
 				3F7AD17C1C494F8300AC634C /* WashCarTypeCell.xib */,
+				4475ABD51C5226E900F98099 /* MyTableViewCell.h */,
+				4475ABD61C5226E900F98099 /* MyTableViewCell.m */,
 			);
 			name = cell;
 			sourceTree = "<group>";
@@ -1826,6 +1831,7 @@
 				44928FFF1BB7D6D700F699E7 /* VouchersViewController.m in Sources */,
 				4492905D1BB9052100F699E7 /* EAIntroView.m in Sources */,
 				449290561BB8FD6400F699E7 /* Toast+UIView.m in Sources */,
+				4475ABD71C5226E900F98099 /* MyTableViewCell.m in Sources */,
 				44F942D41BB61F1C000CAF90 /* SGFocusImageItem.m in Sources */,
 				449290271BB7D72F00F699E7 /* LewPopupBackgroundView.m in Sources */,
 				597623981C45F8C400EBDD6E /* InvitationCodesViewController.m in Sources */,

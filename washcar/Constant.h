@@ -108,6 +108,11 @@ FOUNDATION_EXPORT NSString * const MayiCanceledOrder;
 //取消订单
 FOUNDATION_EXPORT NSString * const MayiQXDD;
 
+//删除订单
+FOUNDATION_EXPORT NSString * const MayiDeleteOrder;
+
+//评价订单
+FOUNDATION_EXPORT NSString * const MayiPJOrder;
 
 //常见问题
 FOUNDATION_EXPORT NSString * const problemApi;

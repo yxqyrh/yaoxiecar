@@ -74,6 +74,12 @@ NSString * const MayiFinishedOrder = @"ywcdd";
 //已取消的订单
 NSString * const MayiCanceledOrder = @"ytdd";
 
+//删除订单
+NSString * const MayiDeleteOrder = @"scdd";
+
+//评价订单
+NSString * const MayiPJOrder = @"wypj";
+
 //取消订单
 NSString * const MayiQXDD = @"qxdd";
 
