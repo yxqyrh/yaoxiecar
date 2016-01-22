@@ -182,6 +182,9 @@ FOUNDATION_EXPORT NSString * const DelCL;
 //删除消息
 FOUNDATION_EXPORT NSString * const DelMSG;
 
+//删除消息
+FOUNDATION_EXPORT NSString * const TSList;
+
 /************************
  *支付的参数常量定义
  *

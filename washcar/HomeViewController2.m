@@ -13,7 +13,7 @@
 #import "PSTAlertController.h"
 #import <Masonry.h>
 #import <UIImageView+WebCache.h>
-
+#import "YYCycleScrollView.h"
 
 @interface HomeViewController2 (){
     NSInteger totalCount;
@@ -33,17 +33,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.parentViewController.title = @"蚂蚁洗车";
-//    [self loadImages];
     self.scrollview.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/640)*387);
-
-// [self initBtn:_btn1 :@"user_car_manager_icon" :_btn1.titleLabel.text];
-//    [self initBtn:_btn2 :@"user_car_manager_icon" :_btn1.titleLabel.text];
-    
     [self loadImages];
-    
-    
     [self showNotifiction];
 }
 
@@ -93,51 +85,43 @@
     CGFloat imageY = 0;
     //    图片中数
     totalCount = array.count;
-    //   1.添加5张图片
+
+    YYCycleScrollView *cycleScrollView = [[YYCycleScrollView alloc] initWithFrame:CGRectMake(0, imageY, imageW, imageH) animationDuration:5.0];
+    NSMutableArray *viewArray = [[NSMutableArray alloc] init];
     for (int i = 0; i < totalCount; i++) {
         NSDictionary *dic = array[i];
         NSString *pic = [dic objectForKey:@"tpurl"];
         if ([StringUtil isEmty:pic]) {
             continue;
         }
-        UIImageView *page = [[UIImageView alloc] init];
-        //        图片X
         CGFloat imageX = i * imageW;
-        //        设置frame
-        page.frame = CGRectMake(imageX, imageY, imageW, imageH);
-        //        设置图片
-        page.contentMode = UIViewContentModeScaleToFill;
-     
-//        NSString *imagePath = [IMGURL stringByAppendingString:pic];
-        
-//         NSString *imagePath = [IMGURL stringByAppendingString:pic];
-        
-//        NSLog(@"imagePath=%@",imagePath);
-        
-        
-        [page sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]];
-        
-//        [page setBackgroundImage:[UIImage imageNamed:name] forState:UIControlStateNormal];
-        //        隐藏指示条
-        self.scrollview.showsHorizontalScrollIndicator = NO;
-        [self.scrollview addSubview:page];
-//        [page addTarget:self action:@selector(action:) forControlEvents:UIControlEventTouchUpInside];
-        page.tag = i;
+        UIImageView *tempImageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageX, imageY, imageW, imageH)];
+         [tempImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]];
+//        tempImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d",i+1]];
+        tempImageView.contentMode = UIViewContentModeScaleAspectFill;
+        tempImageView.clipsToBounds = true;
+        [viewArray addObject:tempImageView];
     }
+    [cycleScrollView setFetchContentViewAtIndex:^UIView *(NSInteger(pageIndex)) {
+        return [viewArray objectAtIndex:pageIndex];
+    }];
+    [cycleScrollView setTotalPagesCount:^NSInteger{
+        return totalCount;
+    }];
+    [cycleScrollView setTapActionBlock:^(NSInteger(pageIndex)) {
+        NSDictionary *dic = array[pageIndex];
+        
+        NSString *bz = [dic objectForKey:@"bz"];
+        
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
+            [webController setTitle:@"详情" andUrl:bz];
+            [self.navigationController pushViewController:webController animated:YES];
+        
+    }];
     
-    
-    //    2.设置scrollview的滚动范围
-    CGFloat contentW = totalCount *imageW;
-    //不允许在垂直方向上进行滚动
-    self.scrollview.contentSize = CGSizeMake(contentW, 0);
-    
-    //    3.设置分页
-    self.scrollview.pagingEnabled = YES;
-    
-    //    4.监听scrollview的滚动
-    self.scrollview.delegate = self;
-    
-    [self addTimer];
+    [self.scrollview addSubview:cycleScrollView];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -243,69 +227,7 @@
     self.pageControl.currentPage = page;
 }
 
-// 开始拖拽的时候调用
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    //    关闭定时器(注意点; 定时器一旦被关闭,无法再开启)
-    //    [self.timer invalidate];
-    [self removeTimer];
-}
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    //    开启定时器
-    [self addTimer];
-}
-
-/**
- *  开启定时器
- */
-- (void)addTimer{
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
-}
-/**
- *  关闭定时器
- */
-- (void)removeTimer
-{
-    [self.timer invalidate];
-}
-
-
-
-#pragma mark -
-- (void)foucusImageFrame:(SGFocusImageFrame *)imageFrame didSelectItem:(SGFocusImageItem *)item
-{
-//    NSLog(@"%@ tapped", item.title);
-//    if (item.tag == 0) {
-//        
-//        [self jumpPageWithJudge:YES andSignedBlock:^{
-//            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//            WashEditViewController *washController = [storyBoard instantiateViewControllerWithIdentifier:@"WashEditViewController"];
-//            [self.navigationController pushViewController:washController animated:YES];
-//        }];
-//        
-//    }
-//    else if (item.tag == 1) {
-//        [self jumpPageWithJudge:YES andSignedBlock:^{
-//            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//            ReChargeViewController *rechargeViewController = [storyBoard instantiateViewControllerWithIdentifier:@"ReChargeViewController"];
-//            [self.navigationController pushViewController:rechargeViewController animated:YES];
-//        }];
-//        
-//        
-//    }
-}
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 -(void)jumpPageWithJudge:(bool)isJudgeSignState andSignedBlock:(signCompleteBlock)completeBlock
 {

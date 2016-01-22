@@ -173,6 +173,10 @@ NSString * const CarEditAction = @"clbjing";
 NSString * const Index = @"index";
 //删除车辆
 NSString * const DelCL = @"cldel";
+
+//投诉列表
+NSString * const TSList = @"tslist";
+
 /************************
  *支付的参数常量定义
  *
