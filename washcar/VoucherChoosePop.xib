@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -7,43 +7,32 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VoucherChoosePop">
             <connections>
-                <outlet property="innerView" destination="aov-Hf-W1w" id="nAU-LU-cWY"/>
-                <outlet property="tableview" destination="NcW-lM-KWP" id="zuD-na-OrT"/>
+                <outlet property="innerView" destination="U9V-Ew-FTA" id="eZg-8Q-91G"/>
+                <outlet property="tableview" destination="6o8-WX-Tys" id="4VK-Bi-qeC"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" restorationIdentifier="VoucherChoosePop" id="aov-Hf-W1w">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="201"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+        <view contentMode="scaleToFill" id="U9V-Ew-FTA">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="170"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="洗车券" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnv-Ia-2fE">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="洗车券" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t8I-NH-oEF">
                     <rect key="frame" x="0.0" y="0.0" width="300" height="35"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.62745098040000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="35" id="Jr7-gI-FK2"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NcW-lM-KWP">
-                    <rect key="frame" x="0.0" y="33" width="300" height="168"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6o8-WX-Tys">
+                    <rect key="frame" x="0.0" y="34" width="300" height="136"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="NcW-lM-KWP" firstAttribute="top" secondItem="aov-Hf-W1w" secondAttribute="top" constant="33" id="0aC-zP-T5H"/>
-                <constraint firstItem="bnv-Ia-2fE" firstAttribute="leading" secondItem="aov-Hf-W1w" secondAttribute="leading" id="90d-XJ-xZo"/>
-                <constraint firstAttribute="bottom" secondItem="NcW-lM-KWP" secondAttribute="bottom" id="A9a-6N-PIA"/>
-                <constraint firstAttribute="centerX" secondItem="bnv-Ia-2fE" secondAttribute="centerX" id="Ha3-IU-KxR"/>
-                <constraint firstAttribute="trailing" secondItem="NcW-lM-KWP" secondAttribute="trailing" id="OVW-ch-HOt"/>
-                <constraint firstItem="bnv-Ia-2fE" firstAttribute="top" secondItem="aov-Hf-W1w" secondAttribute="top" id="Ybg-hP-pwj"/>
-                <constraint firstAttribute="trailing" secondItem="bnv-Ia-2fE" secondAttribute="trailing" id="deL-YM-YxU"/>
-                <constraint firstItem="NcW-lM-KWP" firstAttribute="leading" secondItem="aov-Hf-W1w" secondAttribute="leading" id="gsx-MA-w6F"/>
-            </constraints>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="172" y="194.5"/>
+            <point key="canvasLocation" x="158" y="183"/>
         </view>
     </objects>
 </document>

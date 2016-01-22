@@ -26,15 +26,13 @@
         _innerView.frame = frame;
         [self addSubview:_innerView];
     }
-   
+    _tableview.delegate = self;
+    _tableview.dataSource = self;
+
     return self;
 }
 + (instancetype)defaultPopupView{
     return [[VoucherChoosePop alloc]initWithFrame:CGRectMake(0, 0, POP_WIDTH, 400)];
-}
--(void)initDelegate{
-    _tableview.delegate = self;
-    _tableview.dataSource = self;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -42,17 +40,16 @@
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-     NSString *identifier = @"cell";
-    PopVoucherTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
-        cell = [[PopVoucherTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault   reuseIdentifier:identifier];
-    }
     VoucherInfo *voucherInfo = _voucherInfoArray[indexPath.row];
-//    cell.title.text = [@"优惠代金券金额:" stringByAppendingFormat:@"%@%@" ,voucherInfo.value,@"元"];
+    NSString *cellIdentifier = @"CarNumChooseCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
-    cell.title.attributedText = [StringUtil getMenoyText:@"优惠代金券金额:" :voucherInfo.value :@"元"];
-//    cell.btn.tag = indexPath.row;
-//    [cell.btn addTarget:self action:@selector(onCellClick:) forControlEvents:UIControlEventTouchUpInside];
+    if (cell==nil) {
+        cell= [[[NSBundle mainBundle]loadNibNamed:@"CarNumChooseCell" owner:nil options:nil] firstObject];
+    }
+    UILabel *title = [cell viewWithTag:1];
+    title.attributedText =  [StringUtil getMenoyText:@"优惠代金券金额:" :voucherInfo.value :@"元"];
+    
     return cell;
     
 }

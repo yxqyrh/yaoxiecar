@@ -14,7 +14,6 @@
 #import "LewPopupViewAnimationSlide.h"
 #import "LewPopupViewAnimationSpring.h"
 #import "LewPopupViewAnimationDrop.h"
-#import "PopVoucherTableViewCell.h"
 #import "VoucherInfo.h"
 @protocol VoucherChoosePopDelegate<NSObject> // 代理传值方法
 @required
@@ -23,13 +22,9 @@
 @interface VoucherChoosePop : UIView<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UIView *innerView;
 @property (nonatomic, weak)UIViewController *parentVC;
-
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-
 @property NSArray *voucherInfoArray;
 + (instancetype)defaultPopupView;
 // 委托代理人，代理一般需使用弱引用(weak)
 @property (nonatomic) id<VoucherChoosePopDelegate> delegate;
-
--(void)initDelegate;
 @end
