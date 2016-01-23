@@ -20,20 +20,20 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.6</string>
+	<string>2.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleURLName</key>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wx4868b35061f87885</string>
 				<string>QQ05FB8B52</string>
 				<string>QQ075BCD15</string>
 			</array>
-			<key>CFBundleURLName</key>
-			<string></string>
 		</dict>
 		<dict>
 			<key>CFBundleURLName</key>
@@ -55,7 +55,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>106</string>
+	<string>200</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>alipayauth</string>
@@ -69,15 +69,15 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
 		<string>fetch</string>
 	</array>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<true/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<true/>
 	<key>UIFileSharingEnabled</key>
 	<false/>
 	<key>UILaunchStoryboardName</key>
