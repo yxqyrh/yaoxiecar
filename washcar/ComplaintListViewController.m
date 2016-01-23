@@ -56,60 +56,44 @@
     return array==nil?0:array.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
 
-    static NSString *identifier = @"ComplaintListCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault   reuseIdentifier:identifier];
-    }
-    
-    NSDictionary *dic = array[indexPath.row];
-    UILabel *titleLabel =  (UILabel*)[cell viewWithTag:1];
-    UILabel *timeLabel =  (UILabel*)[cell viewWithTag:2];
-    UILabel *contentLabel =  (UILabel*)[cell viewWithTag:6];
-    UIView *view1 = [cell viewWithTag:3];
-
-    
-    //    content.scrollEnabled = NO;
-    titleLabel.text = [dic objectForKey:@"mes"];
-    timeLabel.text = [dic objectForKey:@"time"];
-    
-    [titleLabel sizeToFit];
-    
-    
-    
-    [contentLabel sizeToFit];
-    
-    CGFloat height = 0;
-    
-    height +=  titleLabel.frame.size.height + contentLabel.frame.size.height + 40;
-    DLog(@"height:%f",height);
-    return height;
+    UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
+    return cell.backgroundView.frame.size.height;
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSDictionary *dic = array[indexPath.row];
-    UILabel *titleLabel =  (UILabel*)[cell viewWithTag:1];
-    UILabel *timeLabel =  (UILabel*)[cell viewWithTag:2];
-    UIView *view2 = [cell viewWithTag:3];
-    UILabel *contentLabel =  (UILabel*)[cell viewWithTag:6];
 
-   
-//    content.scrollEnabled = NO;
-    titleLabel.text = [dic objectForKey:@"mes"];
-    [titleLabel sizeToFit];
-    timeLabel.text = [dic objectForKey:@"time"];
-    
-    NSString *str = [dic objectForKey:@"content"];
-    if (str== nil||str.length == 0) {
-        str = @"暂无回复";
+    UIFont *font_mes = [UIFont systemFontOfSize:15];
+    // 該行要顯示的內容
+    NSString *mes = [dic objectForKey:@"mes"];
+    // 計算出顯示完內容需要的最小尺寸
+    CGSize size_mes = [mes sizeWithFont:font_mes constrainedToSize:CGSizeMake(SCREEN_WIDTH-100, 1000.0f) lineBreakMode:UILineBreakModeWordWrap];
+    UIFont *font_content = [UIFont systemFontOfSize:14];
+    // 該行要顯示的內容
+    NSString *content_str = [dic objectForKey:@"content"];
+    if (content_str==nil||content_str.length==0) {
+        content_str = @"暂无回复";
     }
-    contentLabel.text = str;
-    [contentLabel sizeToFit];
+    // 計算出顯示完內容需要的最小尺寸
+    CGSize size_content = [content_str sizeWithFont:font_content constrainedToSize:CGSizeMake(SCREEN_WIDTH, 1000.0f) lineBreakMode:UILineBreakModeWordWrap];
     
-
-//    view2.frame = CGRectMake(0, view2.frame.origin.y, SCREEN_WIDTH, size_content.height);
+    UIView *body1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, size_mes.height+8)];
+    
+    UILabel *content1 = [[UILabel alloc]initWithFrame:CGRectMake(8, 4, SCREEN_WIDTH-110, size_mes.height)];
+    content1.lineBreakMode = UILineBreakModeWordWrap;
+    content1.numberOfLines = 0;//上面两行设置多行显示
+    content1.font = font_mes;
+    content1.text = [dic objectForKey:@"mes"];
+    UILabel *time = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-90, 8, 95, 15)];
+    NSString *sjc =[dic objectForKey:@"time"];
+    NSString *time_text = [DateUtil nsdateToString:[DateUtil zoneChange:sjc] :@"yyyy-MM-dd"];
+    time.text = time_text;
+    time.font =[UIFont systemFontOfSize:13];
+    time.textColor = [UIColor redColor];
+    [body1 addSubview:content1];
+    [body1 addSubview:time];
     
     
     
