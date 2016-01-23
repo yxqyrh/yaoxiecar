@@ -31,6 +31,7 @@
     }
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     return self;
 }
 
@@ -51,10 +52,25 @@
     UILabel *title = [cell viewWithTag:1];
     WashType *_WashType = _washTypeArray[indexPath.row];
   title.text = _WashType.fs;
+    UIImageView *image = [cell viewWithTag:2];
+    if (indexPath.row == _current_seleted_row) {
+        [image setImage:[UIImage imageNamed:@"selected"]];
+    }else{
+        [image setImage:[UIImage imageNamed:@"unselected"]];
+    }
     return cell;
     
 }
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -67,7 +83,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    
+     _current_seleted_row = indexPath.row;
     if (_delegate != nil && [_delegate conformsToProtocol:@protocol(WashStyleChooseDelegate)]) { // 如果协议响应了sendValue:方法
         // 通知执行协议方法
         

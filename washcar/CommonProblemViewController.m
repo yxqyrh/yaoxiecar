@@ -183,8 +183,8 @@
 {
 
     UIView *header = [[UIView alloc] init];
-    
-    header.layer.backgroundColor    = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1].CGColor;
+     header.layer.backgroundColor =  [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0].CGColor;
+//    header.layer.backgroundColor    = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1].CGColor;
     header.layer.masksToBounds      = YES;
     header.layer.borderWidth        = 0.5;
     header.layer.borderColor        = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1].CGColor;

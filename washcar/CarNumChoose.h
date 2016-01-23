@@ -26,5 +26,5 @@
 @property (nonatomic) NSArray *dataArray;
 
 -(void)initTableView;
-
+@property NSInteger current_seleted_row;
 @end
