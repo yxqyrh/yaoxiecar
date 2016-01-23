@@ -504,7 +504,6 @@
         view.parentVC = self;
         view.delegate = self;
         view.voucherInfoArray =voucherInfoArray;
-        [view initDelegate];
         [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
           
         }];

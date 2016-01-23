@@ -57,6 +57,17 @@
     time= (long)[fromdate timeIntervalSince1970];
     return time;
 }
+
+//将yyyy-MM-dd HH:mm:ss格式时间转换成时间戳
++(long)changeTimeToTimeSp:(NSString *)timeStr :(NSString *)fm{
+    long time;
+    NSDateFormatter *format=[[NSDateFormatter alloc] init];
+    [format setDateFormat:fm];
+    NSDate *fromdate=[format dateFromString:timeStr];
+    time= (long)[fromdate timeIntervalSince1970];
+    return time;
+}
+
 //获取当前系统的yyyy-MM-dd HH:mm:ss格式时间
 +(NSString *)getTime{
     NSDate *fromdate=[NSDate date];

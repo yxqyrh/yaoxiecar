@@ -8,6 +8,8 @@
 
 #import "ComplaintListViewController.h"
 #import "MayiHttpRequestManager.h"
+#import "StringUtil.h"
+#import "DateUtil.h"
 @interface ComplaintListViewController (){
     NSMutableArray *array;
 }
@@ -37,7 +39,8 @@
     [rightBarButtonItem setTintColor:[UIColor whiteColor]];
 
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
-    
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self  loadData:YES];
 }
 
@@ -86,14 +89,6 @@
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    static NSString *identifier = @"ComplaintListCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault   reuseIdentifier:identifier];
-    }
-    
     NSDictionary *dic = array[indexPath.row];
     UILabel *titleLabel =  (UILabel*)[cell viewWithTag:1];
     UILabel *timeLabel =  (UILabel*)[cell viewWithTag:2];
@@ -117,6 +112,37 @@
 //    view2.frame = CGRectMake(0, view2.frame.origin.y, SCREEN_WIDTH, size_content.height);
     
     
+    
+
+    
+    
+    UIView *body2 = [[UIView alloc]initWithFrame:CGRectMake(0, body1.frame.size.height, SCREEN_WIDTH, size_content.height+16+15)];
+    body2.backgroundColor =  [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    
+    UIImageView *icon = [[UIImageView alloc]initWithFrame:CGRectMake(8, 8, 15, 15)];
+    icon.image = [UIImage imageNamed:@"complaint_table_item_icon.png"];
+    UILabel *lable1 = [[UILabel alloc]initWithFrame:CGRectMake(26, 8, 100, 15)];
+    lable1.font = [UIFont systemFontOfSize:14];
+    lable1.text = @"掌柜回复";
+    lable1.textColor =[UIColor grayColor];
+    
+    UILabel *content_text = [[UILabel alloc]initWithFrame:CGRectMake(26, 25, SCREEN_WIDTH-16, size_content.height)];
+    content_text.textColor =[UIColor grayColor];
+    content_text.font =font_content;
+    content_text.text =content_str;
+    [body2 addSubview:icon];
+    [body2 addSubview:lable1];
+    [body2 addSubview:content_text];
+    UIView *body_all = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, body1.frame.size.height+body2.frame.size.height)];
+    [body_all addSubview:body1];
+    [body_all addSubview:body2];
+    static NSString *identifier = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault   reuseIdentifier:identifier];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.backgroundView = body_all;
     return cell;
     
 }

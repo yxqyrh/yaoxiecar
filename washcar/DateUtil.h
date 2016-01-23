@@ -16,4 +16,5 @@
 +(NSString*)nsdateToString:(NSDate *)date:(NSString*)strDateFormat;
 +(long)changeTimeToTimeSp:(NSString *)timeStr;
 +(NSString *)getTime;
++(long)changeTimeToTimeSp:(NSString *)timeStr :(NSString *)fm;
 @end
