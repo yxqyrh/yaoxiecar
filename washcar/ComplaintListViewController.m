@@ -59,7 +59,9 @@
     
 
     UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
-    return cell.backgroundView.frame.size.height;
+    [cell setNeedsUpdateConstraints];
+    [cell updateConstraintsIfNeeded];
+    return cell.contentView.frame.size.height;
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

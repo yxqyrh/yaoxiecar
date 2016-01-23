@@ -36,6 +36,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
+@property (strong, nonatomic) IBOutlet UIView *userBalanceView;
 
 @end
 
@@ -458,6 +459,9 @@
     [self initBtn:_btn7 :@"user_common_problem_icon" :_btn7.titleLabel.text];
     [self initBtn:_btn8 :@"user_exit_icon" :_btn8.titleLabel.text];
     float deviceNum = [StoryboadUtil getDeviceNum];
+    
+    _userBalanceView.layer.borderColor = GeneralLineCGColor;
+    _userBalanceView.layer.borderWidth = 0.5;
     
     int magin_bottom = 10;
     if (deviceNum == 4.0) {
