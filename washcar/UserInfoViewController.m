@@ -82,14 +82,14 @@
         [self loadData];
     }else{
         [_actionBtn setTitle:@"确认添加" forState:UIControlStateNormal];
-        
+        [WDLocationHelper getInstance].delegate = self;
+        [[WDLocationHelper getInstance] startUpdate];
 //        _actionBtn.titleLabel.text = @"确认添加";
     }
     
     _CarNum.delegate = self;
     
-    [WDLocationHelper getInstance].delegate = self;
-    [[WDLocationHelper getInstance] startUpdate];
+
 }
 // 点击编辑框外面时，隐藏键盘
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -407,6 +407,7 @@
         if ([@"1" isEqualToString:res]) {
             [SVProgressHUD showSuccessWithStatus:@"车牌编辑成功！"];
                        cwh =_cheweihao.text;
+            [self.navigationController popViewControllerAnimated:YES];
         }else if([@"2" isEqualToString:res]){
             [SVProgressHUD showErrorWithStatus:@"车牌编辑失败！"];
         }else if([@"5" isEqualToString:res]){
@@ -445,16 +446,6 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:MayiIndexPageNotifiction object:nil];
             
             [self.navigationController popViewControllerAnimated:YES];
-            
-            
-            
-//            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Sign" bundle:nil];
-//            UIViewController *loginViewController = [storyboard instantiateInitialViewController];
-//            loginViewController.modalTransitionStyle = UIModalPresentationFormSheet;//跳转效果
-//            [self presentModalViewController:loginViewController animated:YES];//在这里一跳就行了。
-//            
-//            //[self dismissModalViewControllerAnimated:YES];
-//            [self removeFromParentViewController];
         }else{
             [SVProgressHUD showErrorWithStatus:@"退出失败！"];
         }
@@ -468,9 +459,6 @@
 //提交信息编辑
 -(void)addCarNum{
     NSDictionary *parameters = [NSMutableDictionary dictionary];
-    // uid=18550031362  Isloginid=14435112502766
-    //    [parameters setValue:[GlobalVar sharedSingleton].uid forKey:@"uid"];
-    //    [parameters setValue:[GlobalVar sharedSingleton].isloginid forKey:@"isloginid"];
     if ([WDSystemUtils isEmptyOrNullString:_provinceShort.titleLabel.text]||[@"省简称" isEqualToString:_provinceShort.titleLabel.text]) {
         [self.view makeToast:@"车牌号的省份简称不能为空"];
         return;
@@ -520,19 +508,6 @@
     [parameters setValue:area forKey:@"qu"];
     [parameters setValue:plotmc forKey:@"address"];
     [parameters setValue:_cheweihao.text forKey:@"parkNum"];
-    
-    
-//    [parameters setValue:@"沪" forKey:@"prov"];
-//    [parameters setValue:@"B" forKey:@"nevel"];
-//    [parameters setValue:@"S2324" forKey:@"LPN"];
-//    [parameters setValue:@"黑色" forKey:@"color"];
-//    [parameters setValue:@"25" forKey:@"province"];
-//    [parameters setValue:@"321" forKey:@"city"];
-//    [parameters setValue:@"2706" forKey:@"qu"];
-//    [parameters setValue:@"387" forKey:@"address"];
-//    [parameters setValue:@"33" forKey:@"parkNum"];
-//
-    
     [[MayiHttpRequestManager sharedInstance] POST:AddCarNum parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         NSLog(@"responseObject=%@",responseObject);
         
@@ -541,6 +516,7 @@
             
             [SVProgressHUD showSuccessWithStatus:@"添加车牌成功！"];
             cwh =_cheweihao.text;
+            [self.navigationController popViewControllerAnimated:YES];
         }else if([@"2" isEqualToString:res]){
             [SVProgressHUD showErrorWithStatus:@"添加车牌失败！"];
         }else if([@"5" isEqualToString:res]){

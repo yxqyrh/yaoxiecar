@@ -29,6 +29,7 @@
     self.navigationItem.rightBarButtonItem = addButton;
     self.navigationItem.title = @"车辆管理";
     [_tableView   setSeparatorColor:[UIColor    grayColor]];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     //    [self loadData:YES];
 }
 
@@ -177,7 +178,6 @@
     NSDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:clid forKey:@"id"];
     [[MayiHttpRequestManager sharedInstance] POST:DelCL parameters:parameters showLoadingView:loadingView success:^(id responseObject) {
-        NSLog(@"responseObject=%@",responseObject);
         if (responseObject == nil) {
             return ;
         }
@@ -186,14 +186,6 @@
             [SVProgressHUD showErrorWithStatus:@"删除成功"];
             [[GlobalVar sharedSingleton].carInfoList  removeObjectAtIndex:indexPath.row];
             [_tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            //            _array = [CarInfo objectArrayWithKeyValuesArray: [responseObject objectForKey:@"list"]];
-            //            [GlobalVar sharedSingleton].carInfoList = _array;
-            //            if (_array!=nil&&_array.count>0) {
-            //
-            //                [_tableView reloadData];
-            //
-            //            }
-            
         }
     } failture:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"删除失败"];
