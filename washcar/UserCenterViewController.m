@@ -74,6 +74,31 @@
     [self loadData:YES];
    
     [self initBtnLayout];
+    
+    
+    
+    float deviceNum = [StoryboadUtil getDeviceNum];
+    
+    int magin_left = -8;
+    if (deviceNum == 4.0) {
+        magin_left = -20;
+    }
+    if(deviceNum == 5.0){
+        magin_left = -20;
+    }
+    if (deviceNum == 6.0) {
+        magin_left = -30;
+    }
+    
+    if (deviceNum == 6.5) {
+        magin_left = -38;
+    }
+    
+    [_yeIcon mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_yeBody.mas_left).offset(-magin_left);
+        //别的
+    }];
+
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self loadData:NO];

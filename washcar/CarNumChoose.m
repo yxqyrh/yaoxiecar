@@ -34,6 +34,7 @@
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 
 }
 
@@ -59,19 +60,35 @@
     CarInfo *info =  [GlobalVar sharedSingleton].carInfoList[indexPath.row];
     NSString *str = [info.cp1 stringByAppendingFormat:@"%@%@",info.cp2,info.cp3];
     title.text = str;
+    UIImageView *image = [cell viewWithTag:2];
+    if (indexPath.row == _current_seleted_row) {
+        [image setImage:[UIImage imageNamed:@"selected"]];
+    }else{
+        [image setImage:[UIImage imageNamed:@"unselected"]];
+    }
     return cell;
     
 }
 
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
     return  [GlobalVar sharedSingleton].carInfoList.count;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-
+    _current_seleted_row = indexPath.row;
+    [_tableView reloadData];
 
     if (_delegate != nil && [_delegate conformsToProtocol:@protocol(CarNumChooseDelegate)]) { // 如果协议响应了sendValue:方法
         // 通知执行协议方法

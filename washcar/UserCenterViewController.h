@@ -36,5 +36,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn7;
 @property (weak, nonatomic) IBOutlet UIButton *btn8;
 @property (weak, nonatomic) IBOutlet UIView *btnbody;
+@property (weak, nonatomic) IBOutlet UIImageView *yeIcon;
 
+@property (weak, nonatomic) IBOutlet UIView *yeBody;
 @end

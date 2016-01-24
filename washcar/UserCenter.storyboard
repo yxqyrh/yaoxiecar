@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GzF-PX-v8X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GzF-PX-v8X">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -43,39 +43,28 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FJ8-rL-Bc3">
                                 <rect key="frame" x="0.0" y="174" width="294" height="34"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="user_balance_icon" translatesAutoresizingMaskIntoConstraints="NO" id="2WW-9E-EKR">
-                                        <rect key="frame" x="115" y="7" width="20" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="j2S-JV-ZVL"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="余额0.00元" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voH-0R-32b">
-                                        <rect key="frame" x="140" y="0.0" width="154" height="34"/>
+                                        <rect key="frame" x="61" y="0.0" width="233" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="154" id="Qfr-sz-F5P"/>
-                                            <constraint firstAttribute="height" constant="45" id="RoJ-CW-qoI"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="Qfr-sz-F5P"/>
-                                                <exclude reference="RoJ-CW-qoI"/>
-                                            </mask>
-                                        </variation>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="user_balance_icon" translatesAutoresizingMaskIntoConstraints="NO" id="2WW-9E-EKR">
+                                        <rect key="frame" x="38" y="9" width="15" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="h1R-KF-f9C"/>
+                                            <constraint firstAttribute="height" constant="20" id="zKX-5L-Io1"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="voH-0R-32b" secondAttribute="trailing" id="3jJ-aI-Ry8"/>
-                                    <constraint firstItem="voH-0R-32b" firstAttribute="leading" secondItem="2WW-9E-EKR" secondAttribute="trailing" constant="5" id="6fX-xS-v23"/>
-                                    <constraint firstItem="voH-0R-32b" firstAttribute="centerY" secondItem="FJ8-rL-Bc3" secondAttribute="centerY" id="6pM-rP-fX3"/>
-                                    <constraint firstItem="2WW-9E-EKR" firstAttribute="centerY" secondItem="voH-0R-32b" secondAttribute="centerY" id="Ee2-e8-aU5"/>
-                                    <constraint firstItem="2WW-9E-EKR" firstAttribute="top" secondItem="FJ8-rL-Bc3" secondAttribute="top" constant="7" id="cLy-bE-U0n"/>
-                                    <constraint firstItem="2WW-9E-EKR" firstAttribute="centerY" secondItem="FJ8-rL-Bc3" secondAttribute="centerY" id="eeZ-tQ-f4E"/>
-                                    <constraint firstItem="voH-0R-32b" firstAttribute="top" secondItem="FJ8-rL-Bc3" secondAttribute="top" id="p6d-cj-eeC"/>
+                                    <constraint firstItem="voH-0R-32b" firstAttribute="leading" secondItem="2WW-9E-EKR" secondAttribute="trailing" constant="4" id="AHg-FX-ZkM"/>
+                                    <constraint firstItem="2WW-9E-EKR" firstAttribute="centerY" secondItem="FJ8-rL-Bc3" secondAttribute="centerY" id="V0n-pF-WVR"/>
+                                    <constraint firstAttribute="trailing" secondItem="voH-0R-32b" secondAttribute="trailing" id="aa5-vo-TYD"/>
+                                    <constraint firstItem="2WW-9E-EKR" firstAttribute="leading" secondItem="FJ8-rL-Bc3" secondAttribute="leading" constant="38" id="hDx-UO-49f"/>
+                                    <constraint firstItem="voH-0R-32b" firstAttribute="centerY" secondItem="FJ8-rL-Bc3" secondAttribute="centerY" id="kTb-X2-2ld"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXD-mK-eUu">
@@ -84,6 +73,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Lpi-nk-O4J"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="充值" image="user_recharge_icon">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -301,6 +291,8 @@
                         <outlet property="userBalanceView" destination="FJ8-rL-Bc3" id="T3J-i9-BcJ"/>
                         <outlet property="userIcon" destination="r9F-Ew-YSI" id="Wfj-ms-UmQ"/>
                         <outlet property="userPhone" destination="OuD-yH-jl0" id="P7X-Jk-qIc"/>
+                        <outlet property="yeBody" destination="FJ8-rL-Bc3" id="mS9-jV-cHj"/>
+                        <outlet property="yeIcon" destination="2WW-9E-EKR" id="fOR-li-nnc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYm-Ih-OTa" userLabel="First Responder" sceneMemberID="firstResponder"/>

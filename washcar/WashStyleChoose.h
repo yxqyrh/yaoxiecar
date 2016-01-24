@@ -26,4 +26,5 @@
 @property (nonatomic) id<WashStyleChooseDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property  NSArray *washTypeArray;//洗车方式列表
+@property NSInteger current_seleted_row;
 @end

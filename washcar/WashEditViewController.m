@@ -42,6 +42,10 @@
     bool _isFirstEnter;
     
     NSString *_address;
+    int current_voucher ;
+    int current_washtype ;
+    int currnet_chepaiNum;
+    
 }
 
 
@@ -70,7 +74,10 @@
     // Do any additional setup after loading the view.
     _isFirstEdit = YES;
     _isFirstEnter = YES;
-    
+    current_voucher = 0;
+    current_washtype = 0;
+    currnet_chepaiNum = 0;
+
    
 }
 
@@ -504,6 +511,7 @@
         view.parentVC = self;
         view.delegate = self;
         view.voucherInfoArray =voucherInfoArray;
+        view.current_seleted_row = current_voucher;
         [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
           
         }];
@@ -515,6 +523,7 @@
         CarNumChoose *view = [CarNumChoose defaultPopupView];
         view.parentVC = self;
         view.delegate = self;
+        view.current_seleted_row = currnet_chepaiNum;
         //    [view initTableView];
         [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
             
@@ -536,6 +545,7 @@
     view.parentVC = self;
     view.delegate = self;
     view.washTypeArray = washTypeArray;
+    view.current_seleted_row = current_washtype;
     [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
 
     }];
@@ -595,6 +605,7 @@
 }
 -(void)setWashStyle:(NSInteger *)value{
     _selectWashType = [washTypeArray objectAtIndex:value];
+    current_washtype = value;
     _washTypeLabel.text = _selectWashType.fs;
 //     _priceLabel.text = _selectWashType.value;
     [self.tableView reloadData];
@@ -642,13 +653,16 @@
 
 }
 //代金券代理回调
--(void)setVoucherInfo:(VoucherInfo *)value{
+-(void)setVoucherInfo:(VoucherInfo *)value :(NSInteger)row{
     _voucherInfo =value;
+    current_voucher = row;
     [self.tableView reloadData];
 }
+
 //车牌选择回调
 -(void)setCarNum:(int)index{
 //    _carNumberLabel.text =
+    currnet_chepaiNum  = index;
     CarInfo *info =  [GlobalVar sharedSingleton].carInfoList[index];
     NSString *str = [info.cp1 stringByAppendingFormat:@"%@%@",info.cp2,info.cp3];
     _carNumberLabel.text = str;

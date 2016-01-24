@@ -28,7 +28,7 @@
     }
     _tableview.delegate = self;
     _tableview.dataSource = self;
-
+    self.tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     return self;
 }
 + (instancetype)defaultPopupView{
@@ -49,13 +49,27 @@
     }
     UILabel *title = [cell viewWithTag:1];
     title.attributedText =  [StringUtil getMenoyText:@"优惠代金券金额:" :voucherInfo.value :@"元"];
-    
+    UIImageView *image = [cell viewWithTag:2];
+    if (indexPath.row == _current_seleted_row) {
+        [image setImage:[UIImage imageNamed:@"selected"]];
+    }else{
+        [image setImage:[UIImage imageNamed:@"unselected"]];
+    }
     return cell;
     
 }
 
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (_voucherInfoArray==nil) {
         return 0;
@@ -63,11 +77,13 @@
     return _voucherInfoArray.count;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    _current_seleted_row = indexPath.row;
+    [_tableview reloadData];
     VoucherInfo *voucherInfo = _voucherInfoArray[indexPath.row];
     if (_delegate != nil && [_delegate conformsToProtocol:@protocol(VoucherChoosePopDelegate)]) { // 如果协议响应了sendValue:方法
         // 通知执行协议方法
 
-        [_delegate setVoucherInfo:voucherInfo];
+        [_delegate setVoucherInfo:voucherInfo:_current_seleted_row];
         [_parentVC lew_dismissPopupViewWithanimation:[LewPopupViewAnimationFade new]];
     }
 }

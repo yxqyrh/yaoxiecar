@@ -61,7 +61,7 @@
     UITableViewCell *cell = [self tableView:tableView cellForRowAtIndexPath:indexPath];
     [cell setNeedsUpdateConstraints];
     [cell updateConstraintsIfNeeded];
-    return cell.contentView.frame.size.height;
+    return cell.backgroundView.frame.size.height;
     
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -96,12 +96,6 @@
     time.textColor = [UIColor redColor];
     [body1 addSubview:content1];
     [body1 addSubview:time];
-    
-    
-    
-
-    
-    
     UIView *body2 = [[UIView alloc]initWithFrame:CGRectMake(0, body1.frame.size.height, SCREEN_WIDTH, size_content.height+16+15)];
     body2.backgroundColor =  [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
     
