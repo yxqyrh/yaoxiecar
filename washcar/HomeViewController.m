@@ -114,7 +114,7 @@
 - (IBAction)searchControlClick:(id)sender {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"违章查询" andUrl:@"http://chaxun.weizhang8.cn/"];
+    [webController setTitle:@"违章查询" andUrl:@"http://chaxun.weizhang8.cn/":YES];
     [self.navigationController pushViewController:webController animated:YES];
 }
 
@@ -127,21 +127,21 @@
 - (IBAction)weatherControlClick:(id)sender {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"天气查询" andUrl:@"http://weather.news.sina.com.cn/"];
+    [webController setTitle:@"天气查询" andUrl:@"http://weather.news.sina.com.cn/":YES];
     [self.navigationController pushViewController:webController animated:YES];
 }
 
 - (IBAction)InsuranceControlClick:(id)sender {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"保险理赔" andUrl:@"http://www.pingan.com/cpchexian/sem/duosheng.shtml"];
+    [webController setTitle:@"保险理赔" andUrl:@"http://www.pingan.com/cpchexian/sem/duosheng.shtml":YES];
     [self.navigationController pushViewController:webController animated:YES];
 }
 
 - (IBAction)trafficControlClick:(id)sender {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"交通查询" andUrl:@"http://bus.mapbar.com/"];
+    [webController setTitle:@"交通查询" andUrl:@"http://bus.mapbar.com/":YES];
     [self.navigationController pushViewController:webController animated:YES];
 }
 

@@ -564,7 +564,9 @@
     NSString *url = result.URL.absoluteString;
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"注册协议" andUrl:url];
+//    [webController setTitle:@"注册协议" andUrl:url:YES];
+    
+    [webController setTitle:@"注册协议" andUrl:url :YES];
     [self.navigationController pushViewController:webController animated:YES];
 }
 
