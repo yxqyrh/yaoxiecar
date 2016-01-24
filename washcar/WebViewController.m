@@ -8,7 +8,9 @@
 
 #import "WebViewController.h"
 
-@interface WebViewController ()
+@interface WebViewController (){
+    BOOL isUrl2;
+}
 
 @end
 
@@ -18,9 +20,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-//    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
-    
-    [self.webView loadHTMLString:_url baseURL:nil];
+//
+    self.webView.delegate = self;
+    if (isUrl2) {
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
+    }else{
+        [self.webView loadHTMLString:_url baseURL:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,11 +34,17 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)setTitle:(NSString *)title andUrl:(NSString *)url
-{
+//-(void)setTitle:(NSString *)title andUrl:(NSString *)url
+//{
+//    self.title = title;
+//    _url = url;
+//    
+//}
+
+-(void)setTitle:(NSString *)title andUrl:(NSString *)url :(BOOL)isUrl{
     self.title = title;
     _url = url;
-    
+    isUrl2 = isUrl;
 }
 
 #pragma mark - UIWebViewDelegate

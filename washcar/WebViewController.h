@@ -15,6 +15,9 @@
 
 @property (strong, nonatomic) NSString *url;
 
--(void)setTitle:(NSString *)title andUrl:(NSString *)url;
+
+
+-(void)setTitle:(NSString *)title andUrl:(NSString *)url:(BOOL)isUrl;
+
 
 @end

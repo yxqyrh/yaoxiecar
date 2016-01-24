@@ -224,10 +224,10 @@
             NSString *upicture =(NSString*)[dir objectForKey:@"upicture"];
             if([countxcj integerValue]>0){
 //                voucherNum.hidden = NO;
-                 [self initBtn:_btn2 :@"user_coupon_icon" :_btn2.titleLabel.text];
+                 [self initBtn:_btn2 :@"user_coupon_icon_new" :_btn2.titleLabel.text];
             }else{
 //                 voucherNum.hidden = YES;
-                [self initBtn:_btn2 :@"user_coupon_icon_new" :_btn2.titleLabel.text];
+                [self initBtn:_btn2 :@"user_coupon_icon" :_btn2.titleLabel.text];
                
             }
             if([countxx integerValue]>0){

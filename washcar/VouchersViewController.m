@@ -29,9 +29,6 @@
     _tableview.dataSource = self;
     page = 1;
     _arry = [[NSMutableArray alloc]init];
-    // Do any additional setup after loading the view.
-    
-    //    NSString* timeStr = @"2011-01-26 17:40:50";
     self.tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
     
     
