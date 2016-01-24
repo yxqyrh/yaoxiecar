@@ -20,9 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"洗车券";
-    self.navigationController.navigationBar.barStyle = UIStatusBarStyleDefault;
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    // Do any additional setup after loading the view.
     board = [UIStoryboard storyboardWithName:@"UserCenter" bundle:nil];
     NSMutableArray *vcs = [[NSMutableArray alloc]init];
     VouchersViewController *noused = [board instantiateViewControllerWithIdentifier:@"VouchersViewController"];
