@@ -512,7 +512,7 @@
         _searchResult = [NSMutableArray array];
         NSString *searchText = _searchDisplayController.searchBar.text;
         
-        for (SmallArea *smallArea in _allPlots) {
+        for (SmallArea *smallArea in _nearPlots) {
             if ([smallArea.plot rangeOfString:searchText].length > 0) {
                 [_searchResult addObject:smallArea];
             }

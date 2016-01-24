@@ -76,7 +76,7 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
 
     
-    if (_pageIndex != 1) {
+    if (_pageType != 1) {
         UILongPressGestureRecognizer *longPressGestrureRecognizer = [[UILongPressGestureRecognizer alloc] init];
         [longPressGestrureRecognizer addTarget:self action:@selector(longPressCell:)];
         [self.tableView addGestureRecognizer:longPressGestrureRecognizer];
@@ -464,10 +464,12 @@
         UILabel *timeLabel = (UILabel *)[cell viewWithTag:7];
         timeLabel.text = [WDSystemUtils getDateString:order.numtime];
         
-        UILabel *descLabel = (UILabel *)[cell viewWithTag:9];
-        descLabel.text = order.remark;
-        [descLabel sizeToFit];
+        
         if (_pageType == 1) {
+            UILabel *descLabel = (UILabel *)[cell viewWithTag:9];
+            descLabel.text = order.remark;
+            [descLabel sizeToFit];
+            
             UIButton *cancelButton = (UIButton *)[cell viewWithTag:21];
             cancelButton.hidden = NO;
             cancelButton.layer.cornerRadius = 3;
@@ -488,6 +490,23 @@
             }
             
             [cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+            
+            UIButton *phoneButton = (UIButton *)[cell viewWithTag:31];
+            phoneButton.backgroundColor = RGBCOLOR(73, 180, 252);
+            phoneButton.userInteractionEnabled = YES;
+            [phoneButton addTarget:self action:@selector(connectWashWorkers:) forControlEvents:UIControlEventTouchUpInside];
+            
+            if ([@"0" isEqualToString:order.judge_zt]) {
+                phoneButton.backgroundColor = [UIColor lightGrayColor];
+                phoneButton.userInteractionEnabled = NO;
+            }
+            else {
+                phoneButton.backgroundColor = RGBCOLOR(73, 180, 252);
+                phoneButton.userInteractionEnabled = YES;
+            }
+            
+            UILabel *label = [cell viewWithTag:33];
+            label.text = order.yjxcsj;
             
         }
         else if (_pageType == 2) {
@@ -539,6 +558,10 @@
                 [cancelReasonLabel sizeToFit];
             }
             
+            UILabel *descLabel = (UILabel *)[cell viewWithTag:9];
+            descLabel.text = order.remark;
+            [descLabel sizeToFit];
+            
             if ([WDSystemUtils isEmptyOrNullString:order.remark]) {
                 
                 UILabel *remarkTitleLabel = (UILabel *)[cell viewWithTag:31];
@@ -586,24 +609,24 @@
     }
     
     
-    if (_pageType == 1) {
-        UIButton *phoneButton = (UIButton *)[cell viewWithTag:31];
-        phoneButton.backgroundColor = RGBCOLOR(73, 180, 252);
-        phoneButton.userInteractionEnabled = YES;
-        [phoneButton addTarget:self action:@selector(connectWashWorkers:) forControlEvents:UIControlEventTouchUpInside];
-        
-        if (order.xcgsjh != nil
-            && ![@"" isEqualToString:order.xcgsjh] &&
-            ![@"<null>" isEqualToString:order.xcgsjh]) {
-            phoneButton.hidden = NO;
-        }
-        else {
-            phoneButton.hidden = NO;
-        }
-        
-        UILabel *label = [cell viewWithTag:33];
-        label.text = order.yjxcsj;
-    }
+//    if (_pageType == 1) {
+//        UIButton *phoneButton = (UIButton *)[cell viewWithTag:31];
+//        phoneButton.backgroundColor = RGBCOLOR(73, 180, 252);
+//        phoneButton.userInteractionEnabled = YES;
+//        [phoneButton addTarget:self action:@selector(connectWashWorkers:) forControlEvents:UIControlEventTouchUpInside];
+//        
+//        if (order.xcgsjh != nil
+//            && ![@"" isEqualToString:order.xcgsjh] &&
+//            ![@"<null>" isEqualToString:order.xcgsjh]) {
+//            phoneButton.hidden = NO;
+//        }
+//        else {
+//            phoneButton.hidden = NO;
+//        }
+//        
+//        UILabel *label = [cell viewWithTag:33];
+//        label.text = order.yjxcsj;
+//    }
     
     [bgView setNeedsUpdateConstraints];
     [bgView updateConstraintsIfNeeded];
