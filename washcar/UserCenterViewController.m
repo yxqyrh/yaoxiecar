@@ -205,17 +205,6 @@
             break;
     }
 }
-//{
-//    grzx =     {
-//        countxcj = 0;
-//        countxx = 3;
-//        money = "9962.20";
-//        uname = "";
-//        upicture = "/Home/images/dpxq/pro_pic.png";
-//    };
-//    res = 1;
-//}
-
 -(void)loadData:(BOOL) isShowLoading{
     
     UIView *loadingView;

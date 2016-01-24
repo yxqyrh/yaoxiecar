@@ -33,8 +33,8 @@
     page = 1;
     [self loadData:MyMsg :page:YES];
     _tableview.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
-    //    [_tableview addHeaderWithTarget:self action:@selector(headerRereshing)];
-    //    [self.tableView headerBeginRefreshing];
+//        [_tableview addHeaderWithTarget:self action:@selector(headerRereshing)];
+//        [self.tableView headerBeginRefreshing];
     isReadMap = [[NSMutableDictionary alloc]init ];
     
 }
