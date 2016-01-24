@@ -7,7 +7,7 @@
 //
 
 #import "WashStyleChoose.h"
-#import "CommonMacro.h"
+//#import "CommonMacro.h"
 #import "WashType.h"
 
 @implementation WashStyleChoose

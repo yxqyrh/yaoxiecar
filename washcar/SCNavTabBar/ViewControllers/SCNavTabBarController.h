@@ -16,6 +16,8 @@
 @property (nonatomic, assign)   BOOL        scrollAnimation;            // Default value: NO
 @property (nonatomic, assign)   BOOL        mainViewBounces;            // Default value: NO
 
+@property (nonatomic)           NSString    *pageTagString;            // Default value: YES
+
 @property (nonatomic, strong)   NSArray     *subViewControllers;        // An array of children view controllers
 
 @property (nonatomic, strong)   UIColor     *navTabBarColor;            // Could not set [UIColor clear], if you set, NavTabbar will show initialize color

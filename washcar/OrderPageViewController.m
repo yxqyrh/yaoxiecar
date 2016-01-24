@@ -42,6 +42,7 @@
     _navTabBarController = [[SCNavTabBarController alloc] init];
     _navTabBarController.subViewControllers = vcs;
     _navTabBarController.showArrowButton = FALSE;
+    _navTabBarController.pageTagString = @"OrderPage";
     [_navTabBarController addParentController:self];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectRunningOrder) name:MayiOrderRunningNotifiction object:nil];

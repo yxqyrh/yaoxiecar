@@ -180,7 +180,9 @@
 {
     [_mainView setContentOffset:CGPointMake(index * SCREEN_WIDTH, DOT_COORDINATE) animated:_scrollAnimation];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderNotifiction object:nil userInfo:[NSDictionary dictionaryWithObject:@(index + 1) forKey:MayiOrderNotifictionPageType]];
+    if ([@"OrderPage" isEqualToString:_pageTagString]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderNotifiction object:nil userInfo:[NSDictionary dictionaryWithObject:@(index + 1) forKey:MayiOrderNotifictionPageType]];
+    }
 }
 
 - (void)shouldPopNavgationItemMenu:(BOOL)pop height:(CGFloat)height
