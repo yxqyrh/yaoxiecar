@@ -210,7 +210,7 @@
     [SVProgressHUD showSuccessWithStatus:@"支付成功"];
     [self.navigationController popToRootViewControllerAnimated:NO];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderNotifiction object:nil userInfo:[NSDictionary dictionaryWithObject:@1 forKey:MayiOrderNotifictionPageType]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderRunningNotifiction object:nil userInfo:[NSDictionary dictionaryWithObject:@1 forKey:MayiOrderNotifictionPageType]];
     _isPaying = false;
 }
 
@@ -247,7 +247,7 @@
             [SVProgressHUD showSuccessWithStatus:@"首单免支付，下单成功"];
             [self.navigationController popToRootViewControllerAnimated:NO];
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderNotifiction object:nil userInfo:[NSDictionary dictionaryWithObject:@1 forKey:MayiOrderNotifictionPageType]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:MayiOrderRunningNotifiction object:nil userInfo:[NSDictionary dictionaryWithObject:@1 forKey:MayiOrderNotifictionPageType]];
             _isPaying = false;
             return;
         }

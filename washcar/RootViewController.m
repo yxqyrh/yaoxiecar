@@ -98,6 +98,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showIndexPage) name:MayiIndexPageNotifiction object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRunningOrder) name:MayiOrderRunningNotifiction object:nil];
+    
     _selectedIndex = -1;
     
     if ([GlobalVar sharedSingleton].launchOptions) {
@@ -252,6 +254,11 @@
     }];
     
 //    [self selectItem:index completion:nil];
+}
+
+-(void)showRunningOrder
+{
+    [self jumpController:@"1"];
 }
 
 -(void)showOrder
