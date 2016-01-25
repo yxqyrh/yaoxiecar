@@ -15,21 +15,18 @@
 #import "LewPopupViewAnimationDrop.h"
 @protocol RechargeAmountPopDelegate<NSObject> // 代理传值方法
 @required
-- (void)setRechargeValue:(int)value;
+- (void)setRechargeValue:(int)value:(NSInteger)row;
 @end
 
-@interface RechargeAmountPop : UIView
+@interface RechargeAmountPop : UIView<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UIView *innerView;
 @property (nonatomic, weak)UIViewController *parentVC;
-@property (weak, nonatomic) IBOutlet UIImageView *_100Check;
-@property (weak, nonatomic) IBOutlet UIImageView *_200Check;
-@property (weak, nonatomic) IBOutlet UIImageView *_300Check;
-@property (weak, nonatomic) IBOutlet UIImageView *_600Check;
-@property (weak, nonatomic) IBOutlet UIImageView *_50Check;
 + (instancetype)defaultPopupView;
 @property (nonatomic) id<RechargeAmountPopDelegate> delegate;
-
+@property NSInteger current_seleted_row;
 @property (nonatomic)bool isSC;
-@property (nonatomic)int prevSelectMoney;
+//@property (nonatomic)int prevSelectMoney;
+@property NSArray *rechargeArray;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

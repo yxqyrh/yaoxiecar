@@ -25,6 +25,10 @@
     int _payType;
     NSString *_sc;
     NSString *_accountLeft;
+    
+    NSArray *rechargeArray;
+    int  current_recharge_row;
+    NSString *recharge_id;
 }
 
 @end
@@ -38,7 +42,7 @@
     
     _payType = 1;
     _accountLeft = @"0.00";
-    _checkInMoney = 100;
+    _checkInMoney = 0.0;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paySuccess) name:MayiPaySuccess object:nil];
     
     [self loadData];
@@ -67,14 +71,27 @@
             _accountLeft = [responseObject objectForKey:@"money"];
             _sc = [responseObject objectForKey:@"sc"];
             
-            if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"sc"]]) {
-                _checkInMoney = 50;
+            rechargeArray = [responseObject objectForKey:@"czje"];
+            
+//            if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"sc"]]) {
+//                _checkInMoney = 50;
+//            }
+//            else {
+//                _checkInMoney = 100;
+//            }
+            if (rechargeArray!=nil&&rechargeArray.count>0) {
+                NSDictionary *dic = rechargeArray[0];
+                
+                NSString *aString = [dic objectForKey:@"recharge"];
+                _checkInMoney = [aString doubleValue];
+                recharge_id = [dic objectForKey:@"id"];
             }
-            else {
+            else{
                 _checkInMoney = 100;
             }
+//               [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
             
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView reloadData];
         }
         
         
@@ -110,8 +127,12 @@
 
 -(void)czzxtj
 {
+    if(rechargeArray==nil||rechargeArray.count==0){
+        [SVProgressHUD showErrorWithStatus:@"该地区暂时无法充值"];
+        return;
+    }
     NSDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setValue:@(_checkInMoney) forKey:@"value"];
+    [parameters setValue:recharge_id forKey:@"id"];
     [parameters setValue:@(_payType) forKey:@"type"];
     [[MayiHttpRequestManager sharedInstance] POST:MayiCZZXTJ parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         if ([WDSystemUtils isEqualsInt:2 andJsonData:[responseObject objectForKey:@"res"]]) {
@@ -295,11 +316,19 @@
 }
 
 #pragma mark - RechargeAmountPopDelegate
-- (void)setRechargeValue:(int)value
-{
-    _checkInMoney = value;
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+//- (void)setRechargeValue:(int)value
+//{
+
+//}
+
+-(void)setRechargeValue:(int)value :(NSInteger)row{
+        _checkInMoney = value;
+    current_recharge_row = row;
+    NSDictionary *dic = rechargeArray[row];
+    recharge_id = [dic objectForKey:@"id"];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
+
 
 #pragma mark - UITableViewDelegate
 
@@ -313,9 +342,11 @@
         else {
             view.isSC = NO;
         }
-        view.prevSelectMoney = _checkInMoney;
+//        view.prevSelectMoney = _checkInMoney;
         view.parentVC = self;
         view.delegate = self;
+        view.rechargeArray = rechargeArray;
+        view.current_seleted_row = current_recharge_row;
         [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
             
         }];

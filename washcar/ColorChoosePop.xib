@@ -35,7 +35,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" id="oLn-Et-byf">
+                <view tag="1" contentMode="scaleToFill" id="oLn-Et-byf">
                     <rect key="frame" x="18" y="45" width="60" height="64"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>

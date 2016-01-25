@@ -32,6 +32,14 @@
     NSString *szdqstr;
     NSString *plotmc;//小区名称
     
+    //自动定位的地址信息
+    NSString *location_province ;
+    NSString *location_area;
+    NSString *location_city;
+    NSString *location_plot;
+    NSString *location_plotmc;//小区名称
+    
+    
     long time;
     
     long uid;
@@ -43,7 +51,8 @@
     NSDictionary *dic;
     NSDictionary *dz;
     
-    
+    //当本页是编辑页的时候，初次点击地址使用车辆之前的地址信息；
+    bool isFirstEnterLocation;
 }
 
 @property   (nonatomic)NSString *area_id_province;
@@ -62,6 +71,8 @@
 @property (nonatomic)NSArray *plotList;
 @property (nonatomic)NSDictionary *dz;
 
+@property (nonatomic)NSDictionary *location_dz;
+
 @property (assign)bool isEdit;
 
 @end
@@ -79,14 +90,15 @@
     [self.view addSubview:chePaiPickView];
     self.navigationItem.title = self.title;
     if ([self.title isEqualToString:@"车辆信息编辑"]) {
+        _isEdit = true;
         [self loadData];
     }else{
+        _isEdit = false;
         [_actionBtn setTitle:@"确认添加" forState:UIControlStateNormal];
         [WDLocationHelper getInstance].delegate = self;
         [[WDLocationHelper getInstance] startUpdate];
-//        _actionBtn.titleLabel.text = @"确认添加";
     }
-    
+
     _CarNum.delegate = self;
     
 
@@ -148,17 +160,41 @@
     //    [parameters setObject:[NSNumber numberWithDouble:31.85] forKey:@"Latitude"];
     [[MayiHttpRequestManager sharedInstance] POST:MayiRegShow parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
-            self.provinceList = [responseObject objectForKey:@"shenglist"];
-            self.cityList = [responseObject objectForKey:@"citylist"];
-            self.areaList = [LocationInfo getInstance].areaList = [responseObject objectForKey:@"qulist"];
-            self.plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
-            self.dz = [responseObject objectForKey:@"dz"];
+//            self.provinceList = [responseObject objectForKey:@"shenglist"];
+//            self.cityList = [responseObject objectForKey:@"citylist"];
+//            self.areaList = [LocationInfo getInstance].areaList = [responseObject objectForKey:@"qulist"];
+//            self.plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
+//            self.dz = [responseObject objectForKey:@"dz"];
+//            
+//            
+//            _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],[self.dz objectForKey:@"plotmc"]];
             
-            
-            _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],[self.dz objectForKey:@"plotmc"]];
-            
-            [self chooseLocation:_address
+            if (_isEdit) {
+                self.provinceList = [responseObject objectForKey:@"shenglist"];
+                self.cityList = [responseObject objectForKey:@"citylist"];
+                self.areaList = [LocationInfo getInstance].areaList = [responseObject objectForKey:@"qulist"];
+                self.plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
+                self.location_dz = [responseObject objectForKey:@"dz"];
+                
+                
+                _address = [NSString stringWithFormat:@"%@%@%@%@", [self.location_dz objectForKey:@"provincemc"],[self.location_dz objectForKey:@"citymc"],[self.location_dz objectForKey:@"areamc"],[self.location_dz objectForKey:@"plotmc"]];
+                
+
+            }
+            else {
+                self.provinceList = [responseObject objectForKey:@"shenglist"];
+                self.cityList = [responseObject objectForKey:@"citylist"];
+                self.areaList = [LocationInfo getInstance].areaList = [responseObject objectForKey:@"qulist"];
+                self.plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
+                self.dz = [responseObject objectForKey:@"dz"];
+                
+                _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],[self.dz objectForKey:@"plotmc"]];
+                
+                [self chooseLocation:_address
                       provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:[self.dz objectForKey:@"plot"] plotName:[self.dz objectForKey:@"plotmc"]];
+            }
+            
+            
         }
         
     } failture:^(NSError *error) {
@@ -180,7 +216,13 @@
     LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
     viewController.delegate = self;
     viewController.provinceList = self.provinceList;
-    [viewController initDataDZ:self.dz nearPlots:self.plotList];
+    if (_isEdit) {
+        [viewController initDataDZ:self.location_dz nearPlots:self.plotList];
+    }
+    else {
+        [viewController initDataDZ:self.dz nearPlots:self.plotList];
+    }
+
     [self.navigationController pushViewController:viewController animated:YES];
     return;
     
@@ -305,6 +347,9 @@
             dic =[responseObject objectForKey:@"res_cl"];
             dz  = [responseObject objectForKey:@"dz"];
              [self refresh];
+            
+            [WDLocationHelper getInstance].delegate = self;
+            [[WDLocationHelper getInstance] startUpdate];
                    }
     } failture:^(NSError *error) {
         

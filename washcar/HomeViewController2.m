@@ -19,13 +19,11 @@
     NSInteger totalCount;
     
     NSArray *array;
-   
+    YYCycleScrollView *cycleScrollView;
+    BOOL isLoaded;
 }
 
 
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
-
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, strong) NSTimer *timer;
 @end
 
@@ -34,14 +32,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.parentViewController.title = @"蚂蚁洗车";
-    self.scrollview.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/640)*387);
-    [self loadImages];
+    self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/640)*387);
+    
     [self showNotifiction];
+    isLoaded = NO;
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+      self.parentViewController.title = @"蚂蚁洗车";
+    if (!isLoaded) {
+        [self loadImages:YES];
+        isLoaded = YES;
+    }else{
+        [self loadImages:NO];
+    }
+    
+}
 -(void)showNotifiction
 {
-    
     [[MayiHttpRequestManager sharedInstance] POST:@"ggts" parameters:nil showLoadingView:nil success:^(id responseObject) {
         
         DLog(@"responseObject:%@",responseObject);
@@ -72,58 +79,85 @@
 }
 
 -(void)initGallery{
-    
     if (array==nil|| ![array isKindOfClass:[NSArray class]] ||  array.count==0) {
         return;
     }
     //    图片的宽
-    CGFloat imageW = self.scrollview.frame.size.width;
+    CGFloat imageW = self.lunboBody.frame.size.width;
     //    CGFloat imageW = 300;
     //    图片高
-    CGFloat imageH = self.scrollview.frame.size.height;
+    CGFloat imageH = self.lunboBody.frame.size.height;
     //    图片的Y
     CGFloat imageY = 0;
     //    图片中数
     totalCount = array.count;
-
-    YYCycleScrollView *cycleScrollView = [[YYCycleScrollView alloc] initWithFrame:CGRectMake(0, imageY, imageW, imageH) animationDuration:5.0];
-    NSMutableArray *viewArray = [[NSMutableArray alloc] init];
-    for (int i = 0; i < totalCount; i++) {
-        NSDictionary *dic = array[i];
+    if(totalCount==1){
+        NSDictionary *dic = array[0];
         NSString *pic = [dic objectForKey:@"tpurl"];
         if ([StringUtil isEmty:pic]) {
-            continue;
+            return;
         }
-        CGFloat imageX = i * imageW;
-        UIImageView *tempImageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageX, imageY, imageW, imageH)];
-         [tempImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]];
-//        tempImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d",i+1]];
+        UIButton *tempImageView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, imageW, imageH)];
+        UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]]];
+                [tempImageView setBackgroundImage:image forState:UIControlStateNormal];
         tempImageView.contentMode = UIViewContentModeScaleAspectFill;
         tempImageView.clipsToBounds = true;
-        [viewArray addObject:tempImageView];
-    }
-    [cycleScrollView setFetchContentViewAtIndex:^UIView *(NSInteger(pageIndex)) {
-        return [viewArray objectAtIndex:pageIndex];
-    }];
-    [cycleScrollView setTotalPagesCount:^NSInteger{
-        return totalCount;
-    }];
-    [cycleScrollView setTapActionBlock:^(NSInteger(pageIndex)) {
-        NSDictionary *dic = array[pageIndex];
-        
-        NSString *bz = [dic objectForKey:@"bz"];
-        
+        [tempImageView addTarget:self action:@selector(goDetailPic:) forControlEvents:UIControlEventTouchUpInside];
+        [self.lunboBody addSubview:tempImageView];
+
+    }else{
+        if (cycleScrollView!=nil) {
+            [cycleScrollView removeFromSuperview];
+         }
+        cycleScrollView = [[YYCycleScrollView alloc] initWithFrame:CGRectMake(0, imageY, imageW, imageH) animationDuration:5.0];
+        NSMutableArray *viewArray = [[NSMutableArray alloc] init];
+        for (int i = 0; i < totalCount; i++) {
+            NSDictionary *dic = array[i];
+            NSString *pic = [dic objectForKey:@"tpurl"];
+            if ([StringUtil isEmty:pic]) {
+                continue;
+            }
+            CGFloat imageX = i * imageW;
+//            UIImageView *tempImageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageX, imageY, imageW, imageH)];
+//                     [tempImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]];
+            UIButton *tempImageView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, imageW, imageH)];
+            UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]]];
+            [tempImageView setBackgroundImage:image forState:UIControlStateNormal];
+            
+            //        UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]]];
+            //        [tempImageView setImage:image];
+            tempImageView.contentMode = UIViewContentModeScaleAspectFill;
+            tempImageView.clipsToBounds = true;
+            [viewArray addObject:tempImageView];
+        }
+        [cycleScrollView setFetchContentViewAtIndex:^UIView *(NSInteger(pageIndex)) {
+            return [viewArray objectAtIndex:pageIndex];
+        }];
+        [cycleScrollView setTotalPagesCount:^NSInteger{
+            return totalCount;
+        }];
+        [cycleScrollView setTapActionBlock:^(NSInteger(pageIndex)) {
+            NSDictionary *dic = array[pageIndex];
+            NSString *bz = [dic objectForKey:@"bz"];
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-        [webController setTitle:@"详情" andUrl:bz:NO];
+            [webController setTitle:@"详情" andUrl:bz:NO];
             [self.navigationController pushViewController:webController animated:YES];
-        
-    }];
-    
-    [self.scrollview addSubview:cycleScrollView];
-
+            
+        }];
+  
+        [self.lunboBody addSubview:cycleScrollView];
+    }
 }
-
+-(void)goDetailPic:(id)sender{
+    //这个sender其实就是UIButton，因此通过sender.tag就可以拿到刚才的参数
+    NSDictionary *dic = array[0];
+    NSString *bz = [dic objectForKey:@"bz"];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
+    [webController setTitle:@"详情" andUrl:bz:NO];
+    [self.navigationController pushViewController:webController animated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -148,14 +182,14 @@
     return scaledImage;  
 }
 
--(void)viewWillAppear:(BOOL)animated{
-     self.parentViewController.title = @"蚂蚁洗车";
-}
-
--(void)loadImages
+-(void)loadImages:(BOOL)isShowLoading
 {
+    UIView *loadingView ;
+    if (isShowLoading) {
+        loadingView = self.view;
+    }
     NSDictionary *parameters = [NSMutableDictionary dictionary];
-    [[MayiHttpRequestManager sharedInstance] POST:Index parameters:parameters showLoadingView:self.view success:^(id responseObject) {
+    [[MayiHttpRequestManager sharedInstance] POST:Index parameters:parameters showLoadingView:loadingView success:^(id responseObject) {
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
 
             array  = [responseObject objectForKey:@"pc"];
@@ -194,38 +228,6 @@
 }
 
 
-- (void)nextImage
-{
-    int page = (int)self.pageControl.currentPage;
-    if (page == totalCount-1) {
-        page = 0;
-    }else
-    {
-        page++;
-    }
-    
-    //  滚动scrollview
-    CGFloat x = page * self.scrollview.frame.size.width;
-    
-    
-    [UIView animateWithDuration:1.0 animations:^
-     {
-         self.scrollview.contentOffset = CGPointMake(x, 0);
-     } completion:^(BOOL finished)
-     {
-     }];
-}
-
-// scrollview滚动的时候调用
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    //    计算页码
-    //    页码 = (contentoffset.x + scrollView一半宽度)/scrollView宽度
-    CGFloat scrollviewW =  scrollView.frame.size.width;
-    CGFloat x = scrollView.contentOffset.x;
-    int page = (x + scrollviewW / 2) /  scrollviewW;
-    self.pageControl.currentPage = page;
-}
 
 
 
