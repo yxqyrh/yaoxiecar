@@ -19,7 +19,8 @@
     NSInteger totalCount;
     
     NSArray *array;
-   
+    YYCycleScrollView *cycleScrollView;
+    BOOL isLoaded;
 }
 
 
@@ -32,10 +33,20 @@
     [super viewDidLoad];
     self.parentViewController.title = @"蚂蚁洗车";
     self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/640)*387);
-    [self loadImages];
+    
     [self showNotifiction];
+    isLoaded = NO;
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+      self.parentViewController.title = @"蚂蚁洗车";
+    if (!isLoaded) {
+        [self loadImages:YES];
+        isLoaded = YES;
+    }else{
+        [self loadImages:NO];
+    }
+    
+}
 -(void)showNotifiction
 {
     [[MayiHttpRequestManager sharedInstance] POST:@"ggts" parameters:nil showLoadingView:nil success:^(id responseObject) {
@@ -95,7 +106,10 @@
         [self.lunboBody addSubview:tempImageView];
 
     }else{
-        YYCycleScrollView *cycleScrollView = [[YYCycleScrollView alloc] initWithFrame:CGRectMake(0, imageY, imageW, imageH) animationDuration:5.0];
+        if (cycleScrollView!=nil) {
+            [cycleScrollView removeFromSuperview];
+         }
+        cycleScrollView = [[YYCycleScrollView alloc] initWithFrame:CGRectMake(0, imageY, imageW, imageH) animationDuration:5.0];
         NSMutableArray *viewArray = [[NSMutableArray alloc] init];
         for (int i = 0; i < totalCount; i++) {
             NSDictionary *dic = array[i];
@@ -131,6 +145,7 @@
             [self.navigationController pushViewController:webController animated:YES];
             
         }];
+  
         [self.lunboBody addSubview:cycleScrollView];
     }
 }
@@ -167,14 +182,14 @@
     return scaledImage;  
 }
 
--(void)viewWillAppear:(BOOL)animated{
-     self.parentViewController.title = @"蚂蚁洗车";
-}
-
--(void)loadImages
+-(void)loadImages:(BOOL)isShowLoading
 {
+    UIView *loadingView ;
+    if (isShowLoading) {
+        loadingView = self.view;
+    }
     NSDictionary *parameters = [NSMutableDictionary dictionary];
-    [[MayiHttpRequestManager sharedInstance] POST:Index parameters:parameters showLoadingView:self.view success:^(id responseObject) {
+    [[MayiHttpRequestManager sharedInstance] POST:Index parameters:parameters showLoadingView:loadingView success:^(id responseObject) {
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
 
             array  = [responseObject objectForKey:@"pc"];

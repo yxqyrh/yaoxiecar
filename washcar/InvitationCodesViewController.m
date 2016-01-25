@@ -34,6 +34,7 @@
  
     _tableview.dataSource = self;
     _tableview.delegate = self;
+    _tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self loadData:YES];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
