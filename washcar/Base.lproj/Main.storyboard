@@ -543,13 +543,13 @@
                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P7Y-R5-PDL">
                                             <rect key="frame" x="10" y="5" width="300" height="35"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QY-9F-xUZ">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6QY-9F-xUZ">
                                                     <rect key="frame" x="88" y="7" width="125" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="充值金额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQd-Ql-5wj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="充值金额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQd-Ql-5wj">
                                                     <rect key="frame" x="3" y="8" width="86" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -565,7 +565,9 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="6QY-9F-xUZ" firstAttribute="centerY" secondItem="P7Y-R5-PDL" secondAttribute="centerY" id="S66-Ld-DbL"/>
                                                 <constraint firstAttribute="trailing" secondItem="RYX-9B-Kmj" secondAttribute="trailing" constant="10" id="TWN-Z3-V1e"/>
+                                                <constraint firstItem="mQd-Ql-5wj" firstAttribute="centerY" secondItem="P7Y-R5-PDL" secondAttribute="centerY" id="anp-mP-grQ"/>
                                                 <constraint firstItem="RYX-9B-Kmj" firstAttribute="centerY" secondItem="P7Y-R5-PDL" secondAttribute="centerY" id="mj3-Pj-mft"/>
                                             </constraints>
                                         </view>
