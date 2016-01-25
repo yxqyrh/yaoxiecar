@@ -38,7 +38,6 @@
 
 -(void)showNotifiction
 {
-    
     [[MayiHttpRequestManager sharedInstance] POST:@"ggts" parameters:nil showLoadingView:nil success:^(id responseObject) {
         
         DLog(@"responseObject:%@",responseObject);
@@ -69,7 +68,6 @@
 }
 
 -(void)initGallery{
-    
     if (array==nil|| ![array isKindOfClass:[NSArray class]] ||  array.count==0) {
         return;
     }
@@ -82,45 +80,69 @@
     CGFloat imageY = 0;
     //    图片中数
     totalCount = array.count;
-
-    YYCycleScrollView *cycleScrollView = [[YYCycleScrollView alloc] initWithFrame:CGRectMake(0, imageY, imageW, imageH) animationDuration:5.0];
-    NSMutableArray *viewArray = [[NSMutableArray alloc] init];
-    for (int i = 0; i < totalCount; i++) {
-        NSDictionary *dic = array[i];
+    if(totalCount==1){
+        NSDictionary *dic = array[0];
         NSString *pic = [dic objectForKey:@"tpurl"];
         if ([StringUtil isEmty:pic]) {
-            continue;
+            return;
         }
-        CGFloat imageX = i * imageW;
-        UIImageView *tempImageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageX, imageY, imageW, imageH)];
-         [tempImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]];
-//        tempImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d",i+1]];
+        UIButton *tempImageView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, imageW, imageH)];
+        UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]]];
+                [tempImageView setBackgroundImage:image forState:UIControlStateNormal];
         tempImageView.contentMode = UIViewContentModeScaleAspectFill;
         tempImageView.clipsToBounds = true;
-        [viewArray addObject:tempImageView];
-    }
-    [cycleScrollView setFetchContentViewAtIndex:^UIView *(NSInteger(pageIndex)) {
-        return [viewArray objectAtIndex:pageIndex];
-    }];
-    [cycleScrollView setTotalPagesCount:^NSInteger{
-        return totalCount;
-    }];
-    [cycleScrollView setTapActionBlock:^(NSInteger(pageIndex)) {
-        NSDictionary *dic = array[pageIndex];
-        
-        NSString *bz = [dic objectForKey:@"bz"];
-        
+        [tempImageView addTarget:self action:@selector(goDetailPic:) forControlEvents:UIControlEventTouchUpInside];
+        [self.lunboBody addSubview:tempImageView];
+
+    }else{
+        YYCycleScrollView *cycleScrollView = [[YYCycleScrollView alloc] initWithFrame:CGRectMake(0, imageY, imageW, imageH) animationDuration:5.0];
+        NSMutableArray *viewArray = [[NSMutableArray alloc] init];
+        for (int i = 0; i < totalCount; i++) {
+            NSDictionary *dic = array[i];
+            NSString *pic = [dic objectForKey:@"tpurl"];
+            if ([StringUtil isEmty:pic]) {
+                continue;
+            }
+            CGFloat imageX = i * imageW;
+//            UIImageView *tempImageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageX, imageY, imageW, imageH)];
+//                     [tempImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]];
+            UIButton *tempImageView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, imageW, imageH)];
+            UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]]];
+            [tempImageView setBackgroundImage:image forState:UIControlStateNormal];
+            
+            //        UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]]];
+            //        [tempImageView setImage:image];
+            tempImageView.contentMode = UIViewContentModeScaleAspectFill;
+            tempImageView.clipsToBounds = true;
+            [viewArray addObject:tempImageView];
+        }
+        [cycleScrollView setFetchContentViewAtIndex:^UIView *(NSInteger(pageIndex)) {
+            return [viewArray objectAtIndex:pageIndex];
+        }];
+        [cycleScrollView setTotalPagesCount:^NSInteger{
+            return totalCount;
+        }];
+        [cycleScrollView setTapActionBlock:^(NSInteger(pageIndex)) {
+            NSDictionary *dic = array[pageIndex];
+            NSString *bz = [dic objectForKey:@"bz"];
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-        [webController setTitle:@"详情" andUrl:bz:NO];
+            [webController setTitle:@"详情" andUrl:bz:NO];
             [self.navigationController pushViewController:webController animated:YES];
-        
-    }];
-    
-    [self.lunboBody addSubview:cycleScrollView];
-
+            
+        }];
+        [self.lunboBody addSubview:cycleScrollView];
+    }
 }
-
+-(void)goDetailPic:(id)sender{
+    //这个sender其实就是UIButton，因此通过sender.tag就可以拿到刚才的参数
+    NSDictionary *dic = array[0];
+    NSString *bz = [dic objectForKey:@"bz"];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
+    [webController setTitle:@"详情" andUrl:bz:NO];
+    [self.navigationController pushViewController:webController animated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
