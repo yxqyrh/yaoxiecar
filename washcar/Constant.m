@@ -38,6 +38,8 @@ NSString * const MayiOrderCanceledNotifiction = @"OrderCancelNofitiction";
 
 NSString * const MayiBackgroundNotifiction = @"MayiBackgroundNotifiction";
 
+NSString * const MayiUserCenterRefreshNotifiction = @"MayiUserCenterRefreshNotifiction";
+
 NSString * const MayiIndexPageNotifiction = @"MayiIndexPageNotifiction";
 
 /************************

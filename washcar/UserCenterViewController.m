@@ -98,8 +98,16 @@
         make.left.equalTo(_yeBody.mas_left).offset(-magin_left);
         //别的
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh:) name:MayiUserCenterRefreshNotifiction object:nil];
 
 }
+
+-(void)refresh:(NSNotification *)notifction
+{
+    [self loadData:NO];
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [self loadData:NO];
     
