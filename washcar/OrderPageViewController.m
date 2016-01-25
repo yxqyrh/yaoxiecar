@@ -48,6 +48,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectRunningOrder) name:MayiOrderRunningNotifiction object:nil];
     
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectFinishedOrder) name:MayiOrderFinishedNotifiction object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectCanceledOrder) name:MayiOrderCanceledNotifiction object:nil];
         
 //    QCSlideViewController *slideSwitchVC = [[QCSlideViewController alloc] init];
 //    QCViewController * drawerController = [[QCViewController alloc]
@@ -75,6 +77,11 @@
 -(void)selectFinishedOrder
 {
     [_navTabBarController setCurrentIndex:1];
+}
+
+-(void)selectCanceledOrder
+{
+    [_navTabBarController setCurrentIndex:2];
 }
 
 - (void)didReceiveMemoryWarning {

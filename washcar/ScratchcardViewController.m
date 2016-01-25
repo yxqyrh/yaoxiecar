@@ -84,7 +84,8 @@
     [[MayiHttpRequestManager sharedInstance] POST:MayiGGKCZ parameters:parameters showLoadingView:self.view success:^(id responseObject) {
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
             [SVProgressHUD showSuccessWithStatus:@"充值成功"];
-            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:MayiUserCenterRefreshNotifiction object:nil userInfo:@{@"refreshIndex":@"1"}];
             return;
         }
         else if ([WDSystemUtils isEqualsInt:2 andJsonData:[responseObject objectForKey:@"res"]]) {
