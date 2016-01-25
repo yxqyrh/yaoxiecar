@@ -101,7 +101,7 @@
     UILabel *title = [cell viewWithTag:1];
     NSString *recharge = [dic objectForKey:@"recharge"];
     NSString *free = [dic objectForKey:@"free"];
-    NSString *str =  [@"充" stringByAppendingFormat:@"%@%@%@%@",  recharge,@"元送",free, @"元送"];
+    NSString *str =  [@"充" stringByAppendingFormat:@"%@%@%@%@",  recharge,@"元送",free, @"元"];
     title.text = str;
     UIImageView *image = [cell viewWithTag:2];
     if (indexPath.row == _current_seleted_row) {
