@@ -25,6 +25,9 @@
     int _payType;
     NSString *_sc;
     NSString *_accountLeft;
+    
+    NSArray *rechargeArray;
+    int  current_recharge_row;
 }
 
 @end
@@ -67,14 +70,24 @@
             _accountLeft = [responseObject objectForKey:@"money"];
             _sc = [responseObject objectForKey:@"sc"];
             
-            if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"sc"]]) {
-                _checkInMoney = 50;
+            rechargeArray = [responseObject objectForKey:@"czje"];
+            
+//            if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"sc"]]) {
+//                _checkInMoney = 50;
+//            }
+//            else {
+//                _checkInMoney = 100;
+//            }
+            if (rechargeArray!=nil&&rechargeArray.count>0) {
+                NSDictionary *dic = rechargeArray[0];
+                
+                NSString *aString = [dic objectForKey:@"recharge"];
+                _checkInMoney = [aString doubleValue];
             }
-            else {
+            else{
                 _checkInMoney = 100;
             }
-            
-            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+               [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
         }
         
         
@@ -295,11 +308,17 @@
 }
 
 #pragma mark - RechargeAmountPopDelegate
-- (void)setRechargeValue:(int)value
-{
-    _checkInMoney = value;
-    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+//- (void)setRechargeValue:(int)value
+//{
+
+//}
+
+-(void)setRechargeValue:(int)value :(NSInteger)row{
+        _checkInMoney = value;
+    current_recharge_row = row;
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
+
 
 #pragma mark - UITableViewDelegate
 
@@ -313,9 +332,11 @@
         else {
             view.isSC = NO;
         }
-        view.prevSelectMoney = _checkInMoney;
+//        view.prevSelectMoney = _checkInMoney;
         view.parentVC = self;
         view.delegate = self;
+        view.rechargeArray = rechargeArray;
+        view.current_seleted_row = current_recharge_row;
         [self lew_presentPopupView:view animation:[LewPopupViewAnimationFade new] dismissed:^{
             
         }];

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -12,6 +12,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="eWl-k5-W3S">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                         <color key="barTintColor" red="0.0" green="0.62745098039215685" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -40,15 +41,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" id="Aj3-92-lSz">
                                 <rect key="frame" x="0.0" y="223" width="320" height="257"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <animations/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="710-l4-aGt">
+                            <view contentMode="scaleToFill" id="JFj-Y2-7wV">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="206"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.59607843140000005" green="0.59607843140000005" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </scrollView>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="PS8-5x-jop">
                                 <rect key="frame" x="125" y="302" width="70" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="-35" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="我要洗车" backgroundImage="home_btn">
@@ -59,19 +63,21 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                     </view>
                     <navigationItem key="navigationItem" title="蚂蚁洗车" id="6dF-JJ-olP">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="0hg-xb-t0x">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Ssy-hC-cTI">
                                 <rect key="frame" x="274" y="7" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
                                 <state key="normal" image="img_zhifubao.png"/>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="scrollview" destination="710-l4-aGt" id="gBP-9C-rlG"/>
+                        <outlet property="lunboBody" destination="JFj-Y2-7wV" id="Cic-aY-juJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ebu-xY-LeK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -86,17 +92,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="ztS-CN-Wmr">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </scrollView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" id="6pv-te-3NB">
                                 <rect key="frame" x="0.0" y="264" width="320" height="304"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <animations/>
                             </imageView>
+                            <view contentMode="scaleToFill" id="vZK-JF-taG">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="G3d-TC-VYN">
                                 <rect key="frame" x="100" y="324" width="120" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="-40" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="我要洗车" backgroundImage="home_btn">
@@ -107,11 +117,12 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                     </view>
                     <navigationItem key="navigationItem" title="蚂蚁洗车" id="QiY-hR-4on"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="scrollview" destination="ztS-CN-Wmr" id="mm1-jR-Dpd"/>
+                        <outlet property="lunboBody" destination="vZK-JF-taG" id="jF3-X7-25s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGR-8j-3yJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,14 +140,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" id="uyG-xd-psn">
                                 <rect key="frame" x="0.0" y="285" width="375" height="382"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <animations/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="PxJ-KP-4su">
+                            <view contentMode="scaleToFill" id="foH-ff-DK5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="277"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </scrollView>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0IH-Yg-PBM">
                                 <rect key="frame" x="122" y="371" width="130" height="180"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="-50" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="我要洗车" backgroundImage="home_btn">
@@ -147,11 +162,12 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                     </view>
                     <navigationItem key="navigationItem" title="蚂蚁洗车" id="knn-CT-Cpv"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="scrollview" destination="PxJ-KP-4su" id="Sap-FF-HsE"/>
+                        <outlet property="lunboBody" destination="foH-ff-DK5" id="uF8-F4-dXV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wLQ-XV-0jz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -169,14 +185,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_bg" id="qIT-Ye-Ook">
                                 <rect key="frame" x="0.0" y="305" width="414" height="431"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <animations/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="1eh-HU-gKo">
+                            <view contentMode="scaleToFill" id="6or-H3-H3u">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="297"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </scrollView>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ifM-4N-o0t">
                                 <rect key="frame" x="132" y="426" width="150" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="-60" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="我要洗车" backgroundImage="home_btn">
@@ -187,12 +207,14 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                     </view>
                     <navigationItem key="navigationItem" title="蚂蚁洗车" id="o6D-i4-BfO">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="jLJ-0F-xFD">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="m5e-EB-Wot">
                                 <rect key="frame" x="364" y="7" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
                                 <state key="normal" image="img_zhifubao.png"/>
                                 <connections>
                                     <action selector="callPhoneClick:" destination="cAQ-gv-76a" eventType="touchUpInside" id="Twi-NS-ReX"/>
@@ -202,7 +224,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="scrollview" destination="1eh-HU-gKo" id="4N4-P8-WRy"/>
+                        <outlet property="lunboBody" destination="6or-H3-H3u" id="T63-It-Y73"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YpK-PR-Jhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -211,7 +233,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="home_bg" width="640" height="468"/>
+        <image name="home_bg" width="20" height="20"/>
         <image name="home_btn" width="185" height="268"/>
         <image name="img_zhifubao.png" width="894" height="901"/>
     </resources>

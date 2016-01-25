@@ -23,9 +23,6 @@
 }
 
 
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
-
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, strong) NSTimer *timer;
 @end
 
@@ -34,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.parentViewController.title = @"蚂蚁洗车";
-    self.scrollview.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/640)*387);
+    self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/640)*387);
     [self loadImages];
     [self showNotifiction];
 }
@@ -77,10 +74,10 @@
         return;
     }
     //    图片的宽
-    CGFloat imageW = self.scrollview.frame.size.width;
+    CGFloat imageW = self.lunboBody.frame.size.width;
     //    CGFloat imageW = 300;
     //    图片高
-    CGFloat imageH = self.scrollview.frame.size.height;
+    CGFloat imageH = self.lunboBody.frame.size.height;
     //    图片的Y
     CGFloat imageY = 0;
     //    图片中数
@@ -120,7 +117,7 @@
         
     }];
     
-    [self.scrollview addSubview:cycleScrollView];
+    [self.lunboBody addSubview:cycleScrollView];
 
 }
 
@@ -194,38 +191,6 @@
 }
 
 
-- (void)nextImage
-{
-    int page = (int)self.pageControl.currentPage;
-    if (page == totalCount-1) {
-        page = 0;
-    }else
-    {
-        page++;
-    }
-    
-    //  滚动scrollview
-    CGFloat x = page * self.scrollview.frame.size.width;
-    
-    
-    [UIView animateWithDuration:1.0 animations:^
-     {
-         self.scrollview.contentOffset = CGPointMake(x, 0);
-     } completion:^(BOOL finished)
-     {
-     }];
-}
-
-// scrollview滚动的时候调用
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    //    计算页码
-    //    页码 = (contentoffset.x + scrollView一半宽度)/scrollView宽度
-    CGFloat scrollviewW =  scrollView.frame.size.width;
-    CGFloat x = scrollView.contentOffset.x;
-    int page = (x + scrollviewW / 2) /  scrollviewW;
-    self.pageControl.currentPage = page;
-}
 
 
 
