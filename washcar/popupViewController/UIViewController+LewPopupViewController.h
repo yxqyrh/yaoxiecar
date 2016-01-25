@@ -14,7 +14,7 @@
 
 @end
 
-@interface UIViewController (LewPopupViewController)
+@interface UIViewController (LewPopupViewController)<UIGestureRecognizerDelegate>
 @property (nonatomic, retain, readonly) UIView *lewPopupView;
 @property (nonatomic, retain, readonly) UIView *lewOverlayView;
 @property (nonatomic, retain, readonly) id<LewPopupAnimation> lewPopupAnimation;

@@ -117,15 +117,10 @@
         UIView *backgroundView = [[LewPopupBackgroundView alloc] initWithFrame:sourceView.bounds];
         backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         backgroundView.backgroundColor = [UIColor clearColor];
-        UIButton *bgbtn = [[UIButton alloc]initWithFrame:backgroundView.frame];
-        [bgbtn addTarget:self action:@selector(lew_dismissPopupView) forControlEvents:UIControlEventTouchDragInside];
-        [backgroundView addSubview:bgbtn];
         [overlayView addSubview:backgroundView];
-        
-        
-        //         Make the Background Clickable
-        //        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(lew_dismissPopupView)];
-        //        [overlayView addGestureRecognizer:tap];
+                UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(lew_dismissPopupView)];
+        tap.delegate = self;
+                [overlayView addGestureRecognizer:tap];
         self.lewOverlayView = overlayView;
     }
     
@@ -143,7 +138,14 @@
     [self setLewDismissCallback:dismissed];
     
 }
-
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UITableViewCellContentView"]) {//如果当前是tableView
+        //做自己想做的事
+        return NO;
+    }
+    return YES;
+}
 - (void)dismissPopupViewWithAnimation:(id<LewPopupAnimation>)animation{
     if (animation) {
         [animation dismissView:self.lewPopupView overlayView:self.lewOverlayView completion:^(void) {
