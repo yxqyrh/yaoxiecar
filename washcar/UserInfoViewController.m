@@ -84,7 +84,6 @@
         [_actionBtn setTitle:@"确认添加" forState:UIControlStateNormal];
         [WDLocationHelper getInstance].delegate = self;
         [[WDLocationHelper getInstance] startUpdate];
-//        _actionBtn.titleLabel.text = @"确认添加";
     }
     
     _CarNum.delegate = self;
