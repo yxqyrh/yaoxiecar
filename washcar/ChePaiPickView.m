@@ -69,7 +69,7 @@
 -(void)hideView{
     [UIView animateWithDuration:0.6 animations:^
      {
-         self.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 240);
+         self.frame = CGRectMake(0, SCREEN_HEIGHT+300, SCREEN_WIDTH, 240);
      } completion:^(BOOL finished)
      {
      }];
