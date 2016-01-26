@@ -72,29 +72,13 @@
                                     <constraint firstItem="voH-0R-32b" firstAttribute="centerY" secondItem="FJ8-rL-Bc3" secondAttribute="centerY" id="kTb-X2-2ld"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXD-mK-eUu">
-                                <rect key="frame" x="295" y="174" width="305" height="40"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.0" green="0.62745098040000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Lpi-nk-O4J"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title=" 充值" image="user_recharge_icon">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="recharge:" destination="HhY-9p-OGC" eventType="touchUpInside" id="kzz-6a-pzf"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6kS-Gm-3Bg">
                                 <rect key="frame" x="0.0" y="216" width="600" height="320"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZo-DW-NbR">
                                         <rect key="frame" x="8" y="8" width="190" height="80"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.10980392156862745" green="0.5607843137254902" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.086274509799999996" green="0.67843137249999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="车辆管理">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -130,7 +114,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMg-iJ-E0Z">
                                         <rect key="frame" x="8" y="96" width="190" height="80"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.10980392160000001" green="0.56078431370000004" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.086274509799999996" green="0.67843137249999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="我的消息">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -256,6 +240,22 @@
                                 <animations/>
                                 <connections>
                                     <action selector="userButtonClicked:" destination="HhY-9p-OGC" eventType="touchUpInside" id="njJ-PW-njx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXD-mK-eUu">
+                                <rect key="frame" x="295" y="174" width="305" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.67843137249999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Lpi-nk-O4J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title=" 充值" image="user_recharge_icon">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="recharge:" destination="HhY-9p-OGC" eventType="touchUpInside" id="kzz-6a-pzf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -682,7 +682,7 @@
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8W-VS-vaV">
                                 <rect key="frame" x="16" y="446" width="568" height="30"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.0" green="0.62745098040000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.67843137249999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="确认编辑">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -794,7 +794,7 @@
                                                     <rect key="frame" x="418" y="38" width="79" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.0" green="0.62745098040000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.086274509799999996" green="0.67843137249999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbr-DS-seJ">
@@ -898,7 +898,7 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VoY-6R-llx">
                                 <rect key="frame" x="16" y="400" width="568" height="35"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.0" green="0.62745098040000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.086274509799999996" green="0.67843137249999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="提交">
                                     <color key="titleColor" red="0.95686274510000002" green="0.96862745100000003" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1011,9 +1011,9 @@
         <image name="down_arrow" width="108" height="57"/>
         <image name="msg_item_icon" width="72" height="72"/>
         <image name="user_balance_icon" width="27" height="27"/>
-        <image name="user_info_car_color" width="114" height="114"/>
-        <image name="user_info_car_num_icon" width="114" height="114"/>
-        <image name="user_info_location_icon" width="114" height="114"/>
+        <image name="user_info_car_color" width="41" height="41"/>
+        <image name="user_info_car_num_icon" width="41" height="41"/>
+        <image name="user_info_location_icon" width="41" height="41"/>
         <image name="user_info_money_icon" width="114" height="114"/>
         <image name="user_info_phone_icon" width="114" height="114"/>
         <image name="user_recharge_icon" width="27" height="27"/>

@@ -66,7 +66,7 @@
         
         //设置分页显示的圆点
         _pageControl = [[UIPageControl alloc] init];
-        _pageControl.frame = CGRectMake(0, frame.size.height - 20, 320, 20);
+        _pageControl.frame = CGRectMake(0, frame.size.height - 20, self.scrollView.frame.size.width, 20);
         _pageControl.currentPageIndicatorTintColor = [UIColor redColor];
         _pageControl.pageIndicatorTintColor = [UIColor grayColor];
         _pageControl.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"images_bg"]];

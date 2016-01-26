@@ -490,14 +490,14 @@
         magin_bottom = 5;
     }
     if(deviceNum == 5.0){
-        magin_bottom = 80;
+        magin_bottom = 90;
     }
     if (deviceNum == 6.0) {
-        magin_bottom = 100;
+        magin_bottom = 130;
     }
     
     if (deviceNum == 6.5) {
-        magin_bottom = 120;
+        magin_bottom = 150;
     }
 
     [_btn8 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -507,8 +507,8 @@
 }
 
 -(void) initBtn:(UIButton*)btn:(NSString*)iconName :(NSString*)btnTitle{
-    //UIImage *image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(40, 40)];
-   UIImage *image =[UIImage imageNamed:iconName] ;
+    UIImage *image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(30, 30)];
+//   UIImage *image =[UIImage imageNamed:iconName] ;
     NSString *title = btnTitle;
     [btn setTitle:title forState:UIControlStateNormal];
 
@@ -526,7 +526,7 @@
     // lower the text and push it left to center it
     btn.titleEdgeInsets = UIEdgeInsetsMake(0.0, - imageSize.width, - (totalHeight - titleSize.height),0.0);
     
-    [[btn layer]setCornerRadius:8.0];
+    [[btn layer]setCornerRadius:5.0];
 }
 
 
