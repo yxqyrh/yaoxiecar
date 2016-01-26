@@ -211,23 +211,7 @@
 */
 
 #pragma mark - UITextViewDelegate
-- (void)textViewDidChange:(UITextView *)textView
-{
-    NSString *text = textView.text;
-    DLog(@"text:%@",text);
-    
-    if (_allPlots == nil || _allPlots.count == 0) {
-        return;
-    }
-    
-    _filtedPlots = [NSMutableArray array];
-    for (SmallArea *smallArea in _allPlots) {
-        if ([smallArea.plot rangeOfString:text].length > 0) {
-            [_filtedPlots addObject:smallArea];
-        }
-    }
-    [self.tableView reloadData];
-}
+
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
@@ -257,9 +241,7 @@
 
     [[MayiHttpRequestManager sharedInstance] POST:@"area" parameters:parameters showLoadingView:nil success:^(id responseObject) {
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
-            _allPlots = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"list"]];
-            _nearPlots = _allPlots;
-//            _filtedPlots = [NSMutableArray arrayWithArray:_allPlots];
+            _nearPlots = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"list"]];
             [self.tableView reloadData];
         }
         
@@ -459,14 +441,9 @@
     UILabel *labelPlot = (UILabel *)[cell viewWithTag:1];
     
     if (tableView == self.tableView) {
-        if (indexPath.section == 0) {
             SmallArea *smallArea = [_nearPlots objectAtIndex:indexPath.row];
             labelPlot.text = smallArea.plot;
-        }
-        else if (indexPath.section == 1) {
-            SmallArea *smallArea = [_allPlots objectAtIndex:indexPath.row];
-            labelPlot.text = smallArea.plot;
-        }
+        
     }
     else {
         SmallArea *smallArea = [_searchResult objectAtIndex:indexPath.row];
@@ -491,28 +468,19 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == self.tableView) {
-        if (section == 0) {
-            if (_nearPlots == nil) {
-                return 0;
-            }
-            else {
-                return _nearPlots.count;
-            }
+        if (_nearPlots == nil) {
+            return 0;
         }
-        else  {
-            if (_allPlots == nil) {
-                return 0;
-            }
-            return _allPlots.count;
+        else {
+            return _nearPlots.count;
         }
-
     }
     else
     {
         _searchResult = [NSMutableArray array];
         NSString *searchText = _searchDisplayController.searchBar.text;
         
-        for (SmallArea *smallArea in _allPlots) {
+        for (SmallArea *smallArea in _nearPlots) {
             if ([smallArea.plot rangeOfString:searchText].length > 0) {
                 [_searchResult addObject:smallArea];
             }
@@ -535,10 +503,7 @@
             _plotName = smallArea.plot;
         }
         else {
-            SmallArea *smallArea  = [_allPlots objectAtIndex:indexPath.row];
-            _smallAreaTextView.text = smallArea.plot;
-            _plotId = smallArea.id;
-            _plotName = smallArea.plot;
+
             
         }
         
