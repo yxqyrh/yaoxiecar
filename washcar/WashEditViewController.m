@@ -464,8 +464,12 @@
     if (indexPath.row == 6) {
         _priceLabel = (NIAttributedLabel *)[cell viewWithTag:2];
         if (_voucherInfo!=nil) {
-            NSString *numberString = [StringUtil decimalwithFormat:@"0.00" floatV:[_selectWashType.value floatValue]-[_voucherInfo.value integerValue]];
-            
+            NSString *numberString;
+            if([_selectWashType.value floatValue]-[_voucherInfo.value integerValue]>0){
+                 numberString = [StringUtil decimalwithFormat:@"0.00" floatV:[_selectWashType.value floatValue]-[_voucherInfo.value integerValue]];
+            }else{
+                numberString = @"0.00";
+            }
             NSString *text = [numberString stringByAppendingFormat:@"%@",@"元"];
             NSRange range = [text rangeOfString:numberString];
             _priceLabel.text = text;

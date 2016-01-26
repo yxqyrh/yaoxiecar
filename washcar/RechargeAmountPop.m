@@ -105,9 +105,9 @@
     title.text = str;
     UIImageView *image = [cell viewWithTag:2];
     if (indexPath.row == _current_seleted_row) {
-        [image setImage:[UIImage imageNamed:@"selected"]];
+        [image setImage:[UIImage imageNamed:@"img_checked"]];
     }else{
-        [image setImage:[UIImage imageNamed:@"unselected"]];
+        [image setImage:[UIImage imageNamed:@"img_unchecked"]];
     }
     return cell;
     
