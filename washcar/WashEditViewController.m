@@ -141,8 +141,15 @@
     
     _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],plot0.plot];
     
-    [self chooseLocation:_address
-              provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:plot0.id plotName:plot0.plot];
+    
+    _addressLabel.text = _address;
+    _userInfo.szdqstr =_address;
+    _userInfo.province =[self.dz objectForKey:@"province"];
+    _userInfo.city = [self.dz objectForKey:@"city"];
+    _userInfo.area = [self.dz objectForKey:@"area"];
+    _userInfo.plot = plot0.id;
+    _userInfo.plotName = plot0.plot;
+    
     
     if (_addressLabel != nil) {
         _addressLabel.text = _address;
@@ -347,6 +354,8 @@
     _userInfo.area = areaId;
     _userInfo.plot = plotId;
     _userInfo.plotName = plotName;
+    
+    [self loadXCFS:_userInfo];
 }
 
 #pragma mark - UITableViewDataSource
@@ -483,6 +492,41 @@
     }
     return cell;
 }
+
+
+#pragma mark - 界面事件
+
+-(void)loadXCFS:(UserInfo *)userInfo
+{
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    
+    [parameters setObject:userInfo.province forKey:@"province"];
+    [parameters setObject:userInfo.city forKey:@"city"];
+    [parameters setObject:userInfo.area forKey:@"area"];
+    
+    //MayiWYXC
+    [[MayiHttpRequestManager sharedInstance] POST:MayiXCFS parameters:parameters showLoadingView:self.view success:^(id responseObject) {
+        
+        
+        if ([@"1" isEqualToString:[responseObject objectForKey:@"res"]] || 1 == [[responseObject objectForKey:@"res"] intValue]) {
+            
+            washTypeArray = [WashType objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xcfs"]];
+            _selectWashType = [washTypeArray objectAtIndex:0];
+            _washTypeLabel.text =  _selectWashType.fs;
+            return ;
+        }
+        else if ([@"2" isEqualToString:[responseObject objectForKey:@"res"]]) {
+            [SVProgressHUD showErrorWithStatus:@"获取个人信息失败"];
+            return ;
+        }
+        
+        
+    } failture:^(NSError *error) {
+        [self.view makeToast:@"获取信息失败"];
+    }];
+}
+
+
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     if (_isFirstEdit) {

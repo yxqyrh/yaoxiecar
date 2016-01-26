@@ -63,7 +63,7 @@
 //    self.viewControllers=@[c1,drawerController,c3];
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showOrder) name:MayiOrderNotifiction object:nil];
 //    
-//    [self showNotifiction];
+    [self showNotifiction];
     
     //    [NSNotificationCenter defaultCenter] addObserverForName:@"OrderNotifiction" object:nil queue:mo; usingBlock:<#^(NSNotification * _Nonnull note)block#>
 }

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Zk9-BV-BKD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Zk9-BV-BKD">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -40,11 +41,12 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cBg-Kg-mQG">
                                 <rect key="frame" x="10" y="28" width="300" height="45"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sign_phone_icon" translatesAutoresizingMaskIntoConstraints="NO" id="UaH-WW-QdK">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign_phone_icon" translatesAutoresizingMaskIntoConstraints="NO" id="UaH-WW-QdK">
                                         <rect key="frame" x="5" y="10" width="25" height="25"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="25" id="Kqn-LY-FN0"/>
+                                            <constraint firstAttribute="width" secondItem="UaH-WW-QdK" secondAttribute="height" multiplier="1:1" id="kUG-Yh-EJL"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3w-Be-rL0">
@@ -104,9 +106,13 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lsV-Ox-B6t">
                                 <rect key="frame" x="10" y="55" width="300" height="45"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sign_code_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ECN-On-hQC">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign_code_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ECN-On-hQC">
                                         <rect key="frame" x="5" y="10" width="25" height="25"/>
-                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="UdR-1a-1Gt"/>
+                                            <constraint firstAttribute="width" secondItem="ECN-On-hQC" secondAttribute="height" multiplier="1:1" id="oIQ-2O-bUJ"/>
+                                            <constraint firstAttribute="width" constant="25" id="yf1-os-78T"/>
+                                        </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJM-Uz-Ivx">
                                         <rect key="frame" x="35" y="14" width="55" height="17"/>
@@ -130,7 +136,6 @@
                                 <constraints>
                                     <constraint firstItem="6Zg-YJ-KkA" firstAttribute="top" secondItem="lsV-Ox-B6t" secondAttribute="top" constant="12" id="1aZ-kf-Wm5"/>
                                     <constraint firstAttribute="trailing" secondItem="6Zg-YJ-KkA" secondAttribute="trailing" constant="50" id="G71-hK-h6R"/>
-                                    <constraint firstItem="sJM-Uz-Ivx" firstAttribute="top" secondItem="lsV-Ox-B6t" secondAttribute="top" constant="14" id="KtC-gh-rR5"/>
                                     <constraint firstItem="6Zg-YJ-KkA" firstAttribute="leading" secondItem="sJM-Uz-Ivx" secondAttribute="trailing" constant="19" id="QDW-Hp-dZA"/>
                                     <constraint firstItem="sJM-Uz-Ivx" firstAttribute="centerY" secondItem="ECN-On-hQC" secondAttribute="centerY" id="Uuy-Dr-RBg"/>
                                     <constraint firstItem="ECN-On-hQC" firstAttribute="leading" secondItem="lsV-Ox-B6t" secondAttribute="leading" constant="5" id="aI5-a9-6En"/>
@@ -159,6 +164,9 @@
                                 <rect key="frame" x="10" y="174" width="300" height="35"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.62745098040000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="yak-Zw-uzd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="免费注册">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -377,16 +385,15 @@
                                                 <constraint firstAttribute="trailing" secondItem="2K6-tE-b27" secondAttribute="trailing" constant="8" id="xtt-Xn-gd0"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvr-Yh-QeW">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mvr-Yh-QeW">
                                             <rect key="frame" x="48" y="17" width="42" height="21"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="请选择" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iu1-xk-JSI">
-                                            <rect key="frame" x="87" y="17" width="167" height="21"/>
-                                            <animations/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择注册地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iu1-xk-JSI">
+                                            <rect key="frame" x="87" y="17" width="190" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.62745098040000002" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -402,9 +409,15 @@
                                     <animations/>
                                     <constraints>
                                         <constraint firstItem="jq4-RH-AQh" firstAttribute="top" secondItem="hyj-eq-nUK" secondAttribute="topMargin" constant="-3" id="4pU-Rx-ue5"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="iu1-xk-JSI" secondAttribute="trailing" constant="35" id="Bzh-HN-nhr"/>
+                                        <constraint firstItem="iu1-xk-JSI" firstAttribute="centerY" secondItem="hyj-eq-nUK" secondAttribute="centerY" id="MfM-gf-5hK"/>
                                         <constraint firstItem="jq4-RH-AQh" firstAttribute="centerY" secondItem="hyj-eq-nUK" secondAttribute="centerY" id="N0o-CJ-lj1"/>
+                                        <constraint firstItem="iu1-xk-JSI" firstAttribute="top" secondItem="hyj-eq-nUK" secondAttribute="topMargin" constant="9" id="P7N-Er-EuU"/>
                                         <constraint firstItem="jq4-RH-AQh" firstAttribute="centerX" secondItem="hyj-eq-nUK" secondAttribute="centerX" id="XO3-pu-l8g"/>
+                                        <constraint firstItem="iu1-xk-JSI" firstAttribute="bottom" secondItem="mvr-Yh-QeW" secondAttribute="bottom" id="jH1-DF-i35"/>
+                                        <constraint firstItem="iu1-xk-JSI" firstAttribute="top" secondItem="mvr-Yh-QeW" secondAttribute="top" id="phf-nD-54R"/>
                                         <constraint firstItem="jq4-RH-AQh" firstAttribute="leading" secondItem="hyj-eq-nUK" secondAttribute="leadingMargin" constant="2" id="qJ3-gz-z6J"/>
+                                        <constraint firstItem="iu1-xk-JSI" firstAttribute="leading" secondItem="hyj-eq-nUK" secondAttribute="leadingMargin" constant="79" id="zVj-AP-d8k"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
@@ -768,8 +781,8 @@
         <image name="reg_icon_car_number" width="20" height="20"/>
         <image name="reg_icon_postion" width="20" height="20"/>
         <image name="reg_phone_icon" width="25" height="25"/>
-        <image name="sign_code_icon" width="15" height="14"/>
-        <image name="sign_phone_icon" width="14" height="14"/>
+        <image name="sign_code_icon" width="14" height="14"/>
+        <image name="sign_phone_icon" width="15" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="4ET-H4-Tgi"/>

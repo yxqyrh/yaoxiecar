@@ -21,7 +21,7 @@ NSString * const MayiIsLoginId = @"isloginid";
 //是否显示通告
 NSString * const MayiIsShowNotifiction = @"shownotifiction";
 //上一个通告的id
-NSString * const MayiLastNotifictionId = @"lastnotifictionid";
+NSString * const MayiLastNotifictionId = @"lastnotifictionid11";
 
 /************************
  *notifiction 定义
@@ -90,6 +90,10 @@ NSString * const MayiUserDetail = @"gexx";
 
 //我要洗车
 NSString * const MayiWYXC = @"wyxc";
+
+//根据地址获取洗车方式
+NSString * const MayiXCFS = @"ajaxxcfs";
+
 
 //充值中心
 NSString * const MayiCZZX = @"czzx";

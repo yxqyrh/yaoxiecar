@@ -81,6 +81,9 @@ FOUNDATION_EXPORT NSString * const MayiUserDetail;
 //我要洗车
 FOUNDATION_EXPORT NSString * const MayiWYXC;
 
+//根据地址获取洗车方式
+FOUNDATION_EXPORT NSString * const MayiXCFS;
+
 //充值中心
 FOUNDATION_EXPORT NSString * const MayiCZZX;
 
