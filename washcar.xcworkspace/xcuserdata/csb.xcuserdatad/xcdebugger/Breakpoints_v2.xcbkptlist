@@ -4987,12 +4987,12 @@
                   moduleName = "&#x8682;&#x8681;&#x6d17;&#x8f66;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/csb/Documents/work/mayi_github/yaoxiecar/washcar/RootViewController1.m"
-                  timestampString = "475468038.816433"
+                  timestampString = "475469770.280115"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
                   endingLineNumber = "74"
-                  offsetFromSymbolStart = "36">
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -5002,12 +5002,12 @@
                   moduleName = "&#x8682;&#x8681;&#x6d17;&#x8f66;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/csb/Documents/work/mayi_github/yaoxiecar/washcar/RootViewController1.m"
-                  timestampString = "475468038.816651"
+                  timestampString = "475469770.280376"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
                   endingLineNumber = "74"
-                  offsetFromSymbolStart = "40">
+                  offsetFromSymbolStart = "55">
                </Location>
             </Locations>
          </BreakpointContent>
