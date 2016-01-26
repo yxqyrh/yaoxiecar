@@ -115,6 +115,7 @@
     
 }
 
+
 -(void)jumpPageWithJudge:(bool)isJudgeSignState andSignedBlock:(CompleteBlock)signedBlock andUnSignedBlock:(CompleteBlock)unSignedBlock
 {
     if (signedBlock == nil) {

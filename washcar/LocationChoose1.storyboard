@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -41,26 +42,37 @@
                                         <rect key="frame" x="55" y="0.0" width="90" height="35"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="省份列表" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XqS-v7-iv0">
-                                                <rect key="frame" x="10" y="5" width="70" height="20"/>
+                                                <rect key="frame" x="10" y="5" width="65" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="img_01_guide.png" translatesAutoresizingMaskIntoConstraints="NO" id="tFh-vX-1lI">
-                                                <rect key="frame" x="80" y="12" width="10" height="6"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="down_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="tFh-vX-1lI">
+                                                <rect key="frame" x="80" y="10" width="10" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="tFh-vX-1lI" secondAttribute="height" multiplier="1:1" id="tVC-Yu-rx1"/>
+                                                </constraints>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="tFh-vX-1lI" firstAttribute="centerY" secondItem="XqS-v7-iv0" secondAttribute="centerY" id="2fL-tD-RAo"/>
                                             <constraint firstItem="XqS-v7-iv0" firstAttribute="leading" secondItem="iw7-xz-u7r" secondAttribute="leading" constant="10" id="5pd-dC-rsN"/>
+                                            <constraint firstAttribute="trailing" secondItem="XqS-v7-iv0" secondAttribute="trailing" constant="15" id="9Bz-sK-D4S"/>
                                             <constraint firstItem="XqS-v7-iv0" firstAttribute="top" secondItem="iw7-xz-u7r" secondAttribute="top" constant="5" id="BRE-8C-wh1"/>
                                             <constraint firstItem="tFh-vX-1lI" firstAttribute="leading" secondItem="XqS-v7-iv0" secondAttribute="trailing" id="Ec0-Nz-nOk"/>
+                                            <constraint firstItem="tFh-vX-1lI" firstAttribute="centerY" secondItem="iw7-xz-u7r" secondAttribute="centerY" id="PDn-i4-XHj"/>
                                             <constraint firstAttribute="bottom" secondItem="XqS-v7-iv0" secondAttribute="bottom" constant="5" id="UO3-9d-d1J"/>
                                             <constraint firstItem="XqS-v7-iv0" firstAttribute="centerX" secondItem="iw7-xz-u7r" secondAttribute="centerX" id="WCB-JU-eee"/>
                                             <constraint firstAttribute="trailing" secondItem="tFh-vX-1lI" secondAttribute="trailing" constant="5" id="Zym-di-dzP"/>
-                                            <constraint firstItem="tFh-vX-1lI" firstAttribute="top" secondItem="iw7-xz-u7r" secondAttribute="top" constant="12" id="oe7-bW-r3G"/>
+                                            <constraint firstItem="tFh-vX-1lI" firstAttribute="top" secondItem="iw7-xz-u7r" secondAttribute="top" constant="10" id="oe7-bW-r3G"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="WCB-JU-eee"/>
+                                                <exclude reference="oe7-bW-r3G"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="provinceControlClick:" destination="5bQ-rZ-8IZ" eventType="touchUpInside" id="b2j-rr-NpZ"/>
                                         </connections>
@@ -98,24 +110,43 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="城市列表" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tm6-av-hEv">
                                                 <rect key="frame" x="10" y="5" width="70" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="img_01_guide.png" translatesAutoresizingMaskIntoConstraints="NO" id="NXG-NW-bPQ">
-                                                <rect key="frame" x="80" y="12" width="10" height="6"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="down_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="NXG-NW-bPQ">
+                                                <rect key="frame" x="80" y="10" width="10" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="NXG-NW-bPQ" secondAttribute="height" multiplier="1:1" id="4um-0S-wAz"/>
+                                                    <constraint firstAttribute="width" secondItem="NXG-NW-bPQ" secondAttribute="height" multiplier="5:3" id="882-dq-JxM"/>
+                                                    <constraint firstAttribute="width" secondItem="NXG-NW-bPQ" secondAttribute="height" multiplier="5:3" id="fzj-Yt-QFg"/>
+                                                </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="882-dq-JxM"/>
+                                                        <exclude reference="fzj-Yt-QFg"/>
+                                                    </mask>
+                                                </variation>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="tm6-av-hEv" firstAttribute="top" secondItem="iZM-Nt-SdD" secondAttribute="top" constant="5" id="8Uc-PA-J0w"/>
                                             <constraint firstItem="tm6-av-hEv" firstAttribute="centerX" secondItem="iZM-Nt-SdD" secondAttribute="centerX" id="EGE-hk-gQV"/>
+                                            <constraint firstAttribute="trailing" secondItem="tm6-av-hEv" secondAttribute="trailing" constant="15" id="Iwi-GQ-2Vc"/>
                                             <constraint firstItem="NXG-NW-bPQ" firstAttribute="leading" secondItem="tm6-av-hEv" secondAttribute="trailing" id="dea-kE-AHg"/>
                                             <constraint firstItem="tm6-av-hEv" firstAttribute="leading" secondItem="iZM-Nt-SdD" secondAttribute="leading" constant="10" id="h2O-4D-Ywz"/>
                                             <constraint firstAttribute="trailing" secondItem="NXG-NW-bPQ" secondAttribute="trailing" constant="5" id="hAJ-uH-eLx"/>
                                             <constraint firstItem="NXG-NW-bPQ" firstAttribute="centerY" secondItem="tm6-av-hEv" secondAttribute="centerY" id="hMI-DU-6bL"/>
                                             <constraint firstItem="tm6-av-hEv" firstAttribute="centerY" secondItem="iZM-Nt-SdD" secondAttribute="centerY" id="jzG-I6-EBQ"/>
-                                            <constraint firstItem="NXG-NW-bPQ" firstAttribute="top" secondItem="iZM-Nt-SdD" secondAttribute="top" constant="12" id="kz0-A9-tEJ"/>
+                                            <constraint firstItem="NXG-NW-bPQ" firstAttribute="top" secondItem="iZM-Nt-SdD" secondAttribute="top" constant="10" id="kz0-A9-tEJ"/>
+                                            <constraint firstItem="NXG-NW-bPQ" firstAttribute="centerY" secondItem="iZM-Nt-SdD" secondAttribute="centerY" id="tmS-05-Kvb"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="EGE-hk-gQV"/>
+                                                <exclude reference="kz0-A9-tEJ"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="cityControlClick:" destination="5bQ-rZ-8IZ" eventType="touchUpInside" id="VQv-cR-hp1"/>
                                         </connections>
@@ -151,20 +182,25 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="区县列表" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5D-OU-Om1">
                                                 <rect key="frame" x="10" y="5" width="70" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="img_01_guide.png" translatesAutoresizingMaskIntoConstraints="NO" id="NeN-ZR-N4r">
-                                                <rect key="frame" x="80" y="12" width="10" height="6"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="down_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="NeN-ZR-N4r">
+                                                <rect key="frame" x="80" y="10" width="10" height="10"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="NeN-ZR-N4r" secondAttribute="height" multiplier="1:1" id="TjB-5a-yhQ"/>
+                                                </constraints>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="f5D-OU-Om1" firstAttribute="top" secondItem="Dgk-Ik-TL9" secondAttribute="top" constant="5" id="4HD-ey-brl"/>
                                             <constraint firstItem="NeN-ZR-N4r" firstAttribute="leading" secondItem="f5D-OU-Om1" secondAttribute="trailing" id="4l1-e2-ZvE"/>
+                                            <constraint firstAttribute="trailing" secondItem="f5D-OU-Om1" secondAttribute="trailing" constant="15" id="8jT-JT-ZDb"/>
+                                            <constraint firstItem="NeN-ZR-N4r" firstAttribute="centerY" secondItem="Dgk-Ik-TL9" secondAttribute="centerY" id="EAG-BJ-Q5C"/>
                                             <constraint firstItem="f5D-OU-Om1" firstAttribute="centerX" secondItem="Dgk-Ik-TL9" secondAttribute="centerX" id="Fgp-3l-Lh5"/>
                                             <constraint firstItem="NeN-ZR-N4r" firstAttribute="centerY" secondItem="f5D-OU-Om1" secondAttribute="centerY" id="LHb-K2-XXL"/>
-                                            <constraint firstItem="NeN-ZR-N4r" firstAttribute="top" secondItem="Dgk-Ik-TL9" secondAttribute="top" constant="12" id="LSC-T2-J0x"/>
+                                            <constraint firstItem="NeN-ZR-N4r" firstAttribute="top" secondItem="Dgk-Ik-TL9" secondAttribute="top" constant="10" id="LSC-T2-J0x"/>
                                             <constraint firstAttribute="trailing" secondItem="NeN-ZR-N4r" secondAttribute="trailing" constant="5" id="NmU-1T-FQ7"/>
                                             <constraint firstItem="NeN-ZR-N4r" firstAttribute="centerY" secondItem="Dgk-Ik-TL9" secondAttribute="centerY" id="UbL-4Y-kQ4"/>
                                             <constraint firstItem="NeN-ZR-N4r" firstAttribute="top" secondItem="Dgk-Ik-TL9" secondAttribute="top" constant="12" id="YgV-S6-HZZ"/>
@@ -173,6 +209,9 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="Fgp-3l-Lh5"/>
+                                                <exclude reference="EAG-BJ-Q5C"/>
+                                                <exclude reference="LSC-T2-J0x"/>
                                                 <exclude reference="YgV-S6-HZZ"/>
                                                 <exclude reference="zU8-7L-QDV"/>
                                             </mask>
@@ -320,6 +359,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="img_01_guide.png" width="54" height="28"/>
+        <image name="down_arrow" width="108" height="57"/>
     </resources>
 </document>

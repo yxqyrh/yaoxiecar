@@ -43,16 +43,17 @@
         DLog(@"responseObject:%@",responseObject);
         
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
-            bool isShowNotifiction = [[NSUserDefaults standardUserDefaults] valueForKey:MayiIsShowNotifiction];
-            int notifictionId = [[NSUserDefaults standardUserDefaults] valueForKey:MayiLastNotifictionId];
+            int isShowNotifiction = [[[NSUserDefaults standardUserDefaults] valueForKey:MayiIsShowNotifiction] intValue];//0或者1显示，2不显示
+            int notifictionId = [[[NSUserDefaults standardUserDefaults] valueForKey:MayiLastNotifictionId] intValue];
             
-            if (isShowNotifiction || [WDSystemUtils isEqualsInt:notifictionId andJsonData:[responseObject objectForKey:@"id"]]) {
+            if ((isShowNotifiction == 1 ||  isShowNotifiction == 0) || ![WDSystemUtils isEqualsInt:notifictionId andJsonData:[responseObject objectForKey:@"id"]]) {
                 PSTAlertController *alertController = [PSTAlertController alertControllerWithTitle:@"提示" message:[responseObject objectForKey:@"mes"] preferredStyle:PSTAlertControllerStyleAlert];
                 [alertController addAction:[PSTAlertAction actionWithTitle:@"不再提醒" handler:^(PSTAlertAction *action) {
-                    [[NSUserDefaults standardUserDefaults] setValue:false forKey:MayiIsShowNotifiction];
-                    [[NSUserDefaults standardUserDefaults] setValue:[responseObject objectForKey:@"id"] forKey:MayiLastNotifictionId];
-                    
-                    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:MayiUserIsSignIn];
+                    [[NSUserDefaults standardUserDefaults] setValue:@(2) forKey:MayiIsShowNotifiction];
+                    int nId = [[responseObject objectForKey:@"id"] intValue];
+                    [[NSUserDefaults standardUserDefaults] setValue:@(nId) forKey:MayiLastNotifictionId];
+
+                    [[NSUserDefaults standardUserDefaults] synchronize];
                 }]];
                 [alertController addAction:[PSTAlertAction actionWithTitle:@"确认" handler:^(PSTAlertAction *action) {
                     

@@ -492,6 +492,7 @@
             [cancelButton addTarget:self action:@selector(cancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
             
             UIButton *phoneButton = (UIButton *)[cell viewWithTag:31];
+            phoneButton.layer.cornerRadius = 3;
             phoneButton.backgroundColor = RGBCOLOR(73, 180, 252);
             phoneButton.userInteractionEnabled = YES;
             [phoneButton addTarget:self action:@selector(connectWashWorkers:) forControlEvents:UIControlEventTouchUpInside];
@@ -542,9 +543,10 @@
             }
             else {
                 UIButton *button = [cell viewWithTag:35];
+                button.layer.cornerRadius = 3;
                 button.backgroundColor = RGBCOLOR(73, 180, 252);
                 button.userInteractionEnabled = YES;
-                [button setTitle:@"评价订单" forState:UIControlStateNormal];
+                [button setTitle:@"我要评价" forState:UIControlStateNormal];
                 [button addTarget:self action:@selector(evaluateWashWorkers:) forControlEvents:UIControlEventTouchUpInside];
             }
             
