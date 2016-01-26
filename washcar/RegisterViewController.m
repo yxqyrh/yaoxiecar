@@ -192,31 +192,31 @@
     CGFloat height = 0;
     switch (indexPath.row) {
         case 0:
-            height = 55;
+            height = 80;
             break;
         case 1:
-            height = 55;
+            height = 60;
             break;
         case 2:
-            height = 55;
+            height = 60;
             break;
         case 3:
-            height = 55;
+            height = 60;
             break;
         case 4:
-            height = 55;
+            height = 60;
             break;
         case 5:
-            height = 55;
+            height = 60;
             break;
         case 6:
-            height = 55;
+            height = 60;
             break;
         case 7:
-            height = 31;
+            height = 50;
             break;
         case 8:
-            height = 55;
+            height = 50;
             break;
         case 9:
             height = 15;
@@ -503,10 +503,10 @@
     
     if (indexPath.row == 2) {
         _addresssLabel = (UILabel *)[cell viewWithTag:2];
-//        if (![WDSystemUtils isEmptyOrNullString:_address]) {
-//            _addresssLabel.text = _address;
-//        }
-        _addresssLabel.text = _address;
+        if (![WDSystemUtils isEmptyOrNullString:_address]) {
+            _addresssLabel.text = _address;
+        }
+//        _addresssLabel.text = _address;
     }
     
     if (indexPath.row == 3) {

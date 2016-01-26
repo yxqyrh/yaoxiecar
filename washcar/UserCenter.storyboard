@@ -1011,9 +1011,9 @@
         <image name="down_arrow" width="108" height="57"/>
         <image name="msg_item_icon" width="72" height="72"/>
         <image name="user_balance_icon" width="27" height="27"/>
-        <image name="user_info_car_color" width="114" height="114"/>
-        <image name="user_info_car_num_icon" width="114" height="114"/>
-        <image name="user_info_location_icon" width="114" height="114"/>
+        <image name="user_info_car_color" width="41" height="41"/>
+        <image name="user_info_car_num_icon" width="41" height="41"/>
+        <image name="user_info_location_icon" width="41" height="41"/>
         <image name="user_info_money_icon" width="114" height="114"/>
         <image name="user_info_phone_icon" width="114" height="114"/>
         <image name="user_recharge_icon" width="27" height="27"/>
