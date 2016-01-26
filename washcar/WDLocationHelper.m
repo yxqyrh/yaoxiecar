@@ -63,7 +63,9 @@ static WDLocationHelper *_instance = nil;
     
     DLog(@"error:%@", error);
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"定位失败!" message:[NSString stringWithFormat:@"%@", error] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"定位失败!" message:[NSString stringWithFormat:@"%@", error] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//    [alert show];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"定位失败!" message:@"请前往设置->隐私->定位服务开启授权" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alert show];
     
     if([_delegate respondsToSelector:@selector(didGetLocationFail)]) {
