@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
             endingLineNumber = "30"
-            landmarkName = "-setTitle:andUrl:"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -111,7 +111,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
             endingLineNumber = "48"
-            landmarkName = "-webView:didFailLoadWithError:"
+            landmarkName = "-setTitle:andUrl::"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1453,8 +1453,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "550"
             endingLineNumber = "550"
-            landmarkName = "-voucherChoose:"
-            landmarkType = "5">
+            landmarkName = "@implementation WashEditViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3557,8 +3557,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "213"
             endingLineNumber = "213"
-            landmarkName = "-textViewDidChange:"
-            landmarkType = "5">
+            landmarkName = "@implementation LocationChooseViewController1"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3616,13 +3616,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/LocationChooseViewController.m"
-            timestampString = "474628336.865189"
+            timestampString = "475555675.177986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "-chooseLoaction::"
-            landmarkType = "5">
+            startingLineNumber = "157"
+            endingLineNumber = "157">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4367,9 +4365,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            endingLineNumber = "26">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4379,13 +4375,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/LocationChooseViewController.m"
-            timestampString = "474628336.865189"
+            timestampString = "475555675.177986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "-loadData:withParentId:"
-            landmarkType = "5">
+            startingLineNumber = "222"
+            endingLineNumber = "222">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4395,13 +4389,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/LocationChooseViewController.m"
-            timestampString = "474628336.865189"
+            timestampString = "475555675.177986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "-loadData:withParentId:"
-            landmarkType = "5">
+            startingLineNumber = "255"
+            endingLineNumber = "255">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4411,13 +4403,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/LocationChooseViewController.m"
-            timestampString = "474615711.05801"
+            timestampString = "475555675.177986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            startingLineNumber = "31"
+            endingLineNumber = "31">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4427,13 +4417,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/LocationChooseViewController.m"
-            timestampString = "474628336.865189"
+            timestampString = "475555675.177986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "-loadData:withParentId:"
-            landmarkType = "5">
+            startingLineNumber = "251"
+            endingLineNumber = "251">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -4555,13 +4543,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/LocationChooseViewController.m"
-            timestampString = "474628336.865189"
+            timestampString = "475555675.177986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "-tableView:cellForRowAtIndexPath:"
-            landmarkType = "5">
+            startingLineNumber = "99"
+            endingLineNumber = "99">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4571,13 +4557,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/LocationChooseViewController.m"
-            timestampString = "474628336.865189"
+            timestampString = "475555675.177986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "-tableView:numberOfRowsInSection:"
-            landmarkType = "5">
+            startingLineNumber = "123"
+            endingLineNumber = "123">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4587,13 +4571,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "washcar/LocationChooseViewController.m"
-            timestampString = "474628231.892936"
+            timestampString = "475555675.177986"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "-tableView:numberOfRowsInSection:"
-            landmarkType = "5">
+            startingLineNumber = "126"
+            endingLineNumber = "126">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4923,7 +4905,7 @@
                   moduleName = "&#x8682;&#x8681;&#x6d17;&#x8f66;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/csb/Documents/work/mayi_github/yaoxiecar/washcar/RootViewController1.m"
-                  timestampString = "475511812.644481"
+                  timestampString = "475568314.686566"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
@@ -4938,7 +4920,7 @@
                   moduleName = "&#x8682;&#x8681;&#x6d17;&#x8f66;"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/csb/Documents/work/mayi_github/yaoxiecar/washcar/RootViewController1.m"
-                  timestampString = "475511812.644696"
+                  timestampString = "475568314.686733"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "74"
@@ -5810,6 +5792,22 @@
             endingLineNumber = "139"
             landmarkName = "-czzxtj"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "washcar/LocationChooseViewController.h"
+            timestampString = "475554885.920887"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "tableview"
+            landmarkType = "19">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
