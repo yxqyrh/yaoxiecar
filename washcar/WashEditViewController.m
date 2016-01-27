@@ -229,10 +229,25 @@
 
 -(void)washCommit
 {
+    
+    if ([StringUtil isEmty:_carNumberLabel.text]) {
+        [SVProgressHUD showErrorWithStatus:@"请填写车牌号"];
+         return;
+    }
+    if ([StringUtil isEmty:_userInfo.color]) {
+        [SVProgressHUD showErrorWithStatus:@"请选择车辆颜色"];
+         return;
+    }
+    
     if ([StringUtil isEmty:_userInfo.plot]) {
         [SVProgressHUD showErrorWithStatus:@"没有小区信息，无法下单"];
         return;
     }
+    if (_selectWashType == nil) {
+         [SVProgressHUD showErrorWithStatus:@"请选择洗车方式"];
+         return;
+    }
+    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     [parameters setValue:_carNumberLabel.text forKey:@"prov"];
@@ -528,8 +543,12 @@
         if ([@"1" isEqualToString:[responseObject objectForKey:@"res"]] || 1 == [[responseObject objectForKey:@"res"] intValue]) {
             
             washTypeArray = [WashType objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xcfs"]];
-            _selectWashType = [washTypeArray objectAtIndex:0];
-            _washTypeLabel.text =  _selectWashType.fs;
+            current_washtype = -1;
+            _selectWashType = nil;
+//            _washTypeLabel.text =  _selectWashType.fs;
+//            _selectWashType = [washTypeArray objectAtIndex:0];
+            _washTypeLabel.text =  @"请点击选择洗车方式";
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
             return ;
         }
         else if ([@"2" isEqualToString:[responseObject objectForKey:@"res"]]) {
@@ -727,6 +746,7 @@
     current_voucher = row;
 
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:5 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 //车牌选择回调
