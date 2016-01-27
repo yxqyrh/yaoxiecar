@@ -656,7 +656,7 @@
     current_washtype = value;
     _washTypeLabel.text = _selectWashType.fs;
 //     _priceLabel.text = _selectWashType.value;
-    [self.tableView reloadData];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 //地址选择详情界面回调
 -(void)showLocationChoose{
@@ -704,7 +704,8 @@
 -(void)setVoucherInfo:(VoucherInfo *)value :(NSInteger)row{
     _voucherInfo =value;
     current_voucher = row;
-    [self.tableView reloadData];
+
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 //车牌选择回调
