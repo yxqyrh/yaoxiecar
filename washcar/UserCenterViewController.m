@@ -507,8 +507,8 @@
 }
 
 -(void) initBtn:(UIButton*)btn:(NSString*)iconName :(NSString*)btnTitle{
-    UIImage *image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(30, 30)];
-//   UIImage *image =[UIImage imageNamed:iconName] ;
+//    UIImage *image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(30, 30)];
+   UIImage *image =[UIImage imageNamed:iconName] ;
     NSString *title = btnTitle;
     [btn setTitle:title forState:UIControlStateNormal];
 

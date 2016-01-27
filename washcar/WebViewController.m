@@ -18,9 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-//
+
     self.webView.delegate = self;
     if (isUrl2) {
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
@@ -55,7 +53,8 @@
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-     DLog(@"webViewDidFinishLoad");
+    NSString *meta = [NSString stringWithFormat:@"document.getElementsByName(\"viewport\")[0].content = \"width=%f, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\"", webView.frame.size.width];
+    [webView stringByEvaluatingJavaScriptFromString:meta];
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error
 {
