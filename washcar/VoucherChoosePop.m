@@ -48,7 +48,7 @@
         cell= [[[NSBundle mainBundle]loadNibNamed:@"CarNumChooseCell" owner:nil options:nil] firstObject];
     }
     UILabel *title = [cell viewWithTag:1];
-    title.attributedText =  [StringUtil getMenoyText:@"优惠代金券金额:" :voucherInfo.value :@"元"];
+    title.attributedText =  [StringUtil getMenoyText:@"优惠券金额:" :voucherInfo.value :@"元"];
     UIImageView *image = [cell viewWithTag:2];
     if (indexPath.row == _current_seleted_row) {
         [image setImage:[UIImage imageNamed:@"img_checked"]];

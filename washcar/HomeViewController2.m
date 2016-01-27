@@ -142,7 +142,7 @@
             NSString *bz = [dic objectForKey:@"bz"];
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-            [webController setTitle:@"详情" andUrl:bz:NO];
+            [webController setTitle:@"活动页面" andUrl:bz:NO];
             [self.navigationController pushViewController:webController animated:YES];
             
         }];

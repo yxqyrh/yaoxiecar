@@ -41,16 +41,17 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cBg-Kg-mQG">
                                 <rect key="frame" x="10" y="28" width="300" height="45"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign_phone_icon" translatesAutoresizingMaskIntoConstraints="NO" id="UaH-WW-QdK">
-                                        <rect key="frame" x="5" y="8" width="25" height="25"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sign_phone_icon" translatesAutoresizingMaskIntoConstraints="NO" id="UaH-WW-QdK">
+                                        <rect key="frame" x="5" y="8" width="20" height="20"/>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="25" id="Kqn-LY-FN0"/>
+                                            <constraint firstAttribute="width" constant="20" id="Kqn-LY-FN0"/>
+                                            <constraint firstAttribute="height" constant="20" id="buD-i5-7Sk"/>
                                             <constraint firstAttribute="width" secondItem="UaH-WW-QdK" secondAttribute="height" multiplier="1:1" id="kUG-Yh-EJL"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="手机号码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3w-Be-rL0">
-                                        <rect key="frame" x="35" y="14" width="68" height="12"/>
+                                        <rect key="frame" x="30" y="14" width="68" height="12"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="68" id="JgQ-z9-m2g"/>
@@ -60,7 +61,7 @@
                                         <color key="highlightedColor" red="0.054901960784313725" green="0.054901960784313725" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sng-Rj-DND">
-                                        <rect key="frame" x="109" y="12" width="100" height="21"/>
+                                        <rect key="frame" x="109" y="12" width="100" height="30"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="rDy-VC-Lkp"/>
@@ -107,17 +108,17 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lsV-Ox-B6t">
                                 <rect key="frame" x="10" y="55" width="300" height="45"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign_code_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ECN-On-hQC">
-                                        <rect key="frame" x="5" y="8" width="25" height="25"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sign_code_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ECN-On-hQC">
+                                        <rect key="frame" x="5" y="8" width="20" height="20"/>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="UdR-1a-1Gt"/>
+                                            <constraint firstAttribute="height" constant="20" id="UdR-1a-1Gt"/>
                                             <constraint firstAttribute="width" secondItem="ECN-On-hQC" secondAttribute="height" multiplier="1:1" id="oIQ-2O-bUJ"/>
-                                            <constraint firstAttribute="width" constant="25" id="yf1-os-78T"/>
+                                            <constraint firstAttribute="width" constant="20" id="yf1-os-78T"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJM-Uz-Ivx">
-                                        <rect key="frame" x="35" y="12" width="55" height="17"/>
+                                        <rect key="frame" x="30" y="12" width="55" height="17"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="55" id="ZTV-gw-ETK"/>
@@ -127,7 +128,7 @@
                                         <color key="highlightedColor" red="0.054901960780000002" green="0.054901960780000002" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Zg-YJ-KkA">
-                                        <rect key="frame" x="109" y="12" width="141" height="21"/>
+                                        <rect key="frame" x="109" y="12" width="141" height="30"/>
                                         <animations/>
                                         <color key="textColor" red="0.086274509799999996" green="0.67843137249999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -263,24 +264,24 @@
                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ElV-5K-acE">
                                                     <rect key="frame" x="80" y="6" width="50" height="35"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="省简称" backgroundImage="chepaibg.png">
-                                                        <color key="titleColor" red="0.090196078430000007" green="0.53725490200000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleColor" red="0.086274509799999996" green="0.67843137249999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" tag="4" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQ1-HC-rdP">
                                                     <rect key="frame" x="133" y="9" width="50" height="30"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="级别" backgroundImage="chepaibg.png">
-                                                        <color key="titleColor" red="0.090196078430000007" green="0.53725490200000003" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleColor" red="0.086274509799999996" green="0.67843137249999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="后5位数字或字母" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9zu-1a-YLx">
                                                     <rect key="frame" x="186" y="13" width="106" height="21"/>
                                                     <animations/>
                                                     <color key="textColor" red="0.086274509799999996" green="0.67843137249999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                             </subviews>
@@ -412,7 +413,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="请点击选择地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iu1-xk-JSI">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="请点击选择下单地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iu1-xk-JSI">
                                                     <rect key="frame" x="80" y="13" width="190" height="21"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
