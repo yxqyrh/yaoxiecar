@@ -27,7 +27,7 @@
     // Do any additional setup after loading the view from its nib.
     _tableview.delegate = self;
     _tableview.dataSource = self;
-    _tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    _tableview.tableFooterView = [[UIView alloc] init];
     mengban = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     mengban.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:mengban];

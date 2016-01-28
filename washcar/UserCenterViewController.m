@@ -579,9 +579,13 @@
     [ self.navigationController pushViewController:cpvc animated:YES];
 }
 - (IBAction)btn8Click:(id)sender {
+    UIAlertView *_alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否确定退出?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    _alertView.tag = 1;
+    [_alertView show];
     
-    [self exitMayi];
 }
+
+
 //Res   1 退出成功  2退出失败
 -(void) exitMayi{
     NSDictionary *parameters = [NSMutableDictionary dictionary];
@@ -661,7 +665,7 @@
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex==1) {
+    if (buttonIndex==1&&alertView.tag == 10001) {
         NSString *str = [NSString stringWithFormat:
                          @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa /wa/viewContentsUserReviews?type=Purple+Software&id=%d",
                         1047519816];
@@ -669,5 +673,10 @@
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 
     }
+    if (buttonIndex==1&&alertView.tag == 1) {
+        [self exitMayi];
+        
+    }
+    
 }
 @end
