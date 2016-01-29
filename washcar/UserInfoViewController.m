@@ -321,6 +321,8 @@
 */
 
 - (IBAction)commitInfo:(id)sender {
+    [_CarNum resignFirstResponder];
+    [_cheweihao resignFirstResponder];
     [self textFieldDidEndEditing:_CarNum];
     if ([@"确认添加" isEqualToString :_actionBtn.titleLabel.text]) {
         
@@ -413,7 +415,7 @@
         return;
     }
     
-    if ([WDSystemUtils isEmptyOrNullString:_CarColor.text]) {
+    if ([WDSystemUtils isEmptyOrNullString:_CarColor.text]||[@"请选择车辆颜色" isEqualToString :_CarColor.text]) {
         [self.view makeToast:@"汽车颜色不能为空"];
         return;
     }
@@ -520,7 +522,7 @@
         return;
     }
     
-    if ([WDSystemUtils isEmptyOrNullString:_CarColor.text]) {
+    if ([WDSystemUtils isEmptyOrNullString:_CarColor.text]||[@"请选择车辆颜色" isEqualToString :_CarColor.text]) {
         [self.view makeToast:@"汽车颜色不能为空"];
         return;
     }
@@ -533,11 +535,10 @@
         [SVProgressHUD showErrorWithStatus:@"没有小区信息，无法添加车牌"];
         return;
     }
-
-        if ([WDSystemUtils isEmptyOrNullString:_cheweihao.text]) {
+    if ([WDSystemUtils isEmptyOrNullString:_cheweihao.text]) {
             [self.view makeToast:@"车位号不能为空"];
             return;
-        }
+    }
     
     //    uid  注册或者登陆的标识  carnumber 车牌号 color颜色 province省  city市 area 县  plot小区 cwh车位号
     //    uid  是否登录的标识，所有必须登录才能使用的功能必须post过来这个参数

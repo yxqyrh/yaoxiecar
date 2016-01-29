@@ -23,7 +23,7 @@
 @property (strong, nonatomic) IBOutlet UIView *innerView;
 @property (nonatomic, weak)UIViewController *parentVC;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-@property NSArray *voucherInfoArray;
+@property NSMutableArray *voucherInfoArray;
 @property NSInteger current_seleted_row;
 + (instancetype)defaultPopupView;
 // 委托代理人，代理一般需使用弱引用(weak)

@@ -37,7 +37,8 @@
     WashType *_selectWashType;//洗车方式实体类
     VoucherInfo *_voucherInfo;//代金券实体类
     NSArray *washTypeArray;//洗车方式列表
-    NSArray *voucherInfoArray;//代金券列表
+//    NSArray *voucherInfoArray;//代金券列表
+    NSMutableArray *voucherInfoArray;
     
     bool _isFirstEnter;
     
@@ -74,8 +75,8 @@
     // Do any additional setup after loading the view.
     _isFirstEdit = YES;
     _isFirstEnter = YES;
-    current_voucher = 0;
-    current_washtype = 0;
+    current_voucher = -1;
+    current_washtype = -1;
     currnet_chepaiNum = 0;
 
    
@@ -180,11 +181,18 @@
             [self loadAddress:responseObject];
             
            washTypeArray = [WashType objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xcfs"]];
-            _selectWashType = [washTypeArray objectAtIndex:0];
-            voucherInfoArray = [VoucherInfo objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xcj"]];
-            if (voucherInfoArray != nil && voucherInfoArray.count > 0) {
-                _voucherInfo = [voucherInfoArray objectAtIndex:0];
+//            _selectWashType = [washTypeArray objectAtIndex:0];
+           NSArray *temp = [VoucherInfo objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xcj"]];
+            if (temp != nil && temp.count > 0) {
+                VoucherInfo *noUsed = [[VoucherInfo alloc]init];
+                noUsed.value = @"－1";
+                voucherInfoArray = [[NSMutableArray alloc]init];
+                [voucherInfoArray addObject:noUsed];
+                [voucherInfoArray addObjectsFromArray:temp];
+                _voucherInfo = [temp objectAtIndex:0];
+                current_voucher = 1;
             }
+            
             return ;
         }
         else if ([@"2" isEqualToString:[responseObject objectForKey:@"res"]]) {
@@ -221,10 +229,25 @@
 
 -(void)washCommit
 {
+    
+    if ([StringUtil isEmty:_carNumberLabel.text]) {
+        [SVProgressHUD showErrorWithStatus:@"请填写车牌号"];
+         return;
+    }
+    if ([StringUtil isEmty:_userInfo.color]) {
+        [SVProgressHUD showErrorWithStatus:@"请选择车辆颜色"];
+         return;
+    }
+    
     if ([StringUtil isEmty:_userInfo.plot]) {
         [SVProgressHUD showErrorWithStatus:@"没有小区信息，无法下单"];
         return;
     }
+    if (_selectWashType == nil) {
+         [SVProgressHUD showErrorWithStatus:@"请选择洗车方式"];
+         return;
+    }
+    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     
     [parameters setValue:_carNumberLabel.text forKey:@"prov"];
@@ -239,8 +262,10 @@
 //    double value = [_selectWashType.value doubleValue] - (_voucherInfo == nil ? 0 : [_voucherInfo.value doubleValue]);
     
     [parameters setValue:_selectWashType.value forKey:@"methodsval"];
-    [parameters setValue:_voucherInfo.id forKey:@"xcjid"];
-    [parameters setValue:_voucherInfo.value forKey:@"xcjje"];
+    if(_voucherInfo!=nil){
+        [parameters setValue:_voucherInfo.id forKey:@"xcjid"];
+        [parameters setValue:_voucherInfo.value forKey:@"xcjje"];
+    }
          [parameters setValue:_userInfo.color forKey:@"color"];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -448,7 +473,7 @@
     
     if (indexPath.row == 4) {
         _washTypeLabel = (UILabel *)[cell viewWithTag:2];
-        if (_userInfo != nil) {
+        if (_selectWashType != nil) {
             _washTypeLabel.text =  _selectWashType.fs;
         }
     }
@@ -456,9 +481,16 @@
     if (indexPath.row == 5) {
         _voucherLabel = (UILabel *)[cell viewWithTag:2];
         if (_voucherInfo!=nil) {
-            _voucherLabel.attributedText = [StringUtil getMenoyText:@"优惠券金额:" :_voucherInfo.value :@"元"];
+        _voucherLabel.attributedText = [StringUtil getMenoyText:@"优惠券金额:" :_voucherInfo.value :@"元"];
+          
         }else{
-            _voucherLabel.text = @"暂无优惠券";
+            if (current_voucher == 0) {
+                _voucherLabel.text = @"不使用优惠券";
+            }else{
+              _voucherLabel.text = @"暂无优惠券";
+            }
+
+            
         }
     }
     if (indexPath.row == 6) {
@@ -511,8 +543,12 @@
         if ([@"1" isEqualToString:[responseObject objectForKey:@"res"]] || 1 == [[responseObject objectForKey:@"res"] intValue]) {
             
             washTypeArray = [WashType objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xcfs"]];
-            _selectWashType = [washTypeArray objectAtIndex:0];
-            _washTypeLabel.text =  _selectWashType.fs;
+            current_washtype = -1;
+            _selectWashType = nil;
+//            _washTypeLabel.text =  _selectWashType.fs;
+//            _selectWashType = [washTypeArray objectAtIndex:0];
+            _washTypeLabel.text =  @"请点击选择洗车方式";
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
             return ;
         }
         else if ([@"2" isEqualToString:[responseObject objectForKey:@"res"]]) {
@@ -552,7 +588,7 @@
 - (IBAction)voucherChoose:(id)sender {
     [_descTextView resignFirstResponder];
     [_cheWeiNumTextField resignFirstResponder];
-    if (_voucherInfo==nil) {
+    if (voucherInfoArray==nil) {
         [self.view makeToast:@"暂无代金券"];
     }else{
         VoucherChoosePop *view = [VoucherChoosePop defaultPopupView];
@@ -702,10 +738,15 @@
 }
 //代金券代理回调
 -(void)setVoucherInfo:(VoucherInfo *)value :(NSInteger)row{
-    _voucherInfo =value;
+    if (row == 0) {
+        _voucherInfo = nil;
+    }else{
+        _voucherInfo =value;
+    }
     current_voucher = row;
 
     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
+     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:5 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 //车牌选择回调
