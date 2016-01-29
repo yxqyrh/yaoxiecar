@@ -493,11 +493,11 @@
         magin_bottom = 90;
     }
     if (deviceNum == 6.0) {
-        magin_bottom = 130;
+        magin_bottom = 150;
     }
     
     if (deviceNum == 6.5) {
-        magin_bottom = 150;
+        magin_bottom = 180;
     }
 
     [_btn8 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -507,8 +507,29 @@
 }
 
 -(void) initBtn:(UIButton*)btn:(NSString*)iconName :(NSString*)btnTitle{
-    UIImage *image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(25, 25)];
-    btn.titleLabel.font =  [UIFont fontWithName:@"Helvetica" size:12];
+    UIImage *image;
+    
+    float deviceNum = [StoryboadUtil getDeviceNum];
+
+   
+    if (deviceNum == 4.0) {
+    image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(25, 25)];
+         btn.titleLabel.font =  [UIFont fontWithName:@"Helvetica" size:12];
+    }
+    if(deviceNum == 5.0){
+  image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(25, 25)];
+         btn.titleLabel.font =  [UIFont fontWithName:@"Helvetica" size:12];
+    }
+    if (deviceNum == 6.0) {
+   image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(25, 25)];
+         btn.titleLabel.font =  [UIFont fontWithName:@"Helvetica" size:13];
+    }
+    
+    if (deviceNum == 6.5) {
+   image =[self reSizeImage:[UIImage imageNamed:iconName] toSize:CGSizeMake(30, 30)];
+         btn.titleLabel.font =  [UIFont fontWithName:@"Helvetica" size:14];
+    }
+   
 //   UIImage *image =[UIImage imageNamed:iconName] ;
     NSString *title = btnTitle;
     [btn setTitle:title forState:UIControlStateNormal];

@@ -33,21 +33,21 @@
     [super viewDidLoad];
     self.parentViewController.title = @"蚂蚁洗车";
      float deviceNum = [StoryboadUtil getDeviceNum];
-    int tab_height = 445;
+ 
     if (deviceNum == 4.0) {
-        tab_height = 372;
+      self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/320)*192);
     }else if(deviceNum == 5.0){
-        tab_height = SCREEN_HEIGHT-468;
+     self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/320)*192);
     }
     else if (deviceNum == 6.0) {
-        tab_height = SCREEN_HEIGHT-548;
+       self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/375)*227);
     }
     else if (deviceNum == 6.5) {
-        tab_height = SCREEN_HEIGHT-788;
+       self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/414)*289);
     }else{
-        tab_height =  (SCREEN_WIDTH/640)*372;
+        self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/320)*192);
     }
-    self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/640)*372);
+    
     [self showNotifiction];
     isLoaded = NO;
 }
