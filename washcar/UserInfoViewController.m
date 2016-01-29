@@ -217,10 +217,12 @@
     viewController.delegate = self;
     viewController.provinceList = self.provinceList;
     if (_isEdit) {
-        [viewController initDataDZ:self.location_dz nearPlots:self.plotList];
+//        [viewController initDataDZ:self.location_dz nearPlots:self.plotList];
+        [viewController initDataDZ:self.location_dz nearPlots:nil];
     }
     else {
-        [viewController initDataDZ:self.dz nearPlots:self.plotList];
+//        [viewController initDataDZ:self.dz nearPlots:self.plotList];
+        [viewController initDataDZ:self.dz nearPlots:nil];
     }
 
     [self.navigationController pushViewController:viewController animated:YES];

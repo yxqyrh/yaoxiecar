@@ -16,6 +16,7 @@
      NSArray *_arrayList;
     NSMutableArray *_searchResult;
     NSArray *_nearPlots;
+    NSArray *_ssxPlots;
     UISearchDisplayController *_searchDisplayController;
 
      NSString *_provinceId;
@@ -111,6 +112,7 @@
 
 {
     _nearPlots = nearPlots;
+    _ssxPlots = nearPlots;
     _provinceId = [dz objectForKey:@"province"];
     _provinceName = [dz objectForKey:@"provincemc"];;
     _cityId = [dz objectForKey:@"city"];;
@@ -241,8 +243,8 @@
 
     [[MayiHttpRequestManager sharedInstance] POST:@"area" parameters:parameters showLoadingView:nil success:^(id responseObject) {
         if ([WDSystemUtils isEqualsInt:1 andJsonData:[responseObject objectForKey:@"res"]]) {
-            _nearPlots = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"list"]];
-            [self.tableView reloadData];
+            _ssxPlots = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"list"]];
+//            [self.tableView reloadData];
         }
         
     } failture:^(NSError *error) {
@@ -344,7 +346,7 @@
                     _plotId = nil;
                     _plotName = nil;
                     
-                    _nearPlots = nil;
+                    _ssxPlots = nil;
                     
                     
                 }
@@ -373,7 +375,7 @@
                     _plotId = nil;
                     _plotName = nil;
                     
-                    _nearPlots = nil;
+                    _ssxPlots = nil;
                     
                     
                 }
@@ -403,7 +405,7 @@
                     _plotId = nil;
                     _plotName = nil;
                     
-                    _nearPlots = nil;
+                    _ssxPlots = nil;
                     
                     [self findSmallArea];
                 }
@@ -423,12 +425,18 @@
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (tableView == self.tableView) {
-        if (section == 0) {
+        
+        if (_nearPlots == nil) {
             return @"附近的网点";
         }
         else {
-            return @"全部";
+            return @"";
         }
+        
+        
+    }
+    else {
+        return @"";
     }
     return nil;
 }
@@ -480,9 +488,14 @@
         _searchResult = [NSMutableArray array];
         NSString *searchText = _searchDisplayController.searchBar.text;
         
-        for (SmallArea *smallArea in _nearPlots) {
-            if ([smallArea.plot rangeOfString:searchText].length > 0) {
-                [_searchResult addObject:smallArea];
+        if (searchText == nil || [@"" isEqualToString:searchText]) {
+            [_searchResult addObjectsFromArray:_ssxPlots];
+        }
+        else {
+            for (SmallArea *smallArea in _ssxPlots) {
+                if ([smallArea.plot rangeOfString:searchText].length > 0) {
+                    [_searchResult addObject:smallArea];
+                }
             }
         }
         return _searchResult.count;
@@ -498,9 +511,16 @@
     if (tableView == self.tableView) {
         if (indexPath.section == 0) {
             SmallArea *smallArea  = [_nearPlots objectAtIndex:indexPath.row];
-            _smallAreaTextView.text = smallArea.plot;
-            _plotId = smallArea.id;
-            _plotName = smallArea.plot;
+//            _smallAreaTextView.text = smallArea.plot;
+//            _plotId = smallArea.id;
+//            _plotName = smallArea.plot;
+            
+            NSString *address = [NSString stringWithFormat:@"%@%@%@%@",smallArea.provincemc,smallArea.citymc,smallArea.areamc,smallArea.plot];
+            
+            if (_delegate && [_delegate conformsToProtocol:@protocol(LocationChooseDelegate)]) {
+                [_delegate chooseLocation:address provinceId:smallArea.province cityId:smallArea.city areaId:smallArea.area plotId:smallArea.id plotName:smallArea.plot];
+            }
+            [self.navigationController popViewControllerAnimated:YES];
         }
         else {
 
