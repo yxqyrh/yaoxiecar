@@ -119,19 +119,19 @@
     _cityName = [dz objectForKey:@"citymc"];;
     _areaId = [dz objectForKey:@"area"];;
     _areaName = [dz objectForKey:@"areamc"];;
-    _plotId = [dz objectForKey:@"plot"];
-    _plotName = [dz objectForKey:@"plotmc"];
-    if (_plotName == nil || [@"" isEqualToString:_plotName]) {
-        if (nearPlots != nil) {
-            SmallArea *smallArea = [nearPlots objectAtIndex:0];
-            _plotName = smallArea.plot;
-            _plotId = smallArea.id;
-            
-            _provinceId = smallArea.province;
-            _cityId = smallArea.city;
-            _areaId = smallArea.area;
-        }
-    }
+//    _plotId = [dz objectForKey:@"plot"];
+//    _plotName = [dz objectForKey:@"plotmc"];
+//    if (_plotName == nil || [@"" isEqualToString:_plotName]) {
+//        if (nearPlots != nil) {
+//            SmallArea *smallArea = [nearPlots objectAtIndex:0];
+//            _plotName = smallArea.plot;
+//            _plotId = smallArea.id;
+//            
+//            _provinceId = smallArea.province;
+//            _cityId = smallArea.city;
+//            _areaId = smallArea.area;
+//        }
+//    }
 
     
     if (_areaId != nil && (nearPlots == nil || nearPlots.count == 0)) {
@@ -426,7 +426,7 @@
 {
     if (tableView == self.tableView) {
         
-        if (_nearPlots == nil) {
+        if (_nearPlots != nil) {
             return @"附近的网点";
         }
         else {
