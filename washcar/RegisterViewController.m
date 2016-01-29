@@ -712,7 +712,8 @@
     LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
     viewController.delegate = self;
     viewController.provinceList = self.provinceList;
-     [viewController initDataDZ:self.dz nearPlots:self.plotList];
+//     [viewController initDataDZ:self.dz nearPlots:self.plotList];
+    [viewController initDataDZ:self.dz nearPlots:nil];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
