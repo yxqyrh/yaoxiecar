@@ -14,7 +14,7 @@
 #import <Masonry.h>
 #import <UIImageView+WebCache.h>
 #import "YYCycleScrollView.h"
-
+#import "StoryboadUtil.h"
 @interface HomeViewController2 (){
     NSInteger totalCount;
     
@@ -32,8 +32,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.parentViewController.title = @"蚂蚁洗车";
-    self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/640)*387);
-    
+     float deviceNum = [StoryboadUtil getDeviceNum];
+    int tab_height = 445;
+    if (deviceNum == 4.0) {
+        tab_height = 372;
+    }else if(deviceNum == 5.0){
+        tab_height = SCREEN_HEIGHT-468;
+    }
+    else if (deviceNum == 6.0) {
+        tab_height = SCREEN_HEIGHT-548;
+    }
+    else if (deviceNum == 6.5) {
+        tab_height = SCREEN_HEIGHT-788;
+    }else{
+        tab_height =  (SCREEN_WIDTH/640)*372;
+    }
+    self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/640)*372);
     [self showNotifiction];
     isLoaded = NO;
 }
