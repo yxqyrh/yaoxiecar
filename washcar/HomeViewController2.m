@@ -14,7 +14,7 @@
 #import <Masonry.h>
 #import <UIImageView+WebCache.h>
 #import "YYCycleScrollView.h"
-
+#import "StoryboadUtil.h"
 @interface HomeViewController2 (){
     NSInteger totalCount;
     
@@ -32,7 +32,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.parentViewController.title = @"蚂蚁洗车";
-    self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/640)*387);
+     float deviceNum = [StoryboadUtil getDeviceNum];
+ 
+    if (deviceNum == 4.0) {
+      self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/320)*192);
+    }else if(deviceNum == 5.0){
+     self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/320)*192);
+    }
+    else if (deviceNum == 6.0) {
+       self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/375)*227);
+    }
+    else if (deviceNum == 6.5) {
+       self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/414)*289);
+    }else{
+        self.lunboBody.frame = CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH/320)*192);
+    }
     
     [self showNotifiction];
     isLoaded = NO;

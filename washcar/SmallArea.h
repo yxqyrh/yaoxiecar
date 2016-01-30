@@ -12,8 +12,11 @@
 
 @property (nonatomic)NSString *id;
 @property (nonatomic)NSString *province;
+@property (nonatomic)NSString *provincemc;
 @property (nonatomic)NSString *city;
+@property (nonatomic)NSString *citymc;
 @property (nonatomic)NSString *area;
+@property (nonatomic)NSString *areamc;
 @property (nonatomic)NSString *plot;
 @property (nonatomic)NSString *time;
 @property (nonatomic)NSString *Longitude;

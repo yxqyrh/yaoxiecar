@@ -188,10 +188,10 @@
                 self.plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
                 self.dz = [responseObject objectForKey:@"dz"];
                 
-                _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],[self.dz objectForKey:@"plotmc"]];
-                
-                [self chooseLocation:_address
-                      provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:[self.dz objectForKey:@"plot"] plotName:[self.dz objectForKey:@"plotmc"]];
+//                _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],[self.dz objectForKey:@"plotmc"]];
+//                
+//                [self chooseLocation:_address
+//                      provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:[self.dz objectForKey:@"plot"] plotName:[self.dz objectForKey:@"plotmc"]];
             }
             
             
@@ -217,10 +217,12 @@
     viewController.delegate = self;
     viewController.provinceList = self.provinceList;
     if (_isEdit) {
-        [viewController initDataDZ:self.location_dz nearPlots:self.plotList];
+//        [viewController initDataDZ:self.location_dz nearPlots:self.plotList];
+        [viewController initDataDZ:self.location_dz nearPlots:nil];
     }
     else {
-        [viewController initDataDZ:self.dz nearPlots:self.plotList];
+//        [viewController initDataDZ:self.dz nearPlots:self.plotList];
+        [viewController initDataDZ:self.dz nearPlots:nil];
     }
 
     [self.navigationController pushViewController:viewController animated:YES];
@@ -424,7 +426,7 @@
     }
  
     if ([StringUtil isEmty:plot]) {
-        [SVProgressHUD showErrorWithStatus:@"没有小区信息，无法编辑车辆信息"];
+        [SVProgressHUD showErrorWithStatus:@"请选择车辆地址"];
         return;
     }
     

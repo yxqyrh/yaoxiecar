@@ -123,14 +123,14 @@
 
 -(void)loadAddress:(id)responseObject
 {
-    SmallArea *plot0 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user"]];
+//    SmallArea *plot0 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user"]];
     SmallArea *plot1 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user1"]];
     SmallArea *plot2 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user2"]];
     SmallArea *plot3 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user3"]];
     SmallArea *plot4 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user4"]];
     SmallArea *plot5 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user5"]];
     
-    NSMutableArray *nearPlotList = [@[plot0,plot1,plot2,plot3,plot4,plot5] mutableCopy];
+    NSMutableArray *nearPlotList = [@[plot1,plot2,plot3,plot4,plot5] mutableCopy];
     
     self.provinceList = [responseObject objectForKey:@"shenglist"];
     self.cityList = [responseObject objectForKey:@"citylist"];
@@ -140,21 +140,21 @@
     self.dz = [responseObject objectForKey:@"dz"];
     
     
-    _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],plot0.plot];
+//    _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],plot0.plot];
     
     
-    _addressLabel.text = _address;
-    _userInfo.szdqstr =_address;
-    _userInfo.province =[self.dz objectForKey:@"province"];
-    _userInfo.city = [self.dz objectForKey:@"city"];
-    _userInfo.area = [self.dz objectForKey:@"area"];
-    _userInfo.plot = plot0.id;
-    _userInfo.plotName = plot0.plot;
-    
-    
-    if (_addressLabel != nil) {
-        _addressLabel.text = _address;
-    }
+//    _addressLabel.text = _address;
+//    _userInfo.szdqstr =_address;
+//    _userInfo.province =[self.dz objectForKey:@"province"];
+//    _userInfo.city = [self.dz objectForKey:@"city"];
+//    _userInfo.area = [self.dz objectForKey:@"area"];
+//    _userInfo.plot = plot0.id;
+//    _userInfo.plotName = plot0.plot;
+//    
+//    
+//    if (_addressLabel != nil) {
+//        _addressLabel.text = _address;
+//    }
 }
 
 -(void)loadMyInfoWithLocation:(double)longitude andLatitude:(double)latitude
@@ -175,6 +175,7 @@
             
             if (_userInfo != nil) {
                 [GlobalVar sharedSingleton].userInfo = _userInfo;
+                _userInfo.plot = nil;
                 [self.tableView reloadData];
             }
             
@@ -240,7 +241,7 @@
     }
     
     if ([StringUtil isEmty:_userInfo.plot]) {
-        [SVProgressHUD showErrorWithStatus:@"没有小区信息，无法下单"];
+        [SVProgressHUD showErrorWithStatus:@"请选择下单地址"];
         return;
     }
     if (_selectWashType == nil) {
@@ -371,9 +372,9 @@
                plotId:(NSString *)plotId
              plotName:(NSString *)plotName
 {
-
+    
     _addressLabel.text = address;
-    _userInfo.szdqstr =address;
+    _userInfo.szdqstr = address;
     _userInfo.province =provinceId;
     _userInfo.city = cityId;
     _userInfo.area = areaId;
@@ -457,7 +458,7 @@
     
     if (indexPath.row == 2) {
         _addressLabel = (UILabel *)[cell viewWithTag:2];
-        if (_userInfo != nil) {
+        if (_userInfo != nil && _userInfo.szdqstr != nil && ![@"" isEqualToString:_userInfo.szdqstr]) {
 //            _addressLabel.text = _userInfo.szdqstr;
             _addressLabel.text = _address;
         }
@@ -715,27 +716,27 @@
 
     
 }
-
-//地址选择确定回调
--(void)ok{
-    LocationInfo *info =[LocationInfo getInstance];
-    NSString *locationName;
-    if ([info.area_name_province isEqualToString: info.area_name_city]) {
-        locationName = [info.area_name_province stringByAppendingFormat:@"%@%@" , info.area_name_area,info.area_name_smallArea ];
-    }else{
-        locationName = [info.area_name_province stringByAppendingFormat:@"%@%@%@",info.area_name_city,info.area_name_area,info.area_name_smallArea ];
-        
-    }
-    _addressLabel.text = locationName;
-    _userInfo.szdqstr =locationName;
-    _userInfo.province =info.area_id_province;
-    _userInfo.city = info.area_id_city;
-    _userInfo.area = info.area_id_area;
-    _userInfo.plot = info.area_id_smallArea;
-    
-   
-
-}
+//
+////地址选择确定回调
+//-(void)ok{
+//    LocationInfo *info =[LocationInfo getInstance];
+//    NSString *locationName;
+//    if ([info.area_name_province isEqualToString: info.area_name_city]) {
+//        locationName = [info.area_name_province stringByAppendingFormat:@"%@%@" , info.area_name_area,info.area_name_smallArea ];
+//    }else{
+//        locationName = [info.area_name_province stringByAppendingFormat:@"%@%@%@",info.area_name_city,info.area_name_area,info.area_name_smallArea ];
+//        
+//    }
+//    _addressLabel.text = locationName;
+//    _userInfo.szdqstr =locationName;
+//    _userInfo.province =info.area_id_province;
+//    _userInfo.city = info.area_id_city;
+//    _userInfo.area = info.area_id_area;
+//    _userInfo.plot = info.area_id_smallArea;
+//    
+//   
+//
+//}
 //代金券代理回调
 -(void)setVoucherInfo:(VoucherInfo *)value :(NSInteger)row{
     if (row == 0) {

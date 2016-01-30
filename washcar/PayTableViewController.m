@@ -73,13 +73,20 @@
             payTypeTitle = @"微信支付";
         }
         
+        if (_isPaying == true) {
+            return;
+        }
+        _isPaying = true;
         
         PSTAlertController *alertController = [PSTAlertController alertControllerWithTitle:payTypeTitle message:[NSString stringWithFormat:@"是否使用%@?\n支付金额%@元    ",payTypeTitle,_payValue ] preferredStyle:PSTAlertControllerStyleAlert];
         [alertController addAction:[PSTAlertAction actionWithTitle:@"确定" style:PSTAlertActionStyleDefault handler:^(PSTAlertAction *action) {
+           
              [self payOrder];
         }]];
 
-        [alertController addAction:[PSTAlertAction actionWithTitle:@"取消" style:PSTAlertActionStyleCancel handler:nil]];
+        [alertController addAction:[PSTAlertAction actionWithTitle:@"取消" style:PSTAlertActionStyleCancel handler:^(PSTAlertAction *action) {
+            _isPaying = false;
+        }]];
         [alertController showWithSender:self.view controller:self animated:YES completion:nil];
         
 //        [self payOrder];
@@ -216,10 +223,7 @@
 
 -(void)payOrder
 {
-    if (_isPaying == true) {
-        return;
-    }
-    _isPaying = true;
+   
     [_washParameters setObject:@(_payType) forKey:@"type"];
     [[MayiHttpRequestManager sharedInstance] POST:MayiWYXCing parameters:_washParameters showLoadingView:self.view success:^(id responseObject) {
         if ([WDSystemUtils isEqualsInt:2 andJsonData:[responseObject objectForKey:@"res"]]) {

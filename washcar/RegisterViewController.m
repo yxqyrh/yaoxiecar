@@ -131,10 +131,10 @@
             self.dz = [responseObject objectForKey:@"dz"];
             
             
-            _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],[self.dz objectForKey:@"plotmc"]];
-            
-            [self chooseLocation:_address
-             provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:[self.dz objectForKey:@"plot"] plotName:[self.dz objectForKey:@"plotmc"]];
+//            _address = [NSString stringWithFormat:@"%@%@%@%@", [self.dz objectForKey:@"provincemc"],[self.dz objectForKey:@"citymc"],[self.dz objectForKey:@"areamc"],[self.dz objectForKey:@"plotmc"]];
+//            
+//            [self chooseLocation:_address
+//             provinceId: [self.dz objectForKey:@"province"] cityId:[self.dz objectForKey:@"city"] areaId:[self.dz objectForKey:@"area"] plotId:[self.dz objectForKey:@"plot"] plotName:[self.dz objectForKey:@"plotmc"]];
         }
         
     } failture:^(NSError *error) {
@@ -317,7 +317,7 @@
     }
   
     if ([StringUtil isEmty:_userInfo.plot]) {
-        [SVProgressHUD showErrorWithStatus:@"没有小区信息，无法注册"];
+        [SVProgressHUD showErrorWithStatus:@"请选择下单地址"];
         return;
     }
     
@@ -712,7 +712,8 @@
     LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
     viewController.delegate = self;
     viewController.provinceList = self.provinceList;
-     [viewController initDataDZ:self.dz nearPlots:self.plotList];
+//     [viewController initDataDZ:self.dz nearPlots:self.plotList];
+    [viewController initDataDZ:self.dz nearPlots:nil];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
