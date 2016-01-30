@@ -549,8 +549,9 @@
             _selectWashType = nil;
 //            _washTypeLabel.text =  _selectWashType.fs;
 //            _selectWashType = [washTypeArray objectAtIndex:0];
-            
+             _washTypeLabel.text = @"";
             _washTypeLabel.attributedPlaceholder = [[NSMutableAttributedString alloc]initWithString:@"请点击选择洗车方式"];
+           
    
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
             return ;
