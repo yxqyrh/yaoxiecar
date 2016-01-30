@@ -19,12 +19,12 @@
 #import "StoryboadUtil.h"
 
 @interface WashEditViewController () {
-    UILabel *_carNumberLabel;
-    UILabel *_carColorLabel;
-    UILabel *_addressLabel;
+    UITextField *_carNumberLabel;
+    UITextField *_carColorLabel;
+    UITextField *_addressLabel;
     UITextField *_cheWeiNumTextField;
-    UILabel *_washTypeLabel;
-    UILabel *_voucherLabel;
+    UITextField *_washTypeLabel;
+    UITextField *_voucherLabel;
     NIAttributedLabel *_priceLabel;
     UITextView *_descTextView;
     
@@ -437,7 +437,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if (indexPath.row == 0) {
-        _carNumberLabel = (UILabel *)[cell viewWithTag:2];
+        _carNumberLabel = (UITextField *)[cell viewWithTag:2];
 //        if (_userInfo != nil) {
 //            _carNumberLabel.text = _userInfo.carnumber;
 //        }
@@ -450,14 +450,14 @@
     }
     
     if (indexPath.row == 1) {
-        _carColorLabel = (UILabel *)[cell viewWithTag:2];
+        _carColorLabel = (UITextField *)[cell viewWithTag:2];
         if (_userInfo != nil) {
             _carColorLabel.text = _userInfo.color;
         }
     }
     
     if (indexPath.row == 2) {
-        _addressLabel = (UILabel *)[cell viewWithTag:2];
+        _addressLabel = (UITextField *)[cell viewWithTag:2];
         if (_userInfo != nil && _userInfo.szdqstr != nil && ![@"" isEqualToString:_userInfo.szdqstr]) {
 //            _addressLabel.text = _userInfo.szdqstr;
             _addressLabel.text = _address;
@@ -473,14 +473,14 @@
     
     
     if (indexPath.row == 4) {
-        _washTypeLabel = (UILabel *)[cell viewWithTag:2];
+        _washTypeLabel = (UITextField *)[cell viewWithTag:2];
         if (_selectWashType != nil) {
             _washTypeLabel.text =  _selectWashType.fs;
         }
     }
     
     if (indexPath.row == 5) {
-        _voucherLabel = (UILabel *)[cell viewWithTag:2];
+        _voucherLabel = (UITextField *)[cell viewWithTag:2];
         if (_voucherInfo!=nil) {
         _voucherLabel.attributedText = [StringUtil getMenoyText:@"优惠券金额:" :_voucherInfo.value :@"元"];
           
@@ -488,7 +488,7 @@
             if (current_voucher == 0) {
                 _voucherLabel.text = @"不使用优惠券";
             }else{
-              _voucherLabel.text = @"暂无优惠券";
+              _voucherLabel.attributedPlaceholder = [[NSMutableAttributedString alloc]initWithString:@"暂无优惠券"];
             }
 
             
@@ -548,7 +548,9 @@
             _selectWashType = nil;
 //            _washTypeLabel.text =  _selectWashType.fs;
 //            _selectWashType = [washTypeArray objectAtIndex:0];
-            _washTypeLabel.text =  @"请点击选择洗车方式";
+            
+            _washTypeLabel.attributedPlaceholder = [[NSMutableAttributedString alloc]initWithString:@"请点击选择洗车方式"];
+   
             [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:6 inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
             return ;
         }

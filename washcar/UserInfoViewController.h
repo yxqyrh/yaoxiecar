@@ -18,8 +18,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *CarNum;
 @property (weak, nonatomic) IBOutlet UIButton *provinceShort;
 @property (weak, nonatomic) IBOutlet UIButton *A_Z;
-@property (weak, nonatomic) IBOutlet UILabel *CarColor;
-@property (weak, nonatomic) IBOutlet UILabel *Loaction;
+
+@property (weak, nonatomic) IBOutlet UITextField *CarColor;
+
+@property (weak, nonatomic) IBOutlet UITextField *Loaction;
 @property (weak, nonatomic) IBOutlet UILabel *phone;
 @property (weak, nonatomic) IBOutlet UILabel *surplusMoney;
 @property (weak, nonatomic) IBOutlet UITextField *cheweihao;
