@@ -713,7 +713,7 @@
     viewController.delegate = self;
     viewController.provinceList = self.provinceList;
 //     [viewController initDataDZ:self.dz nearPlots:self.plotList];
-    [viewController initDataDZ:self.dz nearPlots:nil];
+    [viewController initDataDZ:self.dz nearPlots:nil andLocationPlot:nil];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

@@ -218,11 +218,11 @@
     viewController.provinceList = self.provinceList;
     if (_isEdit) {
 //        [viewController initDataDZ:self.location_dz nearPlots:self.plotList];
-        [viewController initDataDZ:self.location_dz nearPlots:nil];
+        [viewController initDataDZ:self.location_dz nearPlots:nil andLocationPlot:nil];
     }
     else {
 //        [viewController initDataDZ:self.dz nearPlots:self.plotList];
-        [viewController initDataDZ:self.dz nearPlots:nil];
+        [viewController initDataDZ:self.dz nearPlots:nil andLocationPlot:nil];
     }
 
     [self.navigationController pushViewController:viewController animated:YES];

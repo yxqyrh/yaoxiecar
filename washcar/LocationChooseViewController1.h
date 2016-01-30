@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "LocationChooseViewController.h"
+#import "SmallArea.h"
 
 @protocol LocationChooseDelegate <NSObject>
 
@@ -45,6 +46,7 @@
                 nearPlots:(NSArray *)nearPlots;
 
 -(void)initDataDZ:(NSDictionary *)dz
-        nearPlots:(NSArray *)nearPlots;
+        nearPlots:(NSArray *)nearPlots
+  andLocationPlot:(SmallArea *)smallArea;
 
 @end

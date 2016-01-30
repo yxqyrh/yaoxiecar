@@ -65,6 +65,7 @@
 @property (nonatomic)NSArray *areaList;
 @property (nonatomic)NSArray *plotList;
 @property (nonatomic)NSDictionary *dz;
+@property (nonatomic)SmallArea *locationPlot;
 
 @end
 
@@ -123,7 +124,7 @@
 
 -(void)loadAddress:(id)responseObject
 {
-//    SmallArea *plot0 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user"]];
+    _locationPlot = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user"]];
     SmallArea *plot1 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user1"]];
     SmallArea *plot2 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user2"]];
     SmallArea *plot3 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user3"]];
@@ -642,7 +643,7 @@
     LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
     viewController.delegate = self;
     viewController.provinceList = self.provinceList;
-    [viewController initDataDZ:self.dz nearPlots:self.plotList];
+    [viewController initDataDZ:self.dz nearPlots:self.plotList andLocationPlot:_locationPlot];
     [self.navigationController pushViewController:viewController animated:YES];
     return;
     
