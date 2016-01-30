@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Zk9-BV-BKD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Zk9-BV-BKD">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -236,8 +236,12 @@
                                         <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JRL-3p-slA">
                                             <rect key="frame" x="10" y="14" width="300" height="47"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="reg_icon_car_number" translatesAutoresizingMaskIntoConstraints="NO" id="l9Y-VG-BXt">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reg_icon_car_number" translatesAutoresizingMaskIntoConstraints="NO" id="l9Y-VG-BXt">
                                                     <rect key="frame" x="10" y="11" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="Cb3-iD-fJq"/>
+                                                        <constraint firstAttribute="width" constant="25" id="Tyi-Oz-Ora"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="车牌" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9EY-4q-X5M">
                                                     <rect key="frame" x="41" y="13" width="42" height="21"/>
@@ -300,8 +304,12 @@
                                         <view tag="1" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="emL-Mh-8hN">
                                             <rect key="frame" x="10" y="5" width="300" height="47"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="reg_icon_car_color" translatesAutoresizingMaskIntoConstraints="NO" id="QUj-6V-zZS">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reg_icon_car_color" translatesAutoresizingMaskIntoConstraints="NO" id="QUj-6V-zZS">
                                                     <rect key="frame" x="10" y="11" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="lXp-73-pzc"/>
+                                                        <constraint firstAttribute="height" constant="25" id="uH7-lQ-z16"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="颜色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyl-sM-9tW">
                                                     <rect key="frame" x="41" y="13" width="42" height="21"/>
@@ -309,12 +317,12 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="绿色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEE-v3-E4B">
-                                                    <rect key="frame" x="80" y="13" width="152" height="21"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请点击选择车辆颜色" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHE-p8-g5P">
+                                                    <rect key="frame" x="80" y="8" width="152" height="30"/>
+                                                    <color key="textColor" red="0.28627450980000002" green="0.69803921570000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.086274509799999996" green="0.67843137249999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="img_01_guide" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-Qk-2iy">
                                                     <rect key="frame" x="281" y="18" width="15" height="9"/>
                                                     <constraints>
@@ -326,13 +334,13 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="hsh-Qk-2iy" firstAttribute="centerY" secondItem="emL-Mh-8hN" secondAttribute="centerY" id="5E1-Kb-QkY"/>
-                                                <constraint firstItem="OEE-v3-E4B" firstAttribute="centerY" secondItem="emL-Mh-8hN" secondAttribute="centerY" id="Ff3-9r-2tD"/>
+                                                <constraint firstItem="aHE-p8-g5P" firstAttribute="centerY" secondItem="emL-Mh-8hN" secondAttribute="centerY" id="D77-1f-8hG"/>
                                                 <constraint firstItem="QUj-6V-zZS" firstAttribute="leading" secondItem="emL-Mh-8hN" secondAttribute="leading" constant="10" id="GOC-1c-aUY"/>
+                                                <constraint firstItem="aHE-p8-g5P" firstAttribute="leading" secondItem="Dyl-sM-9tW" secondAttribute="trailing" constant="-3" id="Jbx-0M-4Wt"/>
                                                 <constraint firstItem="Dyl-sM-9tW" firstAttribute="centerY" secondItem="emL-Mh-8hN" secondAttribute="centerY" id="k8u-42-REK"/>
                                                 <constraint firstItem="QUj-6V-zZS" firstAttribute="centerY" secondItem="emL-Mh-8hN" secondAttribute="centerY" id="p7k-gD-KAE"/>
                                                 <constraint firstAttribute="height" constant="47" id="pLg-kV-3sO"/>
                                                 <constraint firstItem="Dyl-sM-9tW" firstAttribute="leading" secondItem="QUj-6V-zZS" secondAttribute="trailing" constant="6" id="rIG-PC-liA"/>
-                                                <constraint firstItem="OEE-v3-E4B" firstAttribute="leading" secondItem="Dyl-sM-9tW" secondAttribute="trailing" constant="8" id="vZ6-AP-6i4"/>
                                                 <constraint firstAttribute="trailing" secondItem="hsh-Qk-2iy" secondAttribute="trailing" constant="8" id="zFt-6I-8Ar"/>
                                             </constraints>
                                         </view>
@@ -366,6 +374,10 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="reg_icon_postion" translatesAutoresizingMaskIntoConstraints="NO" id="nUv-DI-QtW">
                                                     <rect key="frame" x="10" y="8" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="2N9-0j-ltI"/>
+                                                        <constraint firstAttribute="height" constant="25" id="TyH-eL-Lvk"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="img_01_guide" translatesAutoresizingMaskIntoConstraints="NO" id="2K6-tE-b27">
                                                     <rect key="frame" x="281" y="18" width="15" height="8"/>
@@ -380,20 +392,20 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="请点击选择下单地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iu1-xk-JSI">
-                                                    <rect key="frame" x="80" y="13" width="190" height="21"/>
+                                                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请点击选择注册地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5gM-vh-ODa">
+                                                    <rect key="frame" x="80" y="7" width="190" height="30"/>
+                                                    <color key="textColor" red="0.28627450980000002" green="0.69803921570000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.086274509799999996" green="0.67843137249999996" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="47" id="Czk-lh-XRQ"/>
                                                 <constraint firstItem="mvr-Yh-QeW" firstAttribute="centerY" secondItem="jq4-RH-AQh" secondAttribute="centerY" id="E0F-Vc-dgm"/>
-                                                <constraint firstItem="iu1-xk-JSI" firstAttribute="centerY" secondItem="jq4-RH-AQh" secondAttribute="centerY" id="HiF-eG-0sZ"/>
-                                                <constraint firstItem="iu1-xk-JSI" firstAttribute="leading" secondItem="mvr-Yh-QeW" secondAttribute="trailing" constant="8" id="IM9-aa-vIw"/>
+                                                <constraint firstItem="5gM-vh-ODa" firstAttribute="leading" secondItem="mvr-Yh-QeW" secondAttribute="trailing" constant="-3" id="EwN-n0-csH"/>
                                                 <constraint firstItem="nUv-DI-QtW" firstAttribute="leading" secondItem="jq4-RH-AQh" secondAttribute="leading" constant="10" id="Isj-IV-dBp"/>
+                                                <constraint firstItem="5gM-vh-ODa" firstAttribute="centerY" secondItem="jq4-RH-AQh" secondAttribute="centerY" id="LCJ-st-N8e"/>
                                                 <constraint firstAttribute="trailing" secondItem="2K6-tE-b27" secondAttribute="trailing" constant="8" id="crb-7e-G1e"/>
                                                 <constraint firstItem="nUv-DI-QtW" firstAttribute="centerY" secondItem="jq4-RH-AQh" secondAttribute="centerY" id="fUU-Aj-rTB"/>
                                                 <constraint firstItem="mvr-Yh-QeW" firstAttribute="leading" secondItem="nUv-DI-QtW" secondAttribute="trailing" constant="6" id="qYu-G6-sXJ"/>
@@ -429,6 +441,10 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="reg_icon_car" translatesAutoresizingMaskIntoConstraints="NO" id="IUM-Jq-pmU">
                                                     <rect key="frame" x="10" y="5" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="U0l-zA-Yqu"/>
+                                                        <constraint firstAttribute="height" constant="25" id="tbp-M5-xs9"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="车位号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyw-pW-Qer">
                                                     <rect key="frame" x="41" y="7" width="50" height="21"/>
@@ -474,6 +490,10 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reg_phone_icon" translatesAutoresizingMaskIntoConstraints="NO" id="OLd-6K-ndV">
                                                     <rect key="frame" x="10" y="11" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="p9w-WM-n6C"/>
+                                                        <constraint firstAttribute="width" constant="25" id="pNU-bk-jTg"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="手机号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeI-MQ-XLc">
                                                     <rect key="frame" x="41" y="13" width="50" height="21"/>
@@ -538,6 +558,10 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reg_code_icon" translatesAutoresizingMaskIntoConstraints="NO" id="h7p-Mp-P2m">
                                                     <rect key="frame" x="10" y="11" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="Nk2-95-bBO"/>
+                                                        <constraint firstAttribute="height" constant="25" id="oEN-om-ug5"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7A-x0-jkZ">
                                                     <rect key="frame" x="43" y="13" width="68" height="21"/>
@@ -746,6 +770,6 @@
         <image name="sign_phone_icon" width="15" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4ET-H4-Tgi"/>
+        <segue reference="lN8-ho-Nva"/>
     </inferredMetricsTieBreakers>
 </document>
