@@ -123,14 +123,14 @@
 
 -(void)loadAddress:(id)responseObject
 {
-    SmallArea *plot0 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user"]];
+//    SmallArea *plot0 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user"]];
     SmallArea *plot1 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user1"]];
     SmallArea *plot2 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user2"]];
     SmallArea *plot3 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user3"]];
     SmallArea *plot4 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user4"]];
     SmallArea *plot5 = [SmallArea objectWithKeyValues:[responseObject objectForKey:@"plot_user5"]];
     
-    NSMutableArray *nearPlotList = [@[plot0,plot1,plot2,plot3,plot4,plot5] mutableCopy];
+    NSMutableArray *nearPlotList = [@[plot1,plot2,plot3,plot4,plot5] mutableCopy];
     
     self.provinceList = [responseObject objectForKey:@"shenglist"];
     self.cityList = [responseObject objectForKey:@"citylist"];
