@@ -42,7 +42,7 @@
     
     _payType = 1;
     _accountLeft = @"0.00";
-    _checkInMoney = 0.0;
+    _checkInMoney = 0.00;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paySuccess) name:MayiPaySuccess object:nil];
     
     [self loadData];
@@ -457,6 +457,7 @@
         
         UILabel *checkInLabel = (UILabel *)[cell viewWithTag:2];
         checkInLabel.text = [NSString stringWithFormat:@"%.2f元", _checkInMoney];
+        
     }
     
     if (indexPath.row == 3) {

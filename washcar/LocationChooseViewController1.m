@@ -10,7 +10,7 @@
 #import "MayiHttpRequestManager.h"
 #import "Constant.h"
 #import "LocationInfo.h"
-#import "SmallArea.h"
+
 
 @interface LocationChooseViewController1 (){
      NSArray *_arrayList;
@@ -27,6 +27,7 @@
     NSString *_areaName;
     NSString *_plotId;
     NSString *_plotName;
+    SmallArea *_locationPlot;
 }
 
 
@@ -108,7 +109,8 @@
 }
 
 -(void)initDataDZ:(NSDictionary *)dz
-                nearPlots:(NSArray *)nearPlots
+        nearPlots:(NSArray *)nearPlots
+  andLocationPlot:(SmallArea *)smallArea
 
 {
     _nearPlots = nearPlots;
@@ -119,6 +121,14 @@
     _cityName = [dz objectForKey:@"citymc"];;
     _areaId = [dz objectForKey:@"area"];;
     _areaName = [dz objectForKey:@"areamc"];;
+    _locationPlot = smallArea;
+    if (_locationPlot != nil) {
+        _provinceId = smallArea.province;
+        _cityId = smallArea.city;
+        _areaId = smallArea.area;
+        _plotId = smallArea.plot;
+    }
+    
 //    _plotId = [dz objectForKey:@"plot"];
 //    _plotName = [dz objectForKey:@"plotmc"];
 //    if (_plotName == nil || [@"" isEqualToString:_plotName]) {

@@ -24,8 +24,8 @@
     NSString *_verifyCodeId;
     
     UITextField *_carNumberTextField;
-    UILabel *_carColorLabel;
-    UILabel *_addresssLabel;
+    UITextField *_carColorLabel;
+    UITextField *_addresssLabel;
     UITextField *_carPositionTextField;
     UITextField *_telephoneTextField;
     UIButton *_codeButton;
@@ -495,14 +495,14 @@
     }
     
     if (indexPath.row == 1) {
-        _carColorLabel = (UILabel *)[cell viewWithTag:2];
+        _carColorLabel = (UITextField *)[cell viewWithTag:2];
 //        if (![WDSystemUtils isEmptyOrNullString:_carColor]) {
 //            _carColorLabel.text = _carColor;
 //        }
     }
     
     if (indexPath.row == 2) {
-        _addresssLabel = (UILabel *)[cell viewWithTag:2];
+        _addresssLabel = (UITextField *)[cell viewWithTag:2];
         if (![WDSystemUtils isEmptyOrNullString:_address]) {
             _addresssLabel.text = _address;
         }
@@ -713,7 +713,7 @@
     viewController.delegate = self;
     viewController.provinceList = self.provinceList;
 //     [viewController initDataDZ:self.dz nearPlots:self.plotList];
-    [viewController initDataDZ:self.dz nearPlots:nil];
+    [viewController initDataDZ:self.dz nearPlots:nil andLocationPlot:nil];
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
