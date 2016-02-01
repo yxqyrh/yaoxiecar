@@ -566,7 +566,7 @@
     WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
 //    [webController setTitle:@"注册协议" andUrl:url:YES];
     
-    [webController setTitle:@"注册协议" andUrl:url :YES];
+    [webController setTitle:@"注册协议" andUrl:url isUrl:YES];
     [self.navigationController pushViewController:webController animated:YES];
 }
 

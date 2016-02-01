@@ -17,7 +17,7 @@
 
 
 
--(void)setTitle:(NSString *)title andUrl:(NSString *)url:(BOOL)isUrl;
+-(void)setTitle:(NSString *)title andUrl:(NSString *)url  isUrl:(BOOL)isUrl;
 
 
 @end

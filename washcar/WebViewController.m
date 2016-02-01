@@ -10,6 +10,8 @@
 
 @interface WebViewController (){
     BOOL isUrl2;
+    
+    UIActivityIndicatorView *loadingView;
 }
 
 @end
@@ -20,11 +22,24 @@
     [super viewDidLoad];
 
     self.webView.delegate = self;
-    if (isUrl2) {
+//    if (isUrl2) {
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
-    }else{
-        [self.webView loadHTMLString:_url baseURL:nil];
-    }
+//    }else{
+//        [self.webView loadHTMLString:_url baseURL:nil];
+////    }
+    
+    loadingView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, self.webView.frame.size.width, self.webView.frame.size.height)];//指定进度轮的大小
+    [self.view addSubview:loadingView];
+    //    [loadingView setCenter:CGPointMake(160, 140)];//指定进度轮中心点
+    loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    //设置显示位置
+    [loadingView setCenter:CGPointMake(loadingView.frame.size.width / 2, loadingView.frame.size.height / 2)];
+    //设置背景色
+    loadingView.backgroundColor = UIColorWithRGBA(158.0f, 158.0f, 158.0f, 1.0f);
+    //设置背景透明
+    loadingView.alpha = 1.0;
+    [loadingView startAnimating];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,7 +54,7 @@
 //    
 //}
 
--(void)setTitle:(NSString *)title andUrl:(NSString *)url :(BOOL)isUrl{
+-(void)setTitle:(NSString *)title andUrl:(NSString *)url  isUrl:(BOOL)isUrl{
     self.title = title;
     _url = url;
     isUrl2 = isUrl;
@@ -53,8 +68,9 @@
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    NSString *meta = [NSString stringWithFormat:@"document.getElementsByName(\"viewport\")[0].content = \"width=%f, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\"", webView.frame.size.width];
-    [webView stringByEvaluatingJavaScriptFromString:meta];
+//    NSString *meta = [NSString stringWithFormat:@"document.getElementsByName(\"viewport\")[0].content = \"width=%f, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no\"", webView.frame.size.width];
+//    [webView stringByEvaluatingJavaScriptFromString:meta];
+    [loadingView removeFromSuperview];
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(nullable NSError *)error
 {

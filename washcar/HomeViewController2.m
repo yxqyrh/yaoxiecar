@@ -153,10 +153,12 @@
         }];
         [cycleScrollView setTapActionBlock:^(NSInteger(pageIndex)) {
             NSDictionary *dic = array[pageIndex];
-            NSString *bz = [dic objectForKey:@"bz"];
+            NSString *access_url = [dic objectForKey:@"access_url"];
+            access_url = [access_url stringByAppendingString:[GlobalVar sharedSingleton].uid];
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-            [webController setTitle:@"活动页面" andUrl:bz:NO];
+            [webController setTitle:@"活动页面" andUrl:access_url isUrl:NO];
+//            [webController setTitle:@"活动页面" andUrl:access_url:NO];
             [self.navigationController pushViewController:webController animated:YES];
             
         }];
@@ -167,10 +169,12 @@
 -(void)goDetailPic:(id)sender{
     //这个sender其实就是UIButton，因此通过sender.tag就可以拿到刚才的参数
     NSDictionary *dic = array[0];
-    NSString *bz = [dic objectForKey:@"bz"];
+
+    NSString *access_url = [dic objectForKey:@"access_url"];
+    access_url = [access_url stringByAppendingString:[GlobalVar sharedSingleton].uid];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"详情" andUrl:bz:NO];
+    [webController setTitle:@"详情" andUrl:access_url  isUrl:NO];
     [self.navigationController pushViewController:webController animated:YES];
 }
 - (void)didReceiveMemoryWarning {
