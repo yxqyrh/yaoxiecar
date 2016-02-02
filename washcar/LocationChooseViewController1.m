@@ -459,8 +459,8 @@
     UILabel *labelPlot = (UILabel *)[cell viewWithTag:1];
     
     if (tableView == self.tableView) {
-            SmallArea *smallArea = [_nearPlots objectAtIndex:indexPath.row];
-            labelPlot.text = smallArea.plot;
+        SmallArea *smallArea = [_nearPlots objectAtIndex:indexPath.row];
+        labelPlot.text = smallArea.plot;
         
     }
     else {
@@ -474,12 +474,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (tableView == self.tableView) {
-        return 1;
-    }
-    else {
-        return 1;
-    }
+//    if (tableView == self.tableView) {
+//        return 1;
+//    }
+//    else {
+//        return 1;
+//    }
+    return 1;
 }
 
 
@@ -497,7 +498,7 @@
     {
         _searchResult = [NSMutableArray array];
         NSString *searchText = _searchDisplayController.searchBar.text;
-        
+        DLog(@"searchText:%@",searchText);
         if (searchText == nil || [@"" isEqualToString:searchText]) {
             [_searchResult addObjectsFromArray:_ssxPlots];
         }
@@ -508,6 +509,7 @@
                 }
             }
         }
+        DLog(@"_searchResult count:%i", _searchResult.count);
         return _searchResult.count;
     }
 }
