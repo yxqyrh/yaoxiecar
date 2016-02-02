@@ -86,8 +86,9 @@
     NSInteger counter = 0;
     for (UIView *contentView in self.contentViews) {
         contentView.userInteractionEnabled = YES;
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentViewTapAction:)];
-        [contentView addGestureRecognizer:tapGesture];
+//        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(contentViewTapAction:)];
+//        tapGesture.delegate = self;
+//        [contentView addGestureRecognizer:tapGesture];
         CGRect rightRect = contentView.frame;
         rightRect.origin = CGPointMake(CGRectGetWidth(self.scrollView.frame) * (counter ++), 0);
         
@@ -177,6 +178,15 @@
         self.TapActionBlock(self.currentPageIndex);
     }
 }
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+//    NSLog(@"touchesBegan");
+//     [self.animationTimer pauseTimer];
+//}
+//
+//- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
+//     NSLog(@"touchesCancelled");
+//    [self.animationTimer resumeTimerAfterTimeInterval:self.animationDuration];
+//}
 
 
 @end

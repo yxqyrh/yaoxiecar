@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YYCycleScrollView : UIView<UIScrollViewDelegate>
+@interface YYCycleScrollView : UIView<UIScrollViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong, readonly) UIPageControl *pageControl;
 @property (nonatomic , readonly) UIScrollView *scrollView;

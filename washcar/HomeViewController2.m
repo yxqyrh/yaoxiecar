@@ -117,6 +117,7 @@
                 [tempImageView setBackgroundImage:image forState:UIControlStateNormal];
         tempImageView.contentMode = UIViewContentModeScaleAspectFill;
         tempImageView.clipsToBounds = true;
+        tempImageView.tag = 0;
         [tempImageView addTarget:self action:@selector(goDetailPic:) forControlEvents:UIControlEventTouchUpInside];
         [self.lunboBody addSubview:tempImageView];
 
@@ -124,7 +125,7 @@
         if (cycleScrollView!=nil) {
             [cycleScrollView removeFromSuperview];
          }
-        cycleScrollView = [[YYCycleScrollView alloc] initWithFrame:CGRectMake(0, imageY, imageW, imageH) animationDuration:5.0];
+        cycleScrollView = [[YYCycleScrollView alloc] initWithFrame:CGRectMake(0, imageY, imageW, imageH) animationDuration:6.0];
         NSMutableArray *viewArray = [[NSMutableArray alloc] init];
         for (int i = 0; i < totalCount; i++) {
             NSDictionary *dic = array[i];
@@ -133,16 +134,13 @@
                 continue;
             }
             CGFloat imageX = i * imageW;
-//            UIImageView *tempImageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageX, imageY, imageW, imageH)];
-//                     [tempImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]];
             UIButton *tempImageView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, imageW, imageH)];
             UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]]];
             [tempImageView setBackgroundImage:image forState:UIControlStateNormal];
-            
-            //        UIImage *image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/%@",IMGURL, pic]]]];
-            //        [tempImageView setImage:image];
+            tempImageView.tag = i;
             tempImageView.contentMode = UIViewContentModeScaleAspectFill;
             tempImageView.clipsToBounds = true;
+             [tempImageView addTarget:self action:@selector(goDetailPic:) forControlEvents:UIControlEventTouchUpInside];
             [viewArray addObject:tempImageView];
         }
         [cycleScrollView setFetchContentViewAtIndex:^UIView *(NSInteger(pageIndex)) {
@@ -151,30 +149,19 @@
         [cycleScrollView setTotalPagesCount:^NSInteger{
             return totalCount;
         }];
-        [cycleScrollView setTapActionBlock:^(NSInteger(pageIndex)) {
-            NSDictionary *dic = array[pageIndex];
-            NSString *access_url = [dic objectForKey:@"access_url"];
-            access_url = [access_url stringByAppendingString:[GlobalVar sharedSingleton].uid];
-            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-            [webController setTitle:@"活动页面" andUrl:access_url isUrl:NO];
-//            [webController setTitle:@"活动页面" andUrl:access_url:NO];
-            [self.navigationController pushViewController:webController animated:YES];
-            
-        }];
-  
         [self.lunboBody addSubview:cycleScrollView];
     }
 }
 -(void)goDetailPic:(id)sender{
     //这个sender其实就是UIButton，因此通过sender.tag就可以拿到刚才的参数
-    NSDictionary *dic = array[0];
+    int index = [sender tag];
+    NSDictionary *dic = array[index];
 
     NSString *access_url = [dic objectForKey:@"access_url"];
-    access_url = [access_url stringByAppendingString:[GlobalVar sharedSingleton].uid];
+    access_url = [access_url stringByAppendingString:[dic objectForKey:@"id"]];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     WebViewController *webController = [storyBoard instantiateViewControllerWithIdentifier:@"WebViewController"];
-    [webController setTitle:@"详情" andUrl:access_url  isUrl:NO];
+    [webController setTitle:@"活动详情" andUrl:access_url  isUrl:NO];
     [self.navigationController pushViewController:webController animated:YES];
 }
 - (void)didReceiveMemoryWarning {
