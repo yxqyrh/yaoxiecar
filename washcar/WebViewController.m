@@ -28,7 +28,7 @@
 //        [self.webView loadHTMLString:_url baseURL:nil];
 ////    }
     
-    loadingView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, self.webView.frame.size.width, self.webView.frame.size.height)];//指定进度轮的大小
+    loadingView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];//指定进度轮的大小
     [self.view addSubview:loadingView];
     //    [loadingView setCenter:CGPointMake(160, 140)];//指定进度轮中心点
     loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;

@@ -156,7 +156,6 @@
     //这个sender其实就是UIButton，因此通过sender.tag就可以拿到刚才的参数
     int index = [sender tag];
     NSDictionary *dic = array[index];
-
     NSString *access_url = [dic objectForKey:@"access_url"];
     access_url = [access_url stringByAppendingString:[dic objectForKey:@"id"]];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
