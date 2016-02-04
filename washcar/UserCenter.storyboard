@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GzF-PX-v8X">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GzF-PX-v8X">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -114,7 +114,7 @@
                                             <action selector="btn4Click:" destination="HhY-9p-OGC" eventType="touchUpInside" id="9JX-Qj-ru5"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltG-bV-9e6">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ltG-bV-9e6">
                                         <rect key="frame" x="304" y="184" width="288" height="80"/>
                                         <color key="backgroundColor" red="0.08235294118" green="0.41568627450000001" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -140,7 +140,7 @@
                                         <rect key="frame" x="402" y="96" width="190" height="80"/>
                                         <color key="backgroundColor" red="0.47843137250000001" green="0.72156862749999995" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="检查更新">
+                                        <state key="normal" title="退出登录">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -148,7 +148,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zx7-IS-CEq">
-                                        <rect key="frame" x="8" y="184" width="288" height="80"/>
+                                        <rect key="frame" x="8" y="184" width="584" height="80"/>
                                         <color key="backgroundColor" red="0.082352941176470587" green="0.41568627450980389" blue="0.66274509803921566" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="常见问题解答">
@@ -161,6 +161,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="zx7-IS-CEq" secondAttribute="trailing" constant="8" id="0FV-vm-Kzb"/>
                                     <constraint firstAttribute="trailing" secondItem="Pc7-hC-i74" secondAttribute="trailing" constant="8" id="1LP-AR-Oxd"/>
                                     <constraint firstItem="zx7-IS-CEq" firstAttribute="leading" secondItem="6kS-Gm-3Bg" secondAttribute="leading" constant="8" id="2ZE-N9-yee"/>
                                     <constraint firstItem="Pc7-hC-i74" firstAttribute="leading" secondItem="3hC-Uc-zcA" secondAttribute="trailing" constant="8" id="6O1-uY-jrd"/>
@@ -171,7 +172,6 @@
                                     <constraint firstItem="lTJ-8k-rtW" firstAttribute="height" secondItem="51b-XM-jRd" secondAttribute="height" id="Bn6-w2-ikn"/>
                                     <constraint firstItem="ltG-bV-9e6" firstAttribute="top" secondItem="Pc7-hC-i74" secondAttribute="bottom" constant="8" id="ET0-8g-FJP"/>
                                     <constraint firstItem="Pc7-hC-i74" firstAttribute="top" secondItem="51b-XM-jRd" secondAttribute="bottom" constant="8" id="Ebw-DR-CFE"/>
-                                    <constraint firstItem="ltG-bV-9e6" firstAttribute="leading" secondItem="zx7-IS-CEq" secondAttribute="trailing" constant="8" id="KIE-aw-WVz"/>
                                     <constraint firstItem="iMg-iJ-E0Z" firstAttribute="leading" secondItem="6kS-Gm-3Bg" secondAttribute="leading" constant="8" id="MWx-da-rRP"/>
                                     <constraint firstItem="zx7-IS-CEq" firstAttribute="top" secondItem="iMg-iJ-E0Z" secondAttribute="bottom" constant="8" id="Mgl-y2-rzL"/>
                                     <constraint firstItem="iMg-iJ-E0Z" firstAttribute="height" secondItem="zx7-IS-CEq" secondAttribute="height" id="Omp-nm-65a"/>

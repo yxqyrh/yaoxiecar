@@ -477,7 +477,7 @@
     [self initBtn:_btn3 :@"user_invitation_icon" :_btn3.titleLabel.text];
     [self initBtn:_btn4 :@"user_msg_icon" :_btn4.titleLabel.text];
     [self initBtn:_btn5 :@"user_complaint_icon" :_btn5.titleLabel.text];
-    [self initBtn:_btn6 :@"user_update_icon" :_btn6.titleLabel.text];
+    [self initBtn:_btn6 :@"user_exit_icon" :_btn6.titleLabel.text];
     [self initBtn:_btn7 :@"user_common_problem_icon" :_btn7.titleLabel.text];
     [self initBtn:_btn8 :@"user_exit_icon" :_btn8.titleLabel.text];
     float deviceNum = [StoryboadUtil getDeviceNum];
@@ -601,7 +601,10 @@
 }
 
 - (IBAction)btn6Click:(id)sender {
-    [ self onCheckVersion];
+//    [ self onCheckVersion];
+    UIAlertView *_alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否确定退出?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    _alertView.tag = 1;
+    [_alertView show];
 }
 
 - (IBAction)btn7Click:(id)sender {
@@ -655,7 +658,10 @@
 {
     NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
     //CFShow((__bridge CFTypeRef)(infoDic));
-    NSString *currentVersion = [infoDic objectForKey:@"CFBundleVersion"];
+    NSLog(@"infoDic=%@",infoDic);
+    NSString *currentVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];
+    currentVersion = [currentVersion stringByReplacingOccurrencesOfString:@"." withString:@""];
+    NSLog(@"currentVersion=%@",currentVersion);
     
     NSString *URL = @"http://itunes.apple.com/lookup?id=1047519816";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -664,18 +670,15 @@
     NSHTTPURLResponse *urlResponse = nil;
     NSError *error = nil;
     NSData *recervedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
-    
-    
-    
-//    NSString *results = [[NSString alloc] initWithBytes:[recervedData bytes] length:[recervedData length] encoding:NSUTF8StringEncoding];
-    
       NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:recervedData options:NSJSONReadingMutableLeaves error:nil];
-//    NSDictionary *dic = [results JSONValue];
+
     NSArray *infoArray = [dic objectForKey:@"results"];
     if ([infoArray count]) {
         NSDictionary *releaseInfo = [infoArray objectAtIndex:0];
+        NSLog(@"releaseInfo=%@",releaseInfo);
         NSString *lastVersion = [releaseInfo objectForKey:@"version"];
-        
+        lastVersion = [lastVersion stringByReplacingOccurrencesOfString:@"." withString:@""];
+         NSLog(@"lastVersion=%@",lastVersion);
         if (![lastVersion isEqualToString:currentVersion]) {
             //trackViewURL = [releaseInfo objectForKey:@"trackVireUrl"];
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"更新" message:@"有新的版本更新，是否前往更新？" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:@"更新", nil];
@@ -695,7 +698,7 @@
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex==1&&alertView.tag == 10001) {
+    if (buttonIndex==1&&alertView.tag == 10000) {
         NSString *str = [NSString stringWithFormat:
                          @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa /wa/viewContentsUserReviews?type=Purple+Software&id=%d",
                         1047519816];
