@@ -20,6 +20,8 @@
 #import "WDLocationHelper.h"
 #import "CarNumChoose.h"
 
+#import <AMapLocationKit/AMapLocationKit.h>
+
 @interface WashEditViewController : BaseTableViewController <UITextViewDelegate,PayCompleteDelegate,ColorChoosePopDelegate,LocationChoosePopDelegate,WashStyleChooseDelegate,LocationChooseDelegate,VoucherChoosePopDelegate,CarNumChooseDelegate>
 
 @end

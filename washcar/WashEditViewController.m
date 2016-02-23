@@ -69,6 +69,8 @@
 @property (nonatomic)NSDictionary *dz;
 @property (nonatomic)SmallArea *locationPlot;
 
+@property (nonatomic, strong) AMapLocationManager *locationManager;
+
 @end
 
 @implementation WashEditViewController
@@ -82,16 +84,40 @@
     current_washtype = -1;
     currnet_chepaiNum = 0;
 
-   
+    self.locationManager = [[AMapLocationManager alloc] init];
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+    
 }
 
 
 -(void)viewDidAppear:(BOOL)animated
 {
     if (_isFirstEnter) {
-        [WDLocationHelper getInstance].delegate = self;
-        [[WDLocationHelper getInstance] startUpdate];
+//        [WDLocationHelper getInstance].delegate = self;
+//        [[WDLocationHelper getInstance] startUpdate];
         
+        [self.locationManager requestLocationWithReGeocode:NO completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
+            
+            if (error)
+            {
+                DLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
+                
+//                if (error.code == AMapLocatingErrorLocateFailed)
+//                {
+//                    return;
+//                }
+            }
+            
+            DLog(@"location:%@", location);
+            
+            [self loadMyInfoWithLocation:location.coordinate.longitude andLatitude:location.coordinate.latitude];
+            
+            
+            if (regeocode)
+            {
+                DLog(@"reGeocode:%@", regeocode);
+            }
+        }];
         
         _isFirstEnter = NO;
     }

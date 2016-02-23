@@ -21,6 +21,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - AlipaySDK-2.0 (2.0.3)
+  - AMapLocation (1.1.1)
   - Masonry (0.6.4)
   - MJExtension (0.2.0)
   - MJRefresh (3.1.0)
@@ -78,15 +79,16 @@ PODS:
   - Nimbus/WebController (1.3.0):
     - Nimbus/Core
   - Reachability (3.1.1)
-  - SDWebImage (3.7.4):
-    - SDWebImage/Core (= 3.7.4)
-  - SDWebImage/Core (3.7.4)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
   - SVProgressHUD (1.1.3)
   - UMengSocial (4.4)
 
 DEPENDENCIES:
   - AFNetworking
   - AlipaySDK-2.0 (~> 2.0.3)
+  - AMapLocation
   - Masonry
   - MJExtension (~> 0.2.0)
   - MJRefresh
@@ -99,13 +101,14 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   AlipaySDK-2.0: 75e0f3aa6a7a269c486078759e16695447645580
+  AMapLocation: fc0245146ef90811f9590d428e9035a2a64f4526
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MJExtension: 62af61e1a53da0a244c3ae3aff415159bcbd0f0b
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   MKNetworkKit: 60ad3c83b62183e40ba75ce772c9427c25b520de
   Nimbus: e7f33bc6d6cb4fe5ea0aee0c7e0883696123422c
   Reachability: dd9aa4fb6667b9f787690a74f53cb7634ce99893
-  SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
   UMengSocial: aba7296602310385114d82c255539a7bef3b7ab0
 

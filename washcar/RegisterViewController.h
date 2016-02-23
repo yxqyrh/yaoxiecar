@@ -16,6 +16,8 @@
 #import "WDLocationHelper.h"
 #import "LocationChooseViewController1.h"
 
+#import <AMapLocationKit/AMapLocationKit.h>
+
 @interface RegisterViewController : BaseTableViewController<ColorChoosePopDelegate,LocationChoosePopDelegate,LocationChooseViewControllerDelegate,NIAttributedLabelDelegate,ChePaiPickViewDelegate,WDLocationHelperDelegate,LocationChooseDelegate,UITextFieldDelegate>
 
 

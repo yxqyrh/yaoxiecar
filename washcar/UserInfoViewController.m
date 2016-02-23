@@ -95,8 +95,33 @@
     }else{
         _isEdit = false;
         [_actionBtn setTitle:@"确认添加" forState:UIControlStateNormal];
-        [WDLocationHelper getInstance].delegate = self;
-        [[WDLocationHelper getInstance] startUpdate];
+//        [WDLocationHelper getInstance].delegate = self;
+//        [[WDLocationHelper getInstance] startUpdate];
+        
+        self.locationManager = [[AMapLocationManager alloc] init];
+        [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+        
+        [self.locationManager requestLocationWithReGeocode:NO completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
+            
+            if (error)
+            {
+                DLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
+                
+                //                if (error.code == AMapLocatingErrorLocateFailed)
+                //                {
+                //                    return;
+                //                }
+            }
+            
+            DLog(@"location:%@", location);
+            
+            [self registerShow:location.coordinate.longitude andLatitude:location.coordinate.latitude];
+            
+            if (regeocode)
+            {
+                DLog(@"reGeocode:%@", regeocode);
+            }
+        }];
     }
 
     _CarNum.delegate = self;
