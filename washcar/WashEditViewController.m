@@ -18,6 +18,7 @@
 #import "UserInfoViewController.h"
 #import "StoryboadUtil.h"
 
+
 @interface WashEditViewController () {
     UITextField *_carNumberLabel;
     UITextField *_carColorLabel;
@@ -64,6 +65,7 @@
 @property (nonatomic)NSArray *cityList;
 @property (nonatomic)NSArray *areaList;
 @property (nonatomic)NSArray *plotList;
+@property (nonatomic)NSArray *nearPlotList;
 @property (nonatomic)NSDictionary *dz;
 @property (nonatomic)SmallArea *locationPlot;
 
@@ -136,8 +138,8 @@
     self.provinceList = [responseObject objectForKey:@"shenglist"];
     self.cityList = [responseObject objectForKey:@"citylist"];
     self.areaList = [LocationInfo getInstance].areaList = [responseObject objectForKey:@"qulist"];
-//    self.plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
-    self.plotList = nearPlotList;
+    self.plotList = [SmallArea objectArrayWithKeyValuesArray:[responseObject objectForKey:@"xq"]];
+    self.nearPlotList = nearPlotList;
     self.dz = [responseObject objectForKey:@"dz"];
     
     
@@ -452,9 +454,11 @@
     
     if (indexPath.row == 1) {
         _carColorLabel = (UITextField *)[cell viewWithTag:2];
-        if (_userInfo != nil) {
-            _carColorLabel.text = _userInfo.color;
+        if ([GlobalVar sharedSingleton].carInfoList.count>0) {
+            CarInfo *info =  [GlobalVar sharedSingleton].carInfoList[0];
+            _carColorLabel.text = info.color;
         }
+        
     }
     
     if (indexPath.row == 2) {
@@ -644,7 +648,7 @@
     LocationChooseViewController1 *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LocationChooseViewController1"];
     viewController.delegate = self;
     viewController.provinceList = self.provinceList;
-    [viewController initDataDZ:self.dz nearPlots:self.plotList andLocationPlot:_locationPlot];
+    [viewController initDataDZ:self.dz nearPlots:self.nearPlotList ssxPlots:self.plotList andLocationPlot:_locationPlot];
     [self.navigationController pushViewController:viewController animated:YES];
     return;
     

@@ -110,11 +110,12 @@
 
 -(void)initDataDZ:(NSDictionary *)dz
         nearPlots:(NSArray *)nearPlots
+        ssxPlots:(NSArray *)ssxPlots
   andLocationPlot:(SmallArea *)smallArea
 
 {
     _nearPlots = nearPlots;
-    _ssxPlots = nearPlots;
+    _ssxPlots = ssxPlots;
     _provinceId = [dz objectForKey:@"province"];
     _provinceName = [dz objectForKey:@"provincemc"];;
     _cityId = [dz objectForKey:@"city"];;
