@@ -507,6 +507,7 @@
             }
             
             UILabel *label = [cell viewWithTag:33];
+            label.textColor = menoyTextColor;
             label.text = order.yjxcsj;
             
         }

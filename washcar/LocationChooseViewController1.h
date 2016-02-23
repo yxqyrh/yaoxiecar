@@ -47,6 +47,7 @@
 
 -(void)initDataDZ:(NSDictionary *)dz
         nearPlots:(NSArray *)nearPlots
+         ssxPlots:(NSArray *)ssxPlots
   andLocationPlot:(SmallArea *)smallArea;
 
 @end

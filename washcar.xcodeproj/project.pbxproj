@@ -345,6 +345,7 @@
 		448C44FF1BBAB6C800652607 /* CancelChoosePop.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CancelChoosePop.xib; sourceTree = "<group>"; };
 		448C45011BBAD6A300652607 /* WashType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WashType.h; sourceTree = "<group>"; };
 		448C45021BBAD6A300652607 /* WashType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WashType.m; sourceTree = "<group>"; };
+		448C70E91C7AB00600E682B1 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapLocationKit.framework; path = ../../../../Downloads/AMapLocationKit.framework; sourceTree = "<group>"; };
 		44928FE21BB7D67D00F699E7 /* LocationChoose.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationChoose.storyboard; sourceTree = "<group>"; };
 		44928FE51BB7D6D700F699E7 /* CommonProblemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonProblemViewController.h; sourceTree = "<group>"; };
 		44928FE61BB7D6D700F699E7 /* CommonProblemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonProblemViewController.m; sourceTree = "<group>"; };
@@ -400,6 +401,7 @@
 		4492905F1BB907BF00F699E7 /* GuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
 		449290691BB9146F00F699E7 /* WDSystemUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WDSystemUtils.h; sourceTree = "<group>"; };
 		4492906A1BB9146F00F699E7 /* WDSystemUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WDSystemUtils.m; sourceTree = "<group>"; };
+		44A2EA4F1C7C40B200F99650 /* AMapLocationKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AMapLocationKit.framework; path = ../../../tempfiles/0222/AMapLocationKit.framework; sourceTree = "<group>"; };
 		44AEA2E11BC7D6A0007BBB89 /* navigation_bar_color@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_bar_color@3x.png"; sourceTree = "<group>"; };
 		44B5CB821C426A3500141CBF /* LocationChoose1.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LocationChoose1.storyboard; sourceTree = "<group>"; };
 		44B5CB841C426AB300141CBF /* LocationChooseViewController1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationChooseViewController1.h; sourceTree = "<group>"; };
@@ -731,6 +733,8 @@
 		12DEF3C5B4393D0D25F10FC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44A2EA4F1C7C40B200F99650 /* AMapLocationKit.framework */,
+				448C70E91C7AB00600E682B1 /* AMapLocationKit.framework */,
 				4473C1421C48EDD4000130B8 /* MobileCoreServices.framework */,
 				4473C1401C48C3F8000130B8 /* MessageUI.framework */,
 				4473C13E1C48C3DD000130B8 /* JavaScriptCore.framework */,
