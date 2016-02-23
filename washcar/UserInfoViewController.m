@@ -560,16 +560,6 @@
         [SVProgressHUD showErrorWithStatus:@"没有小区信息，无法添加车牌"];
         return;
     }
-    if ([WDSystemUtils isEmptyOrNullString:_cheweihao.text]) {
-            [self.view makeToast:@"车位号不能为空"];
-            return;
-    }
-    
-    //    uid  注册或者登陆的标识  carnumber 车牌号 color颜色 province省  city市 area 县  plot小区 cwh车位号
-    //    uid  是否登录的标识，所有必须登录才能使用的功能必须post过来这个参数
-    //    Isloginid 是否登录的标识，所有必须登录才能使用的功能必须post过来这个参数
-    //    返回值
-    //    Data res 1 编辑资料成功  2编辑资料失败
     NSString *chePaiStr = [_provinceShort.titleLabel.text stringByAppendingFormat:@"%@%@",_A_Z.titleLabel.text,_CarNum.text];
     
     [parameters setValue:_provinceShort.titleLabel.text forKey:@"prov"];
