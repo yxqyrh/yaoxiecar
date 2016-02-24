@@ -61,7 +61,7 @@
 @property (nonatomic)NSArray *areaList;
 @property (nonatomic)NSArray *plotList;
 @property (nonatomic)NSDictionary *dz;
-
+@property (nonatomic, strong) AMapLocationManager *locationManager;
 
 @end
 
@@ -79,9 +79,32 @@
     chePaiPickView = [ChePaiPickView defaultView];
     chePaiPickView.delegate =self;
     [self.view addSubview:chePaiPickView];
+//    
+//    [WDLocationHelper getInstance].delegate = self;
+//    [[WDLocationHelper getInstance] startUpdate];
     
-    [WDLocationHelper getInstance].delegate = self;
-    [[WDLocationHelper getInstance] startUpdate];
+    self.locationManager = [[AMapLocationManager alloc] init];
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+    [self.locationManager requestLocationWithReGeocode:NO completionBlock:^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
+        
+        if (error)
+        {
+            DLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
+            
+            //                if (error.code == AMapLocatingErrorLocateFailed)
+            //                {
+            //                    return;
+            //                }
+        }
+        
+        DLog(@"location:%@", location);
+        [self registerShow:location.coordinate.longitude andLatitude:location.coordinate.latitude];
+        
+        if (regeocode)
+        {
+            DLog(@"reGeocode:%@", regeocode);
+        }
+    }];
   }
 
 #pragma mark - LocationChooseDelegate

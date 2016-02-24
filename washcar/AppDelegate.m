@@ -24,7 +24,7 @@
 //微信SDK头文件
 #import "WXApi.h"
 
-
+#import <AMapLocationKit/AMapLocationKit.h>
 
 
 
@@ -148,7 +148,7 @@ NSString* const NotificationActionTwoIdent = @"ACTION_TWO";
 //    if (launchOptions == nil) {
 //        launchOptions = [NSMutableDictionary dictionary];
 //    }
-    
+    [AMapLocationServices sharedServices].apiKey = @"95c7c94fe7764df213d5d809d29eb235";
     if (launchOptions == nil) {
 
     

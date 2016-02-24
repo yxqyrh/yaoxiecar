@@ -14,6 +14,9 @@
 #import "LocationChooseViewController1.h"
 #import "BaseViewController.h"
 #import "ChePaiPickView.h"
+#import <AMapLocationKit/AMapLocationKit.h>
+
+
 @interface UserInfoViewController : BaseViewController<ColorChoosePopDelegate,LocationChooseViewControllerDelegate,LocationChoosePopDelegate,ChePaiPickViewDelegate,LocationChooseDelegate,WDLocationHelperDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *CarNum;
 @property (weak, nonatomic) IBOutlet UIButton *provinceShort;
@@ -30,5 +33,7 @@
 @property (weak, nonatomic) NSString *title;
 @property (weak, nonatomic) NSString *clid;
 @property (weak, nonatomic) IBOutlet UIButton *actionBtn;
+
+@property (nonatomic, strong) AMapLocationManager *locationManager;
 
 @end
