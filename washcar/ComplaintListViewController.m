@@ -106,7 +106,9 @@
     lable1.text = @"掌柜回复";
     lable1.textColor =[UIColor grayColor];
     
-    UILabel *content_text = [[UILabel alloc]initWithFrame:CGRectMake(26, 25, SCREEN_WIDTH-16, size_content.height)];
+    UILabel *content_text = [[UILabel alloc]initWithFrame:CGRectMake(26, 25, SCREEN_WIDTH-34, size_content.height)];
+    content_text.lineBreakMode = UILineBreakModeWordWrap;
+     content_text.numberOfLines = 0;
     content_text.textColor =[UIColor grayColor];
     content_text.font =font_content;
     content_text.text =content_str;
