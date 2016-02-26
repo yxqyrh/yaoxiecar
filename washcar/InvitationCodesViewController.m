@@ -57,7 +57,7 @@
     UILabel *title = (UILabel*)[cell viewWithTag:1];
    
      NSDictionary *_dic = yqmlist[indexPath.row];
-    NSString *uname = [_dic objectForKey:@"uname"];
+    NSString *uname = [_dic objectForKey:@"uid"];
     
     if ([StringUtil isEmty:uname]) {
         uname = @"用户名未知";

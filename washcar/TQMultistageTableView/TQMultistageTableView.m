@@ -349,7 +349,7 @@ static const CGFloat kDefultHeightForAtom   = 44.0f;
             break;
         case TQCellLineTouch:
         {
-            [self openOrCloseCellWithRow:indexPath.row];
+//            [self openOrCloseCellWithRow:indexPath.row];
         }
             break;
         case TQCodeSendTouch:
