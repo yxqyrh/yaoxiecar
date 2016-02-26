@@ -311,10 +311,10 @@
 //        return;
 //    }
     
-    if ([WDSystemUtils isEmptyOrNullString:_carPositionTextField.text]) {
-        [SVProgressHUD showErrorWithStatus:@"请输入车位号"];
-        return;
-    }
+//    if ([WDSystemUtils isEmptyOrNullString:_carPositionTextField.text]) {
+//        [SVProgressHUD showErrorWithStatus:@"请输入车位号"];
+//        return;
+//    }
     
     if ([WDSystemUtils isEmptyOrNullString:_telephoneTextField.text]) {
         [SVProgressHUD showErrorWithStatus:@"请输入手机号"];
