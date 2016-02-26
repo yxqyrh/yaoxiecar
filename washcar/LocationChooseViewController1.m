@@ -127,7 +127,7 @@
         _provinceId = smallArea.province;
         _cityId = smallArea.city;
         _areaId = smallArea.area;
-        _plotId = smallArea.plot;
+//        _plotId = smallArea.plot;
     }
     
 //    _plotId = [dz objectForKey:@"plot"];
